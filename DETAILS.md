@@ -36,6 +36,80 @@ Test match: Einstein Final 1, 2026 Championship, https://www.youtube.com/watch?v
 | Labeled video | `.venv/bin/python render_labels.py track/clip_frames OUT_DIR_final OUT.mp4` | Large bold labels, 5 fps |
 | Score a run | `.venv/bin/python compare_runs.py track/final opus OUT_DIR_final sonnet` | Run names must be `opus`, `sonnet` or `haiku` (used for prices) |
 
+## Local dataset preparation
+
+`prepare_dataset.py` converts the existing tracking JSON into YOLO-format detection
+labels and cropped JPEGs. It does not call Claude, read `.env`, install a detector,
+or train a model. An offline-data environment needs only:
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements-data.txt
+.venv/bin/python prepare_dataset.py track/clip_frames track/final datasets/checked_clip_v1
+.venv/bin/python -m unittest -v test_prepare_dataset
+```
+
+Use Python 3.10 or newer for Pillow 12+. On this Mac, Homebrew Python is
+`/opt/homebrew/bin/python3`; the system `python3` was Python 3.9. The data requirements
+are separate because local data preparation does not need the Anthropic SDK.
+
+Restore the frames with the Setup commands first. If system FFmpeg is unavailable,
+`imageio-ffmpeg` in the data requirements supplies a binary; get its absolute path
+with `.venv/bin/python -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())'`
+and use that path in place of `ffmpeg` in those commands. Downloading the video and
+extracting frames do not use the Claude API.
+
+Default export behavior:
+
+- Crop full-frame 1920x1080 images to `(0, 110, 1920, 720)`, producing 1920x610 images.
+  Translate and clip boxes into that crop, then normalize center/width/height to 0–1.
+- Export only `visible=true` boxes. Hidden robots have estimated positions and are
+  excluded as detection targets. Visible, partially occluded robots remain included.
+- Use one `robot` class. Optional `--classes alliance` produces `robot_red` and
+  `robot_blue`; its team-to-alliance map is specific to the documented match.
+- Split sorted labeled frames into chronological 70/15/15 blocks. Exclude ten frames
+  at each boundary (`--gap-frames 10`), five on each side. For consecutive 5 fps labels
+  this removes two seconds per boundary. Sparse source labels produce larger time gaps.
+- Require every labeled frame's image, including excluded gap frames; fail rather
+  than silently shrink the dataset. Reject invalid visible boxes and image sizes.
+- Require a new output folder. Never overwrite existing datasets or source labels.
+
+Output contains `images/{train,val,test}/`, `labels/{train,val,test}/`, `data.yaml`,
+and `preview_train.jpg`, `preview_val.jpg`, `preview_test.jpg`. The previews draw boxes
+from the exported text labels, allowing coordinate conversion to be checked visually.
+`manifest.json` records source paths, source-label SHA-256 hashes, per-frame boxes,
+omitted hidden/outside-crop boxes, split membership, and image/box totals. Datasets
+are ignored by Git and can be recreated. The YAML contains an absolute dataset path;
+regenerate it when moving the dataset to another computer.
+
+The 123-frame answer key is a **pilot dataset**, with small evaluation blocks. A time
+gap reduces adjacent-frame leakage, but all blocks still show the same robots and
+venue. Evaluate on separate matches/venues before claiming generalization. Once a
+frame is used in training, do not report it as an independent answer-key test.
+Do not combine other model labels for these same images across different splits.
+
+Detection evaluation must count false positives and missed reference robots as well
+as box overlap. `compare_runs.py` is for the existing named-robot tracking output;
+it is not a detector precision/recall evaluator, and the dataset export is not a new
+tracking run. No model accuracy or inference cost is claimed for this preparation step.
+
+Pilot export `datasets/checked_clip_v1` (2026-11-01, existing answer-key labels,
+zero new API calls):
+
+| Split | Images | Visible robot boxes |
+|---|---|---|
+| Train | 81 | 472 |
+| Validation | 8 | 45 |
+| Test | 14 | 84 |
+| Excluded boundary gaps | 20 | Not exported |
+
+All 123 source label files contained 719 visible boxes and 19 hidden estimates;
+601 visible boxes remain after the split gaps. Previews were visually inspected.
+Four offline tests cover crop normalization, hidden/invalid boxes, split separation,
+exported labels/previews, missing-image rejection, and overwrite prevention. The
+existing answer-key video can be regenerated with `render_labels.py` using the
+restored clip frames; it is not a local model prediction.
+
 ## Frames and coordinates
 
 - `track/frames/f_0000.jpg` … `f_0837.jpg`: 5 fps from video time 5.5 s (pre-match, clock 0:20) to 173 s (clock 0:00). Frame `i` is at video time `5.5 + i/5`.

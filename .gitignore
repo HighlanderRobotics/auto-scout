@@ -4,6 +4,10 @@
 # Python environment
 .venv/
 __pycache__/
+.DS_Store
+
+# Rebuildable local training datasets and previews
+datasets/
 
 # Match video and frames made from it (rebuild them with the commands in DETAILS.md)
 *.mp4

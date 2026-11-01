@@ -21,6 +21,17 @@ We tested on [Einstein Final 1 of the 2026 Championship](https://www.youtube.com
 
 ## Research projects
 
+Local detector data preparation is available now, without Claude calls:
+
+```bash
+.venv/bin/python prepare_dataset.py track/clip_frames track/final datasets/checked_clip_v1
+```
+
+Restore the video frames first using [DETAILS.md](DETAILS.md#setup). The export includes
+training labels, separate chronological training/validation/test blocks, and labeled
+preview sheets. This prepares data; it does not train a detector yet. See
+[local dataset preparation](DETAILS.md#local-dataset-preparation) for checks and limitations.
+
 This is not a list of steps. Each project is a way the system needs to improve. Pick one, try ideas with Claude, and measure the result. The technical details for each project are in [DETAILS.md](DETAILS.md#research-projects-technical-details).
 
 ### 1. Teach a local model with Claude
