@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    281,
+    282,
+    375,
+    378
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    578,
+    280,
+    650,
+    366
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    438,
+    200,
+    575
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1532,
+    408,
+    1695,
+    508
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1685,
+    562,
+    1900,
+    685
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1185,
+    275,
+    1340,
+    368
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  }
+ ],
+ "notes": "Current frame at t=21.9s: 2046 bumper readable at left. 868 and 1323 estimated from previous positions with little movement. 2910 not seen; estimate kept near the blue bump. 4065 and 4414 positions read from the right side. Bumper digits not legible for most robots in this frame.",
+ "frame": "f_0082.jpg",
+ "time_s": 21.9,
+ "usage": {
+  "in": 3721,
+  "out": 924
+ }
+}

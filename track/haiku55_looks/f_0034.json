@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    175,
+    266,
+    259,
+    332
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    254,
+    270,
+    375,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    429,
+    196,
+    572
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1098,
+    310,
+    1244,
+    408
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1488,
+    429,
+    1738,
+    575
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    276,
+    1335,
+    358
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  }
+ ],
+ "notes": "868 is not clearly visible in the current frame, so its box is an estimate from its last position. Boxes were moved from the previous frame based on visible robot positions. Team names for 2910, 4065, 4414 and 1323 are carried over from previous frames rather than read from bumpers in this frame.",
+ "frame": "f_0034.jpg",
+ "time_s": 12.3,
+ "usage": {
+  "in": 3723,
+  "out": 1065
+ }
+}

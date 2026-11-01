@@ -53,10 +53,11 @@ Test match: Einstein Final 1, 2026 Championship, https://www.youtube.com/watch?v
 |---|---|---|---|
 | `claude-opus-5-5` (effort medium) | 100% | 100% (answer key) | $2.60 |
 | `claude-sonnet-5-5` (effort medium) | 97% | 95% | $1.32 |
+| `claude-haiku-5-5` + robot descriptions | 100% | 98% | $0.11 |
 | `claude-haiku-5-5` | 96% | 94% | $0.10 |
 | `claude-haiku-4-5` | 4% | not usable | $0.62 |
 
-Sonnet's and Haiku 5.5's errors were all the same 868/2910 swap from about 11 s to 23 s. No model ever read 868's bumper. Cost is about 3,400 input tokens and 380 output tokens per frame, mostly the two images. Ideas to try: send only the current frame; describe each robot's look in the prompt; Opus at effort `low`.
+Sonnet's and Haiku 5.5's errors were all the same 868/2910 swap from about 11 s to 23 s. Adding one line per robot about how it looks (`start/robot_looks.json`) cut Haiku 5.5's errors to 11 frames (21.1–23.1 s, 2910 called 868). No model ever read 868's bumper. Cost is about 3,400 input tokens and 380 output tokens per frame, mostly the two images. Ideas to try: send only the current frame; describe each robot's look in the prompt; Opus at effort `low`.
 
 ## REBUILT rules the code depends on
 
@@ -90,6 +91,7 @@ Everything in a Lovat report is built from three inputs:
 |---|---|---|---|---|---|---|
 | answer key | Opus 5.5, effort medium | two images | 100% | 100% | $0.021 | about $18 |
 | baseline | Sonnet 5.5, effort medium | two images | 95% | 97% | $0.011 | about $9 |
+| best so far | Haiku 5.5 | two images, robot descriptions (`--robots start/robot_looks.json`) | 98% | 100% | $0.0009 | about $0.75 |
 | | Haiku 5.5 | two images | 94% | 96% | $0.0008 | about $0.70 |
 | | Haiku 4.5 | two images | not usable | 4% | $0.005 | — |
 

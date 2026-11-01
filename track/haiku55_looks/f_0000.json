@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    305,
+    345,
+    398,
+    450
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    582,
+    188,
+    645,
+    288
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    188,
+    582,
+    395,
+    700
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1562,
+    575,
+    1681,
+    692
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1712,
+    570,
+    1832,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1268,
+    185,
+    1352,
+    295
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  }
+ ],
+ "notes": "Current frame has no clearly readable bumper numbers except 2046 at bottom-left. Other boxes are estimated from previous positions and robot appearance; red-side robots near the bottom-right are partly occluded by people, so their boxes are low confidence.",
+ "frame": "f_0000.jpg",
+ "time_s": 5.5,
+ "usage": {
+  "in": 2580,
+  "out": 1282
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    15,
+    310,
+    195,
+    398
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    725,
+    298,
+    855,
+    392
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2910",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    381,
+    422,
+    581,
+    558
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    875,
+    372,
+    1038,
+    495
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.75
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1148,
+    341,
+    1310,
+    466
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1100,
+    300,
+    1256,
+    395
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Current frame boxes estimated from previous positions and visible bumpers; 2046 and 1323 digits not clearly legible this frame, so their identities carry over from previous frames.",
+ "frame": "f_0019.jpg",
+ "time_s": 9.3,
+ "usage": {
+  "in": 3725,
+  "out": 907
+ }
+}

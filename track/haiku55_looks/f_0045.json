@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    175,
+    272,
+    262,
+    332
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    256,
+    270,
+    362,
+    335
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    482,
+    166,
+    591
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1294,
+    429,
+    1438,
+    525
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.75
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1769,
+    445,
+    1920,
+    575
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.85
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    272,
+    1340,
+    358
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  }
+ ],
+ "notes": "Current frame: 2046, 4065, 4414 read from bumpers in prior frames and tracked; 1323 tracked by position near red hub. 868 and 2910 are hidden at the left end; boxes are estimates from last seen positions.",
+ "frame": "f_0045.jpg",
+ "time_s": 14.5,
+ "usage": {
+  "in": 3731,
+  "out": 1059
+ }
+}

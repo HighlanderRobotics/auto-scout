@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    272,
+    362,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    578,
+    280,
+    650,
+    366
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    485,
+    102,
+    591
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1672,
+    560,
+    1865,
+    691
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1191,
+    279,
+    1340,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Current frame: 2046 is read from its bumper at the left edge. 868 is inferred from its previous position near the blue hub's far side, with low confidence. 2910 is hidden, so its box is the last-seen estimate. Red robots 4065, 4414 and 1323 are placed by position from the previous frame since their bumper numbers are not readable here.",
+ "frame": "f_0091.jpg",
+ "time_s": 23.7,
+ "usage": {
+  "in": 3724,
+  "out": 1000
+ }
+}

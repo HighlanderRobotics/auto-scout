@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    335,
+    381,
+    440
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    671,
+    235,
+    765,
+    310
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    331,
+    545,
+    531,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1281,
+    560,
+    1500,
+    682
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1702,
+    565,
+    1838,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1169,
+    235,
+    1275,
+    312
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  }
+ ],
+ "notes": "No bumper numbers readable in this frame; identities carried over from previous state by position. The 2046/868 assignment is uncertain because the yellow-wrapped robot near the blue bump is motion-blurred. 2910 is matched by its BLITZ sticker.",
+ "frame": "f_0005.jpg",
+ "time_s": 6.5,
+ "usage": {
+  "in": 3707,
+  "out": 1442
+ }
+}

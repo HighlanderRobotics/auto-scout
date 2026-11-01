@@ -109,6 +109,7 @@ def main():
     ap.add_argument("frames_dir"); ap.add_argument("out_dir")
     ap.add_argument("--model", default=MODEL)
     ap.add_argument("--actions", action="store_true", help="also ask for each robot's action")
+    ap.add_argument("--robots", help="JSON file of team -> how the robot looks, added to the prompt")
     ap.add_argument("--seed"); ap.add_argument("--start", type=int, default=0); ap.add_argument("--end", type=int)
     a = ap.parse_args()
     frames_dir, out_dir = Path(a.frames_dir), Path(a.out_dir)
@@ -120,6 +121,9 @@ def main():
         prior = [{"team": r["team"].rstrip("?"), "visible": True, "box": r["box"], "named_by": "guess",
                   "bumper_text": "", "confidence": 0.3} for r in json.load(open(a.seed))["robots"] if r["team"].rstrip("?") in TEAMS]
     system, schema = SYSTEM, json.loads(json.dumps(SCHEMA))
+    if a.robots:
+        looks = json.load(open(a.robots))
+        system += "\nHow each robot looks (use this to keep names right when a bumper is hidden):\n" + "\n".join(f"- {t}: {d}" for t, d in looks.items())
     if a.actions:
         system += ACTIONS_PROMPT
         item = schema["properties"]["robots"]["items"]

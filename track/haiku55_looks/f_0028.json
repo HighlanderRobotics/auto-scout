@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    122,
+    268,
+    262,
+    342
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    306,
+    285,
+    381,
+    375
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    429,
+    198,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1032,
+    318,
+    1195,
+    420
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.8
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1225,
+    405,
+    1406,
+    532
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1210,
+    272,
+    1331,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  }
+ ],
+ "notes": "868 is the low open robot at upper left. 2910 is not clearly identifiable in this frame; its box is a guess near the left hub where it was last seen. 2046 and 4065 are read from bumper digits in this frame. 4414 is read from its partly visible bumper. 1323 is tracked from previous frames since only a partial bumper is shown.",
+ "frame": "f_0028.jpg",
+ "time_s": 11.1,
+ "usage": {
+  "in": 3728,
+  "out": 1009
+ }
+}

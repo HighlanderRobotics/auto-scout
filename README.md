@@ -17,7 +17,7 @@ We tested on [Einstein Final 1 of the 2026 Championship](https://www.youtube.com
 
 - **Reading the score overlay works.** Code reads the score, clock and shift counter every second. It matched the official totals.
 - **Claude can track all six robots.** For each video frame, Claude gets the frame and the last known positions, and returns a box and a team number for every robot. A second pass then fixes names with bumper numbers read later in the match. On a 30-second clip, a mentor checked the Opus run by hand: every name was correct.
-- **Cost per match depends on the model.** One Claude call per frame is about 840 calls per match. Opus costs about $18 per match. Sonnet costs about $9 and got 95% of names correct. The new Haiku 5.5 got 94% correct for about $0.70 per match. All three cheaper runs make the same mistake: they swap 868 and 2910 for about 12 seconds.
+- **Cost per match depends on the model.** One Claude call per frame is about 840 calls per match. Opus costs about $18 per match. Sonnet costs about $9 and got 95% of names correct. The new Haiku 5.5 got 94% correct for about $0.70 per match. The cheaper runs swapped 868 and 2910 for about 12 seconds. Telling Haiku 5.5 what each robot looks like fixed most of that: 98% of names correct for about $0.75 per match, which meets our target.
 
 ## Research projects
 
