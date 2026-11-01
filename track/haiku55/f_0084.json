@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    275,
+    275,
+    375,
+    379
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    582,
+    275,
+    648,
+    375
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2910",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    19,
+    432,
+    200,
+    575
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1696,
+    508
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1625,
+    572,
+    1738,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.15
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    279,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Current frame t=22.3 s: robot positions changed little from the previous frame. 868 is a low-confidence guess behind the left hub. 4414 is not visible and its box is an estimate from its last position. 2046 is read from its bumper in the previous frame and tracked here. Others tracked from previous frame.",
+ "frame": "f_0084.jpg",
+ "time_s": 22.3,
+ "usage": {
+  "in": 3374,
+  "out": 941
+ }
+}

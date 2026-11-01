@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    269,
+    258,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    775,
+    314,
+    910,
+    410
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    540,
+    382,
+    698,
+    495
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1875,
+    485,
+    1920,
+    575
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    276,
+    1340,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  }
+ ],
+ "notes": "868 hidden near top-left blue bump area, estimated from last position. 2910 moved right about 50 px. 2046 readable on bumper. 4414 partly at right edge with digits partly visible. 4065 and 1323 stationary relative to previous frame.",
+ "frame": "f_0062.jpg",
+ "time_s": 17.9,
+ "usage": {
+  "in": 3376,
+  "out": 1089
+ }
+}

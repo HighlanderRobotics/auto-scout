@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    256,
+    272,
+    375,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "868",
+   "track": 3
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    225,
+    235,
+    319,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.03,
+   "forward_team": "2910",
+   "track": 0
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    25,
+    429,
+    196,
+    572
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1100,
+    304,
+    1256,
+    404
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "4065",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 9
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1612,
+    438,
+    1806,
+    585
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    275,
+    1338,
+    358
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 6
+  }
+ ],
+ "notes": "2910 not seen in current frame; estimated from last position. 868 and 1323 boxes estimated from previous frame positions with small motion. 4414 digits visible on bumper near bottom of its box.",
+ "frame": "f_0035.jpg",
+ "time_s": 12.5,
+ "usage": {
+  "in": 3376,
+  "out": 948
+ }
+}

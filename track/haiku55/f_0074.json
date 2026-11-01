@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    269,
+    258,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    575,
+    279,
+    652,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2910",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    50,
+    438,
+    250,
+    579
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1531,
+    410,
+    1694,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1625,
+    572,
+    1738,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Current frame boxes estimated from previous positions and visible chassis; 2046 moved left and is partly occluded by balls; 4414 likely hidden behind the red ramp area near the near-right corner; 868 not visible at the top-left blue area.",
+ "frame": "f_0074.jpg",
+ "time_s": 20.3,
+ "usage": {
+  "in": 3377,
+  "out": 1225
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    269,
+    258,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    575,
+    285,
+    675,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2910",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    175,
+    429,
+    362,
+    529
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1695,
+    505
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1662,
+    610,
+    1740,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    278,
+    1338,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Boxes estimated from the current frame; 868 hidden and last seen near its previous location; 4414 partly occluded near the driver station, low confidence; 2046 may have shifted left, so its box is approximate.",
+ "frame": "f_0072.jpg",
+ "time_s": 19.9,
+ "usage": {
+  "in": 3380,
+  "out": 1195
+ }
+}

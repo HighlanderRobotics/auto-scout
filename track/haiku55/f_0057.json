@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    265,
+    270,
+    358,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    642,
+    315,
+    758,
+    418
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    788,
+    380,
+    965,
+    508
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1532,
+    408,
+    1696,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1888,
+    472,
+    1920,
+    548
+   ],
+   "named_by": "elimination",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    275,
+    1340,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  }
+ ],
+ "notes": "868 and 4414 not clearly visible in current frame; 868 last seen near left yellow pile, 4414 near right edge. 2046 read from bumper text in this frame.",
+ "frame": "f_0057.jpg",
+ "time_s": 16.9,
+ "usage": {
+  "in": 3376,
+  "out": 1139
+ }
+}

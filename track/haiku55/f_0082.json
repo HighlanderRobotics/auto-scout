@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    272,
+    272,
+    372,
+    379
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    581,
+    275,
+    650,
+    375
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2910",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    4,
+    438,
+    200,
+    575
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1532,
+    410,
+    1696,
+    508
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1625,
+    572,
+    1738,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.15
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Current frame: 2046 read from bumper at left. 868 and 2910 near left hub not clearly readable, kept from previous frame. 4414 not seen clearly; its last estimate is kept as hidden.",
+ "frame": "f_0082.jpg",
+ "time_s": 21.9,
+ "usage": {
+  "in": 3374,
+  "out": 896
+ }
+}

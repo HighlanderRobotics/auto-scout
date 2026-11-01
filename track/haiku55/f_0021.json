@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    18,
+    310,
+    190,
+    398
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    656,
+    281,
+    790,
+    366
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    225,
+    422,
+    406,
+    510
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    875,
+    354,
+    1050,
+    454
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1219,
+    322,
+    1365,
+    454
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1198,
+    285,
+    1331,
+    366
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  }
+ ],
+ "notes": "Boxes estimated from previous positions and visible robot shapes; no bumper numbers read in this frame, so all identities carry over from earlier tracking. Robot 2046 is partly covered by fuel; 1323 box is least certain.",
+ "frame": "f_0021.jpg",
+ "time_s": 9.7,
+ "usage": {
+  "in": 3358,
+  "out": 902
+ }
+}

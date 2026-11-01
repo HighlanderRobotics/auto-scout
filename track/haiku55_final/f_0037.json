@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    256,
+    270,
+    378,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "868",
+   "track": 3
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    225,
+    235,
+    319,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.03,
+   "forward_team": "2910",
+   "track": 0
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    25,
+    425,
+    198,
+    568
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1144,
+    335,
+    1269,
+    416
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "4065",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 9
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1662,
+    442,
+    1894,
+    578
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "4414",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    279,
+    1340,
+    351
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 6
+  }
+ ],
+ "notes": "Current frame boxes estimated from previous positions; 2910 hidden near blue hub, 868 partly occluded by fuel; 4065 and 1323 positions inferred from previous frame, digits not read this frame.",
+ "frame": "f_0037.jpg",
+ "time_s": 12.9,
+ "usage": {
+  "in": 3378,
+  "out": 1025
+ }
+}

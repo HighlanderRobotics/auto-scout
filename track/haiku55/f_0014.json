@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    125,
+    314,
+    270,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    815,
+    310,
+    925,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    756,
+    379,
+    931,
+    491
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    940,
+    305,
+    1088,
+    379
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    960,
+    366,
+    1106,
+    491
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1028,
+    525,
+    1169,
+    679
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Bumper numbers not legible at this resolution; boxes tracked from previous frame positions. 2910 box is uncertain because it sits behind the fuel pile near the hub. 1323 moved toward the center near the red-side trench.",
+ "frame": "f_0014.jpg",
+ "time_s": 8.3,
+ "usage": {
+  "in": 3369,
+  "out": 965
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    258,
+    362,
+    314
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    702,
+    238,
+    815,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    669,
+    464,
+    835,
+    635
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1695,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1875,
+    485,
+    1920,
+    562
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    270,
+    1340,
+    368
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "No bumper numbers legible in this frame; boxes carried from previous frame and adjusted to visible positions. 4414 is at the right edge and only partly visible.",
+ "frame": "f_0053.jpg",
+ "time_s": 16.1,
+ "usage": {
+  "in": 3376,
+  "out": 1081
+ }
+}

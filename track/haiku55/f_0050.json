@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    266,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    619,
+    232,
+    738,
+    304
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    310,
+    554,
+    500,
+    685
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1531,
+    410,
+    1694,
+    516
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1828,
+    450,
+    1920,
+    575
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    275,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "No bumper numbers legible in this frame. 2910 identification is a low-confidence guess from the blue robot near the blue top-center area; 2046 moved from the left trench area toward the bottom-left-center. Other boxes held from previous frame.",
+ "frame": "f_0050.jpg",
+ "time_s": 15.5,
+ "usage": {
+  "in": 3373,
+  "out": 1241
+ }
+}

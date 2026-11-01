@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    332,
+    385,
+    432
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.97,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    741,
+    235,
+    831,
+    312
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    440,
+    548,
+    600,
+    700
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1148,
+    550,
+    1360,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1102,
+    245,
+    1228,
+    322
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": false,
+   "box": [
+    1725,
+    185,
+    1800,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "Bumper numbers not legible at this resolution, so all boxes are tracked from previous positions and motion. 1323 is not clearly visible; its last-seen estimate is kept at low confidence. Blue robots moved right slightly, 4414 moved left toward its side, and 4065 is at the bottom-center right.",
+ "frame": "f_0006.jpg",
+ "time_s": 6.7,
+ "usage": {
+  "in": 3367,
+  "out": 1101
+ }
+}

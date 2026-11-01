@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    255,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "868",
+   "track": 3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    691,
+    235,
+    815,
+    314
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 4
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    256,
+    498,
+    481,
+    660
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1531,
+    410,
+    1695,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 9
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1669,
+    562,
+    1760,
+    660
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    272,
+    1340,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 6
+  }
+ ],
+ "notes": "No bumper numbers legible in this frame; boxes tracked from previous frame. 2046 moved toward the center-left of the blue end and 2910 shifted right slightly. 4414 tentatively identified as the green robot near the red-end corner; low confidence.",
+ "frame": "f_0096.jpg",
+ "time_s": 24.7,
+ "usage": {
+  "in": 3373,
+  "out": 1198
+ }
+}

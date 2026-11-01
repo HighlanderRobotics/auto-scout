@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    269,
+    258,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "868",
+   "track": 3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    881,
+    310,
+    1025,
+    410
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 4
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    588,
+    385,
+    725,
+    500
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1531,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 9
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1835,
+    466,
+    1920,
+    575
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    275,
+    1335,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 6
+  }
+ ],
+ "notes": "Current frame boxes estimated from previous positions and visible robot shapes. 868 is hidden behind the ball cluster near the left blue hub and is estimated from its last seen position. 2046 is identified from its base number plate; the others are tracked from previous frames.",
+ "frame": "f_0064.jpg",
+ "time_s": 18.3,
+ "usage": {
+  "in": 3378,
+  "out": 972
+ }
+}

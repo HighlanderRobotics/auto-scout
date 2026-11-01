@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    258,
+    362,
+    315
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "868",
+   "track": 3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    679,
+    275,
+    785,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 4
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    788,
+    410,
+    975,
+    545
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1695,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 9
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1888,
+    485,
+    1920,
+    560
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1191,
+    275,
+    1338,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 6
+  }
+ ],
+ "notes": "Current frame boxes estimated by tracking from previous frame; 2046 bumper text is partly visible on robot, but not clearly read this frame so named_by set to previous_frames. Robots moved only slightly in 0.2 s; 4414 is at the right edge and only partly visible.",
+ "frame": "f_0055.jpg",
+ "time_s": 16.5,
+ "usage": {
+  "in": 3378,
+  "out": 1152
+ }
+}

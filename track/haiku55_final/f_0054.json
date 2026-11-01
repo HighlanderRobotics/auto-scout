@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    258,
+    362,
+    315
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "868",
+   "track": 3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    691,
+    255,
+    795,
+    342
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 4
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    769,
+    462,
+    931,
+    588
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1695,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 9
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1879,
+    485,
+    1920,
+    558
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    275,
+    1340,
+    372
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 6
+  }
+ ],
+ "notes": "Current frame: 2046 now reads on its blue bumper near center-left; 2910 moved slightly left and down; 4414 only partly visible at right edge, so its box and confidence are low.",
+ "frame": "f_0054.jpg",
+ "time_s": 16.3,
+ "usage": {
+  "in": 3376,
+  "out": 914
+ }
+}

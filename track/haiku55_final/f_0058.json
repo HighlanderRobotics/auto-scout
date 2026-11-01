@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    265,
+    270,
+    358,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "868",
+   "track": 3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    635,
+    320,
+    782,
+    420
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 4
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    756,
+    385,
+    912,
+    492
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    405,
+    1695,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 9
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1888,
+    472,
+    1920,
+    548
+   ],
+   "named_by": "elimination",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    272,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 6
+  }
+ ],
+ "notes": "2046 is read from its bumper in this frame; 2910 moved slightly right; 868 and 4414 are not clearly visible, so their boxes are last-seen estimates.",
+ "frame": "f_0058.jpg",
+ "time_s": 17.1,
+ "usage": {
+  "in": 3376,
+  "out": 972
+ }
+}

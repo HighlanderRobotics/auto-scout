@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    269,
+    258,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    578,
+    279,
+    650,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2910",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    438,
+    198,
+    578
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1696,
+    508
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1625,
+    572,
+    1738,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    275,
+    1335,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Robots moved little between frames. 868 and 4414 not seen in the current frame; their boxes are last-seen estimates. 2046 is read from its bumper in this frame; the others are tracked from previous frames.",
+ "frame": "f_0076.jpg",
+ "time_s": 20.7,
+ "usage": {
+  "in": 3377,
+  "out": 1096
+ }
+}

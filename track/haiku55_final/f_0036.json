@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    256,
+    270,
+    375,
+    358
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "868",
+   "track": 3
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    225,
+    235,
+    319,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.03,
+   "forward_team": "2910",
+   "track": 0
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    25,
+    429,
+    196,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1122,
+    308,
+    1256,
+    404
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "4065",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 9
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1648,
+    438,
+    1869,
+    582
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    279,
+    1338,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 6
+  }
+ ],
+ "notes": "2910 not visible in current frame; estimate kept from previous position. 868 and 1323 identified by continuity, not bumper digits in this frame.",
+ "frame": "f_0036.jpg",
+ "time_s": 12.7,
+ "usage": {
+  "in": 3378,
+  "out": 998
+ }
+}

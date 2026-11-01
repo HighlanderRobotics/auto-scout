@@ -53,9 +53,10 @@ Test match: Einstein Final 1, 2026 Championship, https://www.youtube.com/watch?v
 |---|---|---|---|
 | `claude-opus-5-5` (effort medium) | 100% | 100% (answer key) | $2.60 |
 | `claude-sonnet-5-5` (effort medium) | 97% | 95% | $1.32 |
+| `claude-haiku-5-5` | 96% | 94% | $0.10 |
 | `claude-haiku-4-5` | 4% | not usable | $0.62 |
 
-Sonnet's errors were all a 868/2910 swap from about 11 s to 23 s. No model ever read 868's bumper. Cost is about 3,400 input tokens and 380 output tokens per frame, mostly the two images. Ideas to try: send only the current frame; describe each robot's look in the prompt; Opus at effort `low`.
+Sonnet's and Haiku 5.5's errors were all the same 868/2910 swap from about 11 s to 23 s. No model ever read 868's bumper. Cost is about 3,400 input tokens and 380 output tokens per frame, mostly the two images. Ideas to try: send only the current frame; describe each robot's look in the prompt; Opus at effort `low`.
 
 ## REBUILT rules the code depends on
 
@@ -89,6 +90,7 @@ Everything in a Lovat report is built from three inputs:
 |---|---|---|---|---|---|---|
 | answer key | Opus 5.5, effort medium | two images | 100% | 100% | $0.021 | about $18 |
 | baseline | Sonnet 5.5, effort medium | two images | 95% | 97% | $0.011 | about $9 |
+| | Haiku 5.5 | two images | 94% | 96% | $0.0008 | about $0.70 |
 | | Haiku 4.5 | two images | not usable | 4% | $0.005 | — |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
@@ -139,6 +141,7 @@ Cheaper settings to test with Claude: one image per call instead of two, effort 
 | Google `gemini-4-argon` | $2 / $10, **doubles on 2026-12-01** | Native `box_2d` (0–1000 grid) | Yes | 82.5 / 85.7 | about $8 ($4 with Batch); about $16 after Dec 1 |
 | Google `gemini-3.8-flash` | $0.75 / $3.75, **doubles on 2027-01-01** | Native `box_2d` | Yes | 68.1 / 72.8 | about $3 per frame-by-frame match; about $0.65 with video input |
 | Alibaba Qwen3.8 Max | $2 / $6 | No official format | Yes | 76.7 / 74.0 | about $5.40 |
+| Anthropic Claude Haiku 5.5 | $0.10 / $0.50 (Batch $0.05 / $0.25) | From the prompt | No | 65.8 / 61.2 | about $0.70 (measured on the clip) |
 | Anthropic Claude Sonnet 5.5 (our baseline) | $2 / $10 | From the prompt | No | 74.3 / 66.3 | about $9 (measured) |
 | Anthropic Claude Opus 5.5 (answer key) | $4 / $20 | From the prompt | No | 74.5 / 78.3 | about $18 (measured) |
 

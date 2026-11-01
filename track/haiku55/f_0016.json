@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    69,
+    314,
+    228,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    798,
+    326,
+    922,
+    429
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    602,
+    388,
+    781,
+    500
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    970,
+    308,
+    1106,
+    388
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    984,
+    341,
+    1131,
+    466
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    875,
+    466,
+    1010,
+    585
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Boxes estimated from previous positions and visible robot outlines; no new bumper numbers clearly readable in this frame except carried-over identities. 1323 and 4065 are partly occluded or ambiguous.",
+ "frame": "f_0016.jpg",
+ "time_s": 8.7,
+ "usage": {
+  "in": 3375,
+  "out": 998
+ }
+}

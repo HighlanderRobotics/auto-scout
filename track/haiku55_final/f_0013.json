@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    148,
+    310,
+    295,
+    398
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.97,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    815,
+    298,
+    931,
+    382
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    806,
+    388,
+    960,
+    516
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    935,
+    298,
+    1072,
+    395
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    972,
+    416,
+    1131,
+    522
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1162,
+    548,
+    1322,
+    675
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 9
+  }
+ ],
+ "notes": "Current frame: robots tracked from previous positions; 4414 fabworks robot with red bumper and 2046 dark robot near hub center; 1323 moved left to near red-side bottom-center. No bumper numbers clearly read in this frame; 4065 identity uncertain.",
+ "frame": "f_0013.jpg",
+ "time_s": 8.1,
+ "usage": {
+  "in": 3370,
+  "out": 923
+ }
+}

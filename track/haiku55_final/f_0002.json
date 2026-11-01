@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    305,
+    345,
+    398,
+    448
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.97,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    585,
+    198,
+    645,
+    290
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    188,
+    582,
+    388,
+    700
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1562,
+    570,
+    1738,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1272,
+    212,
+    1345,
+    298
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1725,
+    185,
+    1800,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "No bumper numbers legible in this frame; boxes carried over from previous state with small adjustments. Robot positions are low-confidence estimates.",
+ "frame": "f_0002.jpg",
+ "time_s": 5.9,
+ "usage": {
+  "in": 3362,
+  "out": 937
+ }
+}

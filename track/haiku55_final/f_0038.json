@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    259,
+    275,
+    378,
+    375
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "868",
+   "track": 3
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    225,
+    235,
+    319,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.03,
+   "forward_team": "2910",
+   "track": 0
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    25,
+    425,
+    198,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1162,
+    342,
+    1278,
+    438
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "4065",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 9
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1672,
+    445,
+    1912,
+    575
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "4414",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    278,
+    1335,
+    350
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 6
+  }
+ ],
+ "notes": "Current frame boxes estimated from previous positions and visible robot shapes. 2910 not seen, kept last estimate. 1323 identified by continuity only, no bumper digits readable at this resolution.",
+ "frame": "f_0038.jpg",
+ "time_s": 13.1,
+ "usage": {
+  "in": 3378,
+  "out": 904
+ }
+}

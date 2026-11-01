@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    175,
+    310,
+    320,
+    395
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    835,
+    285,
+    940,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    840,
+    429,
+    981,
+    545
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    940,
+    291,
+    1048,
+    385
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    998,
+    422,
+    1144,
+    550
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1312,
+    554,
+    1475,
+    675
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Boxes estimated from positions in previous frame and visual shifts; no bumper numbers were read clearly in this frame. 4065 identity at top-center is uncertain (guess carried over).",
+ "frame": "f_0012.jpg",
+ "time_s": 7.9,
+ "usage": {
+  "in": 3370,
+  "out": 975
+ }
+}

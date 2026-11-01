@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    188,
+    254,
+    262,
+    325
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    256,
+    262,
+    375,
+    379
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    429,
+    196,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.75
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1069,
+    316,
+    1225,
+    420
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1325,
+    422,
+    1500,
+    562
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1198,
+    276,
+    1340,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  }
+ ],
+ "notes": "Boxes estimated from previous positions and visible robot shapes; bumper digits not clearly readable in this frame, so identities carried over from previous frames. 2910 and 868 are partly occluded by fuel and the hub, so confidence is lower.",
+ "frame": "f_0031.jpg",
+ "time_s": 11.7,
+ "usage": {
+  "in": 3371,
+  "out": 781
+ }
+}

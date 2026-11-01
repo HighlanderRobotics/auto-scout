@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    125,
+    266,
+    262,
+    341
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.03,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    306,
+    285,
+    388,
+    379
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "2910",
+   "track": 3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    429,
+    194,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1040,
+    316,
+    1194,
+    420
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 9
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1222,
+    395,
+    1406,
+    532
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1212,
+    279,
+    1335,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 6
+  }
+ ],
+ "notes": "2910 is partly occluded near the left hub; its box is a low-confidence estimate from a dark robot behind the blue hub. 868 and 1323 are identified by position from previous frames.",
+ "frame": "f_0028.jpg",
+ "time_s": 11.1,
+ "usage": {
+  "in": 3377,
+  "out": 893
+ }
+}

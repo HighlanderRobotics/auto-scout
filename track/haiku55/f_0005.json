@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    335,
+    385,
+    442
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    671,
+    235,
+    765,
+    310
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    335,
+    541,
+    525,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1281,
+    558,
+    1500,
+    682
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1170,
+    235,
+    1278,
+    315
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "1323",
+   "visible": false,
+   "box": [
+    1725,
+    185,
+    1800,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.1
+  }
+ ],
+ "notes": "No bumper numbers legible in this frame; boxes propagated from previous frame and adjusted for motion. 1323 not visible, last estimate kept. 2046 box is motion-blurred near the blue bump.",
+ "frame": "f_0005.jpg",
+ "time_s": 6.5,
+ "usage": {
+  "in": 3364,
+  "out": 995
+ }
+}

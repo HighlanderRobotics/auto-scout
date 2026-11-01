@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    305,
+    345,
+    395,
+    445
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    585,
+    195,
+    645,
+    290
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    188,
+    580,
+    388,
+    702
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1562,
+    568,
+    1738,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1272,
+    212,
+    1345,
+    298
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1725,
+    185,
+    1800,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  }
+ ],
+ "notes": "No bumper numbers readable in this frame; boxes carried from previous frame with small adjustments. Robots moved little between t=5.5 s and t=5.7 s. Far-side robots (2910, 4414, 1323) are low confidence.",
+ "frame": "f_0001.jpg",
+ "time_s": 5.7,
+ "usage": {
+  "in": 3364,
+  "out": 906
+ }
+}

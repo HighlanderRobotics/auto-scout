@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    100,
+    272,
+    238,
+    350
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    569,
+    266,
+    656,
+    354
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    438,
+    200,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1022,
+    320,
+    1128,
+    418
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.8
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1144,
+    370,
+    1319,
+    500
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1225,
+    282,
+    1338,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Blue 868 and 2046 moved slightly left/down; 2910 hidden near blue bump, last-seen estimate kept; 4065 and 4414 read from bumpers; 1323 tracked by position.",
+ "frame": "f_0026.jpg",
+ "time_s": 10.7,
+ "usage": {
+  "in": 3377,
+  "out": 885
+ }
+}

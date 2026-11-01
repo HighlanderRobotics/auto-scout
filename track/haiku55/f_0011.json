@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    210,
+    311,
+    340,
+    395
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    860,
+    272,
+    948,
+    350
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    819,
+    429,
+    962,
+    582
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    938,
+    285,
+    1062,
+    375
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    988,
+    438,
+    1140,
+    590
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1450,
+    562,
+    1612,
+    682
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  }
+ ],
+ "notes": "Current frame boxes estimated from previous positions and visible robot shapes; 4065 and 1323 are low confidence, and no bumper numbers were read in this frame.",
+ "frame": "f_0011.jpg",
+ "time_s": 7.7,
+ "usage": {
+  "in": 3371,
+  "out": 1089
+ }
+}

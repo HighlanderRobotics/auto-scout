@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    272,
+    365,
+    341
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    225,
+    235,
+    319,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    510,
+    131,
+    604
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1438,
+    410,
+    1594,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1769,
+    441,
+    1920,
+    579
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.85
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    272,
+    1335,
+    358
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Current frame at t=14.7 s. 2910 is hidden, so its box is the last-seen estimate. 4065 and 2046 moved and their boxes are approximate. 4414 is the only robot with its number read in this frame. Other team labels are carried from the previous frame.",
+ "frame": "f_0046.jpg",
+ "time_s": 14.7,
+ "usage": {
+  "in": 3378,
+  "out": 1023
+ }
+}

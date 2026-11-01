@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    81,
+    282,
+    225,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    569,
+    266,
+    656,
+    354
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    6,
+    441,
+    206,
+    572
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1010,
+    322,
+    1144,
+    425
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "4065",
+   "confidence": 0.8
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1112,
+    366,
+    1290,
+    495
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1231,
+    282,
+    1340,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Current frame boxes estimated from previous positions and visible robots. 2910 not clearly visible near its blue hub/bump area, so marked hidden with a best-estimate box. 4065 and 4414 bumper numbers are carried from previous frames, not read in this frame.",
+ "frame": "f_0025.jpg",
+ "time_s": 10.5,
+ "usage": {
+  "in": 3377,
+  "out": 1114
+ }
+}

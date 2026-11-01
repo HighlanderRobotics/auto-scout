@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    335,
+    385,
+    442
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.97,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    671,
+    235,
+    765,
+    310
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    335,
+    541,
+    525,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1281,
+    558,
+    1500,
+    682
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1170,
+    235,
+    1278,
+    315
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": false,
+   "box": [
+    1725,
+    185,
+    1800,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "No bumper numbers legible in this frame; boxes propagated from previous frame and adjusted for motion. 1323 not visible, last estimate kept. 2046 box is motion-blurred near the blue bump.",
+ "frame": "f_0005.jpg",
+ "time_s": 6.5,
+ "usage": {
+  "in": 3364,
+  "out": 995
+ }
+}

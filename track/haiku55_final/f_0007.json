@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    256,
+    325,
+    385,
+    425
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.97,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    812,
+    235,
+    902,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    569,
+    526,
+    769,
+    675
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1032,
+    532,
+    1238,
+    688
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1044,
+    250,
+    1178,
+    338
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": false,
+   "box": [
+    1262,
+    198,
+    1350,
+    285
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.0,
+   "forward_team": "1323",
+   "track": 8
+  }
+ ],
+ "notes": "No bumper numbers legible in this frame; boxes propagated from previous frame motion. 1323 may be partly hidden behind the red hub near top right; its estimate is low confidence.",
+ "frame": "f_0007.jpg",
+ "time_s": 6.9,
+ "usage": {
+  "in": 3365,
+  "out": 1149
+ }
+}

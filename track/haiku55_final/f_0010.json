@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    219,
+    314,
+    350,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.97,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    882,
+    265,
+    960,
+    340
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    800,
+    485,
+    940,
+    612
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    940,
+    280,
+    1080,
+    365
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    958,
+    455,
+    1130,
+    618
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1528,
+    568,
+    1718,
+    660
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 9
+  }
+ ],
+ "notes": "Current frame boxes estimated from the previous positions and visible bumper text. 2910 and 868 are tracked from earlier frames. 1323 is a low-confidence guess near the right-side trench area, and 4065 is a guess with no digits read this frame.",
+ "frame": "f_0010.jpg",
+ "time_s": 7.5,
+ "usage": {
+  "in": 3371,
+  "out": 1213
+ }
+}

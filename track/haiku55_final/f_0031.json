@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    188,
+    254,
+    262,
+    325
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.03,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    256,
+    262,
+    375,
+    379
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "2910",
+   "track": 3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    429,
+    196,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1069,
+    316,
+    1225,
+    420
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 9
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1325,
+    422,
+    1500,
+    562
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1198,
+    276,
+    1340,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 6
+  }
+ ],
+ "notes": "Boxes estimated from previous positions and visible robot shapes; bumper digits not clearly readable in this frame, so identities carried over from previous frames. 2910 and 868 are partly occluded by fuel and the hub, so confidence is lower.",
+ "frame": "f_0031.jpg",
+ "time_s": 11.7,
+ "usage": {
+  "in": 3371,
+  "out": 781
+ }
+}

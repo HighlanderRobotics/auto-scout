@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    269,
+    258,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    810,
+    300,
+    960,
+    408
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2910",
+   "confidence": 0.7
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    550,
+    416,
+    715,
+    532
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1532,
+    408,
+    1695,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1815,
+    470,
+    1920,
+    591
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1192,
+    278,
+    1332,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  }
+ ],
+ "notes": "Current frame boxes estimated from previous positions and visible robot bodies; 868 hidden near its last location; bumper digits not clearly re-read this frame, so named_by reflects prior frames.",
+ "frame": "f_0067.jpg",
+ "time_s": 18.9,
+ "usage": {
+  "in": 3380,
+  "out": 939
+ }
+}

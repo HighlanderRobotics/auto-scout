@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    300,
+    270,
+    378,
+    379
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    578,
+    275,
+    650,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2910",
+   "confidence": 0.55
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    6,
+    435,
+    198,
+    575
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1696,
+    508
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1625,
+    572,
+    1738,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.15
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    272,
+    1338,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Robots tracked from previous frame with small movement. 2046 digits visible on bumper but not re-read as bumper_number this frame in my estimate. 4414 not found clearly in view; kept last estimate near red-side corner. 868 position uncertain, blue robot left of blue hub.",
+ "frame": "f_0078.jpg",
+ "time_s": 21.1,
+ "usage": {
+  "in": 3374,
+  "out": 951
+ }
+}

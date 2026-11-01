@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    175,
+    310,
+    320,
+    395
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.97,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    835,
+    285,
+    940,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    840,
+    429,
+    981,
+    545
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    940,
+    291,
+    1048,
+    385
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    998,
+    422,
+    1144,
+    550
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1312,
+    554,
+    1475,
+    675
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 9
+  }
+ ],
+ "notes": "Boxes estimated from positions in previous frame and visual shifts; no bumper numbers were read clearly in this frame. 4065 identity at top-center is uncertain (guess carried over).",
+ "frame": "f_0012.jpg",
+ "time_s": 7.9,
+ "usage": {
+  "in": 3370,
+  "out": 975
+ }
+}

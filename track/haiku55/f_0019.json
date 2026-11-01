@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    18,
+    314,
+    195,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    725,
+    298,
+    855,
+    392
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2910",
+   "confidence": 0.7
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    392,
+    425,
+    582,
+    558
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    875,
+    370,
+    1032,
+    495
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.8
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1098,
+    298,
+    1310,
+    465
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.75
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1102,
+    300,
+    1255,
+    395
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  }
+ ],
+ "notes": "Current frame boxes estimated from the previous frame's positions and the visible bumper numbers. 868 is at the far left edge and its bumper is not readable here, so it is carried from the previous frame. 1323 is a low-confidence guess based on the dark robot near the red 4414 robot.",
+ "frame": "f_0019.jpg",
+ "time_s": 9.3,
+ "usage": {
+  "in": 3373,
+  "out": 1153
+ }
+}

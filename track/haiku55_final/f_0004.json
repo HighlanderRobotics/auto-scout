@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    285,
+    341,
+    390,
+    450
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.97,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    608,
+    232,
+    710,
+    308
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    244,
+    554,
+    381,
+    685
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1394,
+    560,
+    1581,
+    682
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1231,
+    220,
+    1338,
+    298
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": false,
+   "box": [
+    1725,
+    185,
+    1800,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "Bumper numbers are not readable at this resolution, so all identities are carried over from previous frames or inferred from position. 1323 is not visible; its box is the last-seen estimate. 2910 and 4065 are low-confidence guesses.",
+ "frame": "f_0004.jpg",
+ "time_s": 6.3,
+ "usage": {
+  "in": 3365,
+  "out": 1193
+ }
+}

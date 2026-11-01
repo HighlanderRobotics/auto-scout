@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    258,
+    365,
+    318
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    619,
+    245,
+    731,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    548,
+    148,
+    648
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1750,
+    585,
+    1875,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.15
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    270,
+    1340,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "No bumper numbers readable in this frame; boxes tracked from previous frame. The blue robot near x 210-290 may be 868 (previously hidden) and the blue robot near x 495-585 tracked as 2910. 4414 remains out of view; the blue-shirted figure at lower right is a person, not a robot.",
+ "frame": "f_0094.jpg",
+ "time_s": 24.3,
+ "usage": {
+  "in": 3370,
+  "out": 1269
+ }
+}

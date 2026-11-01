@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    272,
+    365,
+    341
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    225,
+    235,
+    319,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    485,
+    162,
+    585
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1375,
+    429,
+    1519,
+    522
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "406",
+   "confidence": 0.7
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1769,
+    441,
+    1920,
+    579
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.85
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    272,
+    1335,
+    358
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "868 and 1323 tracked from previous frame positions with low-confidence visual match; 2910 hidden, estimated from last seen position; 2046, 4065 and 4414 read from bumpers in this frame, with 4065 partially occluded.",
+ "frame": "f_0045.jpg",
+ "time_s": 14.5,
+ "usage": {
+  "in": 3378,
+  "out": 1071
+ }
+}

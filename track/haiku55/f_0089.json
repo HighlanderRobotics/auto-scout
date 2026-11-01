@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    269,
+    279,
+    369,
+    329
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    578,
+    275,
+    648,
+    372
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    438,
+    202,
+    582
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1532,
+    408,
+    1695,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1612,
+    522,
+    1738,
+    660
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.1
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    279,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Current frame: 2046 read from bumper. 2910 and 1323 kept by position continuity, not re-read. 868 and 4414 not clearly visible; boxes are estimates from last seen positions. 4065 kept by position.",
+ "frame": "f_0089.jpg",
+ "time_s": 23.3,
+ "usage": {
+  "in": 3374,
+  "out": 1265
+ }
+}

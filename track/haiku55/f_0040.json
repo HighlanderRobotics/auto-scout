@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    260,
+    275,
+    375,
+    380
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    225,
+    235,
+    319,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    28,
+    430,
+    198,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1140,
+    375,
+    1310,
+    482
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "4065",
+   "confidence": 0.6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1702,
+    448,
+    1920,
+    578
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    272,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Current frame: 4065 moved left to near mid-field. 2910 not clearly visible, estimated from last position. 868 and 1323 are dark chassis robots near the upper area; boxes are estimates.",
+ "frame": "f_0040.jpg",
+ "time_s": 13.5,
+ "usage": {
+  "in": 3378,
+  "out": 860
+ }
+}

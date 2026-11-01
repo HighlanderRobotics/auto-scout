@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    300,
+    285,
+    375,
+    354
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    578,
+    272,
+    648,
+    372
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2910",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    19,
+    435,
+    200,
+    575
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1538,
+    410,
+    1695,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1612,
+    522,
+    1738,
+    660
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.1
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    279,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Boxes carried from previous frame with small adjustments; no bumper numbers readable in this frame except none clearly. 4414 hidden, estimated near right-side trench area. 868 position uncertain.",
+ "frame": "f_0087.jpg",
+ "time_s": 22.9,
+ "usage": {
+  "in": 3374,
+  "out": 1031
+ }
+}

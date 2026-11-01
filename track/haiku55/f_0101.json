@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    269,
+    258,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    750,
+    332,
+    850,
+    429
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    850,
+    485,
+    940,
+    648
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1538,
+    410,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1106,
+    558,
+    1315,
+    679
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    281,
+    1340,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Robots tracked from previous frame; 2910 and 4414 shifted slightly; 2046 partly occluded by the near-side launcher area. No bumper digits clearly readable this frame, so identities carried over from previous frames.",
+ "frame": "f_0101.jpg",
+ "time_s": 25.7,
+ "usage": {
+  "in": 3375,
+  "out": 974
+ }
+}

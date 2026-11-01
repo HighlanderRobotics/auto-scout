@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    304,
+    345,
+    396,
+    449
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    582,
+    230,
+    670,
+    300
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    188,
+    585,
+    385,
+    700
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1494,
+    585,
+    1731,
+    700
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1265,
+    220,
+    1342,
+    298
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "1323",
+   "visible": false,
+   "box": [
+    1725,
+    185,
+    1800,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.15
+  }
+ ],
+ "notes": "No bumper numbers read clearly in this frame; boxes carried from previous frame with small adjustments. 1323 not clearly visible near the right glass, so last-seen estimate used.",
+ "frame": "f_0003.jpg",
+ "time_s": 6.1,
+ "usage": {
+  "in": 3365,
+  "out": 1041
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    115,
+    270,
+    250,
+    348
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    569,
+    266,
+    656,
+    354
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    432,
+    194,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1032,
+    320,
+    1175,
+    418
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.8
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1191,
+    370,
+    1360,
+    516
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1225,
+    279,
+    1338,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Current frame boxes estimated from previous positions and visible robots. 2910 not clearly visible near blue bumps; kept last-seen estimate. 4065 and 4414 digits read in this frame.",
+ "frame": "f_0027.jpg",
+ "time_s": 10.9,
+ "usage": {
+  "in": 3377,
+  "out": 872
+ }
+}

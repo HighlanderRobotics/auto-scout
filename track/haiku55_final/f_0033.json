@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    231,
+    245,
+    319,
+    325
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.03,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    260,
+    270,
+    375,
+    379
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "2910",
+   "track": 3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    425,
+    196,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1090,
+    320,
+    1240,
+    420
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 9
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1475,
+    420,
+    1672,
+    558
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    272,
+    1338,
+    358
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 6
+  }
+ ],
+ "notes": "Current frame boxes estimated from previous positions and visible robots. 868 and 2910 are partly occluded by balls and hub area near the blue end, so their boxes are lower confidence. 2046 and 4065 bumper digits are readable in this frame. 4414 and 1323 are tracked by position and appearance.",
+ "frame": "f_0033.jpg",
+ "time_s": 12.1,
+ "usage": {
+  "in": 3375,
+  "out": 1089
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    269,
+    258,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    606,
+    285,
+    750,
+    372
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2910",
+   "confidence": 0.7
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    269,
+    404,
+    425,
+    529
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 0.7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1531,
+    408,
+    1695,
+    508
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1800,
+    491,
+    1920,
+    604
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    279,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  }
+ ],
+ "notes": "No bumper numbers clearly readable in this frame; positions carried from previous frame with small shifts. 868 hidden or ambiguous near the left bump area. 4414 position low confidence.",
+ "frame": "f_0071.jpg",
+ "time_s": 19.7,
+ "usage": {
+  "in": 3380,
+  "out": 1229
+ }
+}

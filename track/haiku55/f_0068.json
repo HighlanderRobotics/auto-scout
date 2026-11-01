@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    269,
+    258,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    750,
+    298,
+    890,
+    402
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2910",
+   "confidence": 0.7
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    481,
+    416,
+    640,
+    541
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1532,
+    408,
+    1695,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1795,
+    482,
+    1920,
+    595
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1191,
+    275,
+    1338,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  }
+ ],
+ "notes": "Bumper digits not readable at this resolution in the current frame; identities carried from previous frame by position. 868 is likely near the left blue hub area but not clearly identified, so marked not visible with an estimated box.",
+ "frame": "f_0068.jpg",
+ "time_s": 19.1,
+ "usage": {
+  "in": 3380,
+  "out": 1036
+ }
+}

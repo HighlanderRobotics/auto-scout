@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    269,
+    258,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    662,
+    288,
+    802,
+    379
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2910",
+   "confidence": 0.7
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    331,
+    404,
+    494,
+    535
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1531,
+    406,
+    1698,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1798,
+    485,
+    1920,
+    600
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    279,
+    1340,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  }
+ ],
+ "notes": "868 hidden near top-left, last seen location kept. 2046 read from bumper in this frame. Others tracked from previous frame positions with small shifts; 2910 moved slightly left.",
+ "frame": "f_0070.jpg",
+ "time_s": 19.5,
+ "usage": {
+  "in": 3380,
+  "out": 862
+ }
+}

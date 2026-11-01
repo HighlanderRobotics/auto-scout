@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    265,
+    272,
+    365,
+    322
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    569,
+    270,
+    656,
+    379
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    529,
+    140,
+    625
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    515
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1750,
+    585,
+    1875,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.15
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    272,
+    1340,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "No bumper numbers legible in this frame, so all identities carry over from previous frames. 4414 is not clearly visible near the right edge; its box is a low-confidence guess. 868 is likely the blue robot near the left hub but is not clearly readable. 2910 near the blue hub is partly occluded.",
+ "frame": "f_0093.jpg",
+ "time_s": 24.1,
+ "usage": {
+  "in": 3370,
+  "out": 1216
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    98,
+    314,
+    248,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    810,
+    325,
+    922,
+    422
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    740,
+    379,
+    835,
+    485
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    954,
+    308,
+    1098,
+    385
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    958,
+    372,
+    1100,
+    472
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    919,
+    485,
+    1078,
+    650
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Current frame: 868 at far left blue end; 2910 with LITZ bin near center-blue; 2046 bumper digits visible; 4065 top of center red area; 4414 bumper digits visible; 1323 moved into the red trench-side area near the near wall, digits partly obscured. Boxes estimated from previous positions where bumpers unclear.",
+ "frame": "f_0015.jpg",
+ "time_s": 8.5,
+ "usage": {
+  "in": 3371,
+  "out": 1134
+ }
+}

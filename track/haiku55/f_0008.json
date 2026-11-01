@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    255,
+    320,
+    375,
+    418
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    855,
+    240,
+    940,
+    320
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    670,
+    508,
+    860,
+    662
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    988,
+    505,
+    1165,
+    668
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1000,
+    262,
+    1135,
+    345
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "1323",
+   "visible": false,
+   "box": [
+    1288,
+    204,
+    1344,
+    285
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.15
+  }
+ ],
+ "notes": "No bumper numbers readable in this frame; boxes tracked from previous frame positions. 1323 partly occluded near red hub edge, estimated. 4065 is over a teal crate with a red bumper visible beneath it.",
+ "frame": "f_0008.jpg",
+ "time_s": 7.1,
+ "usage": {
+  "in": 3367,
+  "out": 1161
+ }
+}

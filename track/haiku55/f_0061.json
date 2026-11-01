@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    269,
+    260,
+    362,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    712,
+    316,
+    850,
+    416
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    569,
+    382,
+    710,
+    492
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1890,
+    491,
+    1920,
+    554
+   ],
+   "named_by": "elimination",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    279,
+    1340,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  }
+ ],
+ "notes": "868 not clearly seen in current frame; its last box is kept as estimate. 4414 only a sliver at the right edge. 2910 and 2046 positions updated from the previous frame; 1323 and 4065 are stable.",
+ "frame": "f_0061.jpg",
+ "time_s": 17.7,
+ "usage": {
+  "in": 3376,
+  "out": 1028
+ }
+}
