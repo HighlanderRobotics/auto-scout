@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    229,
+    316,
+    360,
+    408
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    879,
+    251,
+    960,
+    322
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    778,
+    482,
+    925,
+    616
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1669,
+    562,
+    1802,
+    648
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    928,
+    485,
+    1102,
+    632
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    965,
+    266,
+    1102,
+    350
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "No bumper numbers legible in this frame; names carried from previous frames using robot appearance. 4065 position is low-confidence because its hopper was not clearly identified; 868 and 2046 boxes are estimates from the left-side and center-left robots.",
+ "frame": "f_0009.jpg",
+ "time_s": 7.3,
+ "usage": {
+  "in": 2739,
+  "out": 1149
+ }
+}

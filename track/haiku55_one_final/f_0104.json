@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    250,
+    365,
+    320
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    798,
+    388,
+    912,
+    495
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.84,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    910,
+    438,
+    1042,
+    528
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.06,
+   "forward_team": "2046",
+   "track": 4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    902,
+    508,
+    1105,
+    650
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 10
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    279,
+    1340,
+    360
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "Boxes estimated from the current frame; no bumper numbers legible at this resolution, so all identities are carried over from previous state and robot appearance. The 868 and 2046 assignments are low confidence and may be swapped; 4414 box is approximate.",
+ "frame": "f_0104.jpg",
+ "time_s": 26.3,
+ "usage": {
+  "in": 2746,
+  "out": 1541
+ }
+}

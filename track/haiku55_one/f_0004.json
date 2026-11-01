@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    290,
+    342,
+    395,
+    448
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    610,
+    235,
+    712,
+    310
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    244,
+    560,
+    402,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1694,
+    566,
+    1875,
+    672
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1400,
+    562,
+    1569,
+    679
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1231,
+    220,
+    1331,
+    295
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  }
+ ],
+ "notes": "Bumper digits are not legible at this resolution; boxes follow previous positions and rough visual cues. Red-side assignments of 4065 and 4414 are uncertain and may be swapped.",
+ "frame": "f_0004.jpg",
+ "time_s": 6.3,
+ "usage": {
+  "in": 2736,
+  "out": 1136
+ }
+}

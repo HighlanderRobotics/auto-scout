@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    266,
+    255,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    862,
+    304,
+    1000,
+    410
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2910",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    581,
+    388,
+    756,
+    529
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1531,
+    408,
+    1698,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1838,
+    466,
+    1920,
+    598
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    270,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  }
+ ],
+ "notes": "Current frame boxes estimated from previous state and visible robot positions. 2046 and 2910 bumper numbers read in this frame; others followed by appearance. 4414 at the far right edge is partly cut off.",
+ "frame": "f_0066.jpg",
+ "time_s": 18.7,
+ "usage": {
+  "in": 2747,
+  "out": 975
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    300,
+    345,
+    395,
+    450
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    550,
+    160,
+    644,
+    285
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    188,
+    572,
+    395,
+    702
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1556,
+    585,
+    1650,
+    660
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1675,
+    566,
+    1850,
+    672
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1269,
+    216,
+    1350,
+    298
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  }
+ ],
+ "notes": "Only the 2046 bumper number is clearly readable in this frame. Other boxes carried over from the previous state and are low-confidence guesses; the robots are small and partly occluded at the field edges.",
+ "frame": "f_0003.jpg",
+ "time_s": 6.1,
+ "usage": {
+  "in": 2736,
+  "out": 980
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    156,
+    312,
+    295,
+    398
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    819,
+    298,
+    928,
+    382
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    806,
+    388,
+    960,
+    488
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.84,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1162,
+    545,
+    1322,
+    695
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    975,
+    379,
+    1131,
+    522
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    935,
+    298,
+    1072,
+    395
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "Boxes estimated from current frame; 4065 at bottom-right is a guess based on red bumper visibility and previous position. 2910 and 1323 are both near the top-center hoppers, so their identities rely on previous frame continuity.",
+ "frame": "f_0013.jpg",
+ "time_s": 8.1,
+ "usage": {
+  "in": 2746,
+  "out": 1128
+ }
+}

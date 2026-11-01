@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    225,
+    254,
+    300,
+    322
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.67,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    254,
+    266,
+    375,
+    379
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    422,
+    198,
+    572
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1100,
+    285,
+    1250,
+    404
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.92,
+   "forward_team": "4065",
+   "track": 4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1556,
+    429,
+    1740,
+    575
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    275,
+    1340,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.88,
+   "forward_team": "1323",
+   "track": 3
+  }
+ ],
+ "notes": "Current frame: 2046 and 4065 read from bumpers. 4414 is the teal-framed robot at right, moved toward the red hub side; its bumper digits are not clearly legible here, so identity carries from previous frames. 868 and 2910 are partly occluded near the left hub with fuel in the way, so their boxes are approximate. 1323 is the navy robot near the top-center right, kept from previous frames.",
+ "frame": "f_0034.jpg",
+ "time_s": 12.3,
+ "usage": {
+  "in": 3729,
+  "out": 1239
+ }
+}

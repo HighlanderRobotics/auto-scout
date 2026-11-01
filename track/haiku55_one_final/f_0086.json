@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    295,
+    285,
+    375,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    550,
+    185,
+    625,
+    272
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.84,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    10,
+    438,
+    200,
+    575
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.06,
+   "forward_team": "2046",
+   "track": 4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1288,
+    179,
+    1350,
+    272
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 9
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    272,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "Only 2046 is read by bumper number this frame. Other boxes follow previous state and visual features; 868 and 2910 positions are low confidence.",
+ "frame": "f_0086.jpg",
+ "time_s": 22.7,
+ "usage": {
+  "in": 2744,
+  "out": 976
+ }
+}

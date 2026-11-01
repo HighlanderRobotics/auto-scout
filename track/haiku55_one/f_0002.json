@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    305,
+    345,
+    395,
+    448
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    550,
+    160,
+    644,
+    285
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    188,
+    572,
+    395,
+    702
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1556,
+    585,
+    1650,
+    660
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1675,
+    566,
+    1850,
+    672
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1275,
+    172,
+    1356,
+    291
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  }
+ ],
+ "notes": "Boxes estimated from partial views; 2910 and 4065 are uncertain and partly occluded or near the edge. 2046 read from bumper at bottom left. Others matched by previous positions and robot appearance.",
+ "frame": "f_0002.jpg",
+ "time_s": 5.9,
+ "usage": {
+  "in": 2731,
+  "out": 1249
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    31,
+    285,
+    206,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.67,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    598,
+    262,
+    660,
+    354
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    25,
+    441,
+    238,
+    579
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    969,
+    322,
+    1125,
+    429
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.92,
+   "forward_team": "4065",
+   "track": 4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1100,
+    366,
+    1278,
+    491
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1231,
+    282,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.88,
+   "forward_team": "1323",
+   "track": 3
+  }
+ ],
+ "notes": "Boxes estimated from current frame; 2910 position is uncertain because it is partly occluded near the blue hub, and 1323 is identified by position only.",
+ "frame": "f_0024.jpg",
+ "time_s": 10.3,
+ "usage": {
+  "in": 3726,
+  "out": 1193
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    258,
+    365,
+    320
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    600,
+    310,
+    712,
+    404
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.15
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    656,
+    320,
+    788,
+    491
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.75
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1875,
+    485,
+    1920,
+    560
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.1
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    270,
+    1342,
+    369
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  }
+ ],
+ "notes": "2910 not clearly identifiable in this frame; its box is a low-confidence guess near its last position. 2046 identified by its bumper text. 4414 not visible; estimate kept from last frame.",
+ "frame": "f_0060.jpg",
+ "time_s": 17.5,
+ "usage": {
+  "in": 2750,
+  "out": 1330
+ }
+}

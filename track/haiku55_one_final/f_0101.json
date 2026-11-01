@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    850,
+    485,
+    988,
+    648
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.06,
+   "forward_team": "868",
+   "track": 4
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    748,
+    329,
+    850,
+    432
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.84,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    254,
+    365,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1106,
+    558,
+    1315,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 10
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    279,
+    1340,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "Boxes estimated from the current frame. The 868 box is low confidence because the low blue robot is hard to separate from the dark mechanism near the center. Other robots were followed from the previous state; no bumper numbers were read in this frame.",
+ "frame": "f_0101.jpg",
+ "time_s": 25.7,
+ "usage": {
+  "in": 2747,
+  "out": 1068
+ }
+}

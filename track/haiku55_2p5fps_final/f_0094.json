@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    266,
+    268,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    581,
+    248,
+    725,
+    322
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.67,
+   "forward_team": "2910",
+   "track": 0
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    554,
+    162,
+    660
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1538,
+    410,
+    1696,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "4065",
+   "track": 4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1288,
+    188,
+    1344,
+    266
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    275,
+    1335,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.88,
+   "forward_team": "1323",
+   "track": 3
+  }
+ ],
+ "notes": "No bumper numbers readable at this resolution; boxes carried from previous frame with small adjustments. 2910 hidden, estimated near the blue hub area.",
+ "frame": "f_0094.jpg",
+ "time_s": 24.3,
+ "usage": {
+  "in": 3725,
+  "out": 1147
+ }
+}

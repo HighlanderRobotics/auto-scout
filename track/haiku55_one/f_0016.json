@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    78,
+    316,
+    228,
+    398
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    800,
+    325,
+    922,
+    425
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    621,
+    388,
+    772,
+    504
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    872,
+    441,
+    1006,
+    591
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    978,
+    348,
+    1131,
+    466
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    969,
+    310,
+    1106,
+    379
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Boxes estimated from current frame; 4065 is a low-confidence guess in the center near the blue-side hub, 868 at far left, 2910 with BLITZ sticker mid-left, 2046 with white sign, 4414 with fabworks frame, 1323 behind 4414.",
+ "frame": "f_0016.jpg",
+ "time_s": 8.7,
+ "usage": {
+  "in": 2744,
+  "out": 1044
+ }
+}

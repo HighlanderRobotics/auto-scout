@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    144,
+    262,
+    278,
+    335
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    578,
+    272,
+    650,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    429,
+    195,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1050,
+    315,
+    1202,
+    418
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1269,
+    410,
+    1448,
+    550
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.75
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1210,
+    275,
+    1338,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  }
+ ],
+ "notes": "Boxes estimated from current frame; 2910 not clearly visible, last seen near blue bump at left-center, marked hidden. 2046 and 4414 bumper digits not re-read this frame.",
+ "frame": "f_0029.jpg",
+ "time_s": 11.3,
+ "usage": {
+  "in": 2751,
+  "out": 1012
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    256,
+    279,
+    362,
+    320
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.6,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    219,
+    248,
+    300,
+    322
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.67,
+   "forward_team": "2910",
+   "track": 0
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    112,
+    562,
+    190,
+    641
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1506,
+    416,
+    1662,
+    516
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "4065",
+   "track": 4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1800,
+    441,
+    1920,
+    582
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    275,
+    1344,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.88,
+   "forward_team": "1323",
+   "track": 3
+  }
+ ],
+ "notes": "Boxes estimated from current frame. 2910 is hidden, so its box is carried from the last estimate. 2046 moved from the left edge to a dark fuel-filled frame near x 90-150. 868 is a low blue-railed robot near the blue hub, and its identity is a guess from its appearance.",
+ "frame": "f_0048.jpg",
+ "time_s": 15.1,
+ "usage": {
+  "in": 3721,
+  "out": 1290
+ }
+}

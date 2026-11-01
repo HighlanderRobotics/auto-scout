@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    188,
+    258,
+    265,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    269,
+    270,
+    375,
+    360
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    485,
+    150,
+    591
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.84,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1438,
+    416,
+    1594,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1794,
+    441,
+    1920,
+    579
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    275,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "Blue 868 and 2910 are not clearly visible in this frame; their boxes are carried from the previous state. 4065 and 1323 are followed by position and appearance since their bumper numbers are not readable here. 2046 and 4414 are read from bumpers in view.",
+ "frame": "f_0046.jpg",
+ "time_s": 14.7,
+ "usage": {
+  "in": 2748,
+  "out": 1017
+ }
+}

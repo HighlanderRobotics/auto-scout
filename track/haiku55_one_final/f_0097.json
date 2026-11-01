@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    398,
+    541,
+    606,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.06,
+   "forward_team": "868",
+   "track": 4
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    704,
+    245,
+    819,
+    325
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.84,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    254,
+    365,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1281,
+    166,
+    1348,
+    260
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 9
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1191,
+    275,
+    1340,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "Boxes estimated from the current frame by matching shapes to previous positions. No bumper numbers legible in this frame. 868 is the least certain: the low-hopper robot near the blue bump is assigned by position, and 4414 is partly occluded near the top edge.",
+ "frame": "f_0097.jpg",
+ "time_s": 24.9,
+ "usage": {
+  "in": 2745,
+  "out": 1512
+ }
+}

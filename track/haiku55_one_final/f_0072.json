@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    279,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    578,
+    282,
+    675,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.84,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    188,
+    429,
+    362,
+    535
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.06,
+   "forward_team": "2046",
+   "track": 4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1695,
+    504
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1294,
+    191,
+    1356,
+    272
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 9
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    279,
+    1335,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "No bumper numbers readable at this resolution; boxes carried forward from previous state. 4414 position is uncertain and low confidence; the box near the red hub top may not be 4414. Left-side blue robot assumed to be 2046 from the white sign and fuel pile.",
+ "frame": "f_0072.jpg",
+ "time_s": 19.9,
+ "usage": {
+  "in": 2744,
+  "out": 1140
+ }
+}

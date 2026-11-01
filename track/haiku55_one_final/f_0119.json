@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    272,
+    252,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    800,
+    430,
+    910,
+    500
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.84,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    910,
+    422,
+    1050,
+    535
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.06,
+   "forward_team": "2046",
+   "track": 4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1695,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    910,
+    482,
+    1100,
+    640
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 10
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    279,
+    1335,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "No bumper numbers clearly readable at this resolution; boxes carried from previous state and adjusted to visible robot shapes. 2046 and 4414 are close together near center and may be ambiguous.",
+ "frame": "f_0119.jpg",
+ "time_s": 29.3,
+ "usage": {
+  "in": 2746,
+  "out": 992
+ }
+}

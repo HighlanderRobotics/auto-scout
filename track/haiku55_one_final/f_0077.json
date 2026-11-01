@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    258,
+    365,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2046",
+   "visible": false,
+   "box": [
+    575,
+    279,
+    652,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.84,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    0,
+    438,
+    198,
+    575
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.06,
+   "forward_team": "2046",
+   "track": 4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1695,
+    508
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1288,
+    185,
+    1350,
+    270
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 9
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    275,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "No bumper numbers legible at this resolution, so all names are carried from previous frames. 2910 and 4414 are uncertain and marked hidden with estimated boxes; 868, 2046, 4065 and 1323 are matched by appearance.",
+ "frame": "f_0077.jpg",
+ "time_s": 20.9,
+ "usage": {
+  "in": 2745,
+  "out": 952
+ }
+}

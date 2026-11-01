@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    270,
+    250,
+    368,
+    320
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    798,
+    428,
+    912,
+    502
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.84,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    908,
+    420,
+    1052,
+    538
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.06,
+   "forward_team": "2046",
+   "track": 4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1532,
+    405,
+    1698,
+    515
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    908,
+    480,
+    1102,
+    642
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 10
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1191,
+    276,
+    1338,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "Boxes kept near previous positions; bumper digits are not clearly legible in this frame except the 4414 frame text, so most names come from previous frames. Robot positions were checked against the visual descriptions.",
+ "frame": "f_0121.jpg",
+ "time_s": 29.7,
+ "usage": {
+  "in": 2748,
+  "out": 944
+ }
+}

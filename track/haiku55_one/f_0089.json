@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    262,
+    362,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    550,
+    185,
+    625,
+    272
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    10,
+    438,
+    200,
+    575
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1294,
+    185,
+    1350,
+    266
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    275,
+    1344,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "2910 not clearly visible; its last box is kept as an estimate. 868 is low-confidence, and 4414 is only partly visible at the top near the red hub. No bumper digits were readable in this frame except 2046.",
+ "frame": "f_0089.jpg",
+ "time_s": 23.3,
+ "usage": {
+  "in": 2744,
+  "out": 924
+ }
+}

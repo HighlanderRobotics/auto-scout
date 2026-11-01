@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    0,
+    304,
+    188,
+    388
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.67,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    612,
+    279,
+    740,
+    354
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    156,
+    438,
+    356,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    894,
+    332,
+    1060,
+    450
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.92,
+   "forward_team": "4065",
+   "track": 4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1181,
+    348,
+    1350,
+    466
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1222,
+    285,
+    1340,
+    354
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.88,
+   "forward_team": "1323",
+   "track": 3
+  }
+ ],
+ "notes": "Boxes estimated from current frame positions; bumper digits not clearly readable this frame, so 868, 2910, 2046 and 1323 are carried over from previous frames. 4065 and 4414 are read from the previous frame and tracked here.",
+ "frame": "f_0022.jpg",
+ "time_s": 9.9,
+ "usage": {
+  "in": 3726,
+  "out": 877
+ }
+}

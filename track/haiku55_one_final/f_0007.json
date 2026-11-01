@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    332,
+    385,
+    438
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    810,
+    235,
+    902,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    625,
+    526,
+    765,
+    670
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.84,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "4065",
+   "visible": false,
+   "box": [
+    1698,
+    566,
+    1875,
+    685
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.99,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1035,
+    532,
+    1235,
+    679
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1044,
+    254,
+    1175,
+    338
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "No bumper numbers readable at this resolution. 2910 identified by the BLITZ sticker on its hopper. 4414 identified by its teal frame. 2046 and 4065 positions are uncertain; the bottom-right robot has blue trim and may be a blue-alliance robot, so 4065 is marked hidden with a last-seen estimate.",
+ "frame": "f_0007.jpg",
+ "time_s": 6.9,
+ "usage": {
+  "in": 2743,
+  "out": 1698
+ }
+}

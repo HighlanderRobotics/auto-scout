@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    188,
+    258,
+    265,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    269,
+    270,
+    375,
+    360
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    432,
+    198,
+    562
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1231,
+    379,
+    1388,
+    529
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.7
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1741,
+    441,
+    1920,
+    582
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    272,
+    1340,
+    358
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Boxes for 2046, 4065 and 4414 are read from visible bumper numbers. 868 and 2910 are hidden or unclear near the left hub and are kept at last-seen estimates. 1323 is identified by its navy panels and mesh, not a bumper read. Confidence is low for 868, 2910 and 1323.",
+ "frame": "f_0043.jpg",
+ "time_s": 14.1,
+ "usage": {
+  "in": 2747,
+  "out": 877
+ }
+}

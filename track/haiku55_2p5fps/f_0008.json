@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    254,
+    322,
+    375,
+    416
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    856,
+    241,
+    944,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    669,
+    508,
+    860,
+    660
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1000,
+    260,
+    1138,
+    345
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    985,
+    505,
+    1165,
+    672
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1690,
+    566,
+    1865,
+    700
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "No bumper digits clearly readable in this frame; identities carried from previous frame using robot appearance. 2910 BLITZ sticker visible near blue-side center. 868 and 4065 are lower-confidence matches. Box coordinates are estimates from the 100 px grid.",
+ "frame": "f_0008.jpg",
+ "time_s": 7.1,
+ "usage": {
+  "in": 3723,
+  "out": 986
+ }
+}

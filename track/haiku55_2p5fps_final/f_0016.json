@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    69,
+    314,
+    228,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.67,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    795,
+    325,
+    925,
+    432
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    582,
+    382,
+    785,
+    508
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    970,
+    308,
+    1090,
+    382
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.88,
+   "forward_team": "4065",
+   "track": 3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    982,
+    335,
+    1135,
+    466
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "4414",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    875,
+    438,
+    1000,
+    585
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 4
+  }
+ ],
+ "notes": "Robots estimated from current frame positions; 1323 moved from the lower-center spot to the robot in front of the referee, with lower confidence. Digits were not clearly readable in this frame for most robots.",
+ "frame": "f_0016.jpg",
+ "time_s": 8.7,
+ "usage": {
+  "in": 3724,
+  "out": 1225
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    258,
+    365,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    575,
+    282,
+    652,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    50,
+    438,
+    210,
+    575
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1695,
+    508
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1294,
+    188,
+    1350,
+    272
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    275,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Bumper numbers not legible in this frame; boxes carried forward from previous state. 2910 is hidden near the blue hub bump. Red-side robot identities at (1228,238) and (952,132) are uncertain since the frame shows teal and navy frames that could be swapped between 4065, 4414, and 1323.",
+ "frame": "f_0075.jpg",
+ "time_s": 20.5,
+ "usage": {
+  "in": 2745,
+  "out": 1067
+ }
+}

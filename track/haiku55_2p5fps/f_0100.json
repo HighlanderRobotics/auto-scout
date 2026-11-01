@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    266,
+    258,
+    362,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    738,
+    306,
+    840,
+    391
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    781,
+    535,
+    931,
+    672
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1695,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1190,
+    554,
+    1406,
+    682
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    278,
+    1338,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Current frame: 2910 (BLITZ hopper) moved right to about x590-672. 2046 dark frame with yellow mechanism moved to the lower center. 4414 identified as the teal-frame robot at bottom right-center (previous top-edge box was likely wrong). 1323 navy-panel robot near the red hub, unchanged. 4065 hopper at the right, unchanged. Bumper numbers were not legible in this frame, so all names come from tracking and appearance.",
+ "frame": "f_0100.jpg",
+ "time_s": 25.5,
+ "usage": {
+  "in": 3725,
+  "out": 1500
+ }
+}

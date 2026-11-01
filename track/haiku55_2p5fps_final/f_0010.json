@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    215,
+    314,
+    350,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.67,
+   "forward_team": "868",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    882,
+    266,
+    962,
+    341
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6,
+   "forward_team": "2910",
+   "track": 1
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    806,
+    485,
+    940,
+    612
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    941,
+    281,
+    1078,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.88,
+   "forward_team": "4065",
+   "track": 3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    956,
+    458,
+    1131,
+    591
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 1.0,
+   "forward_team": "4414",
+   "track": 5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1528,
+    566,
+    1715,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.92,
+   "forward_team": "1323",
+   "track": 4
+  }
+ ],
+ "notes": "Estimated from previous positions and visible robot shapes; 1323 is partly occluded near the red ramp and 4065 is identified mainly by position and appearance.",
+ "frame": "f_0010.jpg",
+ "time_s": 7.5,
+ "usage": {
+  "in": 3722,
+  "out": 1002
+ }
+}

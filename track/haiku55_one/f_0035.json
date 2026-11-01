@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    200,
+    254,
+    269,
+    325
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    256,
+    270,
+    372,
+    375
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    425,
+    198,
+    572
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1108,
+    298,
+    1250,
+    404
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1631,
+    438,
+    1806,
+    585
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.75
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1198,
+    275,
+    1335,
+    360
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "868 is hidden; its last estimate is kept. Boxes for the visible robots were re-estimated from the current frame. 4065 and 1323 are close together near the red-side hub, so their assignments are less certain.",
+ "frame": "f_0035.jpg",
+ "time_s": 12.5,
+ "usage": {
+  "in": 2744,
+  "out": 1059
+ }
+}

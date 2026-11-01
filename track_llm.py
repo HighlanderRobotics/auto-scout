@@ -110,6 +110,8 @@ def main():
     ap.add_argument("--model", default=MODEL)
     ap.add_argument("--actions", action="store_true", help="also ask for each robot's action")
     ap.add_argument("--robots", help="JSON file of team -> how the robot looks, added to the prompt")
+    ap.add_argument("--step", type=int, default=1, help="use every Nth frame (2 = 2.5 frames per second)")
+    ap.add_argument("--one-image", action="store_true", help="send only the current frame; the previous positions still go as text")
     ap.add_argument("--seed"); ap.add_argument("--start", type=int, default=0); ap.add_argument("--end", type=int)
     a = ap.parse_args()
     frames_dir, out_dir = Path(a.frames_dir), Path(a.out_dir)
@@ -124,6 +126,12 @@ def main():
     if a.robots:
         looks = json.load(open(a.robots))
         system += "\nHow each robot looks (use this to keep names right when a bumper is hidden):\n" + "\n".join(f"- {t}: {d}" for t, d in looks.items())
+    if a.step > 1:
+        gap = a.step / FPS
+        system = system.replace("frames are 0.2 s apart, so a robot moves at most about 150 px between frames",
+                                f"frames are {gap:.1f} s apart, so a robot moves at most about {round(150 * a.step)} px between frames")
+    if a.one_image:
+        system += "\nOnly the current frame is sent as an image. Use the previous state's boxes to follow each robot."
     if a.actions:
         system += ACTIONS_PROMPT
         item = schema["properties"]["robots"]["items"]
@@ -134,7 +142,7 @@ def main():
         output_config["effort"] = "medium"
     client = anthropic.Anthropic(api_key=api_key())
     started = time.time()
-    for i in range(a.start, end):
+    for i in range(a.start, end, a.step):
         f = frames[i]
         out = out_dir / (f.stem + ".json")
         t = T0 + i / FPS
@@ -142,8 +150,8 @@ def main():
             prior = json.load(open(out))["robots"]
             continue
         content = []
-        if i > a.start:
-            content += [{"type": "text", "text": f"Previous frame (t={t - 1 / FPS:.1f} s):"}, image_block(frames[i - 1])]
+        if i > a.start and not a.one_image:
+            content += [{"type": "text", "text": f"Previous frame (t={t - a.step / FPS:.1f} s):"}, image_block(frames[i - a.step])]
         content += [{"type": "text", "text": f"Current frame (t={t:.1f} s):"}, image_block(f)]
         hint = "Previous state (boxes in image pixels):\n" + json.dumps(state_for_prompt(prior)) if prior else "No previous state. This is the first frame."
         content.append({"type": "text", "text": hint + "\n\nReturn all six robots for the CURRENT frame."})
@@ -162,7 +170,7 @@ def main():
         seen = sum(r["visible"] for r in prior)
         read = ",".join(r["team"] for r in prior if r["named_by"] == "bumper_number")
         el = time.time() - started
-        print(f"[{a.start}-{end}] frame {i + 1 - a.start}/{end - a.start} t={t:.1f}s visible={seen} read=[{read}] elapsed={el:.0f}s", flush=True)
+        print(f"[{a.start}-{end} step {a.step}] frame {i + 1 - a.start}/{end - a.start} t={t:.1f}s visible={seen} read=[{read}] elapsed={el:.0f}s", flush=True)
 
 
 if __name__ == "__main__":

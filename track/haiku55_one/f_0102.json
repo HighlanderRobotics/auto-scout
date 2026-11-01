@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    775,
+    358,
+    878,
+    455
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    875,
+    460,
+    1031,
+    572
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    265,
+    254,
+    365,
+    316
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1056,
+    554,
+    1219,
+    685
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    279,
+    1340,
+    360
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Boxes estimated from the current frame. Bumper numbers are not legible at this resolution, so all identities are inferred from robot appearance and prior positions. The 868 and 2046 assignments are low confidence; the center robot may be either of them.",
+ "frame": "f_0102.jpg",
+ "time_s": 25.9,
+ "usage": {
+  "in": 2747,
+  "out": 1537
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    260,
+    365,
+    320
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    862,
+    304,
+    1006,
+    410
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    585,
+    391,
+    756,
+    529
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.75
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1695,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1832,
+    466,
+    1920,
+    600
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    272,
+    1340,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "868 was hidden in the previous frame; a blue low robot is faintly visible at top-left, so it is marked visible with a guessed identity. 2910 and 2046 are tracked from the previous frame and moved slightly. Other boxes are approximate.",
+ "frame": "f_0066.jpg",
+ "time_s": 18.7,
+ "usage": {
+  "in": 3727,
+  "out": 1018
+ }
+}

@@ -5,7 +5,8 @@ Here each alliance's boxes are linked frame to frame by movement into tracks. Ev
 anywhere on a track votes for that track's name, so a read at second 20 also names the robot at second 6.
 Then in every frame each alliance's three tracks get the three team names that best fit the votes.
 
-Usage: .venv/bin/python backward_pass.py track/llm track/final
+Usage: .venv/bin/python backward_pass.py track/llm track/final [MAX_STEP_PX]
+Use a bigger MAX_STEP_PX (default 220) when frames are further apart, for example 440 at 2.5 frames per second.
 """
 import itertools, json, sys
 from collections import defaultdict
@@ -26,7 +27,10 @@ def dist(a, b):
 
 
 def main():
+    global MAX_STEP
     src, dst = Path(sys.argv[1]), Path(sys.argv[2])
+    if len(sys.argv) > 3:
+        MAX_STEP = float(sys.argv[3])
     dst.mkdir(parents=True, exist_ok=True)
     files = sorted(src.glob("f_*.json"))
     frames = [json.load(open(f)) for f in files]

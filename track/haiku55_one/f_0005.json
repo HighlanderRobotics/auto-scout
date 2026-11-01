@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    335,
+    385,
+    442
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    671,
+    235,
+    765,
+    310
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    331,
+    541,
+    538,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1694,
+    566,
+    1875,
+    679
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1281,
+    562,
+    1500,
+    679
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1172,
+    239,
+    1275,
+    314
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  }
+ ],
+ "notes": "No bumper numbers legible in this frame; identities carried from previous state and robot appearance. Red-side hopper/mesh robots at bottom right are low confidence and may be swapped between 4065 and 4414.",
+ "frame": "f_0005.jpg",
+ "time_s": 6.5,
+ "usage": {
+  "in": 2742,
+  "out": 1218
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    31,
+    304,
+    188,
+    388
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    610,
+    279,
+    738,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    160,
+    438,
+    356,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    894,
+    335,
+    1060,
+    450
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.8
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1182,
+    350,
+    1344,
+    466
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1222,
+    285,
+    1340,
+    358
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.4
+  }
+ ],
+ "notes": "Boxes estimated from the current frame grid. 4065 and 4414 read from bumper digits. 2910, 2046, 868 and 1323 carried over from previous positions with no bumper digits read in this frame; 1323 is a low-confidence guess.",
+ "frame": "f_0022.jpg",
+ "time_s": 9.9,
+ "usage": {
+  "in": 2742,
+  "out": 927
+ }
+}

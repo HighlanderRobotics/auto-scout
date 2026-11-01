@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    150,
+    258,
+    288,
+    332
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    256,
+    285,
+    369,
+    362
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    429,
+    195,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1060,
+    312,
+    1215,
+    418
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.85
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1319,
+    429,
+    1494,
+    566
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.85
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1208,
+    272,
+    1335,
+    358
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "2910 identification at left-center is a guess from hopper appearance; its previous hidden position near x 462-520 may be occluded by the blue hub. 868 and 1323 are tracked from previous positions with no bumper digits read in this frame.",
+ "frame": "f_0030.jpg",
+ "time_s": 11.5,
+ "usage": {
+  "in": 2748,
+  "out": 1224
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    122,
+    314,
+    269,
+    398
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    815,
+    314,
+    915,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    748,
+    382,
+    922,
+    491
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    938,
+    304,
+    1088,
+    379
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    958,
+    388,
+    1105,
+    492
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.75
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1028,
+    525,
+    1169,
+    679
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  }
+ ],
+ "notes": "Current frame: 868 moved to left blue side; 2910 hopper near hub center; 2046 and 4414 near center with bumper digits visible; 4065 blue-bar hopper at top center; 1323 appears low near red side at bottom center, lower confidence since its digits are not readable.",
+ "frame": "f_0014.jpg",
+ "time_s": 8.3,
+ "usage": {
+  "in": 3726,
+  "out": 1200
+ }
+}

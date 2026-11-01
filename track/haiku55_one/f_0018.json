@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    25,
+    314,
+    190,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    748,
+    310,
+    895,
+    410
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    485,
+    425,
+    662,
+    528
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    875,
+    370,
+    1010,
+    505
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1048,
+    310,
+    1252,
+    465
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1048,
+    305,
+    1198,
+    380
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.4
+  }
+ ],
+ "notes": "Current frame at t=9.1 s. Boxes estimated from visible robot positions; 2046 and 2910 positions are approximate and their bumper numbers are not readable in this frame. 1323 is partly occluded behind 4414 and is a low-confidence guess.",
+ "frame": "f_0018.jpg",
+ "time_s": 9.1,
+ "usage": {
+  "in": 2746,
+  "out": 870
+ }
+}

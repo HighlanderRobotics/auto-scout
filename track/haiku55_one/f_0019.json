@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    25,
+    314,
+    190,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    731,
+    298,
+    852,
+    392
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    388,
+    425,
+    585,
+    558
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    875,
+    375,
+    1044,
+    495
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1156,
+    345,
+    1310,
+    468
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1100,
+    300,
+    1256,
+    398
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.4
+  }
+ ],
+ "notes": "Current frame boxes estimated from visual positions; no bumper numbers clearly readable at this resolution, so names follow previous-frame tracking. 4414 and 1323 positions were shifted from prior state based on the teal-frame robot and navy robot visible near the red hub.",
+ "frame": "f_0019.jpg",
+ "time_s": 9.3,
+ "usage": {
+  "in": 2741,
+  "out": 916
+ }
+}

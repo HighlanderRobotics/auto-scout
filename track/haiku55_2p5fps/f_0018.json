@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    25,
+    312,
+    190,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    750,
+    310,
+    895,
+    405
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    485,
+    405,
+    680,
+    548
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    872,
+    370,
+    1015,
+    505
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.75
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    982,
+    338,
+    1252,
+    470
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.75
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1045,
+    305,
+    1200,
+    392
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Current frame at t=9.1 s. 4065 and 1323 positions swapped relative to previous boxes: 4065 read from its bumper at the red robot near mid-field, and 1323 is the dark navy robot now near the red-side 4414 frame. 2046 is the dark fuel-filled robot by the blue hub with white sign. 868 is the low open robot at the far left. Boxes are estimates from the broadcast view.",
+ "frame": "f_0018.jpg",
+ "time_s": 9.1,
+ "usage": {
+  "in": 3724,
+  "out": 1294
+ }
+}

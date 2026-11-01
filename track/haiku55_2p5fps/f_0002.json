@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    305,
+    345,
+    398,
+    450
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    581,
+    198,
+    648,
+    291
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    188,
+    572,
+    394,
+    700
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1269,
+    185,
+    1350,
+    291
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1725,
+    566,
+    1900,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1562,
+    572,
+    1731,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  }
+ ],
+ "notes": "Current frame: 2046 bumper digits readable at bottom-left. Other robots kept at previous positions as guesses; 2910, 4065, 1323 and 868 are not clearly identified by bumper text in this frame. Boxes are approximate.",
+ "frame": "f_0002.jpg",
+ "time_s": 5.9,
+ "usage": {
+  "in": 3713,
+  "out": 919
+ }
+}

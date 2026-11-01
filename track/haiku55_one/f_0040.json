@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    188,
+    258,
+    265,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    256,
+    272,
+    372,
+    380
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    425,
+    198,
+    572
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1140,
+    375,
+    1310,
+    485
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.7
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1690,
+    438,
+    1920,
+    582
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1185,
+    272,
+    1342,
+    366
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "868 hidden, last seen near left hub area; 2910 and 1323 positions approximate; 4065 digits read on bumper near bottom of its box.",
+ "frame": "f_0040.jpg",
+ "time_s": 13.5,
+ "usage": {
+  "in": 2742,
+  "out": 913
+ }
+}

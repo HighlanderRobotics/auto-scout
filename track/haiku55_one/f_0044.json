@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    188,
+    258,
+    265,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    269,
+    270,
+    375,
+    360
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    432,
+    198,
+    585
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1288,
+    429,
+    1440,
+    529
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1756,
+    441,
+    1920,
+    582
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    272,
+    1340,
+    358
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "868 and 2910 not clearly identifiable in the upper-left area; boxes are estimates from previous state. 4065 partly occluded by hub and fuel; 406 text visible on its bumper near the hub. 1323 is the navy robot near the red hub's far side.",
+ "frame": "f_0044.jpg",
+ "time_s": 14.3,
+ "usage": {
+  "in": 2747,
+  "out": 1036
+ }
+}

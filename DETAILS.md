@@ -57,7 +57,14 @@ Test match: Einstein Final 1, 2026 Championship, https://www.youtube.com/watch?v
 | `claude-haiku-5-5` | 96% | 94% | $0.10 |
 | `claude-haiku-4-5` | 4% | not usable | $0.62 |
 
-Sonnet's and Haiku 5.5's errors were all the same 868/2910 swap from about 11 s to 23 s. Adding one line per robot about how it looks (`start/robot_looks.json`) cut Haiku 5.5's errors to 11 frames (21.1–23.1 s, 2910 called 868). No model ever read 868's bumper. Cost is about 3,400 input tokens and 380 output tokens per frame, mostly the two images. Ideas to try: send only the current frame; describe each robot's look in the prompt; Opus at effort `low`.
+Sonnet's and Haiku 5.5's errors were all the same 868/2910 swap from about 11 s to 23 s. Adding one line per robot about how it looks (`start/robot_looks.json`) cut Haiku 5.5's errors to 11 frames (21.1–23.1 s, 2910 called 868).
+
+Cost experiments with Haiku 5.5 + robot descriptions:
+
+- **One image per call:** not worth it. Haiku's cost is mostly output (about 1,000 tokens per frame), so dropping the previous image saved only about 10%, and calls were not faster. Without the previous picture the boxes jump more, the backward pass split robots into 11 path pieces instead of 8, and names fell to 83%.
+- **2.5 frames per second:** half the cost, but the 868/2910 swap came back from the start of the clip to 22.7 s. Names 86%, boxes 93%.
+- In both runs the backward pass made names worse than the forward pass alone. Its voting needs work: it should trust clear bumper reads more and change fewer names.
+- Next lever for Haiku's cost: shorter output. No model ever read 868's bumper. Cost is about 3,400 input tokens and 380 output tokens per frame, mostly the two images. Ideas to try: send only the current frame; describe each robot's look in the prompt; Opus at effort `low`.
 
 ## REBUILT rules the code depends on
 
@@ -92,6 +99,8 @@ Everything in a Lovat report is built from three inputs:
 | answer key | Opus 5.5, effort medium | two images | 100% | 100% | $0.021 | about $18 |
 | baseline | Sonnet 5.5, effort medium | two images | 95% | 97% | $0.011 | about $9 |
 | best so far | Haiku 5.5 | two images, robot descriptions (`--robots start/robot_looks.json`) | 98% | 100% | $0.0009 | about $0.75 |
+| | Haiku 5.5 | one image (`--one-image`), robot descriptions | 83% (94% before the backward pass) | 96% | $0.0008 | about $0.70 |
+| | Haiku 5.5 | 2.5 frames per second (`--step 2`), two images, robot descriptions | 86% (92% before the backward pass) | 93% | $0.0010 per frame used | about $0.40 |
 | | Haiku 5.5 | two images | 94% | 96% | $0.0008 | about $0.70 |
 | | Haiku 4.5 | two images | not usable | 4% | $0.005 | — |
 

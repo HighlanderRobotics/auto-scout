@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    285,
+    341,
+    390,
+    450
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    600,
+    229,
+    712,
+    310
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    188,
+    560,
+    394,
+    700
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1225,
+    220,
+    1338,
+    310
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1394,
+    560,
+    1556,
+    679
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1700,
+    566,
+    1881,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  }
+ ],
+ "notes": "Bumper digits not legible at this resolution; positions carried from previous frame and tracked by appearance. 2910 partly behind the blue bump near top-left-center, 4065 near top-right trench area.",
+ "frame": "f_0004.jpg",
+ "time_s": 6.3,
+ "usage": {
+  "in": 3713,
+  "out": 1221
+ }
+}

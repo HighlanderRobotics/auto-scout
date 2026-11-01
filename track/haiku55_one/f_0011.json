@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    200,
+    310,
+    340,
+    398
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    858,
+    272,
+    952,
+    350
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    840,
+    429,
+    962,
+    562
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1444,
+    560,
+    1612,
+    682
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    988,
+    438,
+    1140,
+    591
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    938,
+    285,
+    1065,
+    375
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "No bumper numbers legible at this resolution; boxes followed from previous state by appearance. The 4065 and 1323 assignments on the right-side and hub-top robots are uncertain, and the bottom-right robot was reassigned to 4065 from a previously hidden state.",
+ "frame": "f_0011.jpg",
+ "time_s": 7.7,
+ "usage": {
+  "in": 2742,
+  "out": 1169
+ }
+}

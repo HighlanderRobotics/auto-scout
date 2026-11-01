@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    256,
+    332,
+    388,
+    429
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    740,
+    235,
+    831,
+    312
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    438,
+    572,
+    600,
+    700
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1100,
+    245,
+    1231,
+    322
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1148,
+    550,
+    1362,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1700,
+    566,
+    1881,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  }
+ ],
+ "notes": "Bumper digits not legible at this resolution; identities carried from previous frame using robot appearance. 2910 moved right to about x 592-665; 4065 moved left to about x 880-985; 4414 moved left to the teal-frame robot near x 918-1090; 2046 moved right near the blue hub; 868 moved slightly right and up; 1323 stationary.",
+ "frame": "f_0006.jpg",
+ "time_s": 6.7,
+ "usage": {
+  "in": 3725,
+  "out": 1150
+ }
+}

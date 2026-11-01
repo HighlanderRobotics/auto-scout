@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    69,
+    314,
+    228,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    795,
+    325,
+    925,
+    432
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    582,
+    382,
+    785,
+    508
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "2046",
+   "confidence": 0.65
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    970,
+    308,
+    1090,
+    382
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    982,
+    335,
+    1135,
+    466
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "4414",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    875,
+    438,
+    1000,
+    585
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Robots estimated from current frame positions; 1323 moved from the lower-center spot to the robot in front of the referee, with lower confidence. Digits were not clearly readable in this frame for most robots.",
+ "frame": "f_0016.jpg",
+ "time_s": 8.7,
+ "usage": {
+  "in": 3724,
+  "out": 1225
+ }
+}

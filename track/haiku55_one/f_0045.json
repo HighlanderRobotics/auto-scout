@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    188,
+    258,
+    265,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    269,
+    270,
+    375,
+    360
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    482,
+    162,
+    591
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1372,
+    432,
+    1528,
+    522
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1765,
+    441,
+    1920,
+    579
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    272,
+    1340,
+    362
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "868 and 2910 not clearly visible in current frame; their boxes are estimates from previous state. 2046 at left end, 4065 at red hub bottom right, 4414 at right end, 1323 dark navy robot near red side of center-top.",
+ "frame": "f_0045.jpg",
+ "time_s": 14.5,
+ "usage": {
+  "in": 2748,
+  "out": 1171
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    305,
+    345,
+    398,
+    450
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    581,
+    198,
+    648,
+    291
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    200,
+    572,
+    400,
+    700
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1269,
+    185,
+    1350,
+    291
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1731,
+    566,
+    1900,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1562,
+    572,
+    1731,
+    698
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  }
+ ],
+ "notes": "Bumper digits readable only for 2046 at bottom left. Other boxes are estimates from the previous state and visible teal frame (4414) and navy panels; 4065 and 1323 positions are uncertain. Right-side robots are partly occluded near the bottom edge.",
+ "frame": "f_0000.jpg",
+ "time_s": 5.5,
+ "usage": {
+  "in": 2580,
+  "out": 1363
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    250,
+    362,
+    318
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    798,
+    388,
+    915,
+    498
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    922,
+    448,
+    1056,
+    560
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    906,
+    516,
+    1098,
+    635
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1195,
+    279,
+    1340,
+    358
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Current frame shows no readable bumper numbers; boxes carried over from previous state as best estimates. Team 868 box is low confidence since the blue robot near the left hub is partly hard to isolate.",
+ "frame": "f_0107.jpg",
+ "time_s": 26.9,
+ "usage": {
+  "in": 2728,
+  "out": 381
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    25,
+    314,
+    190,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    656,
+    282,
+    790,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    225,
+    422,
+    406,
+    510
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    879,
+    348,
+    1050,
+    466
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1225,
+    335,
+    1365,
+    460
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1194,
+    285,
+    1331,
+    366
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.4
+  }
+ ],
+ "notes": "Current frame at t=9.7 s. Boxes estimated from the 100 px grid. Bumper digits are not clearly readable in this frame, so names carry over from previous frames. 1323 is a low-confidence guess based on its navy panels near the red hub. 868 at far left is partly cut off.",
+ "frame": "f_0021.jpg",
+ "time_s": 9.7,
+ "usage": {
+  "in": 2742,
+  "out": 943
+ }
+}

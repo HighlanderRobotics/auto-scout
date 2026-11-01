@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    190,
+    251,
+    260,
+    325
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    256,
+    262,
+    365,
+    360
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    429,
+    195,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1065,
+    316,
+    1222,
+    420
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.85
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1312,
+    422,
+    1550,
+    566
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.85
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1198,
+    272,
+    1338,
+    358
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "868 and 2910 are small and partly ambiguous near the top left, so their boxes are estimates from previous state. 1323 is tracked by its navy panels, not a readable bumper number in this frame.",
+ "frame": "f_0031.jpg",
+ "time_s": 11.7,
+ "usage": {
+  "in": 2746,
+  "out": 1038
+ }
+}
