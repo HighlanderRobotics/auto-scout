@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    541,
+    185,
+    660
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    250,
+    312,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.15
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    306,
+    250,
+    375,
+    310
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1798,
+    438,
+    1920,
+    580
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1481,
+    408,
+    1662,
+    522
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    278,
+    1335,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "4065 moved right near red hub/bump; 2046 at left near edge partially out of frame. Blue robots at back-left are small and unclear.",
+ "frame": "f_0047.jpg",
+ "time_s": 14.9,
+ "usage": {
+  "in": 3378,
+  "out": 385
+ }
+}

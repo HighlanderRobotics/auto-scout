@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    835,
+    431,
+    962,
+    581
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    195,
+    310,
+    340,
+    396
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    858,
+    274,
+    952,
+    354
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    982,
+    438,
+    1145,
+    586
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1428,
+    562,
+    1612,
+    695
+   ],
+   "named_by": "elimination",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    938,
+    289,
+    1065,
+    382
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  }
+ ],
+ "notes": "4414 and 2046 shifted; robot near red end at lower right moved left. Center pair near fuel pile kept as 2910/1323.",
+ "frame": "f_0011.jpg",
+ "time_s": 7.7,
+ "usage": {
+  "in": 3375,
+  "out": 379
+ }
+}

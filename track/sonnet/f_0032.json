@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    431,
+    196,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    188,
+    248,
+    288,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    256,
+    285,
+    375,
+    381
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1375,
+    416,
+    1606,
+    554
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.75
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1079,
+    322,
+    1238,
+    422
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.9
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1196,
+    276,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.75
+  }
+ ],
+ "notes": "Robots moved little. 4414 at the red hub is shown with the intake and ball hopper; its bumper number is not legible this frame. 868 and 2910 are in the far blue corner, partly obscured by fuel.",
+ "frame": "f_0032.jpg",
+ "time_s": 11.9,
+ "usage": {
+  "in": 3380,
+  "out": 409
+ }
+}

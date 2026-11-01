@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    770,
+    462,
+    935,
+    589
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    691,
+    258,
+    795,
+    344
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "BLITZ",
+   "confidence": 0.6
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    265,
+    245,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1902,
+    498,
+    1920,
+    545
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "13",
+   "confidence": 0.75
+  }
+ ],
+ "notes": "2046 read on bumper. The robot at the blue end near the left hub is 2910 and 868 is the BLITZ robot near the center. 4414 is likely off the right edge of the frame, so its box is estimated. 4065 and 1323 are at the red end.",
+ "frame": "f_0054.jpg",
+ "time_s": 16.3,
+ "usage": {
+  "in": 3382,
+  "out": 429
+ }
+}

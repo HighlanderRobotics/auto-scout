@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    440,
+    158,
+    580
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.93
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    258,
+    370,
+    320
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    578,
+    279,
+    650,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1675,
+    562,
+    1875,
+    680
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    370
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "13",
+   "confidence": 0.75
+  }
+ ],
+ "notes": "2046 moved slightly left and is partially cut off by the frame edge. Other robots are nearly stationary, so their boxes are unchanged.",
+ "frame": "f_0090.jpg",
+ "time_s": 23.5,
+ "usage": {
+  "in": 3379,
+  "out": 386
+ }
+}

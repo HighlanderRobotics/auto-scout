@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    195,
+    572,
+    395,
+    700
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    305,
+    348,
+    395,
+    450
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    582,
+    215,
+    648,
+    290
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1545,
+    585,
+    1738,
+    692
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1675,
+    566,
+    1875,
+    685
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1270,
+    210,
+    1345,
+    291
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  }
+ ],
+ "notes": "Pre-match static scene; no motion between frames. Bumper numbers not clearly legible this frame, so all robots keep their identities from the previous frames.",
+ "frame": "f_0002.jpg",
+ "time_s": 5.9,
+ "usage": {
+  "in": 3379,
+  "out": 387
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    540,
+    379,
+    698,
+    492
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    245,
+    362,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    772,
+    314,
+    910,
+    410
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1855,
+    458,
+    1920,
+    575
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    278,
+    1335,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "2046 read on bumper, shifted slightly left. 2910 moved right toward center. 4414 entering at right edge; bumper partially reads 4414 but digits are not clear enough to count as a read.",
+ "frame": "f_0062.jpg",
+ "time_s": 17.9,
+ "usage": {
+  "in": 3378,
+  "out": 404
+ }
+}

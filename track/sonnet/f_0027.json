@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    432,
+    195,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    118,
+    270,
+    250,
+    348
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    575,
+    266,
+    650,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1190,
+    392,
+    1362,
+    518
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1032,
+    320,
+    1178,
+    420
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.85
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1218,
+    278,
+    1340,
+    366
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "1323",
+   "confidence": 0.7
+  }
+ ],
+ "notes": "2910 is likely hidden behind the blue hub; kept at its last estimated position. The other robots shifted slightly, and 4414 moved right and down.",
+ "frame": "f_0027.jpg",
+ "time_s": 10.9,
+ "usage": {
+  "in": 3381,
+  "out": 391
+ }
+}

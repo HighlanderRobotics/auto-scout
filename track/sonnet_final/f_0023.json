@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    95,
+    445,
+    270,
+    580
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    30,
+    300,
+    195,
+    382
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    578,
+    268,
+    675,
+    355
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1128,
+    362,
+    1295,
+    482
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    928,
+    328,
+    1090,
+    438
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1230,
+    285,
+    1340,
+    368
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "1323",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "Robots tracked from previous positions; 1323 is partially visible near the red hub, with bumper digits partly readable.",
+ "frame": "f_0023.jpg",
+ "time_s": 10.1,
+ "usage": {
+  "in": 3377,
+  "out": 378
+ }
+}

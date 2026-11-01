@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    656,
+    508,
+    860,
+    662
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    252,
+    320,
+    372,
+    416
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    856,
+    241,
+    940,
+    320
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    985,
+    508,
+    1169,
+    672
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.55
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1688,
+    566,
+    1862,
+    688
+   ],
+   "named_by": "elimination",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1001,
+    264,
+    1135,
+    351
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  }
+ ],
+ "notes": "Near-center red robot with teal frame shows '4414' on its bumper this frame, so it was relabeled from 4065 to 4414 and the far-right red robot became 4065 by elimination. The other robots kept their labels from previous frames with small motion.",
+ "frame": "f_0008.jpg",
+ "time_s": 7.1,
+ "usage": {
+  "in": 3373,
+  "out": 719
+ }
+}

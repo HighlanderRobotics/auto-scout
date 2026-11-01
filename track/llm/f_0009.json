@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    759,
+    485,
+    931,
+    650
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.75
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    222,
+    318,
+    359,
+    409
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    879,
+    250,
+    960,
+    322
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    928,
+    481,
+    1106,
+    638
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1660,
+    565,
+    1806,
+    660
+   ],
+   "named_by": "elimination",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    965,
+    270,
+    1102,
+    358
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  }
+ ],
+ "notes": "2046 and 4414 bumper numbers read near bottom center. Others carried from previous frame with small motion.",
+ "frame": "f_0009.jpg",
+ "time_s": 7.3,
+ "usage": {
+  "in": 3373,
+  "out": 371
+ }
+}

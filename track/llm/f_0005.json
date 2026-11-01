@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    319,
+    560,
+    538,
+    700
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    260,
+    335,
+    385,
+    441
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    670,
+    235,
+    766,
+    310
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1281,
+    560,
+    1500,
+    679
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1702,
+    566,
+    1881,
+    688
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1172,
+    235,
+    1278,
+    314
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.25
+  }
+ ],
+ "notes": "Bumper numbers not legible at this resolution; identities carried from previous state. 2910 moved right along far wall, 1323 moved left, 4065 shifted left near the near wall.",
+ "frame": "f_0005.jpg",
+ "time_s": 6.5,
+ "usage": {
+  "in": 3376,
+  "out": 396
+ }
+}

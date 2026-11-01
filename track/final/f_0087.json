@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    435,
+    200,
+    575
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    245,
+    365,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    322,
+    291,
+    380,
+    354
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1675,
+    562,
+    1920,
+    675
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.97,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    278,
+    1335,
+    368
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 9
+  }
+ ],
+ "notes": "Little motion between frames; no bumper digits are legible except 2046. The other robots keep their previous identities.",
+ "frame": "f_0087.jpg",
+ "time_s": 22.9,
+ "usage": {
+  "in": 3378,
+  "out": 373
+ }
+}

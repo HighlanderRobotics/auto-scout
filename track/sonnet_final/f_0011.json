@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    835,
+    432,
+    948,
+    582
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    195,
+    312,
+    340,
+    398
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    859,
+    275,
+    955,
+    355
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "BLITZ",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    982,
+    439,
+    1146,
+    589
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    938,
+    290,
+    1069,
+    380
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1429,
+    565,
+    1604,
+    682
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "1323",
+   "track": 8
+  }
+ ],
+ "notes": "2046 is partly hidden behind the camera operator; 4414 is read from its bumper. Robots at the top center are the 2910 (BLITZ) and 4065, and the red robot near the red trench is 1323.",
+ "frame": "f_0011.jpg",
+ "time_s": 7.7,
+ "usage": {
+  "in": 3378,
+  "out": 407
+ }
+}

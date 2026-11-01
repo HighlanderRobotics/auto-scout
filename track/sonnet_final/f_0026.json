@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    435,
+    200,
+    572
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    100,
+    272,
+    238,
+    352
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    575,
+    266,
+    650,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1145,
+    370,
+    1315,
+    505
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1020,
+    320,
+    1160,
+    420
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1222,
+    278,
+    1342,
+    368
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "1323",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "Robots shifted slightly; 2910 is assumed to be still near the blue hub at the back, partially hidden, so its box is carried over from the previous frame.",
+ "frame": "f_0026.jpg",
+ "time_s": 10.7,
+ "usage": {
+  "in": 3381,
+  "out": 393
+ }
+}

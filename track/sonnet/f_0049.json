@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    162,
+    566,
+    400,
+    675
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    188,
+    248,
+    285,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.15
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    265,
+    258,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1828,
+    454,
+    1920,
+    582
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    412,
+    1698,
+    518
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    369
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "13",
+   "confidence": 0.75
+  }
+ ],
+ "notes": "2046 appears to have moved right near the blue trench at bottom-left (box estimated). 868 remains hidden. Other robots are roughly stationary.",
+ "frame": "f_0049.jpg",
+ "time_s": 15.3,
+ "usage": {
+  "in": 3379,
+  "out": 389
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    20,
+    445,
+    242,
+    585
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    55,
+    288,
+    208,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    570,
+    258,
+    650,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1100,
+    370,
+    1278,
+    492
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    970,
+    328,
+    1122,
+    430
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1230,
+    282,
+    1342,
+    368
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "1323",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "2046 now readable at far left bottom. 868 is in the upper left corner. 2910 is partially hidden behind the blue hub near the bump.",
+ "frame": "f_0024.jpg",
+ "time_s": 10.3,
+ "usage": {
+  "in": 3379,
+  "out": 389
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    656,
+    508,
+    860,
+    675
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    254,
+    320,
+    374,
+    418
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    856,
+    241,
+    946,
+    319
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "BLITZ",
+   "confidence": 0.6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    985,
+    508,
+    1169,
+    675
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1001,
+    264,
+    1136,
+    352
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1690,
+    568,
+    1869,
+    695
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  }
+ ],
+ "notes": "Robot with fabworks teal bin at bottom center has 4414 bumper visible, so 4414 is the near robot and 4065 is the dark robot near the red hub in the far lane. 2910 is the BLITZ robot. 1323 is the partially occluded robot at far right, still a guess.",
+ "frame": "f_0008.jpg",
+ "time_s": 7.1,
+ "usage": {
+  "in": 3370,
+  "out": 434
+ }
+}

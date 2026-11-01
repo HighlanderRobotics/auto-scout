@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    745,
+    382,
+    915,
+    495
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    121,
+    315,
+    270,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    818,
+    315,
+    928,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    960,
+    391,
+    1104,
+    492
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    940,
+    306,
+    1088,
+    379
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1020,
+    526,
+    1180,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "2046 and 4414 bumpers read. 1323 moved left near the near wall. 868 stays at the blue-end station. 2910 is the crate near center-left and 4065 the dark robot behind 4414 by elimination.",
+ "frame": "f_0014.jpg",
+ "time_s": 8.3,
+ "usage": {
+  "in": 3380,
+  "out": 409
+ }
+}

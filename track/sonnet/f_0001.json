@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    195,
+    585,
+    395,
+    702
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    305,
+    348,
+    395,
+    450
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    582,
+    195,
+    645,
+    290
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1545,
+    568,
+    1740,
+    695
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1272,
+    230,
+    1345,
+    292
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1712,
+    568,
+    1838,
+    648
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  }
+ ],
+ "notes": "Scene essentially unchanged from previous frame; robots are stationary in their start positions, so boxes are carried over. Only the 2046 bumper number is readable.",
+ "frame": "f_0001.jpg",
+ "time_s": 5.7,
+ "usage": {
+  "in": 3373,
+  "out": 386
+ }
+}

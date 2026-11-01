@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    432,
+    196,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    190,
+    251,
+    288,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    259,
+    288,
+    375,
+    381
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.71,
+   "forward_team": "2910",
+   "track": 3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1369,
+    414,
+    1554,
+    562
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1066,
+    320,
+    1225,
+    420
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1199,
+    276,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "4414 moved right toward its bump with fuel loaded. Other robots moved little. 868 and 2910 on the left are partly hidden by fuel in the air.",
+ "frame": "f_0031.jpg",
+ "time_s": 11.7,
+ "usage": {
+  "in": 3380,
+  "out": 393
+ }
+}

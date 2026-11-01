@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    915,
+    422,
+    1060,
+    522
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    258,
+    366,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    800,
+    390,
+    915,
+    502
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "BLITZ",
+   "confidence": 0.7
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    902,
+    491,
+    1100,
+    645
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "13",
+   "confidence": 0.7
+  }
+ ],
+ "notes": "Robots are essentially stationary since the previous frame; boxes kept nearly unchanged.",
+ "frame": "f_0111.jpg",
+ "time_s": 27.7,
+ "usage": {
+  "in": 3382,
+  "out": 373
+ }
+}

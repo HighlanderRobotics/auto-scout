@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    195,
+    585,
+    395,
+    702
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    305,
+    348,
+    395,
+    450
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    582,
+    195,
+    645,
+    290
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1545,
+    568,
+    1740,
+    695
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1272,
+    230,
+    1345,
+    292
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1712,
+    568,
+    1838,
+    648
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  }
+ ],
+ "notes": "Blue robots: 2046 at the near-left blue bump with bumper digits visible, 868 near the left hub, 2910 behind the left hub. Red: 4065 at the near-right red bump, 4414 behind the right hub, 1323 in the near-right corner area. The red identities are guesses.",
+ "frame": "f_0000.jpg",
+ "time_s": 5.5,
+ "usage": {
+  "in": 2231,
+  "out": 431
+ }
+}

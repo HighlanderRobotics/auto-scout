@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    395,
+    420,
+    585,
+    560
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    10,
+    315,
+    198,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    725,
+    300,
+    855,
+    392
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2910",
+   "confidence": 0.88
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1150,
+    350,
+    1312,
+    465
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    875,
+    368,
+    1045,
+    495
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.9
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1100,
+    300,
+    1255,
+    400
+   ],
+   "named_by": "elimination",
+   "bumper_text": "",
+   "confidence": 0.6
+  }
+ ],
+ "notes": "2046 moved left near the blue hub and its number is readable. 2910 shifted slightly left. 4065 and 4414 are readable. The remaining red robot, behind 4414, is 1323 by elimination. 868 is at the far left, partly cut off.",
+ "frame": "f_0019.jpg",
+ "time_s": 9.3,
+ "usage": {
+  "in": 3376,
+  "out": 423
+ }
+}

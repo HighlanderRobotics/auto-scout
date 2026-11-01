@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    839,
+    432,
+    984,
+    545
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    175,
+    311,
+    320,
+    396
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    832,
+    285,
+    940,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "BLITZ",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    995,
+    418,
+    1146,
+    550
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    939,
+    298,
+    1050,
+    388
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "4065",
+   "track": 7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1306,
+    556,
+    1472,
+    686
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "1323",
+   "track": 8
+  }
+ ],
+ "notes": "Blue 2046 and red 4414 bumper numbers readable. Robot with BLITZ is 2910; the neighbor at the pile is assumed 4065. 1323 is at the red near-side bottom.",
+ "frame": "f_0012.jpg",
+ "time_s": 7.9,
+ "usage": {
+  "in": 3377,
+  "out": 411
+ }
+}

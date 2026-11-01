@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    556,
+    414,
+    740,
+    532
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    52,
+    315,
+    210,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    768,
+    320,
+    920,
+    422
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "LITZ",
+   "confidence": 0.7
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1025,
+    358,
+    1191,
+    468
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    872,
+    395,
+    1001,
+    535
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.9
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    992,
+    310,
+    1116,
+    408
+   ],
+   "named_by": "elimination",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "4065 bumper number now readable at the center. 4414 is at right-center with the fabworks robot. 1323 is the dark robot behind 4414. 2910 (LITZ) is near center-top. 868 is at far left.",
+ "frame": "f_0017.jpg",
+ "time_s": 8.9,
+ "usage": {
+  "in": 3377,
+  "out": 412
+ }
+}

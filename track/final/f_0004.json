@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    244,
+    566,
+    444,
+    700
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    282,
+    342,
+    390,
+    448
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    610,
+    232,
+    710,
+    308
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1395,
+    562,
+    1588,
+    680
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1702,
+    566,
+    1881,
+    688
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.97,
+   "forward_team": "4414",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1225,
+    230,
+    1330,
+    310
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 9
+  }
+ ],
+ "notes": "No bumper numbers legible; identities carried from previous state. 4065 moved left near red bump; 2910 near blue far wall moved right; 1323 far wall red side moved slightly left.",
+ "frame": "f_0004.jpg",
+ "time_s": 6.3,
+ "usage": {
+  "in": 3377,
+  "out": 398
+ }
+}

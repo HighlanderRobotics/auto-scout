@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    432,
+    195,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    118,
+    270,
+    250,
+    348
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    575,
+    266,
+    650,
+    362
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1190,
+    392,
+    1362,
+    518
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1032,
+    320,
+    1178,
+    420
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1218,
+    278,
+    1340,
+    366
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "1323",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "2910 is likely hidden behind the blue hub; kept at its last estimated position. The other robots shifted slightly, and 4414 moved right and down.",
+ "frame": "f_0027.jpg",
+ "time_s": 10.9,
+ "usage": {
+  "in": 3381,
+  "out": 391
+ }
+}

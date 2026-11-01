@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    569,
+    529,
+    769,
+    672
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    260,
+    326,
+    385,
+    425
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    811,
+    239,
+    902,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1035,
+    529,
+    1235,
+    682
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1041,
+    255,
+    1176,
+    338
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1700,
+    568,
+    1875,
+    672
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  }
+ ],
+ "notes": "Robots tracked by continuity from previous frame; no bumper digits legible. 2046 moved right near the FTA, 2910 and 4414 moved toward center, 4065 shifted left. 1323 is unchanged in the red corner.",
+ "frame": "f_0007.jpg",
+ "time_s": 6.9,
+ "usage": {
+  "in": 3371,
+  "out": 408
+ }
+}

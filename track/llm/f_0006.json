@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    440,
+    541,
+    600,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    256,
+    332,
+    385,
+    432
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    740,
+    238,
+    832,
+    312
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1148,
+    550,
+    1362,
+    688
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1702,
+    566,
+    1881,
+    688
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1100,
+    245,
+    1228,
+    322
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.25
+  }
+ ],
+ "notes": "Bumper digits not legible. 2046 moved right behind FTA; 4065 moved left; 1323 moved left along far wall; 2910 moved right.",
+ "frame": "f_0006.jpg",
+ "time_s": 6.7,
+ "usage": {
+  "in": 3376,
+  "out": 386
+ }
+}

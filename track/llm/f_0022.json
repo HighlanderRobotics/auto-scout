@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    156,
+    438,
+    350,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    5,
+    304,
+    195,
+    390
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    610,
+    275,
+    738,
+    368
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1182,
+    348,
+    1332,
+    468
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    894,
+    335,
+    1060,
+    450
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.85
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1215,
+    282,
+    1345,
+    375
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "4065 and 4414 bumpers read. 2046 moved left near blue hub; 2910 moved left near blue hub; 1323 behind 4414 near red hub.",
+ "frame": "f_0022.jpg",
+ "time_s": 9.9,
+ "usage": {
+  "in": 3377,
+  "out": 393
+ }
+}

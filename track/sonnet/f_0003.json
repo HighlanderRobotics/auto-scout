@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    185,
+    585,
+    395,
+    702
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    298,
+    348,
+    392,
+    451
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    585,
+    195,
+    668,
+    298
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1488,
+    568,
+    1740,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1262,
+    225,
+    1340,
+    298
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1710,
+    568,
+    1838,
+    648
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  }
+ ],
+ "notes": "Robots mostly stationary. 2046 bumper digits readable at the near blue corner. 2910 moved slightly right near the blue hub; 4065 box extended left to include its bumper edge. Others are weak estimates.",
+ "frame": "f_0003.jpg",
+ "time_s": 6.1,
+ "usage": {
+  "in": 3373,
+  "out": 409
+ }
+}

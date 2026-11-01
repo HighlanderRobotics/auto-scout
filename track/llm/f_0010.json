@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    805,
+    479,
+    944,
+    615
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.75
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    206,
+    315,
+    350,
+    401
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    881,
+    270,
+    962,
+    340
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    954,
+    458,
+    1129,
+    612
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1531,
+    566,
+    1712,
+    666
+   ],
+   "named_by": "elimination",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    942,
+    280,
+    1082,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  }
+ ],
+ "notes": "2046 and 4414 bumpers readable near center. 868 at blue end left, 2910 at the center far wall near the BLITZ sign, 1323 crate robot beside it. 4065 is mostly occluded at the bottom right by the red trench and spectators; its position is a low-confidence estimate.",
+ "frame": "f_0010.jpg",
+ "time_s": 7.5,
+ "usage": {
+  "in": 3375,
+  "out": 434
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    19,
+    431,
+    198,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    188,
+    248,
+    285,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    254,
+    282,
+    375,
+    381
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.71,
+   "forward_team": "2910",
+   "track": 3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1612,
+    438,
+    1806,
+    582
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1108,
+    314,
+    1256,
+    402
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1196,
+    276,
+    1340,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "4414 moved right to the red end and its bumper number is readable. 4065 shifted slightly right. 2046 is readable at left. 868 is estimated from the previous frame and is likely hidden behind or near 2910 at upper left. 1323 is the robot with the blue top next to 4065.",
+ "frame": "f_0035.jpg",
+ "time_s": 12.5,
+ "usage": {
+  "in": 3379,
+  "out": 436
+ }
+}

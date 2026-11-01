@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    569,
+    529,
+    769,
+    672
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    259,
+    326,
+    384,
+    425
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    811,
+    239,
+    901,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1032,
+    529,
+    1235,
+    691
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1702,
+    566,
+    1881,
+    688
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1041,
+    254,
+    1178,
+    338
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.25
+  }
+ ],
+ "notes": "All robots tracked by continuity; no bumper digits legible. 2046 moved right near the FTA; 4065 moved left; 2910 and 1323 moved along the far wall.",
+ "frame": "f_0007.jpg",
+ "time_s": 6.9,
+ "usage": {
+  "in": 3374,
+  "out": 392
+ }
+}

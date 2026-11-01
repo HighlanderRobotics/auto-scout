@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    430,
+    196,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    220,
+    250,
+    300,
+    325
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    255,
+    285,
+    375,
+    380
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1432,
+    415,
+    1610,
+    552
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1080,
+    322,
+    1240,
+    420
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1192,
+    278,
+    1335,
+    365
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "4414 moved right next to red hub; 4065 shifted slightly right. Blue robots at left largely unchanged.",
+ "frame": "f_0032.jpg",
+ "time_s": 11.9,
+ "usage": {
+  "in": 3380,
+  "out": 377
+ }
+}

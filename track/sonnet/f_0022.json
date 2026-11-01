@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    158,
+    440,
+    348,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.8
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    8,
+    305,
+    188,
+    392
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    610,
+    278,
+    735,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.85
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1182,
+    352,
+    1362,
+    468
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    895,
+    335,
+    1058,
+    450
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.9
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1220,
+    288,
+    1375,
+    368
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  }
+ ],
+ "notes": "2046 shifted left near blue hub; 4065 and 4414 bumper numbers readable. 1323 is the red robot behind 4414 near the red hub.",
+ "frame": "f_0022.jpg",
+ "time_s": 9.9,
+ "usage": {
+  "in": 3379,
+  "out": 390
+ }
+}

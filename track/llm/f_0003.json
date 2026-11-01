@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    188,
+    572,
+    395,
+    700
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    298,
+    348,
+    392,
+    450
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    595,
+    222,
+    668,
+    298
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1490,
+    579,
+    1738,
+    692
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1700,
+    566,
+    1888,
+    688
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1260,
+    220,
+    1338,
+    298
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  }
+ ],
+ "notes": "No bumper numbers legible this frame; identities carried over from the previous state. 2910 shifted slightly right and down behind the blue hub, 1323 shifted slightly left and down behind the red hub, 4065 extended left near the red bump.",
+ "frame": "f_0003.jpg",
+ "time_s": 6.1,
+ "usage": {
+  "in": 3377,
+  "out": 416
+ }
+}

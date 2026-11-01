@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    546,
+    388,
+    702,
+    496
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    250,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "868",
+   "confidence": 0.8
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    842,
+    316,
+    990,
+    411
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1845,
+    465,
+    1920,
+    580
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "44",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    515
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "13",
+   "confidence": 0.7
+  }
+ ],
+ "notes": "2046 and 2910 shifted slightly right; 4414 still partly at right edge; others static.",
+ "frame": "f_0063.jpg",
+ "time_s": 18.1,
+ "usage": {
+  "in": 3382,
+  "out": 373
+ }
+}

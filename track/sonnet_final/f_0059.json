@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    702,
+    388,
+    868,
+    500
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    632,
+    325,
+    788,
+    422
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "868",
+   "track": 4
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    248,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.71,
+   "forward_team": "2910",
+   "track": 3
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1902,
+    498,
+    1920,
+    545
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    370
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "13",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "2046 moved left about 40 px; its bumper is readable. Other robots are roughly stationary. 4414 is still not visible and is kept at its last estimate.",
+ "frame": "f_0059.jpg",
+ "time_s": 17.3,
+ "usage": {
+  "in": 3384,
+  "out": 392
+ }
+}

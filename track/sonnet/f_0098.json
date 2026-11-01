@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    544,
+    544,
+    738,
+    672
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    258,
+    370,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    719,
+    262,
+    810,
+    350
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "BLITZ",
+   "confidence": 0.6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1356,
+    558,
+    1550,
+    679
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "13",
+   "confidence": 0.75
+  }
+ ],
+ "notes": "Robots mostly stayed in place. 2046 (near blue side) moved right to about x435-590. 4414 (near red side) moved left to about x1085-1240. 2910 shifted slightly right and down. Others are unchanged.",
+ "frame": "f_0098.jpg",
+ "time_s": 25.1,
+ "usage": {
+  "in": 3377,
+  "out": 418
+ }
+}

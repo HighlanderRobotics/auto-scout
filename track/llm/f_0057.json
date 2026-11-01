@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    819,
+    385,
+    965,
+    500
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    245,
+    362,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    640,
+    316,
+    756,
+    408
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1895,
+    491,
+    1920,
+    541
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1532,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    278,
+    1335,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "2046 moved left/up, bumper readable. 2910 moved slightly down-left near blue hub. Others largely stationary; 4414 still off-screen right.",
+ "frame": "f_0057.jpg",
+ "time_s": 16.9,
+ "usage": {
+  "in": 3378,
+  "out": 391
+ }
+}

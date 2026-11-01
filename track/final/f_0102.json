@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    898,
+    445,
+    1032,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    245,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    772,
+    355,
+    882,
+    458
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1048,
+    550,
+    1219,
+    675
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1532,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.97,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    278,
+    1335,
+    368
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 9
+  }
+ ],
+ "notes": "No bumper numbers readable. 2910 moved slightly right/down (BLITZ text visible on its frame). 2046 moved up-right into center ball pile; 4414 moved left near the score table.",
+ "frame": "f_0102.jpg",
+ "time_s": 25.9,
+ "usage": {
+  "in": 3375,
+  "out": 399
+ }
+}

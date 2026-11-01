@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    535,
+    70,
+    610
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    248,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    325,
+    285,
+    380,
+    335
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.15
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1672,
+    562,
+    1920,
+    675
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1532,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    278,
+    1335,
+    368
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "Scene nearly static; no bumper digits legible. 2046 at far left edge shifted slightly; 2910 still not distinguishable near 868 by blue hub area.",
+ "frame": "f_0093.jpg",
+ "time_s": 24.1,
+ "usage": {
+  "in": 3376,
+  "out": 392
+ }
+}

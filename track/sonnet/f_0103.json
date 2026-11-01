@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    855,
+    466,
+    1031,
+    572
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    258,
+    366,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    788,
+    376,
+    900,
+    485
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "BLITZ",
+   "confidence": 0.75
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    962,
+    529,
+    1156,
+    682
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    366
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "13",
+   "confidence": 0.7
+  }
+ ],
+ "notes": "The BLITZ robot (2910) moved slightly right and down. The robot near the bottom center moved left and is a red bumper at the base, so it is still treated as 4414. 2046 is the robot behind the scorer's table, near the middle.",
+ "frame": "f_0103.jpg",
+ "time_s": 26.1,
+ "usage": {
+  "in": 3380,
+  "out": 418
+ }
+}

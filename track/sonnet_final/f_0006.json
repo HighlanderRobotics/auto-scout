@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    440,
+    575,
+    598,
+    672
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    258,
+    332,
+    388,
+    432
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    740,
+    238,
+    832,
+    315
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1150,
+    550,
+    1362,
+    682
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1101,
+    245,
+    1228,
+    322
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "4414",
+   "track": 7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1700,
+    568,
+    1875,
+    672
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "1323",
+   "track": 8
+  }
+ ],
+ "notes": "The blitz-labelled robot near center-left is 2910. The red robot near the top right of center moved left and is 4414. The red robot at lower center-right moved left and is 4065. 2046 at lower left is partly hidden by the FTA person. 1323 is a guess for the dark robot in the lower right corner.",
+ "frame": "f_0006.jpg",
+ "time_s": 6.7,
+ "usage": {
+  "in": 3373,
+  "out": 432
+ }
+}

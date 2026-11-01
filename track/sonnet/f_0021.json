@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    225,
+    432,
+    530,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    2,
+    310,
+    190,
+    398
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    655,
+    280,
+    790,
+    372
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.85
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1218,
+    348,
+    1375,
+    460
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    875,
+    348,
+    1052,
+    470
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.9
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1190,
+    288,
+    1340,
+    382
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  }
+ ],
+ "notes": "2046 moved left near blue bump with fuel; others shifted slightly.",
+ "frame": "f_0021.jpg",
+ "time_s": 9.7,
+ "usage": {
+  "in": 3381,
+  "out": 364
+ }
+}

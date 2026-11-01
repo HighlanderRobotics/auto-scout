@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    558,
+    385,
+    712,
+    495
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    712,
+    318,
+    845,
+    418
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "868",
+   "track": 4
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    250,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "868",
+   "confidence": 0.71,
+   "forward_team": "2910",
+   "track": 3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1895,
+    500,
+    1920,
+    550
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    515
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    370
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "13",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "2046 reads on bumper. The robot near the center is now at about x570-676, kept as 868. The corner robot at the far left is labeled 868 on its bumper, but it is kept as 2910 from previous state. 4414 is partly visible at the right edge.",
+ "frame": "f_0061.jpg",
+ "time_s": 17.7,
+ "usage": {
+  "in": 3379,
+  "out": 424
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    510,
+    130,
+    608
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.8
+  },
+  {
+   "team": "868",
+   "visible": false,
+   "box": [
+    188,
+    248,
+    285,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    265,
+    255,
+    375,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1785,
+    450,
+    1920,
+    580
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1375,
+    410,
+    1598,
+    518
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "405",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    369
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "13",
+   "confidence": 0.75
+  }
+ ],
+ "notes": "2046 at left edge shifted slightly. 4065 at red hub, extended slightly right. 1323 stationary near red bump. 868 still hidden. 2910 near blue hub back.",
+ "frame": "f_0046.jpg",
+ "time_s": 14.7,
+ "usage": {
+  "in": 3382,
+  "out": 402
+ }
+}

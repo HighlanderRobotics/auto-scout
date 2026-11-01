@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    805,
+    388,
+    972,
+    518
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "204",
+   "confidence": 0.7
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    148,
+    312,
+    295,
+    398
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    815,
+    298,
+    928,
+    382
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    975,
+    395,
+    1130,
+    520
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.75
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1162,
+    548,
+    1325,
+    698
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    932,
+    300,
+    1040,
+    392
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  }
+ ],
+ "notes": "Bumper digits are readable on 4414 and partially on 2046. The near red robot, tracked as 4065, moved left. The others were tracked from the previous frame.",
+ "frame": "f_0013.jpg",
+ "time_s": 8.1,
+ "usage": {
+  "in": 3377,
+  "out": 390
+ }
+}

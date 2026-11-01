@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    588,
+    401,
+    760,
+    515
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    250,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "868",
+   "confidence": 0.8
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    888,
+    319,
+    1028,
+    414
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2910",
+   "confidence": 0.8
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1835,
+    464,
+    1920,
+    588
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "13",
+   "confidence": 0.7
+  }
+ ],
+ "notes": "2046 and 2910 bumper numbers readable. Other robots essentially stationary since the previous frame.",
+ "frame": "f_0065.jpg",
+ "time_s": 18.5,
+ "usage": {
+  "in": 3379,
+  "out": 377
+ }
+}

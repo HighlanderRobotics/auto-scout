@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    675,
+    375,
+    835,
+    488
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    95,
+    315,
+    248,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    810,
+    328,
+    922,
+    420
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    960,
+    375,
+    1100,
+    475
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    920,
+    482,
+    1078,
+    650
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "065",
+   "confidence": 0.55
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    955,
+    310,
+    1098,
+    388
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  }
+ ],
+ "notes": "2046 moved left. 4065 moved up-left near the field-side monitor; partial bumper '065' read. 1323 is stacked behind 4414; 2910 is in the center pile.",
+ "frame": "f_0015.jpg",
+ "time_s": 8.5,
+ "usage": {
+  "in": 3375,
+  "out": 397
+ }
+}

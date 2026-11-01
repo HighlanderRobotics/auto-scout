@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    305,
+    415,
+    540,
+    555
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    2,
+    312,
+    190,
+    398
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    685,
+    285,
+    828,
+    382
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2910",
+   "confidence": 0.88
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1205,
+    348,
+    1375,
+    462
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    872,
+    360,
+    1052,
+    482
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.9
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1155,
+    295,
+    1340,
+    392
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  }
+ ],
+ "notes": "Robots moved modestly. 2046 shifted left near the blue bump, 2910 left, and the red robots moved right toward the red hub. 1323 is the red robot at the top near the hub, partly occluded.",
+ "frame": "f_0020.jpg",
+ "time_s": 9.5,
+ "usage": {
+  "in": 3379,
+  "out": 410
+ }
+}

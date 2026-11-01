@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    15,
+    429,
+    198,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    188,
+    248,
+    285,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    254,
+    279,
+    375,
+    381
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1690,
+    445,
+    1912,
+    579
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1162,
+    360,
+    1295,
+    466
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1338,
+    366
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "13",
+   "confidence": 0.75
+  }
+ ],
+ "notes": "Red robots near the red hub: the upper one with partial bumper text '13' is 1323, the lower one that moved down is 4065. Blue robots near the blue hub and left end are unchanged. 868 remains a low-confidence guess.",
+ "frame": "f_0039.jpg",
+ "time_s": 13.3,
+ "usage": {
+  "in": 3379,
+  "out": 417
+ }
+}

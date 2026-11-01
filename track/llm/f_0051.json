@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    462,
+    535,
+    644,
+    670
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    250,
+    362,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    670,
+    232,
+    795,
+    306
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1855,
+    454,
+    1920,
+    570
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.75
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    278,
+    1335,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "2046 moved right toward near center; 2910 moved right along far wall. 4414 partially out of frame at right edge.",
+ "frame": "f_0051.jpg",
+ "time_s": 15.7,
+ "usage": {
+  "in": 3378,
+  "out": 375
+ }
+}

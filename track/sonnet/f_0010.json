@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    782,
+    480,
+    940,
+    615
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "204",
+   "confidence": 0.8
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    206,
+    315,
+    350,
+    401
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    882,
+    270,
+    965,
+    341
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "BLITZ",
+   "confidence": 0.65
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    956,
+    458,
+    1128,
+    615
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    944,
+    280,
+    1082,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1531,
+    568,
+    1719,
+    648
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  }
+ ],
+ "notes": "2046 and 4414 are in the center with fuel; 2910 is at the far center wall, 4065 beside it. 1323 is partly hidden near the red trench, estimated position.",
+ "frame": "f_0010.jpg",
+ "time_s": 7.5,
+ "usage": {
+  "in": 3379,
+  "out": 397
+ }
+}

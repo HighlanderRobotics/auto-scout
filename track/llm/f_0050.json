@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    306,
+    560,
+    525,
+    672
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    250,
+    362,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    619,
+    232,
+    738,
+    304
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1840,
+    454,
+    1920,
+    575
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    516
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    278,
+    1335,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "",
+ "frame": "f_0050.jpg",
+ "time_s": 15.5,
+ "usage": {
+  "in": 3378,
+  "out": 340
+ }
+}

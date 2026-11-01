@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    95,
+    445,
+    268,
+    580
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    22,
+    298,
+    195,
+    380
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    578,
+    268,
+    672,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1128,
+    362,
+    1295,
+    480
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    928,
+    325,
+    1088,
+    438
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.85
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1228,
+    280,
+    1342,
+    368
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "Read 4065 and 4414 on bumpers. 1323 behind red hub left side. 2046 moved left near blue bump; 2910 by blue hub.",
+ "frame": "f_0023.jpg",
+ "time_s": 10.1,
+ "usage": {
+  "in": 3377,
+  "out": 390
+ }
+}

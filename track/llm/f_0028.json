@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    430,
+    196,
+    568
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    125,
+    268,
+    262,
+    340
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    310,
+    290,
+    380,
+    378
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1222,
+    408,
+    1402,
+    530
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "44",
+   "confidence": 0.75
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1042,
+    318,
+    1195,
+    418
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1212,
+    278,
+    1338,
+    365
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "13",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "2910 likely the dark robot partially hidden behind blue hub at left (~250-300,145-212). 4414 moved right/down slightly.",
+ "frame": "f_0028.jpg",
+ "time_s": 11.1,
+ "usage": {
+  "in": 3377,
+  "out": 383
+ }
+}

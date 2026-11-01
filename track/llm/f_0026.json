@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    432,
+    200,
+    568
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    100,
+    270,
+    238,
+    352
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": false,
+   "box": [
+    578,
+    268,
+    650,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1145,
+    375,
+    1318,
+    505
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1022,
+    320,
+    1160,
+    420
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1222,
+    278,
+    1340,
+    365
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "868 near blue left wall moved slightly right. 2910 not clearly seen behind blue hub; kept last estimate as hidden. 4414 and 4065 moved right slightly.",
+ "frame": "f_0026.jpg",
+ "time_s": 10.7,
+ "usage": {
+  "in": 3379,
+  "out": 399
+ }
+}

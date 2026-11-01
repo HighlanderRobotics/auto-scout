@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    748,
+    375,
+    915,
+    492
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.75
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    120,
+    315,
+    270,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    815,
+    315,
+    918,
+    392
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    960,
+    378,
+    1105,
+    492
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.75
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1020,
+    525,
+    1180,
+    695
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    938,
+    305,
+    1052,
+    388
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  }
+ ],
+ "notes": "2046 moved left; 4065 in near foreground moved left; others tracked by continuity.",
+ "frame": "f_0014.jpg",
+ "time_s": 8.3,
+ "usage": {
+  "in": 3375,
+  "out": 365
+ }
+}

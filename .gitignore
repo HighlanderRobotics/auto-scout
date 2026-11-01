@@ -1,0 +1,16 @@
+# Secrets: the API key lives only in .env on your own computer
+.env
+
+# Python environment
+.venv/
+__pycache__/
+
+# Match video and frames made from it (rebuild them with the commands in DETAILS.md)
+*.mp4
+*.srt
+track/frames/
+track/clip_frames/
+start/prematch_full.jpg
+# Scratch crops, rebuilt by the commands in the README
+overlay/
+field/

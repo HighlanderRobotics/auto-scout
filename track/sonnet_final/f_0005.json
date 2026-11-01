@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    188,
+    554,
+    540,
+    702
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    335,
+    390,
+    442
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    671,
+    235,
+    768,
+    312
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1281,
+    560,
+    1500,
+    682
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1169,
+    232,
+    1278,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "4414",
+   "track": 7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1702,
+    568,
+    1838,
+    650
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "1323",
+   "track": 8
+  }
+ ],
+ "notes": "Bumper digits not legible. 2910 identified as the robot with BLITZ near the blue hub top; 4414 as the red robot near the top red bump. 4065 is the large robot at lower right center, 1323 is the robot at far right bottom.",
+ "frame": "f_0005.jpg",
+ "time_s": 6.5,
+ "usage": {
+  "in": 3373,
+  "out": 414
+ }
+}

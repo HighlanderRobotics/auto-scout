@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    19,
+    425,
+    198,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    188,
+    248,
+    285,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    254,
+    279,
+    375,
+    381
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1660,
+    441,
+    1890,
+    579
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1144,
+    325,
+    1272,
+    418
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1196,
+    276,
+    1340,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.75
+  }
+ ],
+ "notes": "Blue robots near the left end are mostly unchanged and 868 is still unclear. Red robots 4065 and 1323 are near the red hub, and 4414 is at the far right and readable.",
+ "frame": "f_0037.jpg",
+ "time_s": 12.9,
+ "usage": {
+  "in": 3381,
+  "out": 401
+ }
+}

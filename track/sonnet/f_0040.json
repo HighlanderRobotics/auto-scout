@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    15,
+    432,
+    198,
+    570
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    188,
+    248,
+    285,
+    329
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    254,
+    276,
+    375,
+    381
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1702,
+    448,
+    1915,
+    580
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.9
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1125,
+    376,
+    1310,
+    485
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "406",
+   "confidence": 0.85
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    369
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "13",
+   "confidence": 0.75
+  }
+ ],
+ "notes": "4065 moved left and its bumper reads 406. 4414 reads 4414 at right. 2046 at left bottom. The two blue robots near the blue hub are unreadable and kept from previous positions.",
+ "frame": "f_0040.jpg",
+ "time_s": 13.5,
+ "usage": {
+  "in": 3380,
+  "out": 407
+ }
+}

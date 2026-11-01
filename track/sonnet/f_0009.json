@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    760,
+    485,
+    925,
+    650
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    224,
+    318,
+    359,
+    408
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    880,
+    251,
+    959,
+    322
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "BLITZ",
+   "confidence": 0.7
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    925,
+    481,
+    1106,
+    640
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    966,
+    269,
+    1102,
+    356
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.55
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1665,
+    568,
+    1806,
+    648
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.3
+  }
+ ],
+ "notes": "2046 and 4414 are side by side at center near the near wall, with 2046 on the left. 2910 (BLITZ) and 4065 are at the top center. 868 is near the blue hub. 1323 is at the right, partially occluded, and its identity is a guess.",
+ "frame": "f_0009.jpg",
+ "time_s": 7.3,
+ "usage": {
+  "in": 3377,
+  "out": 426
+ }
+}

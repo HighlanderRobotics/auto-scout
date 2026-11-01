@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    622,
+    390,
+    785,
+    505
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.75
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    82,
+    315,
+    230,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    792,
+    328,
+    922,
+    430
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "LITZ",
+   "confidence": 0.4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    985,
+    358,
+    1135,
+    465
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    872,
+    432,
+    1022,
+    595
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    968,
+    310,
+    1112,
+    405
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  }
+ ],
+ "notes": "4065 moved up toward center; 2046 shifted left. 1323 behind 4414.",
+ "frame": "f_0016.jpg",
+ "time_s": 8.7,
+ "usage": {
+  "in": 3376,
+  "out": 369
+ }
+}

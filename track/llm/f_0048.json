@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    75,
+    562,
+    188,
+    660
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    250,
+    312,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.15
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    306,
+    250,
+    375,
+    310
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1812,
+    445,
+    1920,
+    582
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.85
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1506,
+    410,
+    1694,
+    530
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    278,
+    1335,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "4065 moved slightly right near red hub. 2046 at the near-left, partly occluded by the monitor. 4414 at the right edge, with its number readable.",
+ "frame": "f_0048.jpg",
+ "time_s": 15.1,
+ "usage": {
+  "in": 3378,
+  "out": 390
+ }
+}

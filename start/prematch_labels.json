@@ -1,0 +1,26 @@
+{
+  "frame": {"video": "einstein_final_1.mp4", "time_s": 5.5, "size": [1920, 1080], "note": "last still frame before auto starts; clock shows 0:20"},
+  "robots": [
+    {"team": "2046", "alliance": "blue", "box": [195, 585, 395, 700], "confidence": "high", "evidence": "bumper reads 2046", "area": "blue near trench"},
+    {"team": "868", "alliance": "blue", "box": [305, 345, 395, 445], "confidence": "medium", "evidence": "bumper partly reads 86x", "area": "blue zone, beside the hub"},
+    {"team": "2910", "alliance": "blue", "box": [585, 195, 645, 290], "confidence": "low", "evidence": "blue robot half hidden by the far bump; name by elimination", "area": "blue far trench"},
+    {"team": "4065?", "alliance": "red", "box": [1545, 590, 1640, 690], "confidence": "low", "evidence": "red robot behind a volunteer; digits partly visible", "area": "red near trench"},
+    {"team": "unknown", "alliance": "red", "box": [1275, 225, 1345, 290], "confidence": "medium", "evidence": "red bumper visible behind the far bump", "area": "red far trench"},
+    {"team": "unknown", "alliance": "red", "box": [1700, 570, 1850, 665], "confidence": "low", "evidence": "robot frame in the red corner; bumper not visible", "area": "red zone, near corner"}
+  ],
+  "areas": {
+    "blue_zone":         [[195, 205], [590, 200], [255, 690], [0, 690], [0, 430]],
+    "blue_far_trench":   [[585, 175], [655, 175], [640, 215], [575, 215]],
+    "blue_far_bump":     [[575, 215], [640, 215], [600, 295], [545, 295]],
+    "blue_hub":          [[370, 205], [600, 205], [560, 450], [390, 450]],
+    "blue_near_bump":    [[400, 450], [560, 450], [470, 600], [330, 600]],
+    "blue_near_trench":  [[220, 570], [360, 570], [330, 690], [160, 690]],
+    "neutral_zone":      [[600, 200], [1290, 200], [1690, 690], [255, 690]],
+    "red_far_trench":    [[1265, 175], [1335, 175], [1345, 215], [1275, 215]],
+    "red_far_bump":      [[1275, 215], [1345, 215], [1360, 300], [1300, 300]],
+    "red_hub":           [[1330, 200], [1560, 200], [1525, 460], [1390, 460]],
+    "red_near_bump":     [[1380, 460], [1560, 460], [1640, 610], [1470, 610]],
+    "red_near_trench":   [[1520, 500], [1640, 500], [1720, 690], [1600, 690]],
+    "red_zone":          [[1290, 200], [1720, 205], [1920, 430], [1920, 690], [1690, 690]]
+  }
+}

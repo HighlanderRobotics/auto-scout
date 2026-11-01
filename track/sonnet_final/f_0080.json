@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    438,
+    198,
+    578
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    268,
+    260,
+    378,
+    380
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.71,
+   "forward_team": "868",
+   "track": 3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    578,
+    279,
+    650,
+    366
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "2910",
+   "track": 4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1722,
+    562,
+    1920,
+    682
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1185,
+    279,
+    1340,
+    370
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "13",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "Robots are nearly static. The 2910 box is a low-confidence guess near the blue hub's right side. The 4414 box is in the lower right corner.",
+ "frame": "f_0080.jpg",
+ "time_s": 21.5,
+ "usage": {
+  "in": 3379,
+  "out": 389
+ }
+}

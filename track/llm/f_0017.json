@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    558,
+    405,
+    740,
+    530
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.75
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    52,
+    315,
+    208,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    768,
+    320,
+    920,
+    422
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "LITZ",
+   "confidence": 0.4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1028,
+    350,
+    1190,
+    468
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    872,
+    392,
+    1000,
+    535
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    992,
+    310,
+    1148,
+    408
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  }
+ ],
+ "notes": "4065 bumper now readable. 2046 moved left toward blue hub. 1323 behind 4414.",
+ "frame": "f_0017.jpg",
+ "time_s": 8.9,
+ "usage": {
+  "in": 3379,
+  "out": 376
+ }
+}

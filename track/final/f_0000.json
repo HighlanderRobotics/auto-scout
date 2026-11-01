@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    195,
+    572,
+    395,
+    700
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    305,
+    348,
+    395,
+    450
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    582,
+    215,
+    648,
+    290
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1545,
+    585,
+    1738,
+    692
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1675,
+    566,
+    1875,
+    685
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.97,
+   "forward_team": "4414",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1270,
+    210,
+    1345,
+    291
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "1323",
+   "track": 9
+  }
+ ],
+ "notes": "Pre-match setup; robots staged near alliance walls. 2046 bumper partially readable at bottom left. Red robots mostly occluded by people and hub; positions guessed.",
+ "frame": "f_0000.jpg",
+ "time_s": 5.5,
+ "usage": {
+  "in": 2231,
+  "out": 392
+ }
+}

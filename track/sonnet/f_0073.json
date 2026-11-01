@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    112,
+    438,
+    308,
+    575
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.75
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    250,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.75
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    578,
+    285,
+    650,
+    379
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1770,
+    520,
+    1920,
+    612
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "13",
+   "confidence": 0.75
+  }
+ ],
+ "notes": "Robots are mostly stationary. 2046 near the blue bump now has fuel loaded and appears shifted slightly left. 2910 is partly hidden by fuel near the blue hub. The other robots are essentially unchanged.",
+ "frame": "f_0073.jpg",
+ "time_s": 20.1,
+ "usage": {
+  "in": 3377,
+  "out": 412
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    706,
+    385,
+    866,
+    498
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.85
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    262,
+    245,
+    362,
+    316
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    631,
+    325,
+    788,
+    420
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.3
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1895,
+    491,
+    1920,
+    541
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.2
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    278,
+    1335,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  }
+ ],
+ "notes": "2046 moved left about 40 px; its number was read on the bumper. 2910 is still beside it near the blue hub. 868 is in the far-left corner. The red robots are largely static. 4414 is not visible.",
+ "frame": "f_0059.jpg",
+ "time_s": 17.3,
+ "usage": {
+  "in": 3378,
+  "out": 407
+ }
+}

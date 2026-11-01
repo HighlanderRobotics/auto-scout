@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    490,
+    430,
+    672,
+    548
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.6
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    30,
+    315,
+    190,
+    400
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    745,
+    312,
+    895,
+    410
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2910",
+   "confidence": 0.6
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1085,
+    350,
+    1252,
+    468
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    878,
+    372,
+    1012,
+    505
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1042,
+    305,
+    1198,
+    405
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  }
+ ],
+ "notes": "2046 moved left toward blue hub; 2910 bumper reads 2910; red robots shifted right slightly.",
+ "frame": "f_0018.jpg",
+ "time_s": 9.1,
+ "usage": {
+  "in": 3381,
+  "out": 376
+ }
+}

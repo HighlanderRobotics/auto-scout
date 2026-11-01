@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    22,
+    445,
+    242,
+    582
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.8
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    60,
+    285,
+    205,
+    368
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.35
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    578,
+    268,
+    650,
+    360
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1100,
+    370,
+    1278,
+    490
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.8
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    970,
+    325,
+    1122,
+    428
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4065",
+   "confidence": 0.85
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1230,
+    280,
+    1342,
+    368
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.45
+  }
+ ],
+ "notes": "2046 moved left, number now readable. 4065 and 4414 shifted. 2910 mostly occluded behind blue hub.",
+ "frame": "f_0024.jpg",
+ "time_s": 10.3,
+ "usage": {
+  "in": 3377,
+  "out": 382
+ }
+}

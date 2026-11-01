@@ -1,0 +1,89 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    622,
+    388,
+    782,
+    495
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 0.9
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    660,
+    322,
+    795,
+    422
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.7
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    265,
+    250,
+    365,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.5
+  },
+  {
+   "team": "4414",
+   "visible": false,
+   "box": [
+    1902,
+    498,
+    1920,
+    545
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.25
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    408,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.65
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    370
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "13",
+   "confidence": 0.7
+  }
+ ],
+ "notes": "2046 and 868 are close together near the blue hub, with 2046 reading its bumper number. 4414 is still off-screen right. Other robots are essentially unchanged.",
+ "frame": "f_0060.jpg",
+ "time_s": 17.5,
+ "usage": {
+  "in": 3379,
+  "out": 395
+ }
+}

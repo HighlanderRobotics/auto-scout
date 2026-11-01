@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    185,
+    575,
+    400,
+    702
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    285,
+    342,
+    388,
+    450
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    608,
+    232,
+    710,
+    310
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1398,
+    562,
+    1600,
+    682
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 6
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1228,
+    225,
+    1335,
+    312
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "4414",
+   "track": 7
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1708,
+    568,
+    1838,
+    650
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "1323",
+   "track": 8
+  }
+ ],
+ "notes": "Robots tracked from previous positions; no bumper digits clearly legible this frame. 2910 moved right near the blue trench, 4414 near the red trench, and 4065 shifted left in the red lower area.",
+ "frame": "f_0004.jpg",
+ "time_s": 6.3,
+ "usage": {
+  "in": 3376,
+  "out": 401
+ }
+}

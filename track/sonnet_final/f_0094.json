@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    0,
+    541,
+    144,
+    629
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    265,
+    258,
+    370,
+    318
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.71,
+   "forward_team": "868",
+   "track": 3
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    612,
+    232,
+    731,
+    304
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.93,
+   "forward_team": "2910",
+   "track": 4
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    1675,
+    562,
+    1875,
+    680
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    1535,
+    410,
+    1698,
+    512
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    1188,
+    279,
+    1340,
+    370
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "13",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "A robot with a blue bumper appeared near the blue hub at about x=490-585, y=98-155, so it is assigned to 2910. The 2046 robot at bottom-left is mostly stationary and slightly more visible. The others are unchanged.",
+ "frame": "f_0094.jpg",
+ "time_s": 24.3,
+ "usage": {
+  "in": 3377,
+  "out": 418
+ }
+}

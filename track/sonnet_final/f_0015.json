@@ -1,0 +1,101 @@
+{
+ "robots": [
+  {
+   "team": "2046",
+   "visible": true,
+   "box": [
+    676,
+    380,
+    836,
+    489
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "2046",
+   "confidence": 1.0,
+   "forward_team": "2046",
+   "track": 0
+  },
+  {
+   "team": "868",
+   "visible": true,
+   "box": [
+    96,
+    315,
+    248,
+    401
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "",
+   "confidence": 1.0,
+   "forward_team": "868",
+   "track": 1
+  },
+  {
+   "team": "2910",
+   "visible": true,
+   "box": [
+    811,
+    329,
+    922,
+    425
+   ],
+   "named_by": "previous_frames",
+   "bumper_text": "LITZ",
+   "confidence": 1.0,
+   "forward_team": "2910",
+   "track": 2
+  },
+  {
+   "team": "4414",
+   "visible": true,
+   "box": [
+    958,
+    312,
+    1100,
+    475
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "4414",
+   "confidence": 0.98,
+   "forward_team": "4414",
+   "track": 6
+  },
+  {
+   "team": "4065",
+   "visible": true,
+   "box": [
+    922,
+    485,
+    1078,
+    650
+   ],
+   "named_by": "bumper_number",
+   "bumper_text": "065",
+   "confidence": 0.98,
+   "forward_team": "4065",
+   "track": 8
+  },
+  {
+   "team": "1323",
+   "visible": true,
+   "box": [
+    958,
+    312,
+    1100,
+    475
+   ],
+   "named_by": "guess",
+   "bumper_text": "",
+   "confidence": 0.96,
+   "forward_team": "1323",
+   "track": 7
+  }
+ ],
+ "notes": "2046 and 4414 are read by bumper. The robot near the bottom center shows partial digits '065', so it is now 4065. The previous frame's 1323 box at the bottom was probably 4065. The upper robot at about 770-875 x 160-250 with blue-wire bin is likely 1323 on top of 4414's teal robot; 1323's box is uncertain and overlaps 4414. 2910 is the clear bin robot labeled LITZ, tentatively. 868 is at the far left.",
+ "frame": "f_0015.jpg",
+ "time_s": 8.5,
+ "usage": {
+  "in": 3375,
+  "out": 500
+ }
+}
