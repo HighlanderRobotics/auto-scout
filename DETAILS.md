@@ -110,6 +110,88 @@ exported labels/previews, missing-image rejection, and overwrite prevention. The
 existing answer-key video can be regenerated with `render_labels.py` using the
 restored clip frames; it is not a local model prediction.
 
+## Local detector training
+
+`train_detector.py` fine-tunes pretrained YOLO26n on the prepared one-class dataset.
+Install `requirements-train.txt` using `.venv/bin/pip`. Python 3.15.1, Ultralytics
+8.4.197, PyTorch 2.15.0 and torchvision 0.29.2 were used on the 16 GB Apple M5 Mac.
+Ultralytics is AGPL-3.0; review its licensing before incorporating this implementation
+into a differently licensed distributed application.
+
+```bash
+set -o pipefail
+.venv/bin/python -u train_detector.py --out runs/local_robot_v1 2>&1 | tee /tmp/auto-scout-train-v1.log
+.venv/bin/python evaluate_detector.py runs/local_robot_v1/weights/best.pt datasets/checked_clip_v1 runs/local_robot_v1_test
+```
+
+For assistants, run the training command as a background session and keep watching
+the log. The script prints a heartbeat every 25 seconds, including during model
+download and startup. Initial public weights are downloaded from Ultralytics GitHub
+releases. Training data stays local; optional online experiment integrations and
+telemetry are disabled. No Claude API calls or key are needed.
+
+Defaults: 40 epochs, 960-pixel square training inputs, batch 4, MPS GPU, seed 0,
+workers 0, early stopping patience 12. Validation uses only the validation block.
+Best checkpoint selection is based on validation fitness, never test performance.
+Horizontal and vertical flips are disabled; the default mosaic augmentation closes
+for the final ten epochs. PyTorch warns that some MPS operations are nondeterministic,
+so the fixed seed does not guarantee bit-for-bit reproduction. Pass `--device cpu`
+only if CPU training is intended. Use a new `--out` path for every run.
+
+Outputs under `runs/local_robot_v1/` include `weights/best.pt`, `weights/last.pt`,
+`results.csv`, plots, `args.yaml`, `provenance.json` (including dataset split details),
+and `environment.txt` with the installed package versions. Model weights and run
+artifacts are ignored by Git. Preserve them locally; a source checkout alone does
+not contain the trained model.
+
+`evaluate_detector.py` predicts on the test split at a fixed confidence threshold
+of 0.25 and measures one-to-one robot matching at IoU 0.3 and 0.5. It counts every
+unmatched reference as a false negative and every unmatched prediction as a false
+positive. Precision = TP/(TP+FP); recall = TP/(TP+FN). These are fixed-threshold
+detection metrics, not average precision or team identity accuracy. The evaluation
+outputs `metrics.json`, per-frame prediction/reference boxes, `preview.jpg`, and
+`predictions.mp4`. Orange boxes are predictions; green boxes are the answer key.
+The pilot video uses 5 fps, matching the consecutive test frames in this dataset.
+Evaluation wall time includes prediction setup, matching, and JPEG rendering, so
+it is not a standalone inference speed benchmark.
+
+`compare_runs.py` cannot score this one-class detector meaningfully: it requires
+known team numbers. Use the detection evaluator until tracking and team identity
+are implemented; do not assign names from the answer key to inflate an identity score.
+The test block contains only 14 images from the same match as training. Its scores
+do not establish performance on a new match or venue.
+
+### First trained baseline: local_robot_v1 (2026-11-01)
+
+Training stopped at epoch 23 after 12 epochs without improvement in validation
+fitness. The selected checkpoint is from epoch 11. The epoch timer reports 235 s;
+model startup and final validation add overhead. No new Claude calls were made.
+The checkpoint is `runs/local_robot_v1/weights/best.pt` (about 5.2 MiB).
+
+Held-out test results, confidence fixed at 0.25, 14 images and 84 reference boxes:
+
+| Box overlap requirement | Matched robots | Missed robots | Extra detections | Precision | Recall |
+|---|---|---|---|---|---|
+| IoU >= 0.3 | 83 | 1 | 10 | 89.2% | 98.8% |
+| IoU >= 0.5 | 75 | 9 | 18 | 80.6% | 89.3% |
+
+These are robot observations across frames, not 84 different robots. At the stricter
+threshold, a poorly localized prediction contributes both an extra detection and a
+missed reference. Visual inspection shows extra/overlapping predictions around the
+crowded central robots. The baseline detects most robots at loose overlap, but its
+precision and box placement still need work. No test-driven threshold tuning was done.
+
+Checked-in summary: `results/local_robot_v1.json`, including checkpoint/dataset hashes.
+Local visual artifacts: `runs/local_robot_v1_test/preview.jpg` and `predictions.mp4`;
+raw predictions and per-frame counts are in `metrics.json`. The training log is
+`runs/local_robot_v1/training.log`; training and evaluation source snapshots are also
+saved with the run. Eight offline tests pass for dataset export and detection matching.
+Next experiments should use more varied checked labels and a separate-match test,
+then add tracking and identity. This pilot does not yet meet the end-to-end scouting target.
+
+Sources: [YOLO26 model documentation](https://docs.ultralytics.com/models/yolo26/),
+[Ultralytics training/MPS documentation](https://docs.ultralytics.com/modes/train/).
+
 ## Frames and coordinates
 
 - `track/frames/f_0000.jpg` … `f_0837.jpg`: 5 fps from video time 5.5 s (pre-match, clock 0:20) to 173 s (clock 0:00). Frame `i` is at video time `5.5 + i/5`.
@@ -177,6 +259,7 @@ Everything in a Lovat report is built from three inputs:
 | | Haiku 5.5 | 2.5 frames per second (`--step 2`), two images, robot descriptions | 86% (92% before the backward pass) | 93% | $0.0010 per frame used | about $0.40 |
 | | Haiku 5.5 | two images | 94% | 96% | $0.0008 | about $0.70 |
 | | Haiku 4.5 | two images | not usable | 4% | $0.005 | — |
+| local_robot_v1 | YOLO26n | Local detector; 81 training images, 14 held-out test images | Not implemented | 98.8% recall at IoU 0.3; 89.2% precision | $0 API | $0 API for detector; full pipeline not measured |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
 
@@ -207,7 +290,7 @@ Prior FRC projects to learn from: [NimbleValley/auto-scout](https://github.com/N
 
 First tests:
 
-1. Train RF-DETR-S and YOLO26s on the checked clip frames, and compare how many robots each finds on held-out frames, including hidden ones.
+1. Train RF-DETR-S and YOLO26s on the checked clip frames, and compare visible-robot detections on held-out frames. The first local baseline uses the smaller YOLO26n. Evaluate continuity through fully hidden frames separately at the tracking stage.
 2. Measure bumper digit height in pixels at 1080p, and test Apple Vision and PARSeq with the 1-of-3 rule.
 3. Run BoT-SORT on the full match, and count name swaps.
 4. Only then, test whether a local AI model fixes the hard moments.

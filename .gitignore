@@ -8,6 +8,8 @@ __pycache__/
 
 # Rebuildable local training datasets and previews
 datasets/
+runs/
+*.pt
 
 # Match video and frames made from it (rebuild them with the commands in DETAILS.md)
 *.mp4

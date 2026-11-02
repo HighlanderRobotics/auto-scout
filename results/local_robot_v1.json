@@ -1,0 +1,50 @@
+{
+  "run": "local_robot_v1",
+  "date": "2026-11-01",
+  "model": "YOLO26n",
+  "initial_weights": "yolo26n.pt",
+  "initial_weights_sha256": "9b09cc8bf347f0fc8a5f7657480587f25db09b34bf33b0652110fb03a8ad4fef",
+  "checkpoint": "runs/local_robot_v1/weights/best.pt",
+  "checkpoint_sha256": "acc1219b23933d876b91332cd0d77eb9dfb1c0b98c3b7330e786c68069e500fa",
+  "dataset": "datasets/checked_clip_v1",
+  "dataset_manifest_sha256": "5b4bf3be0aee061896bef42136fa860deaacc803b68edac48e7cab8d15ed1e1d",
+  "training_images": 81,
+  "validation_images": 8,
+  "test_images": 14,
+  "test_reference_boxes": 84,
+  "epochs_requested": 40,
+  "epochs_completed": 23,
+  "best_epoch": 11,
+  "early_stopping_patience": 12,
+  "training_timer_seconds": 235.445,
+  "imgsz": 960,
+  "batch": 4,
+  "seed": 0,
+  "device": "Apple M5 MPS",
+  "memory_gb": 16,
+  "python": "3.15.1",
+  "torch": "2.15.0",
+  "ultralytics": "8.4.197",
+  "confidence_threshold": 0.25,
+  "metrics": {
+    "0.3": {
+      "true_positive": 83,
+      "false_positive": 10,
+      "false_negative": 1,
+      "precision": 0.8924731182795699,
+      "recall": 0.9880952380952381
+    },
+    "0.5": {
+      "true_positive": 75,
+      "false_positive": 18,
+      "false_negative": 9,
+      "precision": 0.8064516129032258,
+      "recall": 0.8928571428571429
+    }
+  },
+  "new_claude_requests": 0,
+  "api_cost_usd": 0,
+  "scope": "One-class visible robot detection; no team identity. Same-match pilot only.",
+  "test_artifacts": "runs/local_robot_v1_test",
+  "observations": "Extra or overlapping detections around the crowded central robots; localization errors reduce recall at IoU 0.5."
+}

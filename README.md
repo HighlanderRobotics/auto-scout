@@ -18,6 +18,7 @@ We tested on [Einstein Final 1 of the 2026 Championship](https://www.youtube.com
 - **Reading the score overlay works.** Code reads the score, clock and shift counter every second. It matched the official totals.
 - **Claude can track all six robots.** For each video frame, Claude gets the frame and the last known positions, and returns a box and a team number for every robot. A second pass then fixes names with bumper numbers read later in the match. On a 30-second clip, a mentor checked the Opus run by hand: every name was correct.
 - **Cost per match depends on the model.** One Claude call per frame is about 840 calls per match. Opus costs about $18 per match. Sonnet costs about $9 and got 95% of names correct. The new Haiku 5.5 got 94% correct for about $0.70 per match. The cheaper runs swapped 868 and 2910 for about 12 seconds. Telling Haiku 5.5 what each robot looks like fixed most of that: 98% of names correct for about $0.75 per match, which meets our target.
+- **The first local detector is trained.** YOLO26n trained on 81 images and matched 75 of 84 robot boxes on 14 held-out images at IoU 0.5, with 18 extra detections. This is a small same-match pilot; team identity and testing at other venues still need work. No new Claude calls were needed. Results are in [DETAILS.md](DETAILS.md#first-trained-baseline-local_robot_v1-2026-11-01).
 
 ## Research projects
 
@@ -29,8 +30,20 @@ Local detector data preparation is available now, without Claude calls:
 
 Restore the video frames first using [DETAILS.md](DETAILS.md#setup). The export includes
 training labels, separate chronological training/validation/test blocks, and labeled
-preview sheets. This prepares data; it does not train a detector yet. See
+preview sheets. See
 [local dataset preparation](DETAILS.md#local-dataset-preparation) for checks and limitations.
+
+To train a first local robot detector and score its held-out test images:
+
+```bash
+.venv/bin/pip install -r requirements-train.txt
+.venv/bin/python train_detector.py --out runs/local_robot_v1
+.venv/bin/python evaluate_detector.py runs/local_robot_v1/weights/best.pt datasets/checked_clip_v1 runs/local_robot_v1_test
+```
+
+Training runs locally on the Mac GPU, downloads public starting weights, and makes
+no Claude requests. The detector finds robots; it does not assign team numbers.
+See [local detector training](DETAILS.md#local-detector-training) for settings and results.
 
 This is not a list of steps. Each project is a way the system needs to improve. Pick one, try ideas with Claude, and measure the result. The technical details for each project are in [DETAILS.md](DETAILS.md#research-projects-technical-details).
 
