@@ -83,6 +83,19 @@ class TeacherTests(unittest.TestCase):
         self.assertGreater(teacher.ledger["spent_usd"], 0)
         self.assertFalse(Path("out.json").exists())
 
+    def test_hidden_robot_with_empty_box_uses_previous_estimate(self):
+        teacher = self.teacher()
+        teams = {str(i): "blue" if i < 3 else "red" for i in range(6)}
+        robots = [{"team": str(i), "visible": i != 0, "box": [] if i == 0 else [10, 10, 30, 30],
+                   "confidence": .8, "named_by": "previous_frames", "bumper_text": ""} for i in range(6)]
+        response = self.response()
+        response.content[0].text = json.dumps({"robots": robots, "notes": ""})
+        self.client.messages.create.return_value = response
+        prior = [{"team": "0", "box": [100, 100, 200, 200]}]
+        result = teacher.label("frame.jpg", "out.json", teams=teams, prior=prior)
+        self.assertFalse(result["robots"][0]["visible"])
+        self.assertEqual(result["robots"][0]["box"], prior[0]["box"])
+
 
 class PseudoLabelTests(unittest.TestCase):
     def data(self):

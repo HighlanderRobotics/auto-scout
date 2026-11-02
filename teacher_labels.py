@@ -191,6 +191,9 @@ No extra commentary. If the camera is a close-up or a replay, set every robot vi
         if response.stop_reason != "end_turn":
             raise ValueError(f"Teacher did not finish normally: {response.stop_reason}")
         data = json.loads(next(block.text for block in response.content if block.type == "text"))
+        raw = output.parent / "raw"
+        raw.mkdir(parents=True, exist_ok=True)
+        atomic_json(raw / output.name, data)
         if teams is not None:
             if len(data["robots"]) != 6 or {r.get("team") for r in data["robots"]} != set(teams):
                 raise ValueError("Tracker teacher did not return each team exactly once")
@@ -201,6 +204,18 @@ No extra commentary. If the camera is a close-up or a replay, set every robot vi
         else:
             validate_labels(data, sent.width, sent.height)
         for robot in data["robots"]:
+            # Hidden estimates are not training targets. Some responses omit their box.
+            box = robot.get("box")
+            if teams is not None and not robot["visible"] and (
+                    not isinstance(box, list) or len(box) != 4 or
+                    any(type(v) not in (int, float) or not math.isfinite(v) for v in box)):
+                previous_robot = next((r for r in (prior or []) if r.get("team") == robot["team"]), None)
+                if previous_robot:
+                    b = previous_robot["box"]
+                    robot["box"] = [b[0] * sent.width / width, b[1] * sent.height / height,
+                                    b[2] * sent.width / width, b[3] * sent.height / height]
+                else:
+                    robot["box"] = [0, 0, 1, 1]
             robot["box"] = [round(robot["box"][0] * width / sent.width), round(robot["box"][1] * height / sent.height),
                             round(robot["box"][2] * width / sent.width), round(robot["box"][3] * height / sent.height)]
         data.update(image=image_path.name, image_sha256=digest, teacher_model=MODEL, response_model=response.model,

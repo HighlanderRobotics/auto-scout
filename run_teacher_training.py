@@ -151,17 +151,26 @@ def main():
             status("running")
             print(stage, flush=True)
             frames = extract_frames(root, source, plan)
-            prior, previous = None, None
+            prior, previous, previous_index = None, None, None
             stage = "labeling " + source["match"]
             paths = sorted(frames.glob("f_*.jpg"))
             for index, frame in enumerate(paths):
                 target = root / "labels" / source["match"] / (frame.stem + ".json")
                 digest = hashlib.sha256(frame.read_bytes()).hexdigest()
+                if not target.exists() and any(a["image_sha256"] == digest and a["status"] == "billed"
+                                               for a in teacher.ledger["attempts"]):
+                    quarantine_path = root / "quarantine.json"
+                    quarantine = json.loads(quarantine_path.read_text()) if quarantine_path.exists() else {}
+                    quarantine[digest] = {"image": str(frame), "reason": "Previously billed response has no usable label; excluded without retry"}
+                    atomic_json(quarantine_path, quarantine)
+                    print(f"Excluded already-billed frame {frame.name}; no duplicate request", flush=True)
+                    continue
                 if not target.exists() and any(a["image_sha256"] == digest and a["status"] in ("pending", "failed_or_uncertain")
                                                 for a in teacher.ledger["attempts"]):
                     raise ValueError("This frame has an uncertain earlier API attempt; reconcile it before any retry")
-                data = teacher.label(frame, target, teams=source["teams"], previous=previous, prior=prior, gap=1 / plan["label_fps"])
-                previous, prior = frame, data["robots"]
+                gap = (index - previous_index) / plan["label_fps"] if previous_index is not None else 1 / plan["label_fps"]
+                data = teacher.label(frame, target, teams=source["teams"], previous=previous, prior=prior, gap=gap)
+                previous, prior, previous_index = frame, data["robots"], index
                 status("running", match=source["match"], frame=index + 1, frames=len(paths),
                        spent_usd=teacher.ledger["spent_usd"], reserved_usd=teacher.ledger["reserved_usd"])
                 print(f"{source['match']} {index+1}/{len(paths)}; visible={sum(r['visible'] for r in prior)}; spend=${teacher.ledger['spent_usd']:.4f}", flush=True)

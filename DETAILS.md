@@ -276,9 +276,15 @@ to $4, then resumed from cached labels. No paid request was repeated during that
 On success, the job writes `datasets/teacher_v2/result.json`, trained weights under
 `runs/local_robot_v2/weights/`, and a preview/video plus precision/recall under
 `runs/local_robot_v2_test/`. These are ignored local artifacts. No student-v2 result
-is claimed until training and evaluation finish. Fourteen offline tests cover the
+is claimed until training and evaluation finish. Fifteen offline tests cover the
 dataset/evaluation logic, filtering, cap enforcement, failed-request reserves, and
-cached-label reuse; none sends API requests.
+cached-label reuse; none sends API requests. Hidden robots may return an empty box:
+the parser preserves a previous estimate for continuity while keeping `visible=false`.
+Raw responses are retained under each label folder's `raw/` subdirectory. An already
+billed response with no usable label is quarantined without another paid request;
+the next frame uses the actual elapsed gap. The first such recovery excluded frame
+320 of Silicon Valley Quals 71 after 320 successful labels. Audit and cached labels
+were retained after verifying that API request construction was unchanged.
 
 ## Frames and coordinates
 
