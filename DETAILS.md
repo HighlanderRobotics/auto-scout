@@ -197,8 +197,8 @@ Sources: [YOLO26 model documentation](https://docs.ultralytics.com/models/yolo26
 `run_teacher_training.py` runs the plan in `configs/haiku_teacher_v2.json`:
 label with `claude-haiku-5-5`, filter pseudo-labels, train YOLO26n, then evaluate
 on the original 14 checked test images. Sonnet is disabled and its comparison is
-postponed. The user approved a **$9 maximum on 2026-11-02**, after replacing the
-local key. Prior recorded spending and uncertain request reserves remain in the
+postponed. The user set the current **$4 maximum on 2026-11-02**, lowering the earlier
+$9 cap after replacing the local key. Prior recorded spending and uncertain request reserves remain in the
 ledger, so the limit is conservative across the key change. Expected labeling
 cost for the three-match plan is about $2; unused budget is not spent automatically.
 
@@ -262,13 +262,16 @@ The billing ledger at `datasets/teacher_v2/billing/ledger.json` reserves $0.01 b
 each request and counts reported usage at $0.10/$0.50 per million input/output tokens.
 Failed/uncertain attempts retain their reserves. The client sends only bounded
 images and fixed prompts, with a 4,096-output-token limit. It stops when the next
-reserve would cross $9. This ledger tracks this job; it does not control other use
+reserve would cross $4. This ledger tracks this job; it does not control other use
 of the account. The key is read from `.env`, never copied into the plan or logs.
 
 The audited label method is fingerprinted separately from budget settings. The
-$5-to-$9 cap change preserved all usage and reserves, and the label method AST was
+$5-to-$9-to-$4 cap changes preserved all usage and reserves, and the label method AST was
 verified unchanged before retaining the audit. The original audited source snapshot
 is under `datasets/teacher_v2/provenance/`.
+
+The running job was paused between completed API requests to lower the cap from $9
+to $4, then resumed from cached labels. No paid request was repeated during that change.
 
 On success, the job writes `datasets/teacher_v2/result.json`, trained weights under
 `runs/local_robot_v2/weights/`, and a preview/video plus precision/recall under

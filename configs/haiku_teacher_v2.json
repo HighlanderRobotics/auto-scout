@@ -1,6 +1,6 @@
 {
   "model": "claude-haiku-5-5",
-  "budget_usd": 9.0,
+  "budget_usd": 4.0,
   "estimated_cost_usd": 2.0,
   "label_fps": 5,
   "export_stride": 3,

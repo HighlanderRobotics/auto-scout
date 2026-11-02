@@ -61,7 +61,7 @@ class TeacherTests(unittest.TestCase):
 
     def test_budget_stops_before_request(self):
         teacher = self.teacher()
-        teacher.ledger["spent_usd"] = 8.995
+        teacher.ledger["spent_usd"] = 3.995
         with self.assertRaisesRegex(RuntimeError, "Budget exhausted"):
             teacher.label("frame.jpg", "out.json")
         self.client.messages.create.assert_not_called()

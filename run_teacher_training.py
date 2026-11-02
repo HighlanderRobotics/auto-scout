@@ -130,8 +130,8 @@ def main():
     root = args.root
     root.mkdir(parents=True, exist_ok=True)
     plan = json.loads(args.plan.read_text())
-    if plan["model"] != MODEL or not 0 < plan["budget_usd"] <= 9:
-        parser.error("Only Haiku 5.5 within the approved $9 budget is authorized")
+    if plan["model"] != MODEL or not 0 < plan["budget_usd"] <= 4:
+        parser.error("Only Haiku 5.5 within the approved $4 budget is authorized")
     contract = root / "job_plan.json"
     if contract.exists() and json.loads(contract.read_text()) != plan:
         parser.error("Plan changed; existing job must be reviewed rather than silently reused")

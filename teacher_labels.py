@@ -70,9 +70,9 @@ def validate_labels(data, width, height):
 
 
 class Teacher:
-    def __init__(self, directory, cap=9.0):
-        if not 0 < cap <= 9:
-            raise ValueError("This approved run has a maximum $9 cap")
+    def __init__(self, directory, cap=4.0):
+        if not 0 < cap <= 4:
+            raise ValueError("This approved run has a maximum $4 cap")
         self.directory = Path(directory)
         self.directory.mkdir(parents=True, exist_ok=True)
         self.lock = (self.directory / "ledger.lock").open("a")
