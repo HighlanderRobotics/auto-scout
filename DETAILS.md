@@ -192,6 +192,91 @@ then add tracking and identity. This pilot does not yet meet the end-to-end scou
 Sources: [YOLO26 model documentation](https://docs.ultralytics.com/models/yolo26/),
 [Ultralytics training/MPS documentation](https://docs.ultralytics.com/modes/train/).
 
+## Haiku teacher pipeline
+
+`run_teacher_training.py` runs the plan in `configs/haiku_teacher_v2.json`:
+label with `claude-haiku-5-5`, filter pseudo-labels, train YOLO26n, then evaluate
+on the original 14 checked test images. Sonnet is disabled and its comparison is
+postponed. The user approved a **$9 maximum on 2026-11-02**, after replacing the
+local key. Prior recorded spending and uncertain request reserves remain in the
+ledger, so the limit is conservative across the key change. Expected labeling
+cost for the three-match plan is about $2; unused budget is not spent automatically.
+
+Sources (videos discovered from public TBA match pages and visually checked):
+
+| Match | Video ID | Use |
+|---|---|---|
+| [Silicon Valley Quals 71](https://www.thebluealliance.com/match/2026casnv_qm71) | `y_vBDwf4Cbc` | Train |
+| [Sacramento Finals 1](https://www.thebluealliance.com/match/2026casac_f1m1) | `Ygzo0f0k0mk` | Train |
+| [Silicon Valley Quals 65](https://www.thebluealliance.com/match/2026casnv_qm65) | `oSjsixPUjlY` | Validation |
+
+The first 150 video seconds per source are extracted at 5 fps with the same
+1920x610 field crop: 750 frames per match, 2,250 requests at most. Title cards
+and fully hidden robots are excluded. The teacher gets the roster, previous image,
+and previous positions; team assignments help continuity but are discarded for
+one-class detector training. Every third labeled frame is considered for export,
+reducing adjacent-frame duplication in the student dataset.
+
+Conservative export accepts only frames with six visible robots, confidence >=0.5
+for each, and no pair of boxes with IoU >0.7. This reduces incomplete labels, but
+cannot guarantee correctness and biases the dataset against crowded/hidden scenes.
+Labels remain **unreviewed pseudo-labels**, not new answer keys. Training requires
+at least 100 accepted training images and 30 validation images. Different matches
+are kept in separate splits; no old Einstein frames enter student training.
+
+The teacher audit used a checked frame-0 seed and evaluated consecutive frames 1–40:
+
+| IoU | True positives | False positives | False negatives | Precision | Recall |
+|---|---|---|---|---|---|
+| 0.3 | 216 | 3 | 18 | 98.6% | 92.3% |
+| 0.5 | 212 | 7 | 22 | 96.8% | 90.6% |
+
+The gate requires >=90% precision and recall at IoU 0.5. It passes, but visible
+robots are still sometimes marked hidden. A generic single-image labeling prompt
+failed this pilot and was not used for training. This is not full-match accuracy.
+`results/haiku_teacher_audit.json` records the audit; an adapter restores full-frame
+coordinates in `runs/haiku_teacher_audit_tracking/` for `compare_runs.py`. That
+comparison reports 90% names and 97% overlapping boxes on the 40 audit frames,
+about $0.03. Its name percentage is conditional on matched boxes; use the detection
+audit above to see missed reference robots explicitly.
+
+Install `requirements-teacher.txt` with `.venv/bin/pip`. Before any new paid run,
+give an estimated cost and obtain authorization. After approval, a foreground
+command is:
+
+```bash
+set -o pipefail
+caffeinate -i .venv/bin/python -u run_teacher_training.py 2>&1 | tee datasets/teacher_v2/job.log
+```
+
+Assistants should run this in a background session. The launched job uses `nohup`,
+a separate process group and `caffeinate` so it can continue after the launching
+shell exits and prevent idle sleep. Keep the Mac plugged in with the lid open.
+The job writes progress every frame and a heartbeat at least every 25 seconds.
+Inspect `datasets/teacher_v2/status.json`, `job.log`, and `launch.json` (process group).
+On failure the status changes to `stopped`; there are no automatic API retries.
+An uncertain in-flight request must be reconciled before retrying that frame.
+Completed labels are reused after checking image, model, and prompt hashes.
+
+The billing ledger at `datasets/teacher_v2/billing/ledger.json` reserves $0.01 before
+each request and counts reported usage at $0.10/$0.50 per million input/output tokens.
+Failed/uncertain attempts retain their reserves. The client sends only bounded
+images and fixed prompts, with a 4,096-output-token limit. It stops when the next
+reserve would cross $9. This ledger tracks this job; it does not control other use
+of the account. The key is read from `.env`, never copied into the plan or logs.
+
+The audited label method is fingerprinted separately from budget settings. The
+$5-to-$9 cap change preserved all usage and reserves, and the label method AST was
+verified unchanged before retaining the audit. The original audited source snapshot
+is under `datasets/teacher_v2/provenance/`.
+
+On success, the job writes `datasets/teacher_v2/result.json`, trained weights under
+`runs/local_robot_v2/weights/`, and a preview/video plus precision/recall under
+`runs/local_robot_v2_test/`. These are ignored local artifacts. No student-v2 result
+is claimed until training and evaluation finish. Fourteen offline tests cover the
+dataset/evaluation logic, filtering, cap enforcement, failed-request reserves, and
+cached-label reuse; none sends API requests.
+
 ## Frames and coordinates
 
 - `track/frames/f_0000.jpg` … `f_0837.jpg`: 5 fps from video time 5.5 s (pre-match, clock 0:20) to 173 s (clock 0:00). Frame `i` is at video time `5.5 + i/5`.
@@ -260,6 +345,7 @@ Everything in a Lovat report is built from three inputs:
 | | Haiku 5.5 | two images | 94% | 96% | $0.0008 | about $0.70 |
 | | Haiku 4.5 | two images | not usable | 4% | $0.005 | — |
 | local_robot_v1 | YOLO26n | Local detector; 81 training images, 14 held-out test images | Not implemented | 98.8% recall at IoU 0.3; 89.2% precision | $0 API | $0 API for detector; full pipeline not measured |
+| teacher audit | Haiku 5.5 | Sequential prompt, 40 checked frames after frame-0 seed; before identity cleanup | 90% | 97% matched overlap; see detection recall above | about $0.0007 | Not measured on full match |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
 

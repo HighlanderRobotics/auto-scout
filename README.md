@@ -45,6 +45,11 @@ Training runs locally on the Mac GPU, downloads public starting weights, and mak
 no Claude requests. The detector finds robots; it does not assign team numbers.
 See [local detector training](DETAILS.md#local-detector-training) for settings and results.
 
+The Haiku teacher job can label three TBA-linked matches, filter the labels, train,
+and evaluate automatically. It is Haiku 5.5 only, with an approved **$9 maximum**
+and an estimated labeling cost around $2. See
+[the teacher pipeline](DETAILS.md#haiku-teacher-pipeline) before running paid work.
+
 This is not a list of steps. Each project is a way the system needs to improve. Pick one, try ideas with Claude, and measure the result. The technical details for each project are in [DETAILS.md](DETAILS.md#research-projects-technical-details).
 
 ### 1. Teach a local model with Claude
