@@ -13,7 +13,7 @@ from pathlib import Path
 from PIL import Image
 from evaluate_detector import iou
 from prepare_dataset import convert_robot, make_preview
-from teacher_labels import MODEL, Teacher, atomic_json
+from teacher_labels import MODEL, Teacher, InvalidTeacherLabel, atomic_json
 from train_detector import heartbeat
 
 
@@ -154,6 +154,7 @@ def main():
             prior, previous, previous_index = None, None, None
             stage = "labeling " + source["match"]
             paths = sorted(frames.glob("f_*.jpg"))
+            consecutive_invalid = 0
             for index, frame in enumerate(paths):
                 target = root / "labels" / source["match"] / (frame.stem + ".json")
                 digest = hashlib.sha256(frame.read_bytes()).hexdigest()
@@ -169,7 +170,21 @@ def main():
                                                 for a in teacher.ledger["attempts"]):
                     raise ValueError("This frame has an uncertain earlier API attempt; reconcile it before any retry")
                 gap = (index - previous_index) / plan["label_fps"] if previous_index is not None else 1 / plan["label_fps"]
-                data = teacher.label(frame, target, teams=source["teams"], previous=previous, prior=prior, gap=gap)
+                try:
+                    data = teacher.label(frame, target, teams=source["teams"], previous=previous, prior=prior, gap=gap)
+                except InvalidTeacherLabel as error:
+                    quarantine_path = root / "quarantine.json"
+                    quarantine = json.loads(quarantine_path.read_text()) if quarantine_path.exists() else {}
+                    quarantine[digest] = {"image": str(frame), "reason": str(error), "raw_response": str(target.parent / "raw" / target.name)}
+                    atomic_json(quarantine_path, quarantine)
+                    consecutive_invalid += 1
+                    status("running", match=source["match"], frame=index + 1, frames=len(paths),
+                           spent_usd=teacher.ledger["spent_usd"], quarantined=len(quarantine))
+                    print(f"Excluded invalid label for {frame.name}: {error}; no paid retry", flush=True)
+                    if consecutive_invalid >= 10:
+                        raise ValueError("Ten consecutive invalid labels; stopping to avoid wasting credits")
+                    continue
+                consecutive_invalid = 0
                 previous, prior, previous_index = frame, data["robots"], index
                 status("running", match=source["match"], frame=index + 1, frames=len(paths),
                        spent_usd=teacher.ledger["spent_usd"], reserved_usd=teacher.ledger["reserved_usd"])

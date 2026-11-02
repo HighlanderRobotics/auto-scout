@@ -276,7 +276,7 @@ to $4, then resumed from cached labels. No paid request was repeated during that
 On success, the job writes `datasets/teacher_v2/result.json`, trained weights under
 `runs/local_robot_v2/weights/`, and a preview/video plus precision/recall under
 `runs/local_robot_v2_test/`. These are ignored local artifacts. No student-v2 result
-is claimed until training and evaluation finish. Fifteen offline tests cover the
+is claimed until training and evaluation finish. Eighteen offline tests cover the
 dataset/evaluation logic, filtering, cap enforcement, failed-request reserves, and
 cached-label reuse; none sends API requests. Hidden robots may return an empty box:
 the parser preserves a previous estimate for continuity while keeping `visible=false`.
@@ -285,6 +285,17 @@ billed response with no usable label is quarantined without another paid request
 the next frame uses the actual elapsed gap. The first such recovery excluded frame
 320 of Silicon Valley Quals 71 after 320 successful labels. Audit and cached labels
 were retained after verifying that API request construction was unchanged.
+
+Visible boxes with zero area, reversed corners, non-finite coordinates, or substantial
+out-of-frame positions are rejected as `InvalidTeacherLabel`. Tiny boundary overshoots
+of at most two sent-image pixels are clipped and recorded in `box_adjustments`.
+The job quarantines malformed paid responses and continues with the last valid
+tracking state and the actual elapsed frame gap; it never retries those responses.
+Ten consecutive malformed responses stop the job to avoid wasting credits. API,
+authentication, budget, and uncertain-network failures still stop immediately.
+Raw text is preserved even when JSON is malformed. A geometry error at frame 357
+of the first match was repaired this way; 356 completed labels and all billing
+records were retained. Quality requirements for training were not loosened.
 
 ## Frames and coordinates
 

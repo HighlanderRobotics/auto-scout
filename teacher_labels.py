@@ -69,6 +69,54 @@ def validate_labels(data, width, height):
     return data
 
 
+class InvalidTeacherLabel(ValueError):
+    """A billed response that must be excluded, not retried or used for training."""
+
+
+def normalize_labels(data, teams, prior, sent_width, sent_height, width, height):
+    try:
+        if not isinstance(data, dict) or not isinstance(data.get("robots"), list):
+            raise ValueError("Malformed robot list")
+        if teams is not None:
+            if len(data["robots"]) != 6 or {r.get("team") for r in data["robots"]} != set(teams):
+                raise ValueError("Tracker did not return each team exactly once")
+            if any(type(r.get("visible")) is not bool for r in data["robots"]):
+                raise ValueError("Invalid visibility")
+            data["usable"] = any(r["visible"] for r in data["robots"])
+        for robot in data["robots"]:
+            box = robot.get("box")
+            finite = (isinstance(box, list) and len(box) == 4 and
+                      all(type(v) in (int, float) and math.isfinite(v) for v in box))
+            visible = teams is None or robot["visible"]
+            if visible:
+                if not finite or box[2] <= box[0] or box[3] <= box[1]:
+                    raise ValueError("Malformed or zero-area visible box")
+                # Correct only tiny boundary overshoots, never a substantially wrong box.
+                if box[0] < -2 or box[1] < -2 or box[2] > sent_width + 2 or box[3] > sent_height + 2:
+                    raise ValueError("Visible box substantially outside image")
+                clipped = [max(0, box[0]), max(0, box[1]), min(sent_width, box[2]), min(sent_height, box[3])]
+                if clipped != box:
+                    data.setdefault("box_adjustments", []).append({"team": robot.get("team"), "before": box, "after": clipped})
+                robot["box"] = clipped
+            elif not finite or box[2] <= box[0] or box[3] <= box[1]:
+                previous_robot = next((r for r in (prior or []) if r.get("team") == robot["team"]), None)
+                if previous_robot:
+                    b = previous_robot["box"]
+                    robot["box"] = [b[0] * sent_width / width, b[1] * sent_height / height,
+                                    b[2] * sent_width / width, b[3] * sent_height / height]
+                else:
+                    robot["box"] = [0, 0, 1, 1]
+        visible_robots = [r for r in data["robots"] if teams is None or r["visible"]]
+        validate_labels({"usable": data["usable"] if teams is None else True, "robots": visible_robots}, sent_width, sent_height)
+        for robot in data["robots"]:
+            b = robot["box"]
+            robot["box"] = [round(b[0] * width / sent_width), round(b[1] * height / sent_height),
+                            round(b[2] * width / sent_width), round(b[3] * height / sent_height)]
+        return data
+    except (ValueError, KeyError, TypeError, IndexError, AttributeError) as error:
+        raise InvalidTeacherLabel(str(error)) from None
+
+
 class Teacher:
     def __init__(self, directory, cap=4.0):
         if not 0 < cap <= 4:
@@ -188,36 +236,18 @@ No extra commentary. If the camera is a close-up or a replay, set every robot vi
         atomic_json(self.ledger_path, self.ledger)
         if cost > RESERVATION or not response.model.startswith(MODEL):
             raise RuntimeError("Unexpected billing/model response; stopped before further requests")
-        if response.stop_reason != "end_turn":
-            raise ValueError(f"Teacher did not finish normally: {response.stop_reason}")
-        data = json.loads(next(block.text for block in response.content if block.type == "text"))
         raw = output.parent / "raw"
         raw.mkdir(parents=True, exist_ok=True)
+        text = next((block.text for block in response.content if block.type == "text"), "")
+        (raw / (output.stem + ".txt")).write_text(text)
+        if response.stop_reason != "end_turn":
+            raise InvalidTeacherLabel(f"Teacher did not finish normally: {response.stop_reason}")
+        try:
+            data = json.loads(text)
+        except ValueError:
+            raise InvalidTeacherLabel("Malformed response JSON") from None
         atomic_json(raw / output.name, data)
-        if teams is not None:
-            if len(data["robots"]) != 6 or {r.get("team") for r in data["robots"]} != set(teams):
-                raise ValueError("Tracker teacher did not return each team exactly once")
-            if any(type(r.get("visible")) is not bool for r in data["robots"]):
-                raise ValueError("Tracker teacher returned invalid visibility")
-            data["usable"] = any(r["visible"] for r in data["robots"])
-            validate_labels({"usable": True, "robots": [r for r in data["robots"] if r["visible"]]}, sent.width, sent.height)
-        else:
-            validate_labels(data, sent.width, sent.height)
-        for robot in data["robots"]:
-            # Hidden estimates are not training targets. Some responses omit their box.
-            box = robot.get("box")
-            if teams is not None and not robot["visible"] and (
-                    not isinstance(box, list) or len(box) != 4 or
-                    any(type(v) not in (int, float) or not math.isfinite(v) for v in box)):
-                previous_robot = next((r for r in (prior or []) if r.get("team") == robot["team"]), None)
-                if previous_robot:
-                    b = previous_robot["box"]
-                    robot["box"] = [b[0] * sent.width / width, b[1] * sent.height / height,
-                                    b[2] * sent.width / width, b[3] * sent.height / height]
-                else:
-                    robot["box"] = [0, 0, 1, 1]
-            robot["box"] = [round(robot["box"][0] * width / sent.width), round(robot["box"][1] * height / sent.height),
-                            round(robot["box"][2] * width / sent.width), round(robot["box"][3] * height / sent.height)]
+        data = normalize_labels(data, teams, prior, sent.width, sent.height, width, height)
         data.update(image=image_path.name, image_sha256=digest, teacher_model=MODEL, response_model=response.model,
                     image_size=[width, height], usage=usage, cost_usd=cost, prompt_sha256=prompt_hash)
         output.parent.mkdir(parents=True, exist_ok=True)

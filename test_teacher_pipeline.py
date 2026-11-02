@@ -9,7 +9,7 @@ from unittest.mock import MagicMock, patch
 
 from PIL import Image
 from run_teacher_training import training_boxes
-from teacher_labels import MODEL, Teacher
+from teacher_labels import MODEL, Teacher, InvalidTeacherLabel, normalize_labels
 
 
 class TeacherTests(unittest.TestCase):
@@ -78,10 +78,12 @@ class TeacherTests(unittest.TestCase):
     def test_invalid_label_is_billed_but_not_exported(self):
         teacher = self.teacher()
         self.client.messages.create.return_value = self.response([10, 10, 5, 5])
-        with self.assertRaises(ValueError):
+        with self.assertRaises(InvalidTeacherLabel):
             teacher.label("frame.jpg", "out.json")
         self.assertGreater(teacher.ledger["spent_usd"], 0)
         self.assertFalse(Path("out.json").exists())
+        self.assertTrue(Path("raw/out.json").exists())
+        self.assertEqual(self.client.messages.create.call_count, 1)
 
     def test_hidden_robot_with_empty_box_uses_previous_estimate(self):
         teacher = self.teacher()
@@ -121,6 +123,21 @@ class PseudoLabelTests(unittest.TestCase):
         val = {s["match"] for s in plan["sources"] if s["split"] == "val"}
         self.assertFalse(train & val)
         self.assertNotIn("2026cmptx_f1m1", train | val)
+
+    def test_tiny_boundary_overshoot_is_clipped(self):
+        data = {"usable": True, "robots": [{"box": [-1, 2, 101, 20], "confidence": .9}]}
+        normalized = normalize_labels(data, None, None, 100, 50, 200, 100)
+        self.assertEqual(normalized["robots"][0]["box"], [0, 4, 200, 40])
+        self.assertEqual(len(normalized["box_adjustments"]), 1)
+
+    def test_bad_geometry_is_quarantined_not_silently_corrected(self):
+        for box in ([1000, 0, 0, 0], [0, 0, 0, 0], [0, 0, 50, 500], [], [0, 0, float("nan"), 10]):
+            with self.subTest(box=box), self.assertRaises(InvalidTeacherLabel):
+                normalize_labels({"usable": True, "robots": [{"box": box, "confidence": .9}]}, None, None, 100, 50, 100, 50)
+
+    def test_box_fully_outside_after_clipping_is_rejected(self):
+        with self.assertRaises(InvalidTeacherLabel):
+            normalize_labels({"usable": True, "robots": [{"box": [-2, 2, -1, 10], "confidence": .9}]}, None, None, 100, 50, 100, 50)
 
 
 if __name__ == "__main__":
