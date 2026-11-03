@@ -192,6 +192,78 @@ then add tracking and identity. This pilot does not yet meet the end-to-end scou
 Sources: [YOLO26 model documentation](https://docs.ultralytics.com/models/yolo26/),
 [Ultralytics training/MPS documentation](https://docs.ultralytics.com/modes/train/).
 
+## Autonomous path animation
+
+`auto_paths.py` accepts a YouTube video link or a local video and produces an
+autonomous-window tracking video and a 2D path animation. It uses the preferred
+local v1 detector plus ByteTrack, not Claude. Install `requirements-paths.txt`.
+The trained weights are ignored by Git: pass `--weights` to an existing local
+checkpoint, or use the default `runs/local_robot_v1/weights/best.pt`.
+
+```bash
+# Documented match: includes an approximate camera preset and start at video 5.5 s.
+.venv/bin/python auto_paths.py 'https://www.youtube.com/watch?v=EjF9we707DA' --out runs/my_auto_paths
+
+# Existing video, explicit calibration, optional answer-key comparison:
+.venv/bin/python auto_paths.py einstein_final_1.mp4 --calibration configs/einstein_final1_camera.json --out runs/my_local_paths --reference track/final
+
+# Other camera: prepare a clickable reference image, then export camera.json.
+.venv/bin/python auto_paths.py 'YOUTUBE_URL' --prepare --auto-start VIDEO_SECONDS --out runs/camera_setup
+# Open runs/camera_setup/calibrate.html, select four matched floor landmarks,
+# set their field percentages and the camera crop, and download camera.json.
+.venv/bin/python auto_paths.py runs/camera_setup/source.mp4 --auto-start VIDEO_SECONDS --calibration /path/to/camera.json --out runs/calibrated_auto
+```
+
+Every output directory must be new. Default autonomous duration is 20 s, sampled
+at 10 fps; `--auto-start` and `--duration` select the video window. There is no
+automatic match-clock reading or replay/camera-change detection in this utility.
+For an unknown YouTube link, a start time and camera calibration are required;
+the built-in preset is selected only for video ID `EjF9we707DA`.
+
+Output files:
+
+- `animation.html`: offline canvas pane with play/pause, scrubber, speed, trail-length,
+  and track visibility controls; paired with `tracking.mp4` for video evidence.
+- `paths.mp4`, `paths.gif`, `paths_preview.png`: rendered 2D animation and still.
+- `paths.json`: timestamped detections, full-frame boxes, normalized positions,
+  anonymous track IDs, calibration, input/model hashes and optional reference scores.
+- `calibration.json`, `calibration_preview.jpg`, `bytetrack.yaml`: run configuration.
+- `calibrate.html` from preparation mode: click four coplanar floor landmarks and
+  enter their matching normalized top-down coordinates to export a calibration file.
+
+The homography maps each bounding box's bottom center to normalized field percentages
+(0–100 on each axis), not meters. Four image/field correspondences must be in matching
+convex order. The demonstration preset comes from the rough neutral-zone polygon in
+`start/prematch_labels.json`; it is explicitly approximate, not surveyed geometry.
+Only use it for that fixed camera. Camera motion, robot heights and occlusion can
+distort projected positions. Out-of-field projections are omitted rather than clamped.
+
+ByteTrack runs on the cropped field view at detection confidence 0.1, with new-track
+threshold 0.4 and a one-second lost-track buffer. IDs are anonymous observations,
+not verified team numbers. Occlusions, false detections and association errors can
+create more than six IDs. Tracks with fewer than three projected observations are
+omitted by default. Trails break across gaps >0.6 s or jumps >25 normalized units;
+the viewer does not join those gaps into an invented continuous path.
+
+Checkpoint test on 2026-11-02: actual YouTube download, 200 frames over video seconds
+5.5–25.5, 20-second animation. There were 23 observed IDs, 19 with in-field points,
+and 16 displayed tracks after filtering; 41 observations projected outside the field.
+This demonstrates the end-to-end utility, not reliable six-robot identity tracking.
+Against 100 matching answer-key timestamps at IoU 0.5: 515 TP, 46 FP, 66 FN,
+91.8% precision and 88.6% recall. At IoU 0.3: 549 TP, 12 FP, 32 FN (97.9% precision,
+94.5% recall). Those scores measure tracked boxes, not 2D-position accuracy. No field
+ground truth exists here, and `compare_runs.py` requires team names, so the utility
+uses the anonymous detection evaluator instead. Twenty-eight offline tests pass.
+
+Example artifacts are in `runs/auto_paths_youtube_demo/`; run log is
+`/tmp/auto-scout-youtube-path-demo.log`. A local-file test caught a PIL list-color
+rendering error, which was fixed before the successful YouTube test. Calibration
+preparation was exercised on the saved video. The HTML controls are implemented but
+have not yet been manually verified in a browser at this stopping point.
+
+Sources: [Ultralytics tracking](https://docs.ultralytics.com/modes/track/),
+[OpenCV homography](https://docs.opencv.org/4.x/d9/dab/tutorial_homography.html).
+
 ## Confident-region training
 
 The original full-frame export accepted only four training images and one validation
@@ -450,6 +522,7 @@ Everything in a Lovat report is built from three inputs:
 | | Haiku 4.5 | two images | not usable | 4% | $0.005 | — |
 | local_robot_v1 | YOLO26n | Local detector; 81 training images, 14 held-out test images | Not implemented | 98.8% recall at IoU 0.3; 89.2% precision | $0 API | $0 API for detector; full pipeline not measured |
 | local_robot_v2_regions | YOLO26n | 141 teacher-region training images, 86 validation images, same 14 full-field test images; experimental | Not implemented | 86.9% recall at IoU 0.3; 89.0% precision | $0 new API | $0 API for detector; full pipeline not measured |
+| auto path demo | YOLO26n v1 + ByteTrack | 20 s / 200 frames; 100 checked timestamps; approximate field projection | Anonymous IDs | 88.6% recall at IoU 0.5; 91.8% precision | $0 API | $0 API; full-match run not measured |
 | teacher audit | Haiku 5.5 | Sequential prompt, 40 checked frames after frame-0 seed; before identity cleanup | 90% | 97% matched overlap; see detection recall above | about $0.0007 | Not measured on full match |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.

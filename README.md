@@ -23,6 +23,19 @@ We tested on [Einstein Final 1 of the 2026 Championship](https://www.youtube.com
 
 ## Research projects
 
+To turn the documented match's YouTube link into a local autonomous-path animation:
+
+```bash
+.venv/bin/pip install -r requirements-paths.txt
+.venv/bin/python auto_paths.py 'https://www.youtube.com/watch?v=EjF9we707DA' --out runs/my_auto_paths
+```
+
+Open `runs/my_auto_paths/animation.html` for the 2D pane and synchronized tracking
+video. The first detector checkpoint must exist locally. Other cameras require
+an autonomous start time and calibration; see [autonomous path animation](DETAILS.md#autonomous-path-animation).
+This is a prototype with anonymous, sometimes fragmented track IDs and an approximate
+demo field mapping. No Claude calls are made.
+
 Local detector data preparation is available now, without Claude calls:
 
 ```bash
