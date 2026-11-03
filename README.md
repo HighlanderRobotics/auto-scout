@@ -132,3 +132,7 @@ Every project needs a way to measure it. Make more hand-checked answer keys, and
 The GitHub preview release bundles the local model and a first-run Python launcher.
 See `release/README.txt`. Python 3.11+ and internet for initial dependency setup are
 required; no Claude key is needed. Other cameras still require calibration.
+
+Landmark recognition pilot: `train_landmarks.py` prepares 50 training and 20
+validation frames from the existing Einstein video and trains six hub/ramp classes.
+This uses rough same-camera labels; it is not automatic camera calibration yet.

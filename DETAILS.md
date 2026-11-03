@@ -681,3 +681,22 @@ selects GPU/CPU automatically, and launches `auto_paths.py` with the bundled mod
 The ZIP includes the Python/HTML sources, demo calibration, v1 weights, AGPL license,
 and a model checksum manifest. It excludes credentials, videos and environments.
 Mac runtime tested; Windows/Linux launchers have not been platform-tested.
+
+## Landmark recognition pilot
+
+` .venv/bin/python -u train_landmarks.py` prepares `datasets/landmarks_v1/` and
+launches 30 epochs in `runs/landmarks_v1/`. It reuses the six rough hub/bump polygons
+in `start/prematch_labels.json` as bounding boxes. Fifty frames at 5.5–25.1 seconds
+train the detector; twenty at 35.5–45 seconds provide same-camera validation.
+Temporal separation does not demonstrate generalization to another camera or venue.
+The labels are approximate, propagated with a fixed-camera assumption, and can include
+occlusions. Inspect `datasets/landmarks_v1/labels_preview.jpg` before treating them as
+reliable annotations. No Claude requests are made. Progress is in
+`runs/landmark_jobs/v1.log`; the training wrapper prints a heartbeat every 25 seconds.
+
+This is structure recognition, not a floor-point alignment model. Hub bounding-box
+centers must not be used as coplanar floor landmarks. Accurate floor correspondences,
+separate-match testing and rejection of uncertain fits are still required before
+connecting predictions to automatic calibration. `compare_runs.py` requires robot
+identities and cannot score this six-class landmark task; no robot-answer-key score
+or field-position accuracy is claimed. Training results are pending.
