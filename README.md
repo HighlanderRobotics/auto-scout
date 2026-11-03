@@ -23,6 +23,26 @@ We tested on [Einstein Final 1 of the 2026 Championship](https://www.youtube.com
 
 ## Research projects
 
+To turn the documented match's YouTube link into a local autonomous-path animation:
+
+```bash
+.venv/bin/pip install -r requirements-paths.txt
+.venv/bin/python auto_paths.py 'https://www.youtube.com/watch?v=EjF9we707DA' --out runs/my_auto_paths
+```
+
+Open `runs/my_auto_paths/animation.html` for the 2D pane and synchronized tracking
+video. The first detector checkpoint must exist locally. Other cameras require
+an autonomous start time and calibration; see [autonomous path animation](DETAILS.md#autonomous-path-animation).
+This is a prototype with anonymous, sometimes fragmented track IDs and an approximate
+demo field mapping. No Claude calls are made.
+
+The 2D pane includes schematic blue/red hubs (baskets) and four ramps, without fuel.
+To redraw an existing run without downloading or running detection again:
+
+```bash
+.venv/bin/python auto_paths.py --render-paths runs/my_auto_paths/paths.json --out runs/my_auto_paths_redrawn
+```
+
 Local detector data preparation is available now, without Claude calls:
 
 ```bash
@@ -106,3 +126,9 @@ Every project needs a way to measure it. Make more hand-checked answer keys, and
 - Never commit `.env` or the match video.
 - Make a branch for your work, and open a pull request.
 - Check what the AI made. Watch the videos, and look at the numbers. You are the scout. The AI is the tool.
+
+## Downloadable path-animation release
+
+The GitHub preview release bundles the local model and a first-run Python launcher.
+See `release/README.txt`. Python 3.11+ and internet for initial dependency setup are
+required; no Claude key is needed. Other cameras still require calibration.
