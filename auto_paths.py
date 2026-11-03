@@ -5,6 +5,7 @@ import hashlib
 import json
 import math
 import os
+import shutil
 import threading
 import time
 from collections import Counter
@@ -17,6 +18,14 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent
 KNOWN_VIDEO = "EjF9we707DA"
+# Normalized schematic landmarks, not a surveyed field drawing.
+FIELD_ELEMENTS = [
+    {"kind": "hub", "alliance": side, "x": x, "y": 50, "width": 7.2, "height": 15}
+    for side, x in (("blue", 33.333333), ("red", 66.666667))
+] + [
+    {"kind": "ramp", "alliance": side, "x": x, "y": y, "width": 6.8, "height": 21}
+    for side, x in (("blue", 33.333333), ("red", 66.666667)) for y in (29, 71)
+]
 os.environ.setdefault("YOLO_CONFIG_DIR", str(ROOT / ".venv/ultralytics"))
 os.environ.setdefault("MPLCONFIGDIR", str(ROOT / ".venv/matplotlib"))
 os.environ.setdefault("YOLO_AUTOINSTALL", "false")
@@ -107,7 +116,7 @@ def font(size):
     return ImageFont.truetype(str(path), size) if path.exists() else ImageFont.load_default(size=size)
 
 
-def field_frame(tracks, current, duration, approximate, max_gap=.6):
+def field_frame(tracks, current, duration, approximate, max_gap=.6, elements=None):
     image = Image.new("RGB", (960, 540), "#0b1220")
     draw = ImageDraw.Draw(image)
     draw.text((30, 12), f"Autonomous paths  {current:04.1f} / {duration:.1f}s", font=font(24), fill="white")
@@ -118,6 +127,27 @@ def field_frame(tracks, current, duration, approximate, max_gap=.6):
         x = left + (right-left)*step/100; y = top+(bottom-top)*step/100
         draw.line((x, top, x, bottom), fill="#23334c")
         draw.line((left, y, right, y), fill="#23334c")
+    draw.line(((left+right)/2, top, (left+right)/2, bottom), fill="#64748b", width=2)
+    for element in FIELD_ELEMENTS if elements is None else elements:
+        cx=left+(right-left)*element["x"]/100;cy=top+(bottom-top)*element["y"]/100
+        w=(right-left)*element["width"]/100;h=(bottom-top)*element["height"]/100
+        edge="#60a5fa" if element["alliance"]=="blue" else "#fb7185"
+        fill="#173e68" if element["alliance"]=="blue" else "#632b3b"
+        box=(cx-w/2,cy-h/2,cx+w/2,cy+h/2)
+        draw.rounded_rectangle(box,radius=4,fill=fill,outline=edge,width=2)
+        if element["kind"]=="hub":
+            # Basket rim and a dark opening, seen from above.
+            draw.ellipse((cx-w*.28,cy-h*.3,cx+w*.28,cy+h*.1),fill="#07101d",outline=edge,width=3)
+            label="HUB"
+            draw.text((cx,cy+h*.27),label,font=font(13),fill="#e2e8f0",anchor="mm")
+        else:
+            # Two slopes rise toward the center ridge of each bump/ramp.
+            draw.line((cx,cy-h*.42,cx,cy+h*.42),fill=edge,width=3)
+            for y_offset in (-h*.27,0,h*.27):
+                draw.line((cx-w*.35,cy+y_offset-h*.08,cx-w*.08,cy+y_offset,cx-w*.35,cy+y_offset+h*.08),fill=edge,width=2)
+                draw.line((cx+w*.35,cy+y_offset-h*.08,cx+w*.08,cy+y_offset,cx+w*.35,cy+y_offset+h*.08),fill=edge,width=2)
+            draw.rectangle((cx-w*.4,cy+h*.2,cx+w*.4,cy+h*.46),fill=fill)
+            draw.text((cx,cy+h*.34),"RAMP",font=font(10),fill=edge,anchor="mm")
     draw.text((left, bottom+12), "Blue end  |  normalized field coordinates (not meters)", font=font(16), fill="#93c5fd")
     draw.text((right-85, bottom+12), "Red end", font=font(16), fill="#fca5a5")
     def xy(point):
@@ -131,6 +161,34 @@ def field_frame(tracks, current, duration, approximate, max_gap=.6):
             x,y=xy(points[-1]);draw.ellipse((x-7,y-7,x+7,y+7),fill=rgb,outline="white",width=2)
             draw.text((x+9,y-10),str(track["id"]),font=font(16),fill=rgb)
     return image
+
+
+def render_animation(data, out):
+    """Render saved coordinates without re-downloading or running the detector."""
+    import imageio_ffmpeg
+    data["field_elements"] = [dict(e) for e in FIELD_ELEMENTS]
+    data["field_elements_note"] = "Schematic hub/basket and ramp placement; no fuel rendered. Not surveyed geometry."
+    (out/"paths.json").write_text(json.dumps(data,indent=2)+"\n")
+    template=(ROOT/"auto_paths_viewer.html").read_text()
+    (out/"animation.html").write_text(template.replace("__PATH_DATA__",json.dumps(data).replace("<","\\u003c")))
+    writer=imageio_ffmpeg.write_frames(str(out/"paths.mp4"),(960,540),fps=data["fps"],codec="libx264",
+                pix_fmt_in="rgb24",pix_fmt_out="yuv420p",macro_block_size=2,ffmpeg_log_level="error")
+    next(writer)
+    gif=[]
+    count=math.ceil(data["duration"]*data["fps"])
+    try:
+        for index in range(count):
+            pane=field_frame(data["tracks"],index/data["fps"],data["duration"],
+                             data["calibration"].get("approximate",False),data["max_gap_s"],data["field_elements"])
+            writer.send(np.asarray(pane))
+            if index%max(1,data["fps"]//5)==0:
+                gif.append(pane.resize((768,432)).convert("P",palette=Image.Palette.ADAPTIVE,colors=128))
+    finally:
+        writer.close()
+    if gif:
+        gif[0].save(out/"paths.gif",save_all=True,append_images=gif[1:],duration=round(data["duration"]*1000/len(gif)),loop=0,optimize=False)
+    field_frame(data["tracks"],data["duration"],data["duration"],data["calibration"].get("approximate",False),
+                data["max_gap_s"],data["field_elements"]).save(out/"paths_preview.png")
 
 
 def prepare_calibrator(out, image, auto_start, source):
@@ -163,7 +221,8 @@ def score_reference(frames, directory):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("source",help="YouTube link or local video")
+    parser.add_argument("source",nargs="?",help="YouTube link or local video")
+    parser.add_argument("--render-paths",type=Path,help="Re-render a saved paths.json without detection; requires a new --out")
     parser.add_argument("--out",type=Path,default=Path("runs/auto_paths"))
     parser.add_argument("--weights",type=Path,default=Path("runs/local_robot_v1/weights/best.pt"))
     parser.add_argument("--calibration",type=Path)
@@ -178,6 +237,17 @@ def main():
     parser.add_argument("--reference",type=Path,help="Optional checked full-frame labels with matching time_s for scoring")
     args=parser.parse_args()
     if args.out.exists() or args.out.is_symlink():parser.error("Choose a new output folder; existing runs are never overwritten")
+    if args.render_paths:
+        if args.source:parser.error("Use --render-paths without a source argument")
+        data=json.loads(args.render_paths.read_text())
+        args.out.mkdir(parents=True)
+        for name in ("tracking.mp4","calibration.json","calibration_preview.jpg","bytetrack.yaml"):
+            source_asset=args.render_paths.parent/name
+            if source_asset.exists():shutil.copyfile(source_asset,args.out/name)
+        render_animation(data,args.out)
+        print(f"Re-rendered saved paths: {args.out/'animation.html'}; no inference or API calls",flush=True)
+        return
+    if not args.source:parser.error("Provide a YouTube link/local video, or --render-paths")
     if not 1<=args.fps<=30 or not 0<args.duration<=180 or args.min_track_frames<1 or not 0<args.confidence<1 or args.max_gap<=0:
         parser.error("Invalid frame rate, duration, confidence or track settings")
     if args.calibration is None and youtube_id(args.source)==KNOWN_VIDEO and not args.prepare:
@@ -265,20 +335,7 @@ def main():
                  "Field coordinates are 0..100 fractions, not measured meters."],
               "model_sha256":hashlib.sha256(args.weights.read_bytes()).hexdigest(),"source_sha256":hashlib.sha256(video.read_bytes()).hexdigest()}
         if args.reference:data["reference_score"]=score_reference(frames,args.reference)
-        (args.out/"paths.json").write_text(json.dumps(data,indent=2)+"\n")
-        template=(ROOT/"auto_paths_viewer.html").read_text()
-        (args.out/"animation.html").write_text(template.replace("__PATH_DATA__",json.dumps(data).replace("<","\\u003c")))
-        path_writer=imageio_ffmpeg.write_frames(str(args.out/"paths.mp4"),(960,540),fps=args.fps,codec="libx264",
-                    pix_fmt_in="rgb24",pix_fmt_out="yuv420p",macro_block_size=2,ffmpeg_log_level="error")
-        next(path_writer);writers.append(path_writer)
-        gif=[]
-        for index in range(count):
-            pane=field_frame(included,index/args.fps,args.duration,calibration.get("approximate",False),args.max_gap)
-            path_writer.send(np.asarray(pane))
-            if index%max(1,args.fps//5)==0:gif.append(pane.resize((768,432)).convert("P",palette=Image.Palette.ADAPTIVE,colors=128))
-        path_writer.close();writers.remove(path_writer)
-        if gif:gif[0].save(args.out/"paths.gif",save_all=True,append_images=gif[1:],duration=round(args.duration*1000/len(gif)),loop=0,optimize=False)
-        field_frame(included,args.duration,args.duration,calibration.get("approximate",False),args.max_gap).save(args.out/"paths_preview.png")
+        render_animation(data,args.out)
         print(json.dumps(data["summary"],indent=2),flush=True)
         print(f"Open {args.out/'animation.html'}; path video: {args.out/'paths.mp4'}",flush=True)
     finally:

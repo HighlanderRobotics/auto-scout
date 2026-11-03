@@ -231,6 +231,22 @@ Output files:
 - `calibrate.html` from preparation mode: click four coplanar floor landmarks and
   enter their matching normalized top-down coordinates to export a calibration file.
 
+The pane and exported video/GIF draw two color-coded hubs/baskets and four ramps
+as static schematic landmarks, with a center line and robot paths overlaid. No fuel
+is drawn in the 2D pane (the original video naturally still shows fuel). The same
+`field_elements` metadata in `paths.json` supplies both renderers. These are illustrative
+normalized footprints, not surveyed dimensions, obstacle collision checks, or a change
+to the camera calibration. Hub/bump arrangement follows the
+[FIRST manual sections 5.4 and 5.5](https://firstfrc.blob.core.windows.net/frc2026/Manual/HTML/2026GameManual.htm).
+
+`--render-paths PATHS_JSON --out NEW_DIRECTORY` re-renders saved coordinates using
+the current field drawing. It copies the existing tracking video and calibration
+assets when present, does not load a model, and makes no download or API requests.
+Existing output folders are preserved. The field-element demonstration is saved
+under `runs/auto_paths_field_elements_v2/`; its tracks and video detections are identical
+to `runs/auto_paths_youtube_demo/`. The 200-frame, 10-fps export and absence of fuel
+elements were verified, and all 28 existing tests pass.
+
 The homography maps each bounding box's bottom center to normalized field percentages
 (0–100 on each axis), not meters. Four image/field correspondences must be in matching
 convex order. The demonstration preset comes from the rough neutral-zone polygon in
@@ -258,8 +274,10 @@ uses the anonymous detection evaluator instead. Twenty-eight offline tests pass.
 Example artifacts are in `runs/auto_paths_youtube_demo/`; run log is
 `/tmp/auto-scout-youtube-path-demo.log`. A local-file test caught a PIL list-color
 rendering error, which was fixed before the successful YouTube test. Calibration
-preparation was exercised on the saved video. The HTML controls are implemented but
-have not yet been manually verified in a browser at this stopping point.
+preparation was exercised on the saved video. Browser checks confirmed field drawing,
+play/pause, speed selection, track visibility and the pane's time slider. Video
+scrubbing did not follow the slider in the local HTTP preview; synchronized seeking
+still needs verification with a server that supports video byte ranges.
 
 Sources: [Ultralytics tracking](https://docs.ultralytics.com/modes/track/),
 [OpenCV homography](https://docs.opencv.org/4.x/d9/dab/tutorial_homography.html).

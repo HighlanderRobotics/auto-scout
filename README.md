@@ -36,6 +36,13 @@ an autonomous start time and calibration; see [autonomous path animation](DETAIL
 This is a prototype with anonymous, sometimes fragmented track IDs and an approximate
 demo field mapping. No Claude calls are made.
 
+The 2D pane includes schematic blue/red hubs (baskets) and four ramps, without fuel.
+To redraw an existing run without downloading or running detection again:
+
+```bash
+.venv/bin/python auto_paths.py --render-paths runs/my_auto_paths/paths.json --out runs/my_auto_paths_redrawn
+```
+
 Local detector data preparation is available now, without Claude calls:
 
 ```bash
