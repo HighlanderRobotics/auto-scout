@@ -192,6 +192,59 @@ then add tracking and identity. This pilot does not yet meet the end-to-end scou
 Sources: [YOLO26 model documentation](https://docs.ultralytics.com/models/yolo26/),
 [Ultralytics training/MPS documentation](https://docs.ultralytics.com/modes/train/).
 
+## Confident-region training
+
+The original full-frame export accepted only four training images and one validation
+image, so student training never started. `prepare_confident_regions.py` reuses the
+saved labels offline without changing their confidence values or weakening the 0.5
+confidence cutoff. It selects at most one image region per third source frame,
+keeping train/validation matches separate and copying the original 14 checked test
+images and labels byte-for-byte.
+
+For each frame, visible, finite, in-bounds boxes with confidence >=0.5, width 12–480
+pixels, and height 12–400 pixels are positive candidates. Other nonempty box estimates
+are uncertainty regions, including hidden robots. Candidate crop widths are 1920,
+1280, 960 and 640 pixels at left, center, and right positions; height remains 610.
+Reject any crop intersecting an uncertainty region. Label every confident candidate
+that intersects the crop, requiring at least half the source box to remain and at
+least eight pixels per dimension after clipping. Reject overlapping duplicate boxes
+above IoU 0.7. Select the crop with most positive boxes, breaking ties by width, then
+leftmost position. This avoids dropping individual weak detections while leaving
+their estimated image regions as unlabeled background.
+
+Eighteen deterministic sample crops (six per match, spread across time) were inspected
+visually by the assistant. Two contained visible unannotated robot fragments and were
+excluded; the review records and exact crop coordinates are saved in
+`configs/confident_region_reviews.json`. The other crops remain pseudo-labels, not
+human-verified answer keys. The review does not establish correctness for every image.
+Teacher omissions outside their estimated boxes remain possible. Crops also change
+object scale relative to full-field test images.
+
+```bash
+.venv/bin/python prepare_confident_regions.py --out datasets/confident_regions_v1
+.venv/bin/python -m unittest -q test_prepare_dataset test_evaluate_detector test_teacher_pipeline test_confident_regions
+set -o pipefail
+caffeinate -i .venv/bin/python -u train_detector.py --data datasets/confident_regions_v1/data.yaml --out runs/local_robot_v2_regions --epochs 40 2>&1 | tee /tmp/auto-scout-train-regions-v2.log
+.venv/bin/python evaluate_detector.py runs/local_robot_v2_regions/weights/best.pt datasets/confident_regions_v1 runs/local_robot_v2_regions_test
+```
+
+Prepared dataset: 141 training images/268 boxes, 86 validation images/140 boxes,
+and 14 full-field test images/84 boxes. Sources and byte hashes are recorded in
+`datasets/confident_regions_v1/manifest.json`. The crop policy is fixed before student
+test evaluation. A pre-test calibration check on the existing 40-frame teacher audit
+selected 11 crops: 31 TP, 2 FP, 7 FN at IoU 0.5 (93.9% precision, 81.6% recall).
+This measures annotation agreement on a small calibration sample, not student accuracy.
+Calibration requires at least five crops and >=90% precision; no test images are
+used in that gate. The known omissions are why the run is an experiment, not a claim
+that all saved labels are correct.
+
+The new run uses the same pretrained YOLO26n initialization, image size 960, batch 4,
+seed 0, and validation-based early stopping as the first baseline. No additional
+Claude requests or API charges are required. Twenty-three offline tests now cover
+the existing logic plus uncertain-region exclusion, duplicate boxes, positive
+retention, and confidence preservation. Output directories must be new; staging
+prevents a failed export from leaving a partial dataset at its final path.
+
 ## Haiku teacher pipeline
 
 `run_teacher_training.py` runs the plan in `configs/haiku_teacher_v2.json`:

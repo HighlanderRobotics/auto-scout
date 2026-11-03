@@ -50,6 +50,12 @@ and evaluate automatically. It is Haiku 5.5 only, with an approved **$4 maximum*
 and an estimated labeling cost around $2. See
 [the teacher pipeline](DETAILS.md#haiku-teacher-pipeline) before running paid work.
 
+Saved teacher labels can also be reused without API calls with
+`prepare_confident_regions.py`. It keeps the 50% confidence threshold and crops
+away uncertain estimates rather than requiring all six robots in every training
+image. See [confident-region training](DETAILS.md#confident-region-training) for
+the preparation command, review records, and limitations.
+
 This is not a list of steps. Each project is a way the system needs to improve. Pick one, try ideas with Claude, and measure the result. The technical details for each project are in [DETAILS.md](DETAILS.md#research-projects-technical-details).
 
 ### 1. Teach a local model with Claude

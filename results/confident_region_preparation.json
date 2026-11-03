@@ -1,0 +1,33 @@
+{
+  "dataset": "datasets/confident_regions_v1",
+  "date": "2026-11-02",
+  "summary": {
+    "train": {
+      "images": 141,
+      "boxes": 268
+    },
+    "val": {
+      "images": 86,
+      "boxes": 140
+    },
+    "test": {
+      "images": 14,
+      "boxes": 84
+    }
+  },
+  "calibration": {
+    "frames": 11,
+    "true_positive": 31,
+    "false_positive": 2,
+    "false_negative": 7,
+    "precision": 0.9393939393939394,
+    "recall": 0.8157894736842105,
+    "scope": "Old-match calibration frames 1-40 only, not student test images."
+  },
+  "spot_reviewed": 18,
+  "spot_rejected": 2,
+  "policy": "Keep confidence >=0.5; exclude any crop intersecting an uncertain visible/hidden estimate. Max one crop per source frame, fixed stride 3. No API calls.",
+  "limitation": "Pseudo-labels still have errors and omissions; reviewed samples do not verify every crop. Crops change object scale. Test is 14 full-field images.",
+  "new_api_requests": 0,
+  "new_api_cost_usd": 0
+}
