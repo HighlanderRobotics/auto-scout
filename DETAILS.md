@@ -445,6 +445,18 @@ label quality at the new venues; inspect samples and the held-out PNW validation
 before treating a trained checkpoint as an improvement. Progress appears in
 `datasets/teacher_multivenue_v1/status.json` and `logs/teacher-multivenue-v1.log`.
 
+The strict full-frame export stopped after labeling: only 3 of 1,793 field images
+showed six visible robots with every confidence >=0.5, so it correctly refused to
+train rather than treating omissions as background. This did not send retries or
+spend more money. `prepare_confident_regions.py` then reused the saved labels offline
+with `configs/multivenue_confident_region_reviews.json`. Twelve samples were reviewed;
+one Wisconsin title-card transition was rejected. The resulting dataset has 127 train,
+72 validation, and the unchanged 14 checked test images, with 225/122/84 boxes. Its
+existing teacher-audit calibration has 31 TP, 2 FP and 7 FN at IoU 0.5 (93.9%
+precision, 81.6% recall); this checks label quality only on the old Einstein audit.
+The automatic local fallback trains `runs/local_robot_multivenue_regions_v1/` and
+then evaluates it in `runs/local_robot_multivenue_regions_v1_test/`. Results pending.
+
 `run_teacher_training.py` runs the plan in `configs/haiku_teacher_v2.json`:
 label with `claude-haiku-5-5`, filter pseudo-labels, train YOLO26n, then evaluate
 on the original 14 checked test images. Sonnet is disabled and its comparison is
