@@ -194,6 +194,50 @@ Sources: [YOLO26 model documentation](https://docs.ultralytics.com/models/yolo26
 
 ## Autonomous path animation
 
+### Team-number paths
+
+Add `--teams COMMA_SEPARATED_ROSTER` to `auto_paths.py` to run local bumper OCR
+after tracking. The release launcher source also accepts this flag. This feature
+requires macOS Apple Vision/Swift; it adds no paid requests. Existing v0.1.0 release
+downloads predate this change.
+
+For saved detections, run:
+
+```bash
+.venv/bin/python team_paths.py runs/auto_paths_youtube_demo/paths.json --video einstein_final_1.mp4 --teams 868,2910,2046,4065,4414,1323 --out runs/my_team_paths
+```
+
+The video must be the original full-frame source at the same timeline/resolution.
+`team_paths.py` samples crops no more often than every 0.5 seconds per anonymous ID.
+`read_team_numbers.swift` reads text locally. Only exact roster numbers at confidence
+>=0.8 count, with at least two distinct crop times. Supported competing numbers reject
+the whole track; overlapping fragments claiming one team reject that team's grouping.
+This guards some errors but repeated OCR mistakes and unobserved tracker swaps can
+still cause incorrect assignments. OCR reads are evidence, not verified identities.
+
+`animation.html` and MP4/GIF show one path per resolved team. `debug/` keeps the
+original anonymous paths and video; the video retains anonymous labels. `paths.json`
+records source IDs, unresolved counts and conflicts, while `evidence.json`,
+`crop_manifest.json` and `ocr_crops/` expose every number read for review.
+Observed paths remain solid. Gaps up to two seconds with displacement <=20 field
+percentage units per second use dashed straight estimated joins. Longer gaps remain
+unknown; no positions are fabricated there. The six-team roster alone does not infer
+an unreadable number. `--evidence` reuses saved reads without rerunning Vision.
+
+Four additional offline tests check fragment merging, independent votes, conflicting
+numbers and simultaneous duplicate team assignments; all 32 tests pass.
+
+Demo result: `runs/team_paths_v2/` sampled 238 crops and resolved 2046 (IDs 1/20),
+4065 (ID 8) and 4414 (ID 7). The other three teams remain unresolved. Against 100
+answer-key timestamps, 224 of 226 named detections matched at IoU >=0.3 and all 224
+had the correct identity. Correct named coverage was only 224/581 visible reference
+boxes (38.6%); accuracy on resolved boxes alone must not be advertised as full tracking
+accuracy. `evaluate_team_paths.py` exported the run and invoked `compare_runs.py`;
+metrics and comparison are in `runs/team_paths_v2_score/`. New API cost: $0.
+The launcher source selects the demo roster automatically on macOS and opens the team
+pane; other interactive runs can enter a roster. The existing downloadable release
+has not been replaced.
+
 `auto_paths.py` accepts a YouTube video link or a local video and produces an
 autonomous-window tracking video and a 2D path animation. It uses the preferred
 local v1 detector plus ByteTrack, not Claude. Install `requirements-paths.txt`.

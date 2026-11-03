@@ -34,4 +34,17 @@ async function toggle(){running=!running;last=performance.now();if(running){if(c
 play.onclick=toggle;document.getElementById('restart').onclick=()=>{current=0;video.currentTime=0;draw()};seek.oninput=()=>{current=Number(seek.value);video.currentTime=current;draw()};document.getElementById('speed').onchange=()=>{video.playbackRate=Number(document.getElementById('speed').value)};document.getElementById('trail').onchange=draw;
 video.onerror=()=>{fallback=true};video.onended=()=>{running=false;current=data.duration;play.textContent='Play';draw()};
 function tick(now){if(running){if(fallback)current=Math.min(data.duration,current+(now-last)/1000*Number(document.getElementById('speed').value));else current=video.currentTime;if(current>=data.duration){running=false;video.pause();play.textContent='Play'}draw()}last=now;requestAnimationFrame(tick)}draw();requestAnimationFrame(tick);
+</script>
+<script>
+if(data.identity_mode==='team'){
+ document.getElementById('notice').textContent=data.identity_note+' Camera calibration remains approximate when marked.';
+ document.querySelector('h1').textContent='Team-number autonomous paths';
+ document.getElementById('stats').textContent=`${data.tracks.length} teams resolved of ${data.roster.length} roster entries · ${data.summary.unresolved_track_ids} anonymous tracks unresolved. Solid lines are observed tracking; short dashed joins are estimates. Long gaps remain unknown.`;
+ for(const label of document.querySelectorAll('#legend label'))label.lastChild.textContent=label.lastChild.textContent.replace('Track ','Team ');
+ const link=document.createElement('a');link.href='debug/animation.html';link.textContent='Open anonymous tracking debug view';document.querySelector('main').append(link);
+ document.querySelector('video + small').textContent='Video labels show original anonymous track IDs. Team paths are resolved separately using bumper OCR; consult paths.json for source IDs.';
+ const observedDraw=draw;
+ draw=function(){observedDraw();const duration=Number(document.getElementById('trail').value);for(const track of data.tracks){if(hidden.has(track.id))continue;const points=track.points.filter(p=>p.t<=current&&p.t>=current-duration);ctx.strokeStyle=`rgb(${track.color})`;ctx.lineWidth=2;ctx.setLineDash([6,5]);for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i],dt=b.t-a.t;if(connected(a,b)||dt<=0||dt>2||Math.hypot(a.x-b.x,a.y-b.y)>20*dt)continue;ctx.beginPath();ctx.moveTo(...point(a));ctx.lineTo(...point(b));ctx.stroke()}ctx.setLineDash([])}};
+ draw();
+}
 </script></html>

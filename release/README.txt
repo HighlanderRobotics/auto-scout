@@ -15,12 +15,23 @@ Commands:
 
 For another camera, create calibration, open calibrate.html, select four matching
 floor landmarks and export camera.json. Then rerun with that calibration.
+On a Mac, the demo automatically tries local bumper-number reading. It produces
+`outputs/.../teams/animation.html` with one path per robot it can identify. The
+page links to `teams/debug/animation.html`, which preserves all anonymous tracks.
+For another match, the launcher asks for its six team numbers. You can also pass:
+  python3 run.py VIDEO --teams 254,971,1234,5678,9012,3456
+
+Only repeated exact roster reads become names. Unreadable robots remain anonymous
+in debug. Solid paths are observed; short dashed joins are estimates; longer gaps
+remain blank. This is not reliable enough to claim every robot is identified.
+
 Outputs appear in outputs/: animation.html, paths.mp4, paths.gif and paths.json.
 Keep animation.html next to tracking.mp4. Logs: setup.log and run.log.
 
 Prototype: anonymous IDs can swap or fragment. Field calibration and basket/ramp
 footprints are approximate. No fuel is drawn. Other venues are not validated.
-Mac tested; Windows/Linux launchers provided but not tested on those systems.
+Mac tested. Team-number OCR needs macOS and Apple Vision. Windows/Linux launchers
+fall back to anonymous paths and have not been platform-tested.
 YouTube downloads depend on availability and yt-dlp support.
 
 This release's Python/HTML sources and model are distributed under AGPL-3.0;

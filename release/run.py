@@ -48,6 +48,7 @@ def main():
     parser.add_argument("--out", type=Path)
     parser.add_argument("--prepare", action="store_true", help="Create a calibration page for a new camera")
     parser.add_argument("--device", help="cpu, mps or CUDA device number; default is automatic")
+    parser.add_argument("--teams", help="Comma-separated match roster for local bumper OCR (macOS)")
     parser.add_argument("--no-open", action="store_true")
     args = parser.parse_args()
     if args.source and args.demo:
@@ -87,6 +88,11 @@ def main():
     parsed = urlparse(source)
     identifier = (parsed.path.strip("/") if parsed.hostname == "youtu.be"
                   else parse_qs(parsed.query).get("v", [""])[0])
+    if not args.teams and sys.platform == 'darwin' and not args.prepare:
+        if identifier == 'EjF9we707DA':
+            args.teams = '868,2910,2046,4065,4414,1323'
+        elif sys.stdin.isatty():
+            args.teams = input('Match team numbers, comma-separated (Enter for anonymous debug only): ').strip() or None
     if identifier != "EjF9we707DA" and args.calibration is None and not args.prepare:
         print("This camera needs calibration. Four matching floor landmarks are required.")
         if not sys.stdin.isatty():
@@ -118,11 +124,13 @@ def main():
         command += ["--auto-start", str(args.auto_start)]
     if args.prepare:
         command += ["--prepare"]
+    if args.teams:
+        command += ["--teams", args.teams]
     print("Running locally. No Claude requests or API key required.", flush=True)
     result = logged(command, ROOT / "run.log")
     if result:
         raise SystemExit("Processing failed. See run.log for the cause; rerun with a new output folder.")
-    page = out / ("calibrate.html" if args.prepare else "animation.html")
+    page = out / ("calibrate.html" if args.prepare else ("teams/animation.html" if args.teams else "animation.html"))
     print("Open: " + str(page), flush=True)
     if args.prepare:
         print("Export camera.json from the page, then run again and provide that file.")

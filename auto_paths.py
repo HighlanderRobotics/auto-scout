@@ -120,7 +120,9 @@ def field_frame(tracks, current, duration, approximate, max_gap=.6, elements=Non
     image = Image.new("RGB", (960, 540), "#0b1220")
     draw = ImageDraw.Draw(image)
     draw.text((30, 12), f"Autonomous paths  {current:04.1f} / {duration:.1f}s", font=font(24), fill="white")
-    draw.text((30, 45), "Approximate projection | anonymous track IDs" if approximate else "Calibrated projection | anonymous track IDs", font=font(16), fill="#cbd5e1")
+    named = any("team" in track for track in tracks)
+    subtitle = ("Approximate projection" if approximate else "Calibrated projection") + (" | Team numbers; dashed = estimated" if named else " | anonymous track IDs")
+    draw.text((30, 45), subtitle, font=font(16), fill="#cbd5e1")
     left, top, right, bottom = 45, 88, 915, 480
     draw.rectangle((left, top, right, bottom), fill="#152139", outline="#94a3b8", width=2)
     for step in range(10, 100, 10):
@@ -157,6 +159,11 @@ def field_frame(tracks, current, duration, approximate, max_gap=.6, elements=Non
         points = [p for p in track["points"] if p["t"] <= current + 1e-6]
         for a,b in zip(points,points[1:]):
             if connected(a,b,max_gap): draw.line((*xy(a),*xy(b)),fill=rgb,width=3)
+            elif named and 0 < b["t"]-a["t"] <= 2 and math.hypot(b["x"]-a["x"],b["y"]-a["y"]) <= 20*(b["t"]-a["t"]):
+                start,end=xy(a),xy(b)
+                for i in range(0,20,2):
+                    segment=[start[k]+(end[k]-start[k])*f/20 for f in (i,i+1) for k in (0,1)]
+                    draw.line(segment,fill=rgb,width=2)
         if points and current-points[-1]["t"] <= min(max_gap,.35):
             x,y=xy(points[-1]);draw.ellipse((x-7,y-7,x+7,y+7),fill=rgb,outline="white",width=2)
             draw.text((x+9,y-10),str(track["id"]),font=font(16),fill=rgb)
@@ -223,6 +230,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source",nargs="?",help="YouTube link or local video")
     parser.add_argument("--render-paths",type=Path,help="Re-render a saved paths.json without detection; requires a new --out")
+    parser.add_argument("--teams",help="Comma-separated match roster: resolve local bumper OCR into team paths (macOS)")
     parser.add_argument("--out",type=Path,default=Path("runs/auto_paths"))
     parser.add_argument("--weights",type=Path,default=Path("runs/local_robot_v1/weights/best.pt"))
     parser.add_argument("--calibration",type=Path)
@@ -340,6 +348,11 @@ def main():
               "model_sha256":hashlib.sha256(args.weights.read_bytes()).hexdigest(),"source_sha256":hashlib.sha256(video.read_bytes()).hexdigest()}
         if args.reference:data["reference_score"]=score_reference(frames,args.reference)
         render_animation(data,args.out)
+        if args.teams:
+            import subprocess
+            import sys
+            subprocess.run([sys.executable,'-u',str(ROOT/'team_paths.py'),str(args.out/'paths.json'),
+                            '--video',str(video),'--teams',args.teams,'--out',str(args.out/'teams')],check=True)
         print(json.dumps(data["summary"],indent=2),flush=True)
         print(f"Open {args.out/'animation.html'}; path video: {args.out/'paths.mp4'}",flush=True)
     finally:
