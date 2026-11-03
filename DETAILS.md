@@ -427,6 +427,24 @@ remains about $1.64, within the unchanged $4 cap.
 
 ## Haiku teacher pipeline
 
+### Active multivenue teacher run
+
+`configs/haiku_multivenue_v1.json` labels 1,800 frames at 3 fps from four saved
+2026 finals: Sacramento, San Diego, Wisconsin, and Pacific Northwest. Sacramento,
+San Diego, and Wisconsin are training sources; Pacific Northwest is validation. The
+old 14 checked Einstein frames remain test only. It runs in
+`datasets/teacher_multivenue_v1/` with output planned at
+`runs/local_robot_multivenue_v1/`.
+
+The user approved this Haiku 5.5-only run on 2026-11-02. Its recorded historical
+average was $0.000714 per frame, giving a $1.29 estimate. The run-local ledger has
+a hard $2.30 cap, keeping the combined prior spend, existing reservations, and new
+maximum within the earlier $4 total limit. No other Claude model is permitted. The
+existing prompt audit passed on checked Einstein frames, but it does not validate
+label quality at the new venues; inspect samples and the held-out PNW validation
+before treating a trained checkpoint as an improvement. Progress appears in
+`datasets/teacher_multivenue_v1/status.json` and `logs/teacher-multivenue-v1.log`.
+
 `run_teacher_training.py` runs the plan in `configs/haiku_teacher_v2.json`:
 label with `claude-haiku-5-5`, filter pseudo-labels, train YOLO26n, then evaluate
 on the original 14 checked test images. Sonnet is disabled and its comparison is
