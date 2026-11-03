@@ -427,6 +427,36 @@ remains about $1.64, within the unchanged $4 cap.
 
 ## Haiku teacher pipeline
 
+### Active multivenue teacher run
+
+`configs/haiku_multivenue_v1.json` labels 1,800 frames at 3 fps from four saved
+2026 finals: Sacramento, San Diego, Wisconsin, and Pacific Northwest. Sacramento,
+San Diego, and Wisconsin are training sources; Pacific Northwest is validation. The
+old 14 checked Einstein frames remain test only. It runs in
+`datasets/teacher_multivenue_v1/` with output planned at
+`runs/local_robot_multivenue_v1/`.
+
+The user approved this Haiku 5.5-only run on 2026-11-02. Its recorded historical
+average was $0.000714 per frame, giving a $1.29 estimate. The run-local ledger has
+a hard $2.30 cap, keeping the combined prior spend, existing reservations, and new
+maximum within the earlier $4 total limit. No other Claude model is permitted. The
+existing prompt audit passed on checked Einstein frames, but it does not validate
+label quality at the new venues; inspect samples and the held-out PNW validation
+before treating a trained checkpoint as an improvement. Progress appears in
+`datasets/teacher_multivenue_v1/status.json` and `logs/teacher-multivenue-v1.log`.
+
+The strict full-frame export stopped after labeling: only 3 of 1,793 field images
+showed six visible robots with every confidence >=0.5, so it correctly refused to
+train rather than treating omissions as background. This did not send retries or
+spend more money. `prepare_confident_regions.py` then reused the saved labels offline
+with `configs/multivenue_confident_region_reviews.json`. Twelve samples were reviewed;
+one Wisconsin title-card transition was rejected. The resulting dataset has 127 train,
+72 validation, and the unchanged 14 checked test images, with 225/122/84 boxes. Its
+existing teacher-audit calibration has 31 TP, 2 FP and 7 FN at IoU 0.5 (93.9%
+precision, 81.6% recall); this checks label quality only on the old Einstein audit.
+The automatic local fallback trains `runs/local_robot_multivenue_regions_v1/` and
+then evaluates it in `runs/local_robot_multivenue_regions_v1_test/`. Results pending.
+
 `run_teacher_training.py` runs the plan in `configs/haiku_teacher_v2.json`:
 label with `claude-haiku-5-5`, filter pseudo-labels, train YOLO26n, then evaluate
 on the original 14 checked test images. Sonnet is disabled and its comparison is
@@ -599,10 +629,17 @@ Everything in a Lovat report is built from three inputs:
 | | Haiku 4.5 | two images | not usable | 4% | $0.005 | — |
 | local_robot_v1 | YOLO26n | Local detector; 81 training images, 14 held-out test images | Not implemented | 98.8% recall at IoU 0.3; 89.2% precision | $0 API | $0 API for detector; full pipeline not measured |
 | local_robot_v2_regions | YOLO26n | 141 teacher-region training images, 86 validation images, same 14 full-field test images; experimental | Not implemented | 86.9% recall at IoU 0.3; 89.0% precision | $0 new API | $0 API for detector; full pipeline not measured |
+| local_robot_multivenue_regions_v1 | YOLO26n | 127 multi-venue teacher-region training images, 72 validation images, same 14 full-field test images; experimental | Not implemented | 78.6% recall at IoU 0.3; 98.5% precision | $1.4247 Haiku 5.5 | Fewer extra detections but substantially lower recall than v1; do not replace v1 |
 | auto path demo | YOLO26n v1 + ByteTrack | 20 s / 200 frames; 100 checked timestamps; approximate field projection | Anonymous IDs | 88.6% recall at IoU 0.5; 91.8% precision | $0 API | $0 API; full-match run not measured |
 | teacher audit | Haiku 5.5 | Sequential prompt, 40 checked frames after frame-0 seed; before identity cleanup | 90% | 97% matched overlap; see detection recall above | about $0.0007 | Not measured on full match |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
+
+### Trained result: `local_robot_multivenue_regions_v1` (2026-11-03)
+
+The multi-venue Haiku teaching run made 1,795 billed calls across Sacramento, San Diego, Wisconsin, and Pacific Northwest championship finals. Five invalid labels were excluded without retrying. Teacher spend was **$1.4247**, inside the $2.30 run cap. The strict full-field automatic filter only retained 3 frames, so the local training set safely fell back to reviewed confident robot-region labels: 127 train images / 225 boxes, 72 validation images / 122 boxes, and the existing independent 14-image / 84-box full-field test set.
+
+YOLO26n selected epoch 4 and stopped early after 16 of 60 requested epochs. At IoU 0.5 it found 64 of 84 test robots with 3 false positives and 20 misses (95.5% precision, 76.2% recall). The existing `local_robot_v1` found 75 with 18 false positives and 9 misses (80.6% precision, 89.3% recall). The new experiment is very conservative—at IoU 0.3 it reaches 98.5% precision—but it misses too many robots to replace v1 for path tracking. Keep it as an evaluated experiment, not the default detector.
 
 ### Project: Teach a local model with Claude
 
