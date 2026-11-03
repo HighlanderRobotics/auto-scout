@@ -1,0 +1,74 @@
+{
+  "run": "local_robot_v2_regions",
+  "date": "2026-11-02",
+  "model": "YOLO26n",
+  "dataset": "datasets/confident_regions_v1",
+  "dataset_summary": {
+    "train": {
+      "images": 141,
+      "boxes": 268
+    },
+    "val": {
+      "images": 86,
+      "boxes": 140
+    },
+    "test": {
+      "images": 14,
+      "boxes": 84
+    }
+  },
+  "epochs_requested": 40,
+  "epochs_completed": 37,
+  "best_epoch": 25,
+  "training_timer_seconds": 621.774,
+  "confidence_threshold": 0.25,
+  "test_images": 14,
+  "test_reference_boxes": 84,
+  "metrics": {
+    "0.3": {
+      "true_positive": 73,
+      "false_positive": 9,
+      "false_negative": 11,
+      "precision": 0.8902439024390244,
+      "recall": 0.8690476190476191
+    },
+    "0.5": {
+      "true_positive": 70,
+      "false_positive": 12,
+      "false_negative": 14,
+      "precision": 0.8536585365853658,
+      "recall": 0.8333333333333334
+    }
+  },
+  "baseline_run": "local_robot_v1",
+  "baseline_metrics": {
+    "0.3": {
+      "true_positive": 83,
+      "false_positive": 10,
+      "false_negative": 1,
+      "precision": 0.8924731182795699,
+      "recall": 0.9880952380952381
+    },
+    "0.5": {
+      "true_positive": 75,
+      "false_positive": 18,
+      "false_negative": 9,
+      "precision": 0.8064516129032258,
+      "recall": 0.8928571428571429
+    }
+  },
+  "new_api_requests": 0,
+  "new_api_cost_usd": 0,
+  "prior_teacher_cost_usd": 1.635511300000001,
+  "checkpoint": "runs/local_robot_v2_regions/weights/best.pt",
+  "checkpoint_sha256": "17dcfb59d056f196ed468ffc5eac6477b6d3a31261145b31c83fdc25a0cfd53c",
+  "dataset_manifest_sha256": "be73033788e5c3699b0db68defdfe1d00e15b029cc75f176f260f5a2cac83e13",
+  "artifacts": "runs/local_robot_v2_regions_test",
+  "decision": "Experimental checkpoint retained; original v1 preferred for recall. This run reduces extra detections but misses more reference robots. No automatic promotion.",
+  "limitations": [
+    "Only 14 full-field test images from one match.",
+    "Training and validation labels remain noisy teacher pseudo-labels.",
+    "Regional crops change scale and scene context.",
+    "Baseline v1 trained on earlier frames of the test match; v2 uses different matches/venues."
+  ]
+}

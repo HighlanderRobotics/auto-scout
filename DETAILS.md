@@ -245,6 +245,37 @@ the existing logic plus uncertain-region exclusion, duplicate boxes, positive
 retention, and confidence preservation. Output directories must be new; staging
 prevents a failed export from leaving a partial dataset at its final path.
 
+### Trained result: local_robot_v2_regions (2026-11-02)
+
+The run completed 37 epochs in about 10.4 minutes on the epoch timer, stopping after
+12 epochs without better validation fitness. The selected checkpoint is from epoch
+25. Evaluation used the unchanged 14 full-field test images at confidence 0.25.
+
+| Model | TP at IoU 0.5 | FP | FN | Precision | Recall |
+|---|---|---|---|---|---|
+| First baseline (`local_robot_v1`) | 75 | 18 | 9 | 80.6% | 89.3% |
+| Confident regions (`local_robot_v2_regions`) | 70 | 12 | 14 | 85.4% | 83.3% |
+
+At IoU 0.3, the new run has 73 TP, 9 FP, 11 FN (89.0% precision, 86.9% recall).
+It makes fewer extra detections at the stricter overlap threshold but misses more
+robots. This is not a clear overall improvement; retain v1 as the preferred baseline
+for recall and keep v2 as an experimental checkpoint. Neither model is a complete
+scouting system or assigns reliable team identities.
+
+Only 14 test images are available. The first baseline trained on earlier frames of
+that same match, whereas this experiment trained on different matches and venues.
+The comparison is useful for the current clip but does not prove cross-event quality.
+No test threshold or training setting was changed after seeing these results.
+Full-field annotation quality and crowded scenes remain priorities before scaling
+training. More epochs alone do not address incorrect or missing labels.
+
+Summary and hashes: `results/local_robot_v2_regions.json`. Local checkpoint:
+`runs/local_robot_v2_regions/weights/best.pt`. Inspect `preview.jpg`, `predictions.mp4`,
+and raw `metrics.json` under `runs/local_robot_v2_regions_test/`. Logs, package
+versions, source snapshots and training arguments are saved with the run.
+This round made zero Claude calls and added $0 API cost; previous teacher labeling
+remains about $1.64, within the unchanged $4 cap.
+
 ## Haiku teacher pipeline
 
 `run_teacher_training.py` runs the plan in `configs/haiku_teacher_v2.json`:
@@ -418,6 +449,7 @@ Everything in a Lovat report is built from three inputs:
 | | Haiku 5.5 | two images | 94% | 96% | $0.0008 | about $0.70 |
 | | Haiku 4.5 | two images | not usable | 4% | $0.005 | — |
 | local_robot_v1 | YOLO26n | Local detector; 81 training images, 14 held-out test images | Not implemented | 98.8% recall at IoU 0.3; 89.2% precision | $0 API | $0 API for detector; full pipeline not measured |
+| local_robot_v2_regions | YOLO26n | 141 teacher-region training images, 86 validation images, same 14 full-field test images; experimental | Not implemented | 86.9% recall at IoU 0.3; 89.0% precision | $0 new API | $0 API for detector; full pipeline not measured |
 | teacher audit | Haiku 5.5 | Sequential prompt, 40 checked frames after frame-0 seed; before identity cleanup | 90% | 97% matched overlap; see detection recall above | about $0.0007 | Not measured on full match |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
