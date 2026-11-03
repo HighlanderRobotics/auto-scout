@@ -673,3 +673,11 @@ First tests: run the same 50–100 frames of the clip through `gpt-6.1-terra` (r
 
 - Make more answer keys: check more clips and matches by hand, at different venues and in crowded moments.
 - Compare video-scout reports with human scout reports in Lovat for the same matches.
+
+## Path-animation release packaging
+
+`release/run.py` creates an isolated environment, installs `release/requirements.txt`,
+selects GPU/CPU automatically, and launches `auto_paths.py` with the bundled model.
+The ZIP includes the Python/HTML sources, demo calibration, v1 weights, AGPL license,
+and a model checksum manifest. It excludes credentials, videos and environments.
+Mac runtime tested; Windows/Linux launchers have not been platform-tested.

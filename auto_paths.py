@@ -229,7 +229,7 @@ def main():
     parser.add_argument("--auto-start",type=float,help="Video seconds where autonomous begins")
     parser.add_argument("--duration",type=float,default=20)
     parser.add_argument("--fps",type=int,default=10)
-    parser.add_argument("--device",default="mps")
+    parser.add_argument("--device",default="auto")
     parser.add_argument("--confidence",type=float,default=.1,help="Low detection threshold; ByteTrack filters new tracks")
     parser.add_argument("--min-track-frames",type=int,default=3)
     parser.add_argument("--max-gap",type=float,default=.6)
@@ -286,6 +286,10 @@ def main():
         from ultralytics import YOLO,settings
         import imageio_ffmpeg
         settings.update({k:False for k in ("sync","hub") if k in settings})
+        import torch
+        device = args.device
+        if device == "auto":
+            device = "mps" if torch.backends.mps.is_available() else ("0" if torch.cuda.is_available() else "cpu")
         model=YOLO(str(args.weights))
         tracker=args.out/"bytetrack.yaml"
         tracker.write_text(f"tracker_type: bytetrack\ntrack_high_thresh: 0.3\ntrack_low_thresh: 0.1\nnew_track_thresh: 0.4\ntrack_buffer: {args.fps}\nmatch_thresh: 0.8\nfuse_score: true\n")
@@ -303,7 +307,7 @@ def main():
             ok,frame=capture.read();last_native=target
             if not ok:raise ValueError(f"Video ended before frame {index}")
             roi=frame[y1:y2,x1:x2].copy()
-            result=model.track(roi,persist=True,tracker=str(tracker.resolve()),device=args.device,imgsz=960,
+            result=model.track(roi,persist=True,tracker=str(tracker.resolve()),device=device,imgsz=960,
                                conf=args.confidence,max_det=12,verbose=False)[0]
             robots=[]
             if result.boxes.id is not None:

@@ -126,3 +126,9 @@ Every project needs a way to measure it. Make more hand-checked answer keys, and
 - Never commit `.env` or the match video.
 - Make a branch for your work, and open a pull request.
 - Check what the AI made. Watch the videos, and look at the numbers. You are the scout. The AI is the tool.
+
+## Downloadable path-animation release
+
+The GitHub preview release bundles the local model and a first-run Python launcher.
+See `release/README.txt`. Python 3.11+ and internet for initial dependency setup are
+required; no Claude key is needed. Other cameras still require calibration.
