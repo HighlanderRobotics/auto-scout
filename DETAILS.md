@@ -629,10 +629,17 @@ Everything in a Lovat report is built from three inputs:
 | | Haiku 4.5 | two images | not usable | 4% | $0.005 | — |
 | local_robot_v1 | YOLO26n | Local detector; 81 training images, 14 held-out test images | Not implemented | 98.8% recall at IoU 0.3; 89.2% precision | $0 API | $0 API for detector; full pipeline not measured |
 | local_robot_v2_regions | YOLO26n | 141 teacher-region training images, 86 validation images, same 14 full-field test images; experimental | Not implemented | 86.9% recall at IoU 0.3; 89.0% precision | $0 new API | $0 API for detector; full pipeline not measured |
+| local_robot_multivenue_regions_v1 | YOLO26n | 127 multi-venue teacher-region training images, 72 validation images, same 14 full-field test images; experimental | Not implemented | 78.6% recall at IoU 0.3; 98.5% precision | $1.4247 Haiku 5.5 | Fewer extra detections but substantially lower recall than v1; do not replace v1 |
 | auto path demo | YOLO26n v1 + ByteTrack | 20 s / 200 frames; 100 checked timestamps; approximate field projection | Anonymous IDs | 88.6% recall at IoU 0.5; 91.8% precision | $0 API | $0 API; full-match run not measured |
 | teacher audit | Haiku 5.5 | Sequential prompt, 40 checked frames after frame-0 seed; before identity cleanup | 90% | 97% matched overlap; see detection recall above | about $0.0007 | Not measured on full match |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
+
+### Trained result: `local_robot_multivenue_regions_v1` (2026-11-03)
+
+The multi-venue Haiku teaching run made 1,795 billed calls across Sacramento, San Diego, Wisconsin, and Pacific Northwest championship finals. Five invalid labels were excluded without retrying. Teacher spend was **$1.4247**, inside the $2.30 run cap. The strict full-field automatic filter only retained 3 frames, so the local training set safely fell back to reviewed confident robot-region labels: 127 train images / 225 boxes, 72 validation images / 122 boxes, and the existing independent 14-image / 84-box full-field test set.
+
+YOLO26n selected epoch 4 and stopped early after 16 of 60 requested epochs. At IoU 0.5 it found 64 of 84 test robots with 3 false positives and 20 misses (95.5% precision, 76.2% recall). The existing `local_robot_v1` found 75 with 18 false positives and 9 misses (80.6% precision, 89.3% recall). The new experiment is very conservative—at IoU 0.3 it reaches 98.5% precision—but it misses too many robots to replace v1 for path tracking. Keep it as an evaluated experiment, not the default detector.
 
 ### Project: Teach a local model with Claude
 
