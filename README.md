@@ -23,6 +23,13 @@ We tested on [Einstein Final 1 of the 2026 Championship](https://www.youtube.com
 
 ## Research projects
 
+For team-number paths on macOS, add `--teams 868,2910,2046,4065,4414,1323`
+to the path command below (use the actual roster for another match). Local Apple
+Vision reads robot crops and merges track fragments with repeated supporting bumper
+reads. Open `teams/animation.html`; its debug link retains anonymous paths.
+Unresolved robots remain in debug. Short dashed joins are estimates; long hidden
+intervals remain unknown. No Claude calls are made. See DETAILS.md for limits.
+
 To turn the documented match's YouTube link into a local autonomous-path animation:
 
 ```bash
