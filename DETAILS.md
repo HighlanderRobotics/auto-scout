@@ -8,6 +8,21 @@ Scout a 2026 REBUILT match automatically from the webcast video. The output must
 
 Test match: Einstein Final 1, 2026 Championship, https://www.youtube.com/watch?v=EjF9we707DA. Red alliance: 4065, 4414, 1323. Blue alliance: 868, 2910, 2046. Final score: Blue 518, Red 456. Official per-period data: https://www.thebluealliance.com/match/2026cmptx_f1m1
 
+## Multi-venue match pool
+
+`configs/landmark_match_pool_v1.json` records a four-final pool selected from TBA:
+CA District Sacramento Final 1, CA District San Diego Final 1, Wisconsin State
+Championship Final 1, and Pacific Northwest District Championship Final 1. Sacramento
+was already stored by the teacher experiment; the other three videos are saved in
+`datasets/landmark_match_pool_v1/sources/`. Each file was opened with OpenCV after
+download: all are 1920×1080, with 5,135–12,871 frames. The public match links and
+YouTube source IDs are preserved in the config. No Claude calls or training happened
+while collecting this pool.
+
+This gives camera and venue variety for future evaluation and annotation. The videos
+are not human-labeled, so they must not enter detector or landmark training until
+their labels are checked. `track/final/` remains untouched as the answer key.
+
 ## Setup
 
 - Mac. Tools: `brew install yt-dlp ffmpeg`. Python env: `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`. Use `.venv/bin/python` for every script.

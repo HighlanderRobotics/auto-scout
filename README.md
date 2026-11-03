@@ -43,6 +43,10 @@ an autonomous start time and calibration; see [autonomous path animation](DETAIL
 This is a prototype with anonymous, sometimes fragmented track IDs and an approximate
 demo field mapping. No Claude calls are made.
 
+`configs/landmark_match_pool_v1.json` records four TBA-linked 2026 finals from
+Sacramento, San Diego, Wisconsin, and Pacific Northwest. The videos are local,
+unlabeled evaluation material; they are not automatically included in training.
+
 The 2D pane includes schematic blue/red hubs (baskets) and four ramps, without fuel.
 To redraw an existing run without downloading or running detection again:
 
