@@ -780,6 +780,31 @@ Mac runtime tested; Windows/Linux launchers have not been platform-tested.
 
 ## Landmark recognition pilot
 
+### Human floor-landmark labeling
+
+`label_landmarks.py` makes a self-contained offline browser page for creating the
+ground-truth correspondences needed to calibrate a fixed broadcast camera. It reads a
+local video, writes sampled JPEG frames and `label_landmarks.html` to a **new** output
+directory, and makes no network or Claude request:
+
+```bash
+.venv/bin/python label_landmarks.py path/to/match.mp4 --out runs/casac_main_wide_labels --start 5.5 --duration 20 --every 2
+```
+
+Open the generated HTML page, select each sampled frame, and click four or more
+points that are fixed to the carpet or the field boundary. Give each point its
+top-down percentage coordinate (blue-to-red x and far-to-near y) from the game manual.
+Do not label robot positions, hub tops, or a landmark hidden by a robot. Download
+`landmark_labels.json` and keep it next to that tournament-camera preset. A stable
+wide broadcast view normally needs one calibration; cuts, replays, and zoomed views
+need separate labels or must use the rough fallback.
+
+The JSON contains all sampled image points plus their known field coordinates. It is
+the human-reviewed training/validation source for a future keypoint model, and it can
+also be used to check one camera homography before drawing robot paths. The tool does
+not yet train or automatically apply a keypoint model; that deliberately remains a
+separate measured step.
+
 ` .venv/bin/python -u train_landmarks.py` prepares `datasets/landmarks_v1/` and
 launches 30 epochs in `runs/landmarks_v1/`. It reuses the six rough hub/bump polygons
 in `start/prematch_labels.json` as bounding boxes. Fifty frames at 5.5–25.1 seconds

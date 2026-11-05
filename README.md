@@ -147,3 +147,15 @@ required; no Claude key is needed. Other cameras still require calibration.
 Landmark recognition pilot: `train_landmarks.py` prepares 50 training and 20
 validation frames from the existing Einstein video and trains six hub/ramp classes.
 This uses rough same-camera labels; it is not automatic camera calibration yet.
+
+To help make accurate floor-landmark labels for a camera setup, use the offline
+clicking tool. It samples frames from a local video and creates a browser page; no
+video is uploaded and no Claude call is made. Click four or more fixed carpet/field
+points, enter their known field coordinates, and download the labels.
+
+```bash
+.venv/bin/python label_landmarks.py path/to/match.mp4 --out runs/my_landmark_labels --start 5.5 --duration 20 --every 2
+```
+
+Open `runs/my_landmark_labels/label_landmarks.html`. The exported
+`landmark_labels.json` is reusable labeling data for that camera setup.
