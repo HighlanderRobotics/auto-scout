@@ -51,8 +51,8 @@ def load_calibration(path):
     crop = np.asarray(data["crop"], dtype=float)
     image = np.asarray(data["image_points"], dtype=np.float64)
     field = np.asarray(data["field_points"], dtype=np.float64)
-    if size.shape != (2,) or crop.shape != (4,) or image.shape != (4, 2) or field.shape != (4, 2):
-        raise ValueError("Calibration needs image_size, crop and four matched image_points/field_points")
+    if size.shape != (2,) or crop.shape != (4,) or image.ndim != 2 or image.shape[1:] != (2,) or image.shape[0] < 4 or field.shape != image.shape:
+        raise ValueError("Calibration needs image_size, crop, and at least four matched image_points/field_points")
     if not all(np.isfinite(v).all() for v in (size, crop, image, field)):
         raise ValueError("Calibration contains non-finite coordinates")
     if any(v != round(v) for v in (*size, *crop)):
@@ -61,13 +61,13 @@ def load_calibration(path):
         raise ValueError("Calibration crop is outside source dimensions")
     if np.any(image < 0) or np.any(image > size) or np.any(field < 0) or np.any(field > 100):
         raise ValueError("Image points must be inside the image and field points within 0..100")
-    for points in (image, field):
-        contour = points.astype(np.float32)
-        if not cv2.isContourConvex(contour) or abs(cv2.contourArea(contour)) < 1:
-            raise ValueError("Calibration points must form a non-degenerate convex quadrilateral in corresponding order")
-    matrix = cv2.getPerspectiveTransform(image.astype(np.float32), field.astype(np.float32))
-    if not np.isfinite(matrix).all() or abs(np.linalg.det(matrix)) < 1e-12:
+    if len(np.unique(image, axis=0)) < 4 or len(np.unique(field, axis=0)) < 4:
+        raise ValueError("Calibration needs four distinct image and field points")
+    matrix, inliers = cv2.findHomography(image, field, cv2.RANSAC, 3.0)
+    if matrix is None or inliers is None or int(inliers.sum()) < 4 or not np.isfinite(matrix).all() or abs(np.linalg.det(matrix)) < 1e-12:
         raise ValueError("Degenerate field mapping")
+    data["landmark_count"] = int(len(image))
+    data["inlier_landmark_count"] = int(inliers.sum())
     return data, matrix
 
 

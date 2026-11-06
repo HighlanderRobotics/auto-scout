@@ -50,6 +50,17 @@ class IdentityTests(unittest.TestCase):
         self.assertEqual(tracks[0]['source_ids'], [1,2])
         self.assertTrue(any(row['reason'] == 'nearby same-color fragment joined' for row in audit))
 
+    def test_path_velocity_can_bridge_a_short_occlusion(self):
+        evidence = reads(1,'254',[0,1]) + [
+            {'id':2,'team':'','t':2,'confidence':.9,'alliance':'red'},
+            {'id':2,'team':'','t':2.1,'confidence':.9,'alliance':'red'},
+        ]
+        first = {'id':1,'points':[{'t':0,'x':0,'y':0},{'t':1,'x':5,'y':0}]}
+        second = {'id':2,'points':[{'t':2,'x':10,'y':0},{'t':2.1,'x':10.5,'y':0}]}
+        tracks, _ = resolve_tracks({'tracks':[first,second]}, evidence, {'254','971','111','222','333','444'},
+                                   {'254':'red','971':'red','111':'red','222':'blue','333':'blue','444':'blue'})
+        self.assertEqual(tracks[0]['source_ids'], [1,2])
+
     def test_leftover_team_needs_one_color_track_only(self):
         evidence = reads(1,'254',[0,1])+reads(2,'971',[0,1]) + [
             {'id':3,'team':'','t':0,'confidence':.9,'alliance':'red'},

@@ -254,6 +254,11 @@ No candidate met the strict join/leftover conditions, so coverage did not increa
 This is intentional: the rules must not manufacture names merely to improve a metric.
 The measured record is `results/team_paths_v3_free_evidence.json`; new API cost $0.
 
+The same-color fragment rule predicts the named robot's short future path from its
+last two field observations. It can carry a confirmed identity across up to 1.5 seconds
+of tracker loss only when the reappearing fragment has repeated matching bumper-color
+evidence and lands near that predicted path. Motion alone never names a robot.
+
 Four additional offline tests check fragment merging, independent votes, conflicting
 numbers and simultaneous duplicate team assignments; all 32 tests pass.
 
@@ -813,6 +818,13 @@ Do not label robot positions, hub tops, or a landmark hidden by a robot. Downloa
 `landmark_labels.json` and keep it next to that tournament-camera preset. A stable
 wide broadcast view normally needs one calibration; cuts, replays, and zoomed views
 need separate labels or must use the rough fallback.
+
+The labeler includes field corners, center-line boundary intersections, and boundary
+midpoints. Mark every one that is visible (six to eight is preferable), then use
+**Download this frame's camera.json**. `auto_paths.py` robustly fits the homography
+from four or more correspondences and records the total/inlier landmark counts. This
+reduces the effect of one slightly misplaced click; always inspect its calibration
+preview before trusting a path.
 
 The JSON contains all sampled image points plus their known field coordinates. It is
 the human-reviewed training/validation source for a future keypoint model, and it can

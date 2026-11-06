@@ -34,12 +34,26 @@ def supported_alliance(evidence, identifier):
     return None
 
 
-def can_join(first, second, max_gap_s=.75, max_distance=8):
-    """A conservative continuation check for tracker fragments in field coordinates."""
+def can_join(first, second, max_gap_s=1.5, max_distance=9):
+    """Use recent path velocity to reconnect a short lost tracker fragment.
+
+    This only answers whether the second fragment could be the first robot after a
+    brief occlusion. The caller still requires matching repeated bumper color, so a
+    nearby opponent or same-alliance robot cannot inherit a name from path motion
+    alone.
+    """
     a, b = first['points'][-1], second['points'][0]
-    if not 0 < b['t'] - a['t'] <= max_gap_s:
+    gap = b['t'] - a['t']
+    if not 0 < gap <= max_gap_s:
         return False
-    return math.hypot(a['x'] - b['x'], a['y'] - b['y']) <= max_distance
+    predicted_x, predicted_y = a['x'], a['y']
+    if len(first['points']) >= 2:
+        prior = first['points'][-2]
+        elapsed = a['t'] - prior['t']
+        if elapsed > 0:
+            predicted_x += (a['x'] - prior['x']) / elapsed * gap
+            predicted_y += (a['y'] - prior['y']) / elapsed * gap
+    return math.hypot(predicted_x - b['x'], predicted_y - b['y']) <= max_distance
 
 
 def resolve_tracks(data, evidence, teams, alliance_by_team=None):

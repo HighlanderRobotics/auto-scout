@@ -15,5 +15,5 @@ class LandmarkLabelerTests(unittest.TestCase):
     def test_plan_has_floor_landmarks_and_frames(self):
         meta = build_meta(Path("match.mp4"), 1920, 1080, [1, 3])
         self.assertEqual(meta["image_size"], [1920, 1080])
-        self.assertEqual(len(meta["landmarks"]), 4)
+        self.assertEqual(len(meta["landmarks"]), 8)
         self.assertEqual(meta["frames"][1]["image"], "frames/frame_0001.jpg")

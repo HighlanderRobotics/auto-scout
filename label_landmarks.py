@@ -35,6 +35,10 @@ def build_meta(source, width, height, samples):
             {"id": "red_far", "name": "Red field corner / far side", "field_xy": [100, 0]},
             {"id": "red_near", "name": "Red field corner / near side", "field_xy": [100, 100]},
             {"id": "blue_near", "name": "Blue field corner / near side", "field_xy": [0, 100]},
+            {"id": "center_far", "name": "Center line meets far boundary", "field_xy": [50, 0]},
+            {"id": "center_near", "name": "Center line meets near boundary", "field_xy": [50, 100]},
+            {"id": "blue_mid", "name": "Blue boundary midpoint", "field_xy": [0, 50]},
+            {"id": "red_mid", "name": "Red boundary midpoint", "field_xy": [100, 50]},
         ],
     }
 
