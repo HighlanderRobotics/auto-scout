@@ -209,6 +209,94 @@ Sources: [YOLO26 model documentation](https://docs.ultralytics.com/models/yolo26
 
 ## Autonomous path animation
 
+### Distant SF robots: camera adaptation (2026-11-05)
+
+The previous SF demo was downsampled to 480p and started during setup, so it lost
+fine robot detail and did not cover the correct autonomous window. The replacement
+uses a short original 1920x1080 public webcast section (12515..12545 seconds in
+`teZtwE8bQqU`), the main-field crop y=300..720, and approximate auto start at local
+second 8, checked against the broadcast clock. This source is the official webcast,
+not a TBA-provided match link. `configs/san_francisco_qm7_native_camera.json` selects
+the local adapted checkpoint and camera-specific tracker thresholds of 0.25. Other
+cameras keep v1 and their existing thresholds.
+
+Simply using 1920 inference reduced validation performance, and overlapping tiling
+did not improve the old-camera validation sample. These experiments remain diagnostic
+scripts (`benchmark_distant.py`, `distant_detector.py`), not the app default. Instead,
+Haiku proposed native full-frame SF labels using the same approved $2 ledger. The
+agent reviewed the visible robots, corrected missed boxes and empty-floor boxes, and
+recorded the annotations in `configs/sf_distant_reviewed_boxes.json`. Raw uncertain
+Haiku labels were excluded. No robot is labeled when fully hidden behind a hub.
+
+`export_distant_dataset.py` combines the original 81 training images with five new
+SF frames, repeated six times for sampling weight (not 30 independent examples).
+One separate SF frame validates and one tests. `train_detector.py` fine-tuned v1 for
+18/20 epochs, stopping early and selecting epoch 6. The model and training log are
+in `runs/local_robot_distant_sf_v1/` and `logs/local-robot-distant-sf-v1.log`.
+
+At fixed confidence 0.25 / IoU 0.5, the reserved SF test frame retains all 5 visible
+robots while extra detections drop from 4 to 1. In the rebuilt 200-frame tracking
+demo, all 14 far-side observations across seven reviewed timestamps match, including
+4/4 far-side observations on the two times excluded from training, with no extra
+far-side detections. Those two times match all 10 visible robots, with one duplicate.
+These are small same-camera, agent-reviewed checks, not independently human-verified
+ground truth or proof about every frame. `evaluate_distant_tracking.py` exports the
+timestamp-by-timestamp counts.
+
+The combined 15-image test has 75 TP / 6 FP / 14 FN versus the baseline's 79 / 23 / 10
+at IoU 0.5. Because the adapted model loses recall on the old Einstein camera, it is
+used only by the SF profile. The original v1 remains the global default. Shared round
+API spending is $0.0420565 plus the retained $0.05 uncertain reservation, within $2.
+The new native demo, score files and measured limitations are linked in
+`results/distant_sf_v1.json`. Generated videos and checkpoints remain local and ignored.
+
+### Haiku appearance coaching experiment (2026-11-05)
+
+The user approved a new **$2 total cap** for identity coaching. `coach_identity.py`
+uses saved public Einstein match crops and the existing `start/robot_looks.json`
+descriptions, without sending the checked answer key. It asks for identities from
+two separate temporal crop groups per track; round 2 selects sharper crops from
+temporal bins. Requests use Haiku only, disable automatic retries, cache responses,
+and reserve $0.05 before each request in a locked ledger. An interrupted request
+retains its reservation. Both rounds and optional detector grading share that ledger.
+The earlier documentation had reversed the Einstein alliance rosters; blue is
+868/2910/2046, red is 4065/4414/1323, as recorded in `track_llm.py`.
+
+```bash
+# Paid: run only after cost/cap approval. These are the recorded pilot inputs.
+.venv/bin/python coach_identity.py --out datasets/identity_coach_v1 --round 2 --base-evidence runs/team_paths_free_evidence_pixels_v1/replayed_color_evidence.json --execute
+# Offline: train a small local appearance gallery from the accepted identities.
+.venv/bin/python train_identity_gallery.py --named-paths runs/haiku_identity_round2/paths.json --crops runs/team_paths_free_evidence_pixels_v1/ocr_crops --out runs/local_identity_gallery_v1
+```
+
+Round 1 at a 0.9 teacher-confidence gate did not increase coverage. Round 2's
+offline replay used the existing resolver's 0.8 gate and still required two
+supporting crop groups. `compare_runs.py` and `evaluate_team_paths.py` measured
+229/229 correct identities on matched boxes versus 224/224 before. Coverage rose
+from 38.6% to 39.4% of 581 visible reference observations; four teams were resolved,
+including 2910. This is a small same-match experiment, with two remaining teams
+unresolved. It does not establish generalization or complete scouting accuracy.
+
+The local HSV spatial appearance gallery used 49 training crops and 47 held-out
+crops from accepted tracks (2046, 2910, 4065, 4414). It agreed with their pseudo-labels
+on 46/47 held-out crops (97.9%). This is same-track teacher/OCR-label agreement,
+not independent team accuracy: unseen teams, background cues, and varying views
+remain untested. Its `gallery.npz` and `metrics.json` are in
+`runs/local_identity_gallery_v1/`. It remains experimental and is not wired into
+automatic identity assignment.
+
+`--grade --execute` asks Haiku to review four local detector frames separately.
+The first grader version mixed original and resized coordinates and produced one
+truncated response, so it is excluded from numerical conclusions. The corrected
+version sends matching image/box coordinates and structured responses. Teacher
+opinions supplement the checked answer-key scores; they do not replace them.
+
+Final recorded pilot spend: **$0.0311586**, plus a retained **$0.05 reservation**
+for the interrupted request, within the approved $2 total cap. The corrected teacher
+review flagged possible duplicates/background detections and misses in four frames;
+these are qualitative diagnoses, not detection truth. See
+`results/haiku_identity_coaching_v1.json`. No training or paid job remains running.
+
 ### Team-number paths
 
 Add `--teams COMMA_SEPARATED_ROSTER` to `auto_paths.py` to run local bumper OCR
@@ -219,7 +307,7 @@ downloads predate this change.
 For saved detections, run:
 
 ```bash
-.venv/bin/python team_paths.py runs/auto_paths_youtube_demo/paths.json --video einstein_final_1.mp4 --teams 868,2910,2046,4065,4414,1323 --red-teams 868,2910,2046 --blue-teams 4065,4414,1323 --out runs/my_team_paths
+.venv/bin/python team_paths.py runs/auto_paths_youtube_demo/paths.json --video einstein_final_1.mp4 --teams 868,2910,2046,4065,4414,1323 --blue-teams 868,2910,2046 --red-teams 4065,4414,1323 --out runs/my_team_paths
 ```
 
 The video must be the original full-frame source at the same timeline/resolution.
@@ -652,6 +740,8 @@ Everything in a Lovat report is built from three inputs:
 | local_robot_multivenue_regions_v1 | YOLO26n | 127 multi-venue teacher-region training images, 72 validation images, same 14 full-field test images; experimental | Not implemented | 78.6% recall at IoU 0.3; 98.5% precision | $1.4247 Haiku 5.5 | Fewer extra detections but substantially lower recall than v1; do not replace v1 |
 | auto path demo | YOLO26n v1 + ByteTrack | 20 s / 200 frames; 100 checked timestamps; approximate field projection | Anonymous IDs | 88.6% recall at IoU 0.5; 91.8% precision | $0 API | $0 API; full-match run not measured |
 | teacher audit | Haiku 5.5 | Sequential prompt, 40 checked frames after frame-0 seed; before identity cleanup | 90% | 97% matched overlap; see detection recall above | about $0.0007 | Not measured on full match |
+| identity coaching pilot | Haiku 5.5 + existing local tracks | Two crop-selection rounds; four teams accepted | 229/229 matched names; 39.4% reference coverage | Detector unchanged | $0.03116 total recorded pilot, plus $0.05 uncertain reserve | Not measured on full match |
+| distant SF camera adaptation | YOLO26n fine-tuned from v1 | Native 1080p field crop, 5 reviewed SF train frames, dedicated camera thresholds | Not measured | 4/4 far observations on 2 reserved times; no far extras; very small same-camera check | Shared round total $0.04206 plus $0.05 uncertain reserve | Not measured; SF profile only |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
 
