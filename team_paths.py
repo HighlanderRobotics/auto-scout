@@ -14,12 +14,44 @@ import cv2
 from auto_paths import color, heartbeat, render_animation, youtube_id
 
 
-def resolve_tracks(data, evidence, teams):
-    """Require repeated independent crop reads and reject competing identities/overlap."""
+def partial_team_matches(text, teams):
+    """Return a team only when an OCR digit fragment uniquely identifies it."""
+    digits = ''.join(ch for ch in str(text) if ch.isdigit())
+    matches = [team for team in teams if len(digits) >= 2 and digits in team]
+    return matches[0] if len(matches) == 1 else None
+
+
+def supported_alliance(evidence, identifier):
+    """Return a repeated, unopposed bumper-color observation for one track."""
+    votes = defaultdict(set)
+    for row in evidence:
+        alliance = row.get('alliance')
+        if row.get('id') == identifier and alliance in {'red', 'blue'} and row.get('confidence', 0) >= .7:
+            votes[alliance].add(row['t'])
+    counts = sorted(((len(times), alliance) for alliance, times in votes.items()), reverse=True)
+    if counts and counts[0][0] >= 2 and (len(counts) == 1 or counts[1][0] < 2):
+        return counts[0][1]
+    return None
+
+
+def can_join(first, second, max_gap_s=.75, max_distance=8):
+    """A conservative continuation check for tracker fragments in field coordinates."""
+    a, b = first['points'][-1], second['points'][0]
+    if not 0 < b['t'] - a['t'] <= max_gap_s:
+        return False
+    return math.hypot(a['x'] - b['x'], a['y'] - b['y']) <= max_distance
+
+
+def resolve_tracks(data, evidence, teams, alliance_by_team=None):
+    """Resolve OCR anchors, then add only safe free evidence around those anchors."""
     votes = defaultdict(lambda: defaultdict(set))
     for row in evidence:
-        if row['team'] in teams and row['confidence'] >= .8:
-            votes[int(row['id'])][row['team']].add(row['t'])
+        if row.get('confidence', 0) < .8:
+            continue
+        exact = str(row.get('team', ''))
+        team = exact if exact in teams else partial_team_matches(exact, teams)
+        if team:
+            votes[int(row['id'])][team].add(row['t'])
     assignments = {}
     audit = []
     for track in data['tracks']:
@@ -31,6 +63,36 @@ def resolve_tracks(data, evidence, teams):
             audit.append({'id':track['id'], 'reason':'conflicting bumper reads', 'votes':counts})
             continue
         assignments[track['id']] = counts[0][1]
+        audit.append({'id':track['id'], 'team':counts[0][1], 'reason':'repeated exact or unique partial OCR', 'votes':counts})
+
+    if alliance_by_team:
+        by_id = {track['id']: track for track in data['tracks']}
+        colors = {identifier: supported_alliance(evidence, identifier) for identifier in by_id}
+        changed = True
+        while changed:
+            changed = False
+            for known_id, team in list(assignments.items()):
+                alliance = alliance_by_team.get(team)
+                if not alliance:
+                    continue
+                known = by_id[known_id]
+                for candidate_id, candidate in by_id.items():
+                    if candidate_id in assignments or colors.get(candidate_id) != alliance:
+                        continue
+                    if can_join(known, candidate) or can_join(candidate, known):
+                        assignments[candidate_id] = team
+                        audit.append({'id':candidate_id, 'team':team, 'reason':'nearby same-color fragment joined', 'anchor_id':known_id})
+                        changed = True
+                        break
+                if changed:
+                    break
+        for alliance in ('red', 'blue'):
+            candidates = sorted(team for team, value in alliance_by_team.items() if value == alliance)
+            remaining = [team for team in candidates if team not in assignments.values()]
+            unknown = [identifier for identifier in by_id if identifier not in assignments and colors.get(identifier) == alliance]
+            if len(remaining) == 1 and len(unknown) == 1:
+                assignments[unknown[0]] = remaining[0]
+                audit.append({'id':unknown[0], 'team':remaining[0], 'reason':'only remaining team in alliance after repeated bumper-color evidence'})
     groups = defaultdict(list)
     for track in data['tracks']:
         if track['id'] in assignments:
@@ -58,12 +120,22 @@ def main():
     p.add_argument('paths', type=Path)
     p.add_argument('--video', type=Path, required=True, help='Original full-frame source video, not tracking.mp4')
     p.add_argument('--teams', required=True, help='Comma-separated match roster; exact bumper reads only')
+    p.add_argument('--red-teams', help='Comma-separated red-alliance roster; enables local bumper-color evidence')
+    p.add_argument('--blue-teams', help='Comma-separated blue-alliance roster; enables local bumper-color evidence')
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--evidence', type=Path, help='Reuse an existing OCR evidence.json without invoking Vision')
     a = p.parse_args()
     teams = set(a.teams.split(','))
     if not teams or any(not t.isdigit() or not 1 <= len(t) <= 5 for t in teams):
         p.error('Teams must be comma-separated team numbers')
+    if bool(a.red_teams) != bool(a.blue_teams):
+        p.error('Provide both --red-teams and --blue-teams, or neither')
+    alliance_by_team = None
+    if a.red_teams:
+        red = set(a.red_teams.split(',')); blue = set(a.blue_teams.split(','))
+        if red | blue != teams or red & blue or len(red) != 3 or len(blue) != 3:
+            p.error('Red and blue rosters must be three distinct teams each and match --teams')
+        alliance_by_team = {team: 'red' for team in red} | {team: 'blue' for team in blue}
     if a.out.exists():
         p.error('Choose a new output folder')
     if not a.evidence and sys.platform != 'darwin':
@@ -106,9 +178,18 @@ def main():
             if result.returncode:
                 raise RuntimeError('Local Vision OCR failed: '+result.stderr[-2000:])
             evidence=[dict(row,**manifest[row['file']]) for row in json.loads(result.stdout)]
+            if alliance_by_team:
+                for name, row in manifest.items():
+                    image = cv2.imread(str(crops/name))
+                    hsv = cv2.cvtColor(image[image.shape[0]//2:], cv2.COLOR_BGR2HSV)
+                    red = int((((hsv[:,:,0] <= 12) | (hsv[:,:,0] >= 170)) & (hsv[:,:,1] >= 80) & (hsv[:,:,2] >= 60)).sum())
+                    blue = int(((hsv[:,:,0] >= 90) & (hsv[:,:,0] <= 130) & (hsv[:,:,1] >= 80) & (hsv[:,:,2] >= 60)).sum())
+                    total = red + blue
+                    if total and max(red, blue) / total >= .75:
+                        evidence.append(dict(row, team='', alliance='red' if red > blue else 'blue', confidence=max(red, blue) / total))
             (a.out/'crop_manifest.json').write_text(json.dumps(manifest,indent=2))
         (a.out/'evidence.json').write_text(json.dumps(evidence,indent=2))
-        tracks,audit=resolve_tracks(data,evidence,teams)
+        tracks,audit=resolve_tracks(data,evidence,teams,alliance_by_team)
         debug=a.out/'debug';debug.mkdir()
         for name in ('tracking.mp4','calibration.json','calibration_preview.jpg','bytetrack.yaml'):
             source=a.paths.parent/name
@@ -117,7 +198,7 @@ def main():
         render_animation(copy.deepcopy(data),debug)
         named=copy.deepcopy(data)
         named.update(tracks=tracks,identity_mode='team',identity_audit=audit,roster=sorted(teams),
-                     identity_note='Repeated local OCR anchors; unresolved identities remain in debug. Short dashed joins are estimated. Long gaps remain unknown.')
+                     identity_note='Repeated OCR anchors plus conservative local color/fragment evidence when a roster is supplied; unresolved identities remain in debug. Short dashed joins are estimated. Long gaps remain unknown.')
         named['summary']['shown_track_ids']=len(tracks)
         named['summary']['unresolved_track_ids']=len(data['tracks'])-sum(len(t['source_ids']) for t in tracks)
         render_animation(named,a.out)

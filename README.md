@@ -29,6 +29,9 @@ Vision reads robot crops and merges track fragments with repeated supporting bum
 reads. Open `teams/animation.html`; its debug link retains anonymous paths.
 Unresolved robots remain in debug. Short dashed joins are estimates; long hidden
 intervals remain unknown. No Claude calls are made. See DETAILS.md for limits.
+Add `--red-teams 868,2910,2046 --blue-teams 4065,4414,1323` to enable extra free,
+conservative evidence: bumper-color filtering, unique two-digit partial reads, close
+same-color fragment joins, and a leftover-team rule.
 
 To turn the documented match's YouTube link into a local autonomous-path animation:
 

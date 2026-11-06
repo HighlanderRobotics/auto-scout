@@ -219,16 +219,22 @@ downloads predate this change.
 For saved detections, run:
 
 ```bash
-.venv/bin/python team_paths.py runs/auto_paths_youtube_demo/paths.json --video einstein_final_1.mp4 --teams 868,2910,2046,4065,4414,1323 --out runs/my_team_paths
+.venv/bin/python team_paths.py runs/auto_paths_youtube_demo/paths.json --video einstein_final_1.mp4 --teams 868,2910,2046,4065,4414,1323 --red-teams 868,2910,2046 --blue-teams 4065,4414,1323 --out runs/my_team_paths
 ```
 
 The video must be the original full-frame source at the same timeline/resolution.
 `team_paths.py` samples crops no more often than every 0.5 seconds per anonymous ID.
-`read_team_numbers.swift` reads text locally. Only exact roster numbers at confidence
->=0.8 count, with at least two distinct crop times. Supported competing numbers reject
-the whole track; overlapping fragments claiming one team reject that team's grouping.
-This guards some errors but repeated OCR mistakes and unobserved tracker swaps can
-still cause incorrect assignments. OCR reads are evidence, not verified identities.
+`read_team_numbers.swift` reads text locally. Exact roster numbers and unique
+two-or-more-digit roster fragments (for example `13` for 1323 only when no other
+roster team contains it) at confidence >=0.8 count, with at least two distinct crop
+times. Supplying both three-team alliance rosters enables repeated high-confidence
+bumper-color evidence, but color never names a robot alone: it can only join a close
+same-color fragment to an OCR anchor, or infer the third team when exactly one
+same-color unresolved track remains after the other two teams are anchored. Supported
+competing numbers reject the whole track; overlapping fragments claiming one team
+reject that team's grouping. This guards some errors but repeated OCR mistakes and
+unobserved tracker swaps can still cause incorrect assignments. OCR reads are evidence,
+not verified identities.
 
 `animation.html` and MP4/GIF show one path per resolved team. `debug/` keeps the
 original anonymous paths and video; the video retains anonymous labels. `paths.json`
@@ -238,6 +244,15 @@ Observed paths remain solid. Gaps up to two seconds with displacement <=20 field
 percentage units per second use dashed straight estimated joins. Longer gaps remain
 unknown; no positions are fabricated there. The six-team roster alone does not infer
 an unreadable number. `--evidence` reuses saved reads without rerunning Vision.
+
+**Free-evidence v3 check (2026-11-05):** unique partial reads, repeated bumper-color
+filtering, close same-color fragment joins, and the strict leftover-team rule were
+implemented locally. A replay against the checked Einstein clip used the saved Vision
+reads plus 221 newly measured color observations: it still resolved 2046, 4065 and
+4414, with 224/224 matched identities correct and 38.6% named-reference coverage.
+No candidate met the strict join/leftover conditions, so coverage did not increase.
+This is intentional: the rules must not manufacture names merely to improve a metric.
+The measured record is `results/team_paths_v3_free_evidence.json`; new API cost $0.
 
 Four additional offline tests check fragment merging, independent votes, conflicting
 numbers and simultaneous duplicate team assignments; all 32 tests pass.
