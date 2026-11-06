@@ -209,6 +209,47 @@ Sources: [YOLO26 model documentation](https://docs.ultralytics.com/models/yolo26
 
 ## Autonomous path animation
 
+### Distant SF robots: camera adaptation (2026-11-05)
+
+The previous SF demo was downsampled to 480p and started during setup, so it lost
+fine robot detail and did not cover the correct autonomous window. The replacement
+uses a short original 1920x1080 public webcast section (12515..12545 seconds in
+`teZtwE8bQqU`), the main-field crop y=300..720, and approximate auto start at local
+second 8, checked against the broadcast clock. This source is the official webcast,
+not a TBA-provided match link. `configs/san_francisco_qm7_native_camera.json` selects
+the local adapted checkpoint and camera-specific tracker thresholds of 0.25. Other
+cameras keep v1 and their existing thresholds.
+
+Simply using 1920 inference reduced validation performance, and overlapping tiling
+did not improve the old-camera validation sample. These experiments remain diagnostic
+scripts (`benchmark_distant.py`, `distant_detector.py`), not the app default. Instead,
+Haiku proposed native full-frame SF labels using the same approved $2 ledger. The
+agent reviewed the visible robots, corrected missed boxes and empty-floor boxes, and
+recorded the annotations in `configs/sf_distant_reviewed_boxes.json`. Raw uncertain
+Haiku labels were excluded. No robot is labeled when fully hidden behind a hub.
+
+`export_distant_dataset.py` combines the original 81 training images with five new
+SF frames, repeated six times for sampling weight (not 30 independent examples).
+One separate SF frame validates and one tests. `train_detector.py` fine-tuned v1 for
+18/20 epochs, stopping early and selecting epoch 6. The model and training log are
+in `runs/local_robot_distant_sf_v1/` and `logs/local-robot-distant-sf-v1.log`.
+
+At fixed confidence 0.25 / IoU 0.5, the reserved SF test frame retains all 5 visible
+robots while extra detections drop from 4 to 1. In the rebuilt 200-frame tracking
+demo, all 14 far-side observations across seven reviewed timestamps match, including
+4/4 far-side observations on the two times excluded from training, with no extra
+far-side detections. Those two times match all 10 visible robots, with one duplicate.
+These are small same-camera, agent-reviewed checks, not independently human-verified
+ground truth or proof about every frame. `evaluate_distant_tracking.py` exports the
+timestamp-by-timestamp counts.
+
+The combined 15-image test has 75 TP / 6 FP / 14 FN versus the baseline's 79 / 23 / 10
+at IoU 0.5. Because the adapted model loses recall on the old Einstein camera, it is
+used only by the SF profile. The original v1 remains the global default. Shared round
+API spending is $0.0420565 plus the retained $0.05 uncertain reservation, within $2.
+The new native demo, score files and measured limitations are linked in
+`results/distant_sf_v1.json`. Generated videos and checkpoints remain local and ignored.
+
 ### Haiku appearance coaching experiment (2026-11-05)
 
 The user approved a new **$2 total cap** for identity coaching. `coach_identity.py`
@@ -700,6 +741,7 @@ Everything in a Lovat report is built from three inputs:
 | auto path demo | YOLO26n v1 + ByteTrack | 20 s / 200 frames; 100 checked timestamps; approximate field projection | Anonymous IDs | 88.6% recall at IoU 0.5; 91.8% precision | $0 API | $0 API; full-match run not measured |
 | teacher audit | Haiku 5.5 | Sequential prompt, 40 checked frames after frame-0 seed; before identity cleanup | 90% | 97% matched overlap; see detection recall above | about $0.0007 | Not measured on full match |
 | identity coaching pilot | Haiku 5.5 + existing local tracks | Two crop-selection rounds; four teams accepted | 229/229 matched names; 39.4% reference coverage | Detector unchanged | $0.03116 total recorded pilot, plus $0.05 uncertain reserve | Not measured on full match |
+| distant SF camera adaptation | YOLO26n fine-tuned from v1 | Native 1080p field crop, 5 reviewed SF train frames, dedicated camera thresholds | Not measured | 4/4 far observations on 2 reserved times; no far extras; very small same-camera check | Shared round total $0.04206 plus $0.05 uncertain reserve | Not measured; SF profile only |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
 

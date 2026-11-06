@@ -6,6 +6,7 @@ included in requests. This labels identity examples; it does not retrain YOLO.
 import argparse
 import base64
 import json
+import hashlib
 from pathlib import Path
 import threading
 
@@ -25,7 +26,8 @@ def grade_detector(args, ledger, client):
     cap = cv2.VideoCapture(str(args.video))
     try:
         for index in [0,len(data['frames'])//3,2*len(data['frames'])//3,len(data['frames'])-1]:
-            output = args.out/f'grade_v2_frame_{index}.json'
+            fingerprint=hashlib.sha256(args.paths.read_bytes()+str(args.video.resolve()).encode()).hexdigest()[:12]
+            output = args.out/f'grade_v2_{fingerprint}_frame_{index}.json'
             if output.exists():
                 continue
             frame = data['frames'][index]

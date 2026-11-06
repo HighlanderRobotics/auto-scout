@@ -53,6 +53,17 @@ an autonomous start time and calibration; see [autonomous path animation](DETAIL
 This is a prototype with anonymous, sometimes fragmented track IDs and an approximate
 demo field mapping. No Claude calls are made.
 
+The repaired San Francisco Quals 7 demo uses the original 1080p broadcast pixels,
+a tight field crop, and a detector adapted to that camera. Its camera profile selects
+the locally trained checkpoint automatically:
+
+```bash
+.venv/bin/python auto_paths.py datasets/distant_sf_v1/native_source.mp4 --calibration configs/san_francisco_qm7_native_camera.json --out runs/my_sf_distant_demo
+```
+
+The repaired demo is in `runs/san_francisco_qm7_distant_fixed/animation.html`.
+See `results/distant_sf_v1.json` for the far-side detection checks and limits.
+
 `configs/landmark_match_pool_v1.json` records four TBA-linked 2026 finals from
 Sacramento, San Diego, Wisconsin, and Pacific Northwest. The videos are local,
 unlabeled evaluation material; they are not automatically included in training.

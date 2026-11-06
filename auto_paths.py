@@ -232,7 +232,7 @@ def main():
     parser.add_argument("--render-paths",type=Path,help="Re-render a saved paths.json without detection; requires a new --out")
     parser.add_argument("--teams",help="Comma-separated match roster: resolve local bumper OCR into team paths (macOS)")
     parser.add_argument("--out",type=Path,default=Path("runs/auto_paths"))
-    parser.add_argument("--weights",type=Path,default=Path("runs/local_robot_v1/weights/best.pt"))
+    parser.add_argument("--weights",type=Path,help="Detector checkpoint; defaults to the camera profile's weights or local_robot_v1")
     parser.add_argument("--calibration",type=Path)
     parser.add_argument("--auto-start",type=float,help="Video seconds where autonomous begins")
     parser.add_argument("--duration",type=float,default=20)
@@ -261,6 +261,8 @@ def main():
     if args.calibration is None and youtube_id(args.source)==KNOWN_VIDEO and not args.prepare:
         args.calibration=ROOT/"configs/einstein_final1_camera.json"
     calibration,matrix=(load_calibration(args.calibration) if args.calibration else (None,None))
+    if args.weights is None:
+        args.weights=ROOT/(calibration or {}).get('detector_weights','runs/local_robot_v1/weights/best.pt')
     start=args.auto_start if args.auto_start is not None else (calibration or {}).get("auto_start_s")
     if start is None or not math.isfinite(start) or start<0:
         parser.error("Pass --auto-start VIDEO_SECONDS. The tool does not automatically identify the autonomous start.")
@@ -300,7 +302,11 @@ def main():
             device = "mps" if torch.backends.mps.is_available() else ("0" if torch.cuda.is_available() else "cpu")
         model=YOLO(str(args.weights))
         tracker=args.out/"bytetrack.yaml"
-        tracker.write_text(f"tracker_type: bytetrack\ntrack_high_thresh: 0.3\ntrack_low_thresh: 0.1\nnew_track_thresh: 0.4\ntrack_buffer: {args.fps}\nmatch_thresh: 0.8\nfuse_score: true\n")
+        high_threshold=calibration.get('track_high_thresh',.3)
+        new_threshold=calibration.get('new_track_thresh',.4)
+        if not .1 <= high_threshold <= new_threshold <= 1:
+            raise ValueError('Camera tracker thresholds must satisfy .1 <= high <= new <= 1')
+        tracker.write_text(f"tracker_type: bytetrack\ntrack_high_thresh: {high_threshold}\ntrack_low_thresh: 0.1\nnew_track_thresh: {new_threshold}\ntrack_buffer: {args.fps}\nmatch_thresh: 0.8\nfuse_score: true\n")
         x1,y1,x2,y2=calibration["crop"]
         annotated_size=(1280,round((y2-y1)*1280/(x2-x1)/2)*2)
         annotation=imageio_ffmpeg.write_frames(str(args.out/"tracking.mp4"),annotated_size,fps=args.fps,
