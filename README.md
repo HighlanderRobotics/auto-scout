@@ -29,9 +29,16 @@ Vision reads robot crops and merges track fragments with repeated supporting bum
 reads. Open `teams/animation.html`; its debug link retains anonymous paths.
 Unresolved robots remain in debug. Short dashed joins are estimates; long hidden
 intervals remain unknown. No Claude calls are made. See DETAILS.md for limits.
-Add `--red-teams 868,2910,2046 --blue-teams 4065,4414,1323` to enable extra free,
+Add `--blue-teams 868,2910,2046 --red-teams 4065,4414,1323` to enable extra free,
 conservative evidence: bumper-color filtering, unique two-digit partial reads, close
 same-color fragment joins, and a leftover-team rule.
+
+An experimental Haiku appearance coach (`coach_identity.py`) can name track fragments
+from multiple crops and the saved robot descriptions. Paid execution requires
+`--execute` and explicit budget approval. It uses a shared $2 ledger, and exports
+evidence for `team_paths.py`. `train_identity_gallery.py` trains a small offline
+appearance gallery from accepted names. This experiment has four known teams and
+does not yet replace the app's naming system. See DETAILS.md for measured coverage.
 
 To turn the documented match's YouTube link into a local autonomous-path animation:
 

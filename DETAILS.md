@@ -209,6 +209,53 @@ Sources: [YOLO26 model documentation](https://docs.ultralytics.com/models/yolo26
 
 ## Autonomous path animation
 
+### Haiku appearance coaching experiment (2026-11-05)
+
+The user approved a new **$2 total cap** for identity coaching. `coach_identity.py`
+uses saved public Einstein match crops and the existing `start/robot_looks.json`
+descriptions, without sending the checked answer key. It asks for identities from
+two separate temporal crop groups per track; round 2 selects sharper crops from
+temporal bins. Requests use Haiku only, disable automatic retries, cache responses,
+and reserve $0.05 before each request in a locked ledger. An interrupted request
+retains its reservation. Both rounds and optional detector grading share that ledger.
+The earlier documentation had reversed the Einstein alliance rosters; blue is
+868/2910/2046, red is 4065/4414/1323, as recorded in `track_llm.py`.
+
+```bash
+# Paid: run only after cost/cap approval. These are the recorded pilot inputs.
+.venv/bin/python coach_identity.py --out datasets/identity_coach_v1 --round 2 --base-evidence runs/team_paths_free_evidence_pixels_v1/replayed_color_evidence.json --execute
+# Offline: train a small local appearance gallery from the accepted identities.
+.venv/bin/python train_identity_gallery.py --named-paths runs/haiku_identity_round2/paths.json --crops runs/team_paths_free_evidence_pixels_v1/ocr_crops --out runs/local_identity_gallery_v1
+```
+
+Round 1 at a 0.9 teacher-confidence gate did not increase coverage. Round 2's
+offline replay used the existing resolver's 0.8 gate and still required two
+supporting crop groups. `compare_runs.py` and `evaluate_team_paths.py` measured
+229/229 correct identities on matched boxes versus 224/224 before. Coverage rose
+from 38.6% to 39.4% of 581 visible reference observations; four teams were resolved,
+including 2910. This is a small same-match experiment, with two remaining teams
+unresolved. It does not establish generalization or complete scouting accuracy.
+
+The local HSV spatial appearance gallery used 49 training crops and 47 held-out
+crops from accepted tracks (2046, 2910, 4065, 4414). It agreed with their pseudo-labels
+on 46/47 held-out crops (97.9%). This is same-track teacher/OCR-label agreement,
+not independent team accuracy: unseen teams, background cues, and varying views
+remain untested. Its `gallery.npz` and `metrics.json` are in
+`runs/local_identity_gallery_v1/`. It remains experimental and is not wired into
+automatic identity assignment.
+
+`--grade --execute` asks Haiku to review four local detector frames separately.
+The first grader version mixed original and resized coordinates and produced one
+truncated response, so it is excluded from numerical conclusions. The corrected
+version sends matching image/box coordinates and structured responses. Teacher
+opinions supplement the checked answer-key scores; they do not replace them.
+
+Final recorded pilot spend: **$0.0311586**, plus a retained **$0.05 reservation**
+for the interrupted request, within the approved $2 total cap. The corrected teacher
+review flagged possible duplicates/background detections and misses in four frames;
+these are qualitative diagnoses, not detection truth. See
+`results/haiku_identity_coaching_v1.json`. No training or paid job remains running.
+
 ### Team-number paths
 
 Add `--teams COMMA_SEPARATED_ROSTER` to `auto_paths.py` to run local bumper OCR
@@ -219,7 +266,7 @@ downloads predate this change.
 For saved detections, run:
 
 ```bash
-.venv/bin/python team_paths.py runs/auto_paths_youtube_demo/paths.json --video einstein_final_1.mp4 --teams 868,2910,2046,4065,4414,1323 --red-teams 868,2910,2046 --blue-teams 4065,4414,1323 --out runs/my_team_paths
+.venv/bin/python team_paths.py runs/auto_paths_youtube_demo/paths.json --video einstein_final_1.mp4 --teams 868,2910,2046,4065,4414,1323 --blue-teams 868,2910,2046 --red-teams 4065,4414,1323 --out runs/my_team_paths
 ```
 
 The video must be the original full-frame source at the same timeline/resolution.
@@ -652,6 +699,7 @@ Everything in a Lovat report is built from three inputs:
 | local_robot_multivenue_regions_v1 | YOLO26n | 127 multi-venue teacher-region training images, 72 validation images, same 14 full-field test images; experimental | Not implemented | 78.6% recall at IoU 0.3; 98.5% precision | $1.4247 Haiku 5.5 | Fewer extra detections but substantially lower recall than v1; do not replace v1 |
 | auto path demo | YOLO26n v1 + ByteTrack | 20 s / 200 frames; 100 checked timestamps; approximate field projection | Anonymous IDs | 88.6% recall at IoU 0.5; 91.8% precision | $0 API | $0 API; full-match run not measured |
 | teacher audit | Haiku 5.5 | Sequential prompt, 40 checked frames after frame-0 seed; before identity cleanup | 90% | 97% matched overlap; see detection recall above | about $0.0007 | Not measured on full match |
+| identity coaching pilot | Haiku 5.5 + existing local tracks | Two crop-selection rounds; four teams accepted | 229/229 matched names; 39.4% reference coverage | Detector unchanged | $0.03116 total recorded pilot, plus $0.05 uncertain reserve | Not measured on full match |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
 

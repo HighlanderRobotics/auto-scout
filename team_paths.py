@@ -77,7 +77,8 @@ def resolve_tracks(data, evidence, teams, alliance_by_team=None):
             audit.append({'id':track['id'], 'reason':'conflicting bumper reads', 'votes':counts})
             continue
         assignments[track['id']] = counts[0][1]
-        audit.append({'id':track['id'], 'team':counts[0][1], 'reason':'repeated exact or unique partial OCR', 'votes':counts})
+        audit.append({'id':track['id'], 'team':counts[0][1], 'reason':'repeated identity evidence', 'votes':counts,
+                      'methods':sorted({row.get('method','local_ocr') for row in evidence if row.get('id')==track['id'] and row.get('team')==counts[0][1]})})
 
     if alliance_by_team:
         by_id = {track['id']: track for track in data['tracks']}
