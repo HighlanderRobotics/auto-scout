@@ -1,0 +1,11 @@
+{
+  "name": "Einstein Final 1 demonstration camera",
+  "image_size": [1920, 1080],
+  "crop": [0, 110, 1920, 720],
+  "image_points": [[600, 200], [1290, 200], [1690, 690], [255, 690]],
+  "field_points": [[33.333333, 0], [66.666667, 0], [66.666667, 100], [33.333333, 100]],
+  "auto_start_s": 5.5,
+  "youtube_id": "EjF9we707DA",
+  "approximate": true,
+  "note": "Rough demo projection from start/prematch_labels.json neutral-zone polygon. Not surveyed field coordinates. Only this fixed broadcast camera; do not reuse blindly on other matches. Axes are field percentages, not meters."
+}

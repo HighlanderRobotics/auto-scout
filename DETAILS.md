@@ -8,6 +8,21 @@ Scout a 2026 REBUILT match automatically from the webcast video. The output must
 
 Test match: Einstein Final 1, 2026 Championship, https://www.youtube.com/watch?v=EjF9we707DA. Red alliance: 4065, 4414, 1323. Blue alliance: 868, 2910, 2046. Final score: Blue 518, Red 456. Official per-period data: https://www.thebluealliance.com/match/2026cmptx_f1m1
 
+## Multi-venue match pool
+
+`configs/landmark_match_pool_v1.json` records a four-final pool selected from TBA:
+CA District Sacramento Final 1, CA District San Diego Final 1, Wisconsin State
+Championship Final 1, and Pacific Northwest District Championship Final 1. Sacramento
+was already stored by the teacher experiment; the other three videos are saved in
+`datasets/landmark_match_pool_v1/sources/`. Each file was opened with OpenCV after
+download: all are 1920×1080, with 5,135–12,871 frames. The public match links and
+YouTube source IDs are preserved in the config. No Claude calls or training happened
+while collecting this pool.
+
+This gives camera and venue variety for future evaluation and annotation. The videos
+are not human-labeled, so they must not enter detector or landmark training until
+their labels are checked. `track/final/` remains untouched as the answer key.
+
 ## Setup
 
 - Mac. Tools: `brew install yt-dlp ffmpeg`. Python env: `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`. Use `.venv/bin/python` for every script.
@@ -35,6 +50,623 @@ Test match: Einstein Final 1, 2026 Championship, https://www.youtube.com/watch?v
 | Backward pass | `.venv/bin/python backward_pass.py OUT_DIR OUT_DIR_final` | Links boxes into paths; bumper reads anywhere on a path name the whole path |
 | Labeled video | `.venv/bin/python render_labels.py track/clip_frames OUT_DIR_final OUT.mp4` | Large bold labels, 5 fps |
 | Score a run | `.venv/bin/python compare_runs.py track/final opus OUT_DIR_final sonnet` | Run names must be `opus`, `sonnet` or `haiku` (used for prices) |
+
+## Local dataset preparation
+
+`prepare_dataset.py` converts the existing tracking JSON into YOLO-format detection
+labels and cropped JPEGs. It does not call Claude, read `.env`, install a detector,
+or train a model. An offline-data environment needs only:
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements-data.txt
+.venv/bin/python prepare_dataset.py track/clip_frames track/final datasets/checked_clip_v1
+.venv/bin/python -m unittest -v test_prepare_dataset
+```
+
+Use Python 3.10 or newer for Pillow 12+. On this Mac, Homebrew Python is
+`/opt/homebrew/bin/python3`; the system `python3` was Python 3.9. The data requirements
+are separate because local data preparation does not need the Anthropic SDK.
+
+Restore the frames with the Setup commands first. If system FFmpeg is unavailable,
+`imageio-ffmpeg` in the data requirements supplies a binary; get its absolute path
+with `.venv/bin/python -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())'`
+and use that path in place of `ffmpeg` in those commands. Downloading the video and
+extracting frames do not use the Claude API.
+
+Default export behavior:
+
+- Crop full-frame 1920x1080 images to `(0, 110, 1920, 720)`, producing 1920x610 images.
+  Translate and clip boxes into that crop, then normalize center/width/height to 0–1.
+- Export only `visible=true` boxes. Hidden robots have estimated positions and are
+  excluded as detection targets. Visible, partially occluded robots remain included.
+- Use one `robot` class. Optional `--classes alliance` produces `robot_red` and
+  `robot_blue`; its team-to-alliance map is specific to the documented match.
+- Split sorted labeled frames into chronological 70/15/15 blocks. Exclude ten frames
+  at each boundary (`--gap-frames 10`), five on each side. For consecutive 5 fps labels
+  this removes two seconds per boundary. Sparse source labels produce larger time gaps.
+- Require every labeled frame's image, including excluded gap frames; fail rather
+  than silently shrink the dataset. Reject invalid visible boxes and image sizes.
+- Require a new output folder. Never overwrite existing datasets or source labels.
+
+Output contains `images/{train,val,test}/`, `labels/{train,val,test}/`, `data.yaml`,
+and `preview_train.jpg`, `preview_val.jpg`, `preview_test.jpg`. The previews draw boxes
+from the exported text labels, allowing coordinate conversion to be checked visually.
+`manifest.json` records source paths, source-label SHA-256 hashes, per-frame boxes,
+omitted hidden/outside-crop boxes, split membership, and image/box totals. Datasets
+are ignored by Git and can be recreated. The YAML contains an absolute dataset path;
+regenerate it when moving the dataset to another computer.
+
+The 123-frame answer key is a **pilot dataset**, with small evaluation blocks. A time
+gap reduces adjacent-frame leakage, but all blocks still show the same robots and
+venue. Evaluate on separate matches/venues before claiming generalization. Once a
+frame is used in training, do not report it as an independent answer-key test.
+Do not combine other model labels for these same images across different splits.
+
+Detection evaluation must count false positives and missed reference robots as well
+as box overlap. `compare_runs.py` is for the existing named-robot tracking output;
+it is not a detector precision/recall evaluator, and the dataset export is not a new
+tracking run. No model accuracy or inference cost is claimed for this preparation step.
+
+Pilot export `datasets/checked_clip_v1` (2026-11-01, existing answer-key labels,
+zero new API calls):
+
+| Split | Images | Visible robot boxes |
+|---|---|---|
+| Train | 81 | 472 |
+| Validation | 8 | 45 |
+| Test | 14 | 84 |
+| Excluded boundary gaps | 20 | Not exported |
+
+All 123 source label files contained 719 visible boxes and 19 hidden estimates;
+601 visible boxes remain after the split gaps. Previews were visually inspected.
+Four offline tests cover crop normalization, hidden/invalid boxes, split separation,
+exported labels/previews, missing-image rejection, and overwrite prevention. The
+existing answer-key video can be regenerated with `render_labels.py` using the
+restored clip frames; it is not a local model prediction.
+
+## Local detector training
+
+`train_detector.py` fine-tunes pretrained YOLO26n on the prepared one-class dataset.
+Install `requirements-train.txt` using `.venv/bin/pip`. Python 3.15.1, Ultralytics
+8.4.197, PyTorch 2.15.0 and torchvision 0.29.2 were used on the 16 GB Apple M5 Mac.
+Ultralytics is AGPL-3.0; review its licensing before incorporating this implementation
+into a differently licensed distributed application.
+
+```bash
+set -o pipefail
+.venv/bin/python -u train_detector.py --out runs/local_robot_v1 2>&1 | tee /tmp/auto-scout-train-v1.log
+.venv/bin/python evaluate_detector.py runs/local_robot_v1/weights/best.pt datasets/checked_clip_v1 runs/local_robot_v1_test
+```
+
+For assistants, run the training command as a background session and keep watching
+the log. The script prints a heartbeat every 25 seconds, including during model
+download and startup. Initial public weights are downloaded from Ultralytics GitHub
+releases. Training data stays local; optional online experiment integrations and
+telemetry are disabled. No Claude API calls or key are needed.
+
+Defaults: 40 epochs, 960-pixel square training inputs, batch 4, MPS GPU, seed 0,
+workers 0, early stopping patience 12. Validation uses only the validation block.
+Best checkpoint selection is based on validation fitness, never test performance.
+Horizontal and vertical flips are disabled; the default mosaic augmentation closes
+for the final ten epochs. PyTorch warns that some MPS operations are nondeterministic,
+so the fixed seed does not guarantee bit-for-bit reproduction. Pass `--device cpu`
+only if CPU training is intended. Use a new `--out` path for every run.
+
+Outputs under `runs/local_robot_v1/` include `weights/best.pt`, `weights/last.pt`,
+`results.csv`, plots, `args.yaml`, `provenance.json` (including dataset split details),
+and `environment.txt` with the installed package versions. Model weights and run
+artifacts are ignored by Git. Preserve them locally; a source checkout alone does
+not contain the trained model.
+
+`evaluate_detector.py` predicts on the test split at a fixed confidence threshold
+of 0.25 and measures one-to-one robot matching at IoU 0.3 and 0.5. It counts every
+unmatched reference as a false negative and every unmatched prediction as a false
+positive. Precision = TP/(TP+FP); recall = TP/(TP+FN). These are fixed-threshold
+detection metrics, not average precision or team identity accuracy. The evaluation
+outputs `metrics.json`, per-frame prediction/reference boxes, `preview.jpg`, and
+`predictions.mp4`. Orange boxes are predictions; green boxes are the answer key.
+The pilot video uses 5 fps, matching the consecutive test frames in this dataset.
+Evaluation wall time includes prediction setup, matching, and JPEG rendering, so
+it is not a standalone inference speed benchmark.
+
+`compare_runs.py` cannot score this one-class detector meaningfully: it requires
+known team numbers. Use the detection evaluator until tracking and team identity
+are implemented; do not assign names from the answer key to inflate an identity score.
+The test block contains only 14 images from the same match as training. Its scores
+do not establish performance on a new match or venue.
+
+### First trained baseline: local_robot_v1 (2026-11-01)
+
+Training stopped at epoch 23 after 12 epochs without improvement in validation
+fitness. The selected checkpoint is from epoch 11. The epoch timer reports 235 s;
+model startup and final validation add overhead. No new Claude calls were made.
+The checkpoint is `runs/local_robot_v1/weights/best.pt` (about 5.2 MiB).
+
+Held-out test results, confidence fixed at 0.25, 14 images and 84 reference boxes:
+
+| Box overlap requirement | Matched robots | Missed robots | Extra detections | Precision | Recall |
+|---|---|---|---|---|---|
+| IoU >= 0.3 | 83 | 1 | 10 | 89.2% | 98.8% |
+| IoU >= 0.5 | 75 | 9 | 18 | 80.6% | 89.3% |
+
+These are robot observations across frames, not 84 different robots. At the stricter
+threshold, a poorly localized prediction contributes both an extra detection and a
+missed reference. Visual inspection shows extra/overlapping predictions around the
+crowded central robots. The baseline detects most robots at loose overlap, but its
+precision and box placement still need work. No test-driven threshold tuning was done.
+
+Checked-in summary: `results/local_robot_v1.json`, including checkpoint/dataset hashes.
+Local visual artifacts: `runs/local_robot_v1_test/preview.jpg` and `predictions.mp4`;
+raw predictions and per-frame counts are in `metrics.json`. The training log is
+`runs/local_robot_v1/training.log`; training and evaluation source snapshots are also
+saved with the run. Eight offline tests pass for dataset export and detection matching.
+Next experiments should use more varied checked labels and a separate-match test,
+then add tracking and identity. This pilot does not yet meet the end-to-end scouting target.
+
+Sources: [YOLO26 model documentation](https://docs.ultralytics.com/models/yolo26/),
+[Ultralytics training/MPS documentation](https://docs.ultralytics.com/modes/train/).
+
+## Autonomous path animation
+
+### Distant SF robots: camera adaptation (2026-11-05)
+
+The previous SF demo was downsampled to 480p and started during setup, so it lost
+fine robot detail and did not cover the correct autonomous window. The replacement
+uses a short original 1920x1080 public webcast section (12515..12545 seconds in
+`teZtwE8bQqU`), the main-field crop y=300..720, and approximate auto start at local
+second 8, checked against the broadcast clock. This source is the official webcast,
+not a TBA-provided match link. `configs/san_francisco_qm7_native_camera.json` selects
+the local adapted checkpoint and camera-specific tracker thresholds of 0.25. Other
+cameras keep v1 and their existing thresholds.
+
+Simply using 1920 inference reduced validation performance, and overlapping tiling
+did not improve the old-camera validation sample. These experiments remain diagnostic
+scripts (`benchmark_distant.py`, `distant_detector.py`), not the app default. Instead,
+Haiku proposed native full-frame SF labels using the same approved $2 ledger. The
+agent reviewed the visible robots, corrected missed boxes and empty-floor boxes, and
+recorded the annotations in `configs/sf_distant_reviewed_boxes.json`. Raw uncertain
+Haiku labels were excluded. No robot is labeled when fully hidden behind a hub.
+
+`export_distant_dataset.py` combines the original 81 training images with five new
+SF frames, repeated six times for sampling weight (not 30 independent examples).
+One separate SF frame validates and one tests. `train_detector.py` fine-tuned v1 for
+18/20 epochs, stopping early and selecting epoch 6. The model and training log are
+in `runs/local_robot_distant_sf_v1/` and `logs/local-robot-distant-sf-v1.log`.
+
+At fixed confidence 0.25 / IoU 0.5, the reserved SF test frame retains all 5 visible
+robots while extra detections drop from 4 to 1. In the rebuilt 200-frame tracking
+demo, all 14 far-side observations across seven reviewed timestamps match, including
+4/4 far-side observations on the two times excluded from training, with no extra
+far-side detections. Those two times match all 10 visible robots, with one duplicate.
+These are small same-camera, agent-reviewed checks, not independently human-verified
+ground truth or proof about every frame. `evaluate_distant_tracking.py` exports the
+timestamp-by-timestamp counts.
+
+The combined 15-image test has 75 TP / 6 FP / 14 FN versus the baseline's 79 / 23 / 10
+at IoU 0.5. Because the adapted model loses recall on the old Einstein camera, it is
+used only by the SF profile. The original v1 remains the global default. Shared round
+API spending is $0.0420565 plus the retained $0.05 uncertain reservation, within $2.
+The new native demo, score files and measured limitations are linked in
+`results/distant_sf_v1.json`. Generated videos and checkpoints remain local and ignored.
+
+### Haiku appearance coaching experiment (2026-11-05)
+
+The user approved a new **$2 total cap** for identity coaching. `coach_identity.py`
+uses saved public Einstein match crops and the existing `start/robot_looks.json`
+descriptions, without sending the checked answer key. It asks for identities from
+two separate temporal crop groups per track; round 2 selects sharper crops from
+temporal bins. Requests use Haiku only, disable automatic retries, cache responses,
+and reserve $0.05 before each request in a locked ledger. An interrupted request
+retains its reservation. Both rounds and optional detector grading share that ledger.
+The earlier documentation had reversed the Einstein alliance rosters; blue is
+868/2910/2046, red is 4065/4414/1323, as recorded in `track_llm.py`.
+
+```bash
+# Paid: run only after cost/cap approval. These are the recorded pilot inputs.
+.venv/bin/python coach_identity.py --out datasets/identity_coach_v1 --round 2 --base-evidence runs/team_paths_free_evidence_pixels_v1/replayed_color_evidence.json --execute
+# Offline: train a small local appearance gallery from the accepted identities.
+.venv/bin/python train_identity_gallery.py --named-paths runs/haiku_identity_round2/paths.json --crops runs/team_paths_free_evidence_pixels_v1/ocr_crops --out runs/local_identity_gallery_v1
+```
+
+Round 1 at a 0.9 teacher-confidence gate did not increase coverage. Round 2's
+offline replay used the existing resolver's 0.8 gate and still required two
+supporting crop groups. `compare_runs.py` and `evaluate_team_paths.py` measured
+229/229 correct identities on matched boxes versus 224/224 before. Coverage rose
+from 38.6% to 39.4% of 581 visible reference observations; four teams were resolved,
+including 2910. This is a small same-match experiment, with two remaining teams
+unresolved. It does not establish generalization or complete scouting accuracy.
+
+The local HSV spatial appearance gallery used 49 training crops and 47 held-out
+crops from accepted tracks (2046, 2910, 4065, 4414). It agreed with their pseudo-labels
+on 46/47 held-out crops (97.9%). This is same-track teacher/OCR-label agreement,
+not independent team accuracy: unseen teams, background cues, and varying views
+remain untested. Its `gallery.npz` and `metrics.json` are in
+`runs/local_identity_gallery_v1/`. It remains experimental and is not wired into
+automatic identity assignment.
+
+`--grade --execute` asks Haiku to review four local detector frames separately.
+The first grader version mixed original and resized coordinates and produced one
+truncated response, so it is excluded from numerical conclusions. The corrected
+version sends matching image/box coordinates and structured responses. Teacher
+opinions supplement the checked answer-key scores; they do not replace them.
+
+Final recorded pilot spend: **$0.0311586**, plus a retained **$0.05 reservation**
+for the interrupted request, within the approved $2 total cap. The corrected teacher
+review flagged possible duplicates/background detections and misses in four frames;
+these are qualitative diagnoses, not detection truth. See
+`results/haiku_identity_coaching_v1.json`. No training or paid job remains running.
+
+### Team-number paths
+
+Add `--teams COMMA_SEPARATED_ROSTER` to `auto_paths.py` to run local bumper OCR
+after tracking. The release launcher source also accepts this flag. This feature
+requires macOS Apple Vision/Swift; it adds no paid requests. Existing v0.1.0 release
+downloads predate this change.
+
+For saved detections, run:
+
+```bash
+.venv/bin/python team_paths.py runs/auto_paths_youtube_demo/paths.json --video einstein_final_1.mp4 --teams 868,2910,2046,4065,4414,1323 --blue-teams 868,2910,2046 --red-teams 4065,4414,1323 --out runs/my_team_paths
+```
+
+The video must be the original full-frame source at the same timeline/resolution.
+`team_paths.py` samples crops no more often than every 0.5 seconds per anonymous ID.
+`read_team_numbers.swift` reads text locally. Exact roster numbers and unique
+two-or-more-digit roster fragments (for example `13` for 1323 only when no other
+roster team contains it) at confidence >=0.8 count, with at least two distinct crop
+times. Supplying both three-team alliance rosters enables repeated high-confidence
+bumper-color evidence, but color never names a robot alone: it can only join a close
+same-color fragment to an OCR anchor, or infer the third team when exactly one
+same-color unresolved track remains after the other two teams are anchored. Supported
+competing numbers reject the whole track; overlapping fragments claiming one team
+reject that team's grouping. This guards some errors but repeated OCR mistakes and
+unobserved tracker swaps can still cause incorrect assignments. OCR reads are evidence,
+not verified identities.
+
+`animation.html` and MP4/GIF show one path per resolved team. `debug/` keeps the
+original anonymous paths and video; the video retains anonymous labels. `paths.json`
+records source IDs, unresolved counts and conflicts, while `evidence.json`,
+`crop_manifest.json` and `ocr_crops/` expose every number read for review.
+Observed paths remain solid. Gaps up to two seconds with displacement <=20 field
+percentage units per second use dashed straight estimated joins. Longer gaps remain
+unknown; no positions are fabricated there. The six-team roster alone does not infer
+an unreadable number. `--evidence` reuses saved reads without rerunning Vision.
+
+**Free-evidence v3 check (2026-11-05):** unique partial reads, repeated bumper-color
+filtering, close same-color fragment joins, and the strict leftover-team rule were
+implemented locally. A replay against the checked Einstein clip used the saved Vision
+reads plus 221 newly measured color observations: it still resolved 2046, 4065 and
+4414, with 224/224 matched identities correct and 38.6% named-reference coverage.
+No candidate met the strict join/leftover conditions, so coverage did not increase.
+This is intentional: the rules must not manufacture names merely to improve a metric.
+The measured record is `results/team_paths_v3_free_evidence.json`; new API cost $0.
+
+The same-color fragment rule predicts the named robot's short future path from its
+last two field observations. It can carry a confirmed identity across up to 1.5 seconds
+of tracker loss only when the reappearing fragment has repeated matching bumper-color
+evidence and lands near that predicted path. Motion alone never names a robot.
+
+Four additional offline tests check fragment merging, independent votes, conflicting
+numbers and simultaneous duplicate team assignments; all 32 tests pass.
+
+Demo result: `runs/team_paths_v2/` sampled 238 crops and resolved 2046 (IDs 1/20),
+4065 (ID 8) and 4414 (ID 7). The other three teams remain unresolved. Against 100
+answer-key timestamps, 224 of 226 named detections matched at IoU >=0.3 and all 224
+had the correct identity. Correct named coverage was only 224/581 visible reference
+boxes (38.6%); accuracy on resolved boxes alone must not be advertised as full tracking
+accuracy. `evaluate_team_paths.py` exported the run and invoked `compare_runs.py`;
+metrics and comparison are in `runs/team_paths_v2_score/`. New API cost: $0.
+The launcher source selects the demo roster automatically on macOS and opens the team
+pane; other interactive runs can enter a roster. The existing downloadable release
+has not been replaced.
+
+`auto_paths.py` accepts a YouTube video link or a local video and produces an
+autonomous-window tracking video and a 2D path animation. It uses the preferred
+local v1 detector plus ByteTrack, not Claude. Install `requirements-paths.txt`.
+The trained weights are ignored by Git: pass `--weights` to an existing local
+checkpoint, or use the default `runs/local_robot_v1/weights/best.pt`.
+
+```bash
+# Documented match: includes an approximate camera preset and start at video 5.5 s.
+.venv/bin/python auto_paths.py 'https://www.youtube.com/watch?v=EjF9we707DA' --out runs/my_auto_paths
+
+# Existing video, explicit calibration, optional answer-key comparison:
+.venv/bin/python auto_paths.py einstein_final_1.mp4 --calibration configs/einstein_final1_camera.json --out runs/my_local_paths --reference track/final
+
+# Other camera: prepare a clickable reference image, then export camera.json.
+.venv/bin/python auto_paths.py 'YOUTUBE_URL' --prepare --auto-start VIDEO_SECONDS --out runs/camera_setup
+# Open runs/camera_setup/calibrate.html, select four matched floor landmarks,
+# set their field percentages and the camera crop, and download camera.json.
+.venv/bin/python auto_paths.py runs/camera_setup/source.mp4 --auto-start VIDEO_SECONDS --calibration /path/to/camera.json --out runs/calibrated_auto
+```
+
+Every output directory must be new. Default autonomous duration is 20 s, sampled
+at 10 fps; `--auto-start` and `--duration` select the video window. There is no
+automatic match-clock reading or replay/camera-change detection in this utility.
+For an unknown YouTube link, a start time and camera calibration are required;
+the built-in preset is selected only for video ID `EjF9we707DA`.
+
+Output files:
+
+- `animation.html`: offline canvas pane with play/pause, scrubber, speed, trail-length,
+  and track visibility controls; paired with `tracking.mp4` for video evidence.
+- `paths.mp4`, `paths.gif`, `paths_preview.png`: rendered 2D animation and still.
+- `paths.json`: timestamped detections, full-frame boxes, normalized positions,
+  anonymous track IDs, calibration, input/model hashes and optional reference scores.
+- `calibration.json`, `calibration_preview.jpg`, `bytetrack.yaml`: run configuration.
+- `calibrate.html` from preparation mode: click four coplanar floor landmarks and
+  enter their matching normalized top-down coordinates to export a calibration file.
+
+The pane and exported video/GIF draw two color-coded hubs/baskets and four ramps
+as static schematic landmarks, with a center line and robot paths overlaid. No fuel
+is drawn in the 2D pane (the original video naturally still shows fuel). The same
+`field_elements` metadata in `paths.json` supplies both renderers. These are illustrative
+normalized footprints, not surveyed dimensions, obstacle collision checks, or a change
+to the camera calibration. Hub/bump arrangement follows the
+[FIRST manual sections 5.4 and 5.5](https://firstfrc.blob.core.windows.net/frc2026/Manual/HTML/2026GameManual.htm).
+
+`--render-paths PATHS_JSON --out NEW_DIRECTORY` re-renders saved coordinates using
+the current field drawing. It copies the existing tracking video and calibration
+assets when present, does not load a model, and makes no download or API requests.
+Existing output folders are preserved. The field-element demonstration is saved
+under `runs/auto_paths_field_elements_v2/`; its tracks and video detections are identical
+to `runs/auto_paths_youtube_demo/`. The 200-frame, 10-fps export and absence of fuel
+elements were verified, and all 28 existing tests pass.
+
+The homography maps each bounding box's bottom center to normalized field percentages
+(0–100 on each axis), not meters. Four image/field correspondences must be in matching
+convex order. The demonstration preset comes from the rough neutral-zone polygon in
+`start/prematch_labels.json`; it is explicitly approximate, not surveyed geometry.
+Only use it for that fixed camera. Camera motion, robot heights and occlusion can
+distort projected positions. Out-of-field projections are omitted rather than clamped.
+
+ByteTrack runs on the cropped field view at detection confidence 0.1, with new-track
+threshold 0.4 and a one-second lost-track buffer. IDs are anonymous observations,
+not verified team numbers. Occlusions, false detections and association errors can
+create more than six IDs. Tracks with fewer than three projected observations are
+omitted by default. Trails break across gaps >0.6 s or jumps >25 normalized units;
+the viewer does not join those gaps into an invented continuous path.
+
+Checkpoint test on 2026-11-02: actual YouTube download, 200 frames over video seconds
+5.5–25.5, 20-second animation. There were 23 observed IDs, 19 with in-field points,
+and 16 displayed tracks after filtering; 41 observations projected outside the field.
+This demonstrates the end-to-end utility, not reliable six-robot identity tracking.
+Against 100 matching answer-key timestamps at IoU 0.5: 515 TP, 46 FP, 66 FN,
+91.8% precision and 88.6% recall. At IoU 0.3: 549 TP, 12 FP, 32 FN (97.9% precision,
+94.5% recall). Those scores measure tracked boxes, not 2D-position accuracy. No field
+ground truth exists here, and `compare_runs.py` requires team names, so the utility
+uses the anonymous detection evaluator instead. Twenty-eight offline tests pass.
+
+Example artifacts are in `runs/auto_paths_youtube_demo/`; run log is
+`/tmp/auto-scout-youtube-path-demo.log`. A local-file test caught a PIL list-color
+rendering error, which was fixed before the successful YouTube test. Calibration
+preparation was exercised on the saved video. Browser checks confirmed field drawing,
+play/pause, speed selection, track visibility and the pane's time slider. Video
+scrubbing did not follow the slider in the local HTTP preview; synchronized seeking
+still needs verification with a server that supports video byte ranges.
+
+Sources: [Ultralytics tracking](https://docs.ultralytics.com/modes/track/),
+[OpenCV homography](https://docs.opencv.org/4.x/d9/dab/tutorial_homography.html).
+
+## Confident-region training
+
+The original full-frame export accepted only four training images and one validation
+image, so student training never started. `prepare_confident_regions.py` reuses the
+saved labels offline without changing their confidence values or weakening the 0.5
+confidence cutoff. It selects at most one image region per third source frame,
+keeping train/validation matches separate and copying the original 14 checked test
+images and labels byte-for-byte.
+
+For each frame, visible, finite, in-bounds boxes with confidence >=0.5, width 12–480
+pixels, and height 12–400 pixels are positive candidates. Other nonempty box estimates
+are uncertainty regions, including hidden robots. Candidate crop widths are 1920,
+1280, 960 and 640 pixels at left, center, and right positions; height remains 610.
+Reject any crop intersecting an uncertainty region. Label every confident candidate
+that intersects the crop, requiring at least half the source box to remain and at
+least eight pixels per dimension after clipping. Reject overlapping duplicate boxes
+above IoU 0.7. Select the crop with most positive boxes, breaking ties by width, then
+leftmost position. This avoids dropping individual weak detections while leaving
+their estimated image regions as unlabeled background.
+
+Eighteen deterministic sample crops (six per match, spread across time) were inspected
+visually by the assistant. Two contained visible unannotated robot fragments and were
+excluded; the review records and exact crop coordinates are saved in
+`configs/confident_region_reviews.json`. The other crops remain pseudo-labels, not
+human-verified answer keys. The review does not establish correctness for every image.
+Teacher omissions outside their estimated boxes remain possible. Crops also change
+object scale relative to full-field test images.
+
+```bash
+.venv/bin/python prepare_confident_regions.py --out datasets/confident_regions_v1
+.venv/bin/python -m unittest -q test_prepare_dataset test_evaluate_detector test_teacher_pipeline test_confident_regions
+set -o pipefail
+caffeinate -i .venv/bin/python -u train_detector.py --data datasets/confident_regions_v1/data.yaml --out runs/local_robot_v2_regions --epochs 40 2>&1 | tee /tmp/auto-scout-train-regions-v2.log
+.venv/bin/python evaluate_detector.py runs/local_robot_v2_regions/weights/best.pt datasets/confident_regions_v1 runs/local_robot_v2_regions_test
+```
+
+Prepared dataset: 141 training images/268 boxes, 86 validation images/140 boxes,
+and 14 full-field test images/84 boxes. Sources and byte hashes are recorded in
+`datasets/confident_regions_v1/manifest.json`. The crop policy is fixed before student
+test evaluation. A pre-test calibration check on the existing 40-frame teacher audit
+selected 11 crops: 31 TP, 2 FP, 7 FN at IoU 0.5 (93.9% precision, 81.6% recall).
+This measures annotation agreement on a small calibration sample, not student accuracy.
+Calibration requires at least five crops and >=90% precision; no test images are
+used in that gate. The known omissions are why the run is an experiment, not a claim
+that all saved labels are correct.
+
+The new run uses the same pretrained YOLO26n initialization, image size 960, batch 4,
+seed 0, and validation-based early stopping as the first baseline. No additional
+Claude requests or API charges are required. Twenty-three offline tests now cover
+the existing logic plus uncertain-region exclusion, duplicate boxes, positive
+retention, and confidence preservation. Output directories must be new; staging
+prevents a failed export from leaving a partial dataset at its final path.
+
+### Trained result: local_robot_v2_regions (2026-11-02)
+
+The run completed 37 epochs in about 10.4 minutes on the epoch timer, stopping after
+12 epochs without better validation fitness. The selected checkpoint is from epoch
+25. Evaluation used the unchanged 14 full-field test images at confidence 0.25.
+
+| Model | TP at IoU 0.5 | FP | FN | Precision | Recall |
+|---|---|---|---|---|---|
+| First baseline (`local_robot_v1`) | 75 | 18 | 9 | 80.6% | 89.3% |
+| Confident regions (`local_robot_v2_regions`) | 70 | 12 | 14 | 85.4% | 83.3% |
+
+At IoU 0.3, the new run has 73 TP, 9 FP, 11 FN (89.0% precision, 86.9% recall).
+It makes fewer extra detections at the stricter overlap threshold but misses more
+robots. This is not a clear overall improvement; retain v1 as the preferred baseline
+for recall and keep v2 as an experimental checkpoint. Neither model is a complete
+scouting system or assigns reliable team identities.
+
+Only 14 test images are available. The first baseline trained on earlier frames of
+that same match, whereas this experiment trained on different matches and venues.
+The comparison is useful for the current clip but does not prove cross-event quality.
+No test threshold or training setting was changed after seeing these results.
+Full-field annotation quality and crowded scenes remain priorities before scaling
+training. More epochs alone do not address incorrect or missing labels.
+
+Summary and hashes: `results/local_robot_v2_regions.json`. Local checkpoint:
+`runs/local_robot_v2_regions/weights/best.pt`. Inspect `preview.jpg`, `predictions.mp4`,
+and raw `metrics.json` under `runs/local_robot_v2_regions_test/`. Logs, package
+versions, source snapshots and training arguments are saved with the run.
+This round made zero Claude calls and added $0 API cost; previous teacher labeling
+remains about $1.64, within the unchanged $4 cap.
+
+## Haiku teacher pipeline
+
+### Active multivenue teacher run
+
+`configs/haiku_multivenue_v1.json` labels 1,800 frames at 3 fps from four saved
+2026 finals: Sacramento, San Diego, Wisconsin, and Pacific Northwest. Sacramento,
+San Diego, and Wisconsin are training sources; Pacific Northwest is validation. The
+old 14 checked Einstein frames remain test only. It runs in
+`datasets/teacher_multivenue_v1/` with output planned at
+`runs/local_robot_multivenue_v1/`.
+
+The user approved this Haiku 5.5-only run on 2026-11-02. Its recorded historical
+average was $0.000714 per frame, giving a $1.29 estimate. The run-local ledger has
+a hard $2.30 cap, keeping the combined prior spend, existing reservations, and new
+maximum within the earlier $4 total limit. No other Claude model is permitted. The
+existing prompt audit passed on checked Einstein frames, but it does not validate
+label quality at the new venues; inspect samples and the held-out PNW validation
+before treating a trained checkpoint as an improvement. Progress appears in
+`datasets/teacher_multivenue_v1/status.json` and `logs/teacher-multivenue-v1.log`.
+
+The strict full-frame export stopped after labeling: only 3 of 1,793 field images
+showed six visible robots with every confidence >=0.5, so it correctly refused to
+train rather than treating omissions as background. This did not send retries or
+spend more money. `prepare_confident_regions.py` then reused the saved labels offline
+with `configs/multivenue_confident_region_reviews.json`. Twelve samples were reviewed;
+one Wisconsin title-card transition was rejected. The resulting dataset has 127 train,
+72 validation, and the unchanged 14 checked test images, with 225/122/84 boxes. Its
+existing teacher-audit calibration has 31 TP, 2 FP and 7 FN at IoU 0.5 (93.9%
+precision, 81.6% recall); this checks label quality only on the old Einstein audit.
+The automatic local fallback trains `runs/local_robot_multivenue_regions_v1/` and
+then evaluates it in `runs/local_robot_multivenue_regions_v1_test/`. Results pending.
+
+`run_teacher_training.py` runs the plan in `configs/haiku_teacher_v2.json`:
+label with `claude-haiku-5-5`, filter pseudo-labels, train YOLO26n, then evaluate
+on the original 14 checked test images. Sonnet is disabled and its comparison is
+postponed. The user set the current **$4 maximum on 2026-11-02**, lowering the earlier
+$9 cap after replacing the local key. Prior recorded spending and uncertain request reserves remain in the
+ledger, so the limit is conservative across the key change. Expected labeling
+cost for the three-match plan is about $2; unused budget is not spent automatically.
+
+Sources (videos discovered from public TBA match pages and visually checked):
+
+| Match | Video ID | Use |
+|---|---|---|
+| [Silicon Valley Quals 71](https://www.thebluealliance.com/match/2026casnv_qm71) | `y_vBDwf4Cbc` | Train |
+| [Sacramento Finals 1](https://www.thebluealliance.com/match/2026casac_f1m1) | `Ygzo0f0k0mk` | Train |
+| [Silicon Valley Quals 65](https://www.thebluealliance.com/match/2026casnv_qm65) | `oSjsixPUjlY` | Validation |
+
+The first 150 video seconds per source are extracted at 5 fps with the same
+1920x610 field crop: 750 frames per match, 2,250 requests at most. Title cards
+and fully hidden robots are excluded. The teacher gets the roster, previous image,
+and previous positions; team assignments help continuity but are discarded for
+one-class detector training. Every third labeled frame is considered for export,
+reducing adjacent-frame duplication in the student dataset.
+
+Conservative export accepts only frames with six visible robots, confidence >=0.5
+for each, and no pair of boxes with IoU >0.7. This reduces incomplete labels, but
+cannot guarantee correctness and biases the dataset against crowded/hidden scenes.
+Labels remain **unreviewed pseudo-labels**, not new answer keys. Training requires
+at least 100 accepted training images and 30 validation images. Different matches
+are kept in separate splits; no old Einstein frames enter student training.
+
+The teacher audit used a checked frame-0 seed and evaluated consecutive frames 1–40:
+
+| IoU | True positives | False positives | False negatives | Precision | Recall |
+|---|---|---|---|---|---|
+| 0.3 | 216 | 3 | 18 | 98.6% | 92.3% |
+| 0.5 | 212 | 7 | 22 | 96.8% | 90.6% |
+
+The gate requires >=90% precision and recall at IoU 0.5. It passes, but visible
+robots are still sometimes marked hidden. A generic single-image labeling prompt
+failed this pilot and was not used for training. This is not full-match accuracy.
+`results/haiku_teacher_audit.json` records the audit; an adapter restores full-frame
+coordinates in `runs/haiku_teacher_audit_tracking/` for `compare_runs.py`. That
+comparison reports 90% names and 97% overlapping boxes on the 40 audit frames,
+about $0.03. Its name percentage is conditional on matched boxes; use the detection
+audit above to see missed reference robots explicitly.
+
+Install `requirements-teacher.txt` with `.venv/bin/pip`. Before any new paid run,
+give an estimated cost and obtain authorization. After approval, a foreground
+command is:
+
+```bash
+set -o pipefail
+caffeinate -i .venv/bin/python -u run_teacher_training.py 2>&1 | tee datasets/teacher_v2/job.log
+```
+
+Assistants should run this in a background session. The launched job uses `nohup`,
+a separate process group and `caffeinate` so it can continue after the launching
+shell exits and prevent idle sleep. Keep the Mac plugged in with the lid open.
+The job writes progress every frame and a heartbeat at least every 25 seconds.
+Inspect `datasets/teacher_v2/status.json`, `job.log`, and `launch.json` (process group).
+On failure the status changes to `stopped`; there are no automatic API retries.
+An uncertain in-flight request must be reconciled before retrying that frame.
+Completed labels are reused after checking image, model, and prompt hashes.
+
+The billing ledger at `datasets/teacher_v2/billing/ledger.json` reserves $0.01 before
+each request and counts reported usage at $0.10/$0.50 per million input/output tokens.
+Failed/uncertain attempts retain their reserves. The client sends only bounded
+images and fixed prompts, with a 4,096-output-token limit. It stops when the next
+reserve would cross $4. This ledger tracks this job; it does not control other use
+of the account. The key is read from `.env`, never copied into the plan or logs.
+
+The audited label method is fingerprinted separately from budget settings. The
+$5-to-$9-to-$4 cap changes preserved all usage and reserves, and the label method AST was
+verified unchanged before retaining the audit. The original audited source snapshot
+is under `datasets/teacher_v2/provenance/`.
+
+The running job was paused between completed API requests to lower the cap from $9
+to $4, then resumed from cached labels. No paid request was repeated during that change.
+
+On success, the job writes `datasets/teacher_v2/result.json`, trained weights under
+`runs/local_robot_v2/weights/`, and a preview/video plus precision/recall under
+`runs/local_robot_v2_test/`. These are ignored local artifacts. No student-v2 result
+is claimed until training and evaluation finish. Eighteen offline tests cover the
+dataset/evaluation logic, filtering, cap enforcement, failed-request reserves, and
+cached-label reuse; none sends API requests. Hidden robots may return an empty box:
+the parser preserves a previous estimate for continuity while keeping `visible=false`.
+Raw responses are retained under each label folder's `raw/` subdirectory. An already
+billed response with no usable label is quarantined without another paid request;
+the next frame uses the actual elapsed gap. The first such recovery excluded frame
+320 of Silicon Valley Quals 71 after 320 successful labels. Audit and cached labels
+were retained after verifying that API request construction was unchanged.
+
+Visible boxes with zero area, reversed corners, non-finite coordinates, or substantial
+out-of-frame positions are rejected as `InvalidTeacherLabel`. Tiny boundary overshoots
+of at most two sent-image pixels are clipped and recorded in `box_adjustments`.
+The job quarantines malformed paid responses and continues with the last valid
+tracking state and the actual elapsed frame gap; it never retries those responses.
+Ten consecutive malformed responses stop the job to avoid wasting credits. API,
+authentication, budget, and uncertain-network failures still stop immediately.
+Raw text is preserved even when JSON is malformed. A geometry error at frame 357
+of the first match was repaired this way; 356 completed labels and all billing
+records were retained. Quality requirements for training were not loosened.
 
 ## Frames and coordinates
 
@@ -103,8 +735,21 @@ Everything in a Lovat report is built from three inputs:
 | | Haiku 5.5 | 2.5 frames per second (`--step 2`), two images, robot descriptions | 86% (92% before the backward pass) | 93% | $0.0010 per frame used | about $0.40 |
 | | Haiku 5.5 | two images | 94% | 96% | $0.0008 | about $0.70 |
 | | Haiku 4.5 | two images | not usable | 4% | $0.005 | — |
+| local_robot_v1 | YOLO26n | Local detector; 81 training images, 14 held-out test images | Not implemented | 98.8% recall at IoU 0.3; 89.2% precision | $0 API | $0 API for detector; full pipeline not measured |
+| local_robot_v2_regions | YOLO26n | 141 teacher-region training images, 86 validation images, same 14 full-field test images; experimental | Not implemented | 86.9% recall at IoU 0.3; 89.0% precision | $0 new API | $0 API for detector; full pipeline not measured |
+| local_robot_multivenue_regions_v1 | YOLO26n | 127 multi-venue teacher-region training images, 72 validation images, same 14 full-field test images; experimental | Not implemented | 78.6% recall at IoU 0.3; 98.5% precision | $1.4247 Haiku 5.5 | Fewer extra detections but substantially lower recall than v1; do not replace v1 |
+| auto path demo | YOLO26n v1 + ByteTrack | 20 s / 200 frames; 100 checked timestamps; approximate field projection | Anonymous IDs | 88.6% recall at IoU 0.5; 91.8% precision | $0 API | $0 API; full-match run not measured |
+| teacher audit | Haiku 5.5 | Sequential prompt, 40 checked frames after frame-0 seed; before identity cleanup | 90% | 97% matched overlap; see detection recall above | about $0.0007 | Not measured on full match |
+| identity coaching pilot | Haiku 5.5 + existing local tracks | Two crop-selection rounds; four teams accepted | 229/229 matched names; 39.4% reference coverage | Detector unchanged | $0.03116 total recorded pilot, plus $0.05 uncertain reserve | Not measured on full match |
+| distant SF camera adaptation | YOLO26n fine-tuned from v1 | Native 1080p field crop, 5 reviewed SF train frames, dedicated camera thresholds | Not measured | 4/4 far observations on 2 reserved times; no far extras; very small same-camera check | Shared round total $0.04206 plus $0.05 uncertain reserve | Not measured; SF profile only |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
+
+### Trained result: `local_robot_multivenue_regions_v1` (2026-11-03)
+
+The multi-venue Haiku teaching run made 1,795 billed calls across Sacramento, San Diego, Wisconsin, and Pacific Northwest championship finals. Five invalid labels were excluded without retrying. Teacher spend was **$1.4247**, inside the $2.30 run cap. The strict full-field automatic filter only retained 3 frames, so the local training set safely fell back to reviewed confident robot-region labels: 127 train images / 225 boxes, 72 validation images / 122 boxes, and the existing independent 14-image / 84-box full-field test set.
+
+YOLO26n selected epoch 4 and stopped early after 16 of 60 requested epochs. At IoU 0.5 it found 64 of 84 test robots with 3 false positives and 20 misses (95.5% precision, 76.2% recall). The existing `local_robot_v1` found 75 with 18 false positives and 9 misses (80.6% precision, 89.3% recall). The new experiment is very conservative—at IoU 0.3 it reaches 98.5% precision—but it misses too many robots to replace v1 for path tracking. Keep it as an evaluated experiment, not the default detector.
 
 ### Project: Teach a local model with Claude
 
@@ -133,7 +778,7 @@ Prior FRC projects to learn from: [NimbleValley/auto-scout](https://github.com/N
 
 First tests:
 
-1. Train RF-DETR-S and YOLO26s on the checked clip frames, and compare how many robots each finds on held-out frames, including hidden ones.
+1. Train RF-DETR-S and YOLO26s on the checked clip frames, and compare visible-robot detections on held-out frames. The first local baseline uses the smaller YOLO26n. Evaluate continuity through fully hidden frames separately at the tracking stage.
 2. Measure bumper digit height in pixels at 1080p, and test Apple Vision and PARSeq with the 1-of-3 rule.
 3. Run BoT-SORT on the full match, and count name swaps.
 4. Only then, test whether a local AI model fixes the hard moments.
@@ -234,3 +879,62 @@ First tests: run the same 50–100 frames of the clip through `gpt-6.1-terra` (r
 
 - Make more answer keys: check more clips and matches by hand, at different venues and in crowded moments.
 - Compare video-scout reports with human scout reports in Lovat for the same matches.
+
+## Path-animation release packaging
+
+`release/run.py` creates an isolated environment, installs `release/requirements.txt`,
+selects GPU/CPU automatically, and launches `auto_paths.py` with the bundled model.
+The ZIP includes the Python/HTML sources, demo calibration, v1 weights, AGPL license,
+and a model checksum manifest. It excludes credentials, videos and environments.
+Mac runtime tested; Windows/Linux launchers have not been platform-tested.
+
+## Landmark recognition pilot
+
+### Human floor-landmark labeling
+
+`label_landmarks.py` makes a self-contained offline browser page for creating the
+ground-truth correspondences needed to calibrate a fixed broadcast camera. It reads a
+local video, writes sampled JPEG frames and `label_landmarks.html` to a **new** output
+directory, and makes no network or Claude request:
+
+```bash
+.venv/bin/python label_landmarks.py path/to/match.mp4 --out runs/casac_main_wide_labels --start 5.5 --duration 20 --every 2
+```
+
+Open the generated HTML page, select each sampled frame, and click four or more
+points that are fixed to the carpet or the field boundary. Give each point its
+top-down percentage coordinate (blue-to-red x and far-to-near y) from the game manual.
+Do not label robot positions, hub tops, or a landmark hidden by a robot. Download
+`landmark_labels.json` and keep it next to that tournament-camera preset. A stable
+wide broadcast view normally needs one calibration; cuts, replays, and zoomed views
+need separate labels or must use the rough fallback.
+
+The labeler includes field corners, center-line boundary intersections, and boundary
+midpoints. Mark every one that is visible (six to eight is preferable), then use
+**Download this frame's camera.json**. `auto_paths.py` robustly fits the homography
+from four or more correspondences and records the total/inlier landmark counts. This
+reduces the effect of one slightly misplaced click; always inspect its calibration
+preview before trusting a path.
+
+The JSON contains all sampled image points plus their known field coordinates. It is
+the human-reviewed training/validation source for a future keypoint model, and it can
+also be used to check one camera homography before drawing robot paths. The tool does
+not yet train or automatically apply a keypoint model; that deliberately remains a
+separate measured step.
+
+` .venv/bin/python -u train_landmarks.py` prepares `datasets/landmarks_v1/` and
+launches 30 epochs in `runs/landmarks_v1/`. It reuses the six rough hub/bump polygons
+in `start/prematch_labels.json` as bounding boxes. Fifty frames at 5.5–25.1 seconds
+train the detector; twenty at 35.5–45 seconds provide same-camera validation.
+Temporal separation does not demonstrate generalization to another camera or venue.
+The labels are approximate, propagated with a fixed-camera assumption, and can include
+occlusions. Inspect `datasets/landmarks_v1/labels_preview.jpg` before treating them as
+reliable annotations. No Claude requests are made. Progress is in
+`runs/landmark_jobs/v1.log`; the training wrapper prints a heartbeat every 25 seconds.
+
+This is structure recognition, not a floor-point alignment model. Hub bounding-box
+centers must not be used as coplanar floor landmarks. Accurate floor correspondences,
+separate-match testing and rejection of uncertain fits are still required before
+connecting predictions to automatic calibration. `compare_runs.py` requires robot
+identities and cannot score this six-class landmark task; no robot-answer-key score
+or field-position accuracy is claimed. Training results are pending.

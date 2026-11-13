@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-02",
+  "model": "claude-haiku-5-5",
+  "frames": 40,
+  "seed_frame": 0,
+  "precision_recall": {
+    "0.3": {
+      "true_positive": 216,
+      "false_positive": 3,
+      "false_negative": 18,
+      "precision": 0.9863013698630136,
+      "recall": 0.9230769230769231
+    },
+    "0.5": {
+      "true_positive": 212,
+      "false_positive": 7,
+      "false_negative": 22,
+      "precision": 0.9680365296803652,
+      "recall": 0.905982905982906
+    }
+  },
+  "passed": true,
+  "prompt_sha256": "f7ed0d507fc1f73582202a0f3ec8d33d722c7489a234016da50e820d7654e3a1",
+  "scope": "Sequential teacher audit on frames 1-40 of checked clip. No Sonnet requests. Not a full-match accuracy result."
+}

@@ -1,0 +1,21 @@
+{
+  "run": "team_paths_v3_free_evidence",
+  "date": "2026-11-05",
+  "scope": "Same-match Einstein Final 1 replay using saved local Vision OCR plus 221 newly computed local bumper-color observations; no API calls.",
+  "free_evidence": [
+    "Unique two-or-more-digit partial OCR reads can anchor only one roster candidate.",
+    "Repeated bumper-color readings can join only close, sequential, same-color fragments to an OCR anchor.",
+    "The leftover-team rule requires exactly one unnamed color-confirmed track after two alliance teams are anchored."
+  ],
+  "result": {
+    "resolved_teams": [2046, 4065, 4414],
+    "resolved_predictions": 226,
+    "matched_iou_0_3": 224,
+    "correct_identity": 224,
+    "identity_accuracy_on_matched": 1.0,
+    "visible_reference_boxes": 581,
+    "correct_named_reference_coverage": 0.3855421687
+  },
+  "comparison_to_v2": "No coverage change on this clip. The new conservative free-evidence rules found no safe fragment join or leftover inference. This is a useful negative result: they do not invent names when the needed evidence is absent.",
+  "new_api_spend_usd": 0
+}
