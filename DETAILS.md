@@ -342,10 +342,30 @@ No candidate met the strict join/leftover conditions, so coverage did not increa
 This is intentional: the rules must not manufacture names merely to improve a metric.
 The measured record is `results/team_paths_v3_free_evidence.json`; new API cost $0.
 
-The same-color fragment rule predicts the named robot's short future path from its
-last two field observations. It can carry a confirmed identity across up to 1.5 seconds
-of tracker loss only when the reappearing fragment has repeated matching bumper-color
-evidence and lands near that predicted path. Motion alone never names a robot.
+The joined-path matcher uses up to half a second of recent motion to reconnect
+fragments across gaps up to two seconds. A link must be the unambiguous best match
+in both directions and have matching bumper-color evidence. The whole chain must
+remain free of overlapping time ranges and competing team identities; OCR-conflicted
+tracks are excluded. An anchor anywhere in a chain can name earlier and later pieces.
+Color is now collected on every local OCR run. Without explicit alliance rosters,
+repeated OCR plus color can establish an anchor's alliance for continuation; the
+third-team deduction still requires a complete three-team roster, two other teams
+actually visible at the same timestamps, and spatially separate observations.
+
+`path_stitching.py` fills only bounded short gaps between observations, without
+extrapolating before or after a path. JSON points carry `estimated: true`; the HTML,
+MP4 and GIF show dashed estimated segments and hollow estimated markers. Original
+anonymous fragments remain available in `debug/`. This improves path continuity,
+not the detector's ability to see an occluded robot.
+
+Replay on Glendale Q5 reconnects track 7 to team 3501's tracks 39 and 72. Its path
+changes from 128 observed points to 172 observed points plus 20 estimated points.
+This is visually reviewed illustration, not independently scored identity accuracy.
+The Einstein answer-key replay remains 229/229 correctly named matched observations
+and 39.4% named-reference coverage; interpolation does not count as new detections.
+New outputs: `runs/glendale_qual5_combined_paths_v2/` and
+`runs/einstein_combined_paths_v2/`. New API cost $0. The release builder includes
+the new stitching module; the existing published release has not been replaced.
 
 Four additional offline tests check fragment merging, independent votes, conflicting
 numbers and simultaneous duplicate team assignments; all 32 tests pass.
@@ -742,6 +762,7 @@ Everything in a Lovat report is built from three inputs:
 | teacher audit | Haiku 5.5 | Sequential prompt, 40 checked frames after frame-0 seed; before identity cleanup | 90% | 97% matched overlap; see detection recall above | about $0.0007 | Not measured on full match |
 | identity coaching pilot | Haiku 5.5 + existing local tracks | Two crop-selection rounds; four teams accepted | 229/229 matched names; 39.4% reference coverage | Detector unchanged | $0.03116 total recorded pilot, plus $0.05 uncertain reserve | Not measured on full match |
 | distant SF camera adaptation | YOLO26n fine-tuned from v1 | Native 1080p field crop, 5 reviewed SF train frames, dedicated camera thresholds | Not measured | 4/4 far observations on 2 reserved times; no far extras; very small same-camera check | Shared round total $0.04206 plus $0.05 uncertain reserve | Not measured; SF profile only |
+| combined paths | Existing detector + local identity evidence | Mutual motion/color fragment matching; bounded estimated gap positions | Einstein 229/229 matched; 39.4% coverage, unchanged | Detector unchanged | $0 new API | Not measured; Glendale 3501 gains 44 observed path points and 20 estimated points |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
 

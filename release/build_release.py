@@ -18,6 +18,7 @@ FILES = {
     "auto_paths_viewer.html": ROOT / "auto_paths_viewer.html",
     "auto_paths_calibrate.html": ROOT / "auto_paths_calibrate.html",
     "team_paths.py": ROOT / "team_paths.py",
+    "path_stitching.py": ROOT / "path_stitching.py",
     "read_team_numbers.swift": ROOT / "read_team_numbers.swift",
     "configs/einstein_final1_camera.json": ROOT / "configs" / "einstein_final1_camera.json",
     "models/robot.pt": ROOT / "runs" / "local_robot_v1" / "weights" / "best.pt",
