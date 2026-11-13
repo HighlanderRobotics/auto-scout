@@ -23,6 +23,12 @@ We tested on [Einstein Final 1 of the 2026 Championship](https://www.youtube.com
 
 ## Research projects
 
+Saved Haiku teacher labels are available in
+[annotations/haiku_training_v1](annotations/haiku_training_v1/README.md): 4,156
+annotation records with source-video metadata, frame coordinates, and provenance.
+These include unreviewed proposals, so use the documented review/filtering steps
+before training. Videos and credentials are excluded.
+
 For team-number paths on macOS, add `--teams 868,2910,2046,4065,4414,1323`
 to the path command below (use the actual roster for another match). Local Apple
 Vision reads robot crops and merges track fragments with repeated supporting bumper

@@ -53,6 +53,25 @@ their labels are checked. `track/final/` remains untouched as the answer key.
 
 ## Local dataset preparation
 
+### Published Haiku annotations
+
+`annotations/haiku_training_v1/` contains 4,156 allowlisted saved Haiku annotation
+records in 12 JSONL files (about 5.5 MB). The manifest records counts, file hashes,
+public sources, original extraction crops/cadence and proposal status. It includes
+the two main teacher runs, a single copy of the Einstein tracking audit, the SF
+frame proposals, and both appearance-coaching rounds. Raw transcripts, ledgers,
+API keys, images, videos, weights and absolute machine paths are excluded.
+
+These records preserve teacher uncertainty and include proposals that never passed
+training filters. In particular, hidden robot boxes must not become detector labels,
+and raw SF proposals must be replaced with the separately reviewed annotations.
+`export_haiku_annotations.py --out NEW_FOLDER` rebuilds the export from existing
+local data without API calls; it validates visible boxes, allowlists fields, checks
+for credential-like content and refuses to overwrite an existing directory.
+See the export's README for coordinate conversions and reproducibility limits.
+
+### Checked-frame dataset export
+
 `prepare_dataset.py` converts the existing tracking JSON into YOLO-format detection
 labels and cropped JPEGs. It does not call Claude, read `.env`, install a detector,
 or train a model. An offline-data environment needs only:
