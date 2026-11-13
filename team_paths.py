@@ -12,6 +12,7 @@ import threading
 
 import cv2
 from auto_paths import color, heartbeat, render_animation, youtube_id
+from path_stitching import stitch_fragments, fill_short_gaps
 
 
 def partial_team_matches(text, teams):
@@ -68,6 +69,7 @@ def resolve_tracks(data, evidence, teams, alliance_by_team=None):
             votes[int(row['id'])][team].add(row['t'])
     assignments = {}
     audit = []
+    blocked=set()
     for track in data['tracks']:
         counts = sorted(((len(times), team) for team, times in votes[track['id']].items()), reverse=True)
         if not counts or counts[0][0] < 2:
@@ -75,39 +77,61 @@ def resolve_tracks(data, evidence, teams, alliance_by_team=None):
         # A second supported number signals a potential tracker identity swap.
         if len(counts) > 1 and counts[1][0] >= 2:
             audit.append({'id':track['id'], 'reason':'conflicting bumper reads', 'votes':counts})
+            blocked.add(track['id'])
             continue
         assignments[track['id']] = counts[0][1]
         audit.append({'id':track['id'], 'team':counts[0][1], 'reason':'repeated identity evidence', 'votes':counts,
                       'methods':sorted({row.get('method','local_ocr') for row in evidence if row.get('id')==track['id'] and row.get('team')==counts[0][1]})})
 
+    if alliance_by_team is None:
+        observed={}
+        for identifier,team in assignments.items():
+            alliance=supported_alliance(evidence,identifier)
+            if alliance:observed.setdefault(team,set()).add(alliance)
+        alliance_by_team={team:next(iter(colors)) for team,colors in observed.items() if len(colors)==1}
     if alliance_by_team:
         by_id = {track['id']: track for track in data['tracks']}
         colors = {identifier: supported_alliance(evidence, identifier) for identifier in by_id}
-        changed = True
-        while changed:
-            changed = False
-            for known_id, team in list(assignments.items()):
-                alliance = alliance_by_team.get(team)
-                if not alliance:
-                    continue
-                known = by_id[known_id]
-                for candidate_id, candidate in by_id.items():
-                    if candidate_id in assignments or colors.get(candidate_id) != alliance:
-                        continue
-                    if can_join(known, candidate) or can_join(candidate, known):
-                        assignments[candidate_id] = team
-                        audit.append({'id':candidate_id, 'team':team, 'reason':'nearby same-color fragment joined', 'anchor_id':known_id})
-                        changed = True
-                        break
-                if changed:
-                    break
+        for identifier,team in assignments.items():
+            expected=alliance_by_team.get(team)
+            if colors.get(identifier) and colors[identifier]!=expected:
+                blocked.add(identifier)
+            elif expected:
+                colors[identifier]=expected
+        chains,links=stitch_fragments(data['tracks'],colors,assignments,blocked)
+        audit.extend(links)
+        for chain in chains:
+            names={assignments[i] for i in chain if i in assignments}
+            if len(names)==1:
+                team=next(iter(names))
+                for identifier in chain:
+                    if identifier not in assignments:
+                        assignments[identifier]=team
+                        audit.append({'id':identifier,'team':team,'reason':'nearby same-color fragment joined','chain':chain})
         for alliance in ('red', 'blue'):
             candidates = sorted(team for team, value in alliance_by_team.items() if value == alliance)
+            if len(candidates)!=3:continue
             remaining = [team for team in candidates if team not in assignments.values()]
-            unknown = [identifier for identifier in by_id if identifier not in assignments and colors.get(identifier) == alliance]
+            unknown = [chain for chain in chains if all(identifier not in assignments and identifier not in blocked and colors.get(identifier)==alliance for identifier in chain)]
             if len(remaining) == 1 and len(unknown) == 1:
-                assignments[unknown[0]] = remaining[0]
-                audit.append({'id':unknown[0], 'team':remaining[0], 'reason':'only remaining team in alliance after repeated bumper-color evidence'})
+                # The other two robots must actually be present at the same time.
+                # Otherwise a later fragment of an already-named robot could be
+                # mistaken for the missing third teammate.
+                support=set()
+                for identifier in unknown[0]:
+                    for point in by_id[identifier]['points']:
+                        present={}
+                        for other,team in assignments.items():
+                            if alliance_by_team.get(team)!=alliance:continue
+                            for known in by_id[other]['points']:
+                                if abs(known['t']-point['t'])<.051:
+                                    present[team]=known
+                        if len(present)==2 and all(math.hypot(p['x']-point['x'],p['y']-point['y'])>=8 for p in present.values()):
+                            support.add(point['t'])
+                if len(support)<2:continue
+                for identifier in unknown[0]:
+                    assignments[identifier] = remaining[0]
+                    audit.append({'id':identifier, 'team':remaining[0], 'reason':'only remaining team in alliance after repeated bumper-color evidence','chain':unknown[0]})
     groups = defaultdict(list)
     for track in data['tracks']:
         if track['id'] in assignments:
@@ -126,7 +150,7 @@ def resolve_tracks(data, evidence, teams, alliance_by_team=None):
             continue
         output.append({'id':team, 'team':team, 'color':list(color(int(team))),
                        'source_ids':[t['id'] for t in tracks],
-                       'points':sorted(points.values(), key=lambda p:p['t'])})
+                       'points':fill_short_gaps(sorted(points.values(), key=lambda p:p['t']),data['fps']) if 'fps' in data else sorted(points.values(),key=lambda p:p['t'])})
     return output, audit
 
 
@@ -193,15 +217,14 @@ def main():
             if result.returncode:
                 raise RuntimeError('Local Vision OCR failed: '+result.stderr[-2000:])
             evidence=[dict(row,**manifest[row['file']]) for row in json.loads(result.stdout)]
-            if alliance_by_team:
-                for name, row in manifest.items():
-                    image = cv2.imread(str(crops/name))
-                    hsv = cv2.cvtColor(image[image.shape[0]//2:], cv2.COLOR_BGR2HSV)
-                    red = int((((hsv[:,:,0] <= 12) | (hsv[:,:,0] >= 170)) & (hsv[:,:,1] >= 80) & (hsv[:,:,2] >= 60)).sum())
-                    blue = int(((hsv[:,:,0] >= 90) & (hsv[:,:,0] <= 130) & (hsv[:,:,1] >= 80) & (hsv[:,:,2] >= 60)).sum())
-                    total = red + blue
-                    if total and max(red, blue) / total >= .75:
-                        evidence.append(dict(row, team='', alliance='red' if red > blue else 'blue', confidence=max(red, blue) / total))
+            for name, row in manifest.items():
+                image = cv2.imread(str(crops/name))
+                hsv = cv2.cvtColor(image[image.shape[0]//2:], cv2.COLOR_BGR2HSV)
+                red = int((((hsv[:,:,0] <= 12) | (hsv[:,:,0] >= 170)) & (hsv[:,:,1] >= 80) & (hsv[:,:,2] >= 60)).sum())
+                blue = int(((hsv[:,:,0] >= 90) & (hsv[:,:,0] <= 130) & (hsv[:,:,1] >= 80) & (hsv[:,:,2] >= 60)).sum())
+                total = red + blue
+                if total and max(red, blue) / total >= .75:
+                    evidence.append(dict(row, team='', alliance='red' if red > blue else 'blue', confidence=max(red, blue) / total))
             (a.out/'crop_manifest.json').write_text(json.dumps(manifest,indent=2))
         (a.out/'evidence.json').write_text(json.dumps(evidence,indent=2))
         tracks,audit=resolve_tracks(data,evidence,teams,alliance_by_team)
@@ -213,9 +236,10 @@ def main():
         render_animation(copy.deepcopy(data),debug)
         named=copy.deepcopy(data)
         named.update(tracks=tracks,identity_mode='team',identity_audit=audit,roster=sorted(teams),
-                     identity_note='Repeated OCR anchors plus conservative local color/fragment evidence when a roster is supplied; unresolved identities remain in debug. Short dashed joins are estimated. Long gaps remain unknown.')
+                     identity_note='One joined path per resolved team using repeated identity evidence, matching bumper color and unambiguous motion. Dashed lines and hollow markers show short estimated gaps. Long gaps remain unknown; anonymous fragments remain in debug.')
         named['summary']['shown_track_ids']=len(tracks)
         named['summary']['unresolved_track_ids']=len(data['tracks'])-sum(len(t['source_ids']) for t in tracks)
+        named['summary']['estimated_path_points']=sum(bool(p.get('estimated')) for t in tracks for p in t['points'])
         render_animation(named,a.out)
         print(f"Resolved {len(tracks)}/{len(teams)} teams. Open {a.out/'animation.html'}; anonymous debug: {debug/'animation.html'}",flush=True)
     finally:

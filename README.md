@@ -23,12 +23,23 @@ We tested on [Einstein Final 1 of the 2026 Championship](https://www.youtube.com
 
 ## Research projects
 
+Saved Haiku teacher labels are available in
+[annotations/haiku_training_v1](annotations/haiku_training_v1/README.md): 4,156
+annotation records with source-video metadata, frame coordinates, and provenance.
+These include unreviewed proposals, so use the documented review/filtering steps
+before training. Videos and credentials are excluded.
+
 For team-number paths on macOS, add `--teams 868,2910,2046,4065,4414,1323`
 to the path command below (use the actual roster for another match). Local Apple
 Vision reads robot crops and merges track fragments with repeated supporting bumper
 reads. Open `teams/animation.html`; its debug link retains anonymous paths.
 Unresolved robots remain in debug. Short dashed joins are estimates; long hidden
 intervals remain unknown. No Claude calls are made. See DETAILS.md for limits.
+On `combind-paths`, compatible fragments reconnect in both directions into one path
+per resolved team. Short gaps up to two seconds are filled with explicitly estimated
+positions, shown as dashed lines and hollow markers. Crowded or ambiguous joins stay
+unresolved. Color evidence is collected automatically, so normal `--teams` runs can
+extend an OCR-confirmed identity without a separate alliance roster.
 Add `--blue-teams 868,2910,2046 --red-teams 4065,4414,1323` to enable extra free,
 conservative evidence: bumper-color filtering, unique two-digit partial reads, close
 same-color fragment joins, and a leftover-team rule.

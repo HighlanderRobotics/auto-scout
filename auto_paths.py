@@ -80,7 +80,7 @@ def field_position(box, matrix):
 
 
 def connected(a, b, max_gap=.6):
-    return 0 < b["t"] - a["t"] <= max_gap and math.hypot(b["x"] - a["x"], b["y"] - a["y"]) <= 25
+    return not (a.get('estimated') or b.get('estimated')) and 0 < b["t"] - a["t"] <= max_gap and math.hypot(b["x"] - a["x"], b["y"] - a["y"]) <= 25
 
 
 def color(track):
@@ -165,7 +165,7 @@ def field_frame(tracks, current, duration, approximate, max_gap=.6, elements=Non
                     segment=[start[k]+(end[k]-start[k])*f/20 for f in (i,i+1) for k in (0,1)]
                     draw.line(segment,fill=rgb,width=2)
         if points and current-points[-1]["t"] <= min(max_gap,.35):
-            x,y=xy(points[-1]);draw.ellipse((x-7,y-7,x+7,y+7),fill=rgb,outline="white",width=2)
+            x,y=xy(points[-1]);draw.ellipse((x-7,y-7,x+7,y+7),fill=None if points[-1].get('estimated') else rgb,outline=rgb if points[-1].get('estimated') else "white",width=2)
             draw.text((x+9,y-10),str(track["id"]),font=font(16),fill=rgb)
     return image
 

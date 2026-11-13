@@ -1,0 +1,271 @@
+{
+  "format": "auto-scout-haiku-annotations-v1",
+  "files": [
+    {
+      "file": "teacher_v2/2026casnv_qm71.jsonl",
+      "records": 748,
+      "bytes": 1010302,
+      "sha256": "8b7fd0561b6bd40d3a1f3007d80acec73783fa953f95e5af3fd08646dc34774d",
+      "match": "2026casnv_qm71",
+      "youtube_id": "y_vBDwf4Cbc",
+      "tba_url": "https://www.thebluealliance.com/match/2026casnv_qm71",
+      "split": "train",
+      "teams": {
+        "581": "red",
+        "1700": "red",
+        "4990": "red",
+        "1868": "blue",
+        "8048": "blue",
+        "2643": "blue"
+      },
+      "crop": [
+        0,
+        110,
+        1920,
+        720
+      ],
+      "fps": 5,
+      "start_s": 0,
+      "video_sha256": "a7a3dd32c20011325ee2f86244ea1183d9f83dc1a5f758a27028ba879668c544",
+      "annotation_status": "unreviewed teacher proposals; not all passed training filters"
+    },
+    {
+      "file": "teacher_v2/2026casac_f1m1.jsonl",
+      "records": 748,
+      "bytes": 1009934,
+      "sha256": "0fca94abde2192e3148e674d98562c8b3bec255e9e30332c81264bf91000738e",
+      "match": "2026casac_f1m1",
+      "youtube_id": "Ygzo0f0k0mk",
+      "tba_url": "https://www.thebluealliance.com/match/2026casac_f1m1",
+      "split": "train",
+      "teams": {
+        "2204": "red",
+        "1678": "red",
+        "5940": "red",
+        "6884": "blue",
+        "4698": "blue",
+        "3257": "blue"
+      },
+      "crop": [
+        0,
+        110,
+        1920,
+        720
+      ],
+      "fps": 5,
+      "start_s": 0,
+      "video_sha256": "717e989c8c4ddcf1b7bc3ca65b89f5136f433b2097ceed7968bc92b3d175f316",
+      "annotation_status": "unreviewed teacher proposals; not all passed training filters"
+    },
+    {
+      "file": "teacher_v2/2026casnv_qm65.jsonl",
+      "records": 749,
+      "bytes": 996981,
+      "sha256": "f5aceffc1c8d73abeb12eef87998f18e66a4be56a4defaf656569af1633ff2cb",
+      "match": "2026casnv_qm65",
+      "youtube_id": "oSjsixPUjlY",
+      "tba_url": "https://www.thebluealliance.com/match/2026casnv_qm65",
+      "split": "val",
+      "teams": {
+        "2367": "red",
+        "6814": "red",
+        "254": "red",
+        "972": "blue",
+        "1967": "blue",
+        "1671": "blue"
+      },
+      "crop": [
+        0,
+        110,
+        1920,
+        720
+      ],
+      "fps": 5,
+      "start_s": 0,
+      "video_sha256": "512721955e0d224f1970cf6606c31d7169a10021640919c20865c4f8c4165b12",
+      "annotation_status": "unreviewed teacher proposals; not all passed training filters"
+    },
+    {
+      "file": "teacher_multivenue_v1/2026casac_f1m1.jsonl",
+      "records": 448,
+      "bytes": 599203,
+      "sha256": "869e69094c9e0fa8302b63ea5ab3bce8d21877e889d8b4b2ec4686e53dba1d16",
+      "match": "2026casac_f1m1",
+      "youtube_id": "Ygzo0f0k0mk",
+      "tba_url": "https://www.thebluealliance.com/match/2026casac_f1m1",
+      "split": "train",
+      "teams": {
+        "2204": "red",
+        "1678": "red",
+        "5940": "red",
+        "6884": "blue",
+        "4698": "blue",
+        "3257": "blue"
+      },
+      "crop": [
+        0,
+        110,
+        1920,
+        720
+      ],
+      "fps": 3,
+      "start_s": 0,
+      "video_sha256": "717e989c8c4ddcf1b7bc3ca65b89f5136f433b2097ceed7968bc92b3d175f316",
+      "annotation_status": "unreviewed teacher proposals; not all passed training filters"
+    },
+    {
+      "file": "teacher_multivenue_v1/2026casnd_f1m1.jsonl",
+      "records": 448,
+      "bytes": 606754,
+      "sha256": "8181d0ebd4f817a7c4a44d436642fa99124257b5f7eabca45f7d434f0c8d8afd",
+      "match": "2026casnd_f1m1",
+      "youtube_id": "lHqCgze1vjg",
+      "tba_url": "https://www.thebluealliance.com/match/2026casnd_f1m1",
+      "split": "train",
+      "teams": {
+        "2658": "red",
+        "3128": "red",
+        "2102": "red",
+        "6695": "blue",
+        "9452": "blue",
+        "6995": "blue"
+      },
+      "crop": [
+        0,
+        110,
+        1920,
+        720
+      ],
+      "fps": 3,
+      "start_s": 0,
+      "video_sha256": "31dbc85b9c311ba28f822b8c89ac82f109de59516930f3fb7b2162bd8da4d465",
+      "annotation_status": "unreviewed teacher proposals; not all passed training filters"
+    },
+    {
+      "file": "teacher_multivenue_v1/2026wicmp_f1m1.jsonl",
+      "records": 450,
+      "bytes": 604838,
+      "sha256": "abaf467374ddcc42825f0e6712e632391f8d3fdb6622b62d3ae6cbea83dfd00d",
+      "match": "2026wicmp_f1m1",
+      "youtube_id": "Fu-Nez8BaBw",
+      "tba_url": "https://www.thebluealliance.com/match/2026wicmp_f1m1",
+      "split": "train",
+      "teams": {
+        "6421": "red",
+        "2194": "red",
+        "1306": "red",
+        "10553": "blue",
+        "3197": "blue",
+        "1732": "blue"
+      },
+      "crop": [
+        0,
+        110,
+        1920,
+        720
+      ],
+      "fps": 3,
+      "start_s": 0,
+      "video_sha256": "e1f92fa5b777762faa11a224228917d85d866ea553f4ed716a1a8908266dc4f1",
+      "annotation_status": "unreviewed teacher proposals; not all passed training filters"
+    },
+    {
+      "file": "teacher_multivenue_v1/2026pncmp_f1m1.jsonl",
+      "records": 447,
+      "bytes": 592850,
+      "sha256": "d660d7908ae7efa9a8958357233ab20153602b2c12142206c9ed95c628f69406",
+      "match": "2026pncmp_f1m1",
+      "youtube_id": "GGBKdWrWWhQ",
+      "tba_url": "https://www.thebluealliance.com/match/2026pncmp_f1m1",
+      "split": "val",
+      "teams": {
+        "2811": "red",
+        "2910": "red",
+        "2046": "red",
+        "2412": "blue",
+        "948": "blue",
+        "1540": "blue"
+      },
+      "crop": [
+        0,
+        110,
+        1920,
+        720
+      ],
+      "fps": 3,
+      "start_s": 0,
+      "video_sha256": "85eb7b3adcb7e7485508356b4b2e3aa8281d2661c2e222f5e508f65f9bfd54b8",
+      "annotation_status": "unreviewed teacher proposals; not all passed training filters"
+    },
+    {
+      "file": "audit/einstein_tracking.jsonl",
+      "records": 40,
+      "bytes": 53381,
+      "sha256": "e3b418fe719ef8ec1bb14cfa43f28cda45cc70ebb7a26a07ea8611e23aefdb43",
+      "youtube_id": "EjF9we707DA",
+      "crop": [
+        0,
+        110,
+        1920,
+        720
+      ],
+      "fps": 5,
+      "start_s": 5.5,
+      "annotation_status": "teacher tracking audit; not the human-checked answer key"
+    },
+    {
+      "file": "distant_sf_v1/frame_proposals.jsonl",
+      "records": 6,
+      "bytes": 4091,
+      "sha256": "180653fa849f61e30785ad54a9c08bde3bc6f4c2c564b620a3936b85967baed8",
+      "youtube_id": "teZtwE8bQqU",
+      "crop": [
+        0,
+        75,
+        854,
+        320
+      ],
+      "annotation_status": "unreviewed proposals excluded from direct training; reviewed replacements in configs/sf_distant_reviewed_boxes.json",
+      "timing_note": "sf_N is seconds into its downloaded local section; low-resolution section 12500..12530, native section 12515..12545; keyframe trimming can affect timing"
+    },
+    {
+      "file": "distant_sf_native_labels_v1/frame_proposals.jsonl",
+      "records": 8,
+      "bytes": 6188,
+      "sha256": "505f0b7733aea3e917c6797f1904b53c59a09d801f228de67f8f016b22e9bc20",
+      "youtube_id": "teZtwE8bQqU",
+      "crop": [
+        0,
+        300,
+        1920,
+        720
+      ],
+      "annotation_status": "unreviewed proposals excluded from direct training; reviewed replacements in configs/sf_distant_reviewed_boxes.json",
+      "timing_note": "sf_N is seconds into its downloaded local section; low-resolution section 12500..12530, native section 12515..12545; keyframe trimming can affect timing"
+    },
+    {
+      "file": "identity_coaching/round1.jsonl",
+      "records": 32,
+      "bytes": 9413,
+      "sha256": "1fecc2627145cda8cbcdce84c903bbc1f6f624da10f7adc3f5331f70c7f77dfb",
+      "youtube_id": "EjF9we707DA",
+      "teacher_model": "claude-haiku-5-5",
+      "annotation_status": "appearance proposals, including uncertain/null identities; not bumper reads or verified truth",
+      "coordinate_note": "Track IDs refer to runs/auto_paths_youtube_demo/paths.json; panels are separate crop groups, not per-frame boxes"
+    },
+    {
+      "file": "identity_coaching/round2.jsonl",
+      "records": 32,
+      "bytes": 9948,
+      "sha256": "1c199d6eac3e27f7d028666b5a2b3825ec098b80da7dd7c651d113ba51dca78f",
+      "youtube_id": "EjF9we707DA",
+      "teacher_model": "claude-haiku-5-5",
+      "annotation_status": "appearance proposals, including uncertain/null identities; not bumper reads or verified truth",
+      "coordinate_note": "Track IDs refer to runs/auto_paths_youtube_demo/paths.json; panels are separate crop groups, not per-frame boxes"
+    }
+  ],
+  "total_records": 4156,
+  "rejected_invalid_annotations": [],
+  "includes": "Normalized frame proposals and appearance proposals only. Raw response transcripts, credentials, billing, videos and images excluded.",
+  "coordinates": "Frame boxes are xyxy pixels in image_size and the per-bundle cropped image, not original full-frame pixels. Hidden robot boxes are previous estimates, not detections."
+}

@@ -1,0 +1,10 @@
+{
+  "date": "2026-11-12",
+  "branch": "combind-paths",
+  "einstein": {"matched_boxes":229,"correct_identity":229,"reference_boxes":581,"correct_named_coverage":0.3941480207,"change_from_baseline":"No change in named detection accuracy or coverage; six estimated points bridge the 2046 path gap."},
+  "glendale_team_3501": {"previous_source_ids":[39,72],"joined_source_ids":[7,39,72],"previous_observed_points":128,"new_observed_points":172,"new_estimated_points":20,"identity_score":"Not independently verified against a checked answer key."},
+  "constraints": ["Matching repeated bumper color", "Unique mutual motion match", "No conflicting team identities anywhere in a chain", "No overlapping fragments in one chain", "Quarantine conflicting OCR", "Maximum two-second estimated gap; no extrapolation"],
+  "artifacts": {"glendale":"runs/glendale_qual5_combined_paths_v2/animation.html","einstein":"runs/einstein_combined_paths_v2/animation.html","answer_key_comparison":"runs/einstein_combined_paths_v2_score/comparison.txt"},
+  "new_api_spend_usd": 0,
+  "limitations": "Same-match replays. Long losses and ambiguous crossings remain gaps; unresolved fragments remain in debug. Estimated positions are not measured robot observations."
+}

@@ -35,6 +35,14 @@ class IdentityTests(unittest.TestCase):
         tracks, _ = resolve_tracks({'tracks':[track(1,[0,1])]}, reads(1,'13',[0,1]), {'1323','868','2910'})
         self.assertEqual(tracks[0]['team'], '1323')
 
+    def test_ocr_plus_color_can_stitch_without_explicit_alliance_rosters(self):
+        observations=[track(1,[0,.1]),track(2,[.3,.4])]
+        evidence=reads(1,'254',[0,.1])+[
+            {'id':i,'team':'','t':t,'confidence':.95,'alliance':'red'}
+            for i,times in [(1,[0,.1]),(2,[.3,.4])] for t in times]
+        tracks,_=resolve_tracks({'tracks':observations},evidence,{'254'})
+        self.assertEqual(tracks[0]['source_ids'],[1,2])
+
     def test_ambiguous_or_one_digit_partial_read_does_not_anchor(self):
         self.assertIsNone(partial_team_matches('1', {'1323','2910'}))
         self.assertIsNone(partial_team_matches('23', {'1323','2230'}))
@@ -66,7 +74,10 @@ class IdentityTests(unittest.TestCase):
             {'id':3,'team':'','t':0,'confidence':.9,'alliance':'red'},
             {'id':3,'team':'','t':1,'confidence':.9,'alliance':'red'},
         ]
-        tracks, _ = resolve_tracks({'tracks':[track(1,[0,1]),track(2,[0,1]),track(3,[0,1])]}, evidence,
+        observations=[track(1,[0,1]),track(2,[0,1]),track(3,[0,1])]
+        for index, observation in enumerate(observations):
+            for point in observation['points']:point['x']+=index*25
+        tracks, _ = resolve_tracks({'tracks':observations}, evidence,
                                    {'254','971','111','222','333','444'},
                                    {'254':'red','971':'red','111':'red','222':'blue','333':'blue','444':'blue'})
         self.assertEqual({item['team'] for item in tracks}, {'254','971','111'})
