@@ -63,7 +63,8 @@
     "animation.html": "runs/glendale_haiku_demo_v1/animation.html",
     "tracking.mp4": "runs/glendale_haiku_demo_v1/tracking.mp4",
     "paths.mp4": "runs/glendale_haiku_demo_v1/paths.mp4",
-    "checked_t18.jpg": "runs/glendale_haiku_demo_v1/checked_t18.jpg"
+    "checked_t18.jpg": "runs/glendale_haiku_demo_v1/checked_t18.jpg",
+    "team_boxes_video": "runs/glendale_haiku_demo_v1/team_boxes.mp4"
   },
   "observations": [
     "Partly hidden blue 3328 is missed in most frames; a brief inferred sighting may be incorrect.",

@@ -807,6 +807,19 @@ records were retained. Quality requirements for training were not loosened.
 
 ## Frames and coordinates
 
+Named `team_paths.py` outputs now include `team_boxes.mp4`, rendered directly from
+the source pixels and saved visible observations. Each box is labeled with the
+predicted team linked by `source_ids`; unresolved observations say `Unknown`.
+Hidden-position estimates are excluded. `team_video` in `paths.json` selects this
+stream in the viewer, while the original `tracking.mp4` remains the anonymous
+debug evidence. Choose **View → Boxes only** for a full-width video pane, or use
+the **Annotated video** link. The local and Haiku Glendale demos were refreshed
+offline. A standalone export needs no inference or API calls:
+
+```bash
+.venv/bin/python render_team_boxes.py runs/glendale_local_memory_final/memory/teams_alliance/paths.json --video datasets/scout_VZCS8a4rRn0/source.mp4 --out runs/my_team_boxes.mp4
+```
+
 The interactive viewer provides **Smoothing: Off (original), Light, Strong**.
 Light/Strong apply triangular, time-weighted averages within ±0.25/0.5 seconds
 of each observed point, using only its continuous observed segment. Raw time-gap

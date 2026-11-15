@@ -2,16 +2,16 @@
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Autonomous paths</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#0b1220;color:#e2e8f0;font:16px system-ui,sans-serif}main{max-width:1500px;margin:auto;padding:26px}h1{margin:0 0 8px;font-size:30px}.muted{color:#a9b8cd}section{background:#152139;border:1px solid #334155;border-radius:14px;padding:16px;margin:18px 0}.panes{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}canvas,video{width:100%;background:#0b1220;border-radius:8px}h2{font-size:17px;margin:0 0 12px}.controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap}button,select{background:#253b59;color:white;border:1px solid #526986;border-radius:7px;padding:8px 12px;font:inherit}button:hover{background:#365478}input[type=range]{flex:1;min-width:180px}#legend{display:flex;gap:10px;flex-wrap:wrap}#legend label{padding:7px 10px;background:#0b1220;border-radius:7px;border:1px solid #334155}a{color:#93c5fd}#notice{padding:12px;border-left:4px solid #fbbf24;background:#28251f;border-radius:6px}small{font-size:13px}#clock{font-variant-numeric:tabular-nums;min-width:100px}@media(max-width:900px){.panes{grid-template-columns:1fr}main{padding:12px}}
+*{box-sizing:border-box}body{margin:0;background:#0b1220;color:#e2e8f0;font:16px system-ui,sans-serif}main{max-width:1500px;margin:auto;padding:26px}h1{margin:0 0 8px;font-size:30px}.muted{color:#a9b8cd}section{background:#152139;border:1px solid #334155;border-radius:14px;padding:16px;margin:18px 0}.panes{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}.panes.video-only{grid-template-columns:1fr}.video-only #field-pane{display:none}canvas,video{width:100%;background:#0b1220;border-radius:8px}h2{font-size:17px;margin:0 0 12px}.controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap}button,select{background:#253b59;color:white;border:1px solid #526986;border-radius:7px;padding:8px 12px;font:inherit}button:hover{background:#365478}input[type=range]{flex:1;min-width:180px}#legend{display:flex;gap:10px;flex-wrap:wrap}#legend label{padding:7px 10px;background:#0b1220;border-radius:7px;border:1px solid #334155}a{color:#93c5fd}#notice{padding:12px;border-left:4px solid #fbbf24;background:#28251f;border-radius:6px}small{font-size:13px}#clock{font-variant-numeric:tabular-nums;min-width:100px}@media(max-width:900px){.panes{grid-template-columns:1fr}main{padding:12px}}
 </style>
 <main>
 <h1>Autonomous paths</h1><div class="muted">Local robot detector + ByteTrack · 20-second autonomous window by default</div>
 <p id="notice"></p>
-<section class="controls"><button id="play">Play</button><button id="restart">Restart</button><input id="seek" type="range" min="0" value="0" step="0.01" aria-label="Autonomous time"><span id="clock"></span><label>Speed <select id="speed"><option>.5</option><option selected>1</option><option>2</option></select>×</label><label>Trail <select id="trail"><option value="999" selected>Full auto</option><option value="5">5 seconds</option><option value="1">1 second</option></select></label></section>
+<section class="controls"><label>View <select id="view"><option value="both" selected>Video + paths</option><option value="video">Boxes only</option></select></label><button id="play">Play</button><button id="restart">Restart</button><input id="seek" type="range" min="0" value="0" step="0.01" aria-label="Autonomous time"><span id="clock"></span><label>Speed <select id="speed"><option>.5</option><option selected>1</option><option>2</option></select>×</label><label>Trail <select id="trail"><option value="999" selected>Full auto</option><option value="5">5 seconds</option><option value="1">1 second</option></select></label></section>
 <section class="controls"><label>Smoothing <select id="smoothing"><option value="0" selected>Off (original)</option><option value="0.25">Light</option><option value="0.5">Strong</option></select></label><small class="muted">Reduces visual jitter within observed path segments. Raw coordinates and exported videos stay unchanged.</small></section>
-<div class="panes"><section><h2>2D field pane</h2><canvas id="field" width="1000" height="560"></canvas><small class="muted">Hubs/baskets and ramps are schematic. No fuel is drawn. Field percentages, not meters. Trails break across lost observations or implausible jumps.</small></section><section><h2>Video evidence</h2><video id="video" src="tracking.mp4" preload="metadata" playsinline></video><small class="muted">Track numbers match the field pane. Detections are model estimates.</small></section></div>
+<div class="panes" id="panes"><section id="field-pane"><h2>2D field pane</h2><canvas id="field" width="1000" height="560"></canvas><small class="muted">Hubs/baskets and ramps are schematic. No fuel is drawn. Field percentages, not meters. Trails break across lost observations or implausible jumps.</small></section><section><h2>Video evidence</h2><video id="video" src="tracking.mp4" preload="metadata" playsinline></video><small class="muted">Track numbers match the field pane. Detections are model estimates.</small></section></div>
 <section><h2>Show tracks</h2><div id="legend"></div><p id="stats" class="muted"></p></section>
-<p><a href="paths.json">Raw coordinates</a> · <a href="paths.mp4">2D animation MP4</a> · <a href="calibration_preview.jpg">Check calibration</a></p>
+<p><a id="box-video" href="tracking.mp4">Annotated video</a> · <a href="paths.json">Raw coordinates</a> · <a href="paths.mp4">2D animation MP4</a> · <a href="calibration_preview.jpg">Check calibration</a></p>
 </main>
 <script id="path-data" type="application/json">__PATH_DATA__</script>
 <script>
@@ -20,6 +20,7 @@ const canvas=document.getElementById('field'),ctx=canvas.getContext('2d'),video=
 const seek=document.getElementById('seek'),play=document.getElementById('play'),clock=document.getElementById('clock');
 const hidden=new Set();let current=0,running=false,last=performance.now(),fallback=false;
 seek.max=data.duration;
+document.getElementById('view').onchange=event=>document.getElementById('panes').classList.toggle('video-only',event.target.value==='video');
 document.getElementById('notice').textContent=(data.calibration.approximate?'Approximate demonstration calibration. ':'Calibrated projection. ')+'IDs are anonymous tracks, not verified team numbers. Occlusion can cause missed robots or ID swaps.';
 document.getElementById('stats').textContent=`${data.summary.frames} sampled frames · ${data.summary.shown_track_ids} displayed IDs · ${data.summary.short_tracks_omitted} short tracks omitted. More than six IDs can result from fragmentation or false detections.`;
 for(const track of data.tracks){const label=document.createElement('label'),box=document.createElement('input');box.type='checkbox';box.checked=true;box.onchange=()=>{box.checked?hidden.delete(track.id):hidden.add(track.id);draw()};label.style.color=`rgb(${track.color})`;label.append(box,document.createTextNode(' Track '+track.id));document.getElementById('legend').append(label)}
@@ -82,5 +83,10 @@ if(data.video_id_space==='raw_id'){
 if(data.video_id_space==='team'){
  document.querySelector('video + small').textContent='Video labels and field paths share the predicted team identities. Hidden-position estimates are not detector observations.';
  document.querySelector('a[href="debug/animation.html"]')?.remove();
+}
+if(data.team_video){
+ video.src=data.team_video;
+ document.getElementById('box-video').href=data.team_video;
+ document.querySelector('video + small').textContent='Boxes show the predicted team number on each observed robot. Unknown means identity is unresolved. Hidden-position estimates are not drawn as detections.';
 }
 </script></html>

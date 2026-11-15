@@ -178,7 +178,8 @@
   "artifacts": {
     "animation": "runs/glendale_local_memory_final/memory/teams_alliance/animation.html",
     "video": "runs/glendale_local_memory_final/memory/teams_alliance/paths.mp4",
-    "checked_frame": "runs/glendale_local_memory_final/final_checked_frame.jpg"
+    "checked_frame": "runs/glendale_local_memory_final/final_checked_frame.jpg",
+    "team_boxes_video": "runs/glendale_local_memory_final/memory/teams_alliance/team_boxes.mp4"
   },
   "limitations": [
     "Haiku reviews both mixed; no confirmed swaps, unresolved visibility doubts.",

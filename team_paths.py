@@ -244,6 +244,9 @@ def main():
         named['summary']['shown_track_ids']=len(tracks)
         named['summary']['unresolved_track_ids']=len(data['tracks'])-sum(len(t['source_ids']) for t in tracks)
         named['summary']['estimated_path_points']=sum(bool(p.get('estimated')) for t in tracks for p in t['points'])
+        from render_team_boxes import render_team_boxes
+        render_team_boxes(named,a.video,a.out/'team_boxes.mp4')
+        named['team_video']='team_boxes.mp4'
         render_animation(named,a.out)
         print(f"Resolved {len(tracks)}/{len(teams)} teams. Open {a.out/'animation.html'}; anonymous debug: {debug/'animation.html'}",flush=True)
     finally:

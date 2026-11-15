@@ -253,7 +253,7 @@ def main():
         if args.source:parser.error("Use --render-paths without a source argument")
         data=json.loads(args.render_paths.read_text())
         args.out.mkdir(parents=True)
-        for name in ("tracking.mp4","calibration.json","calibration_preview.jpg","bytetrack.yaml"):
+        for name in ("tracking.mp4","team_boxes.mp4","calibration.json","calibration_preview.jpg","bytetrack.yaml"):
             source_asset=args.render_paths.parent/name
             if source_asset.exists():shutil.copyfile(source_asset,args.out/name)
         render_animation(data,args.out)

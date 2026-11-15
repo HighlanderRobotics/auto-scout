@@ -18,6 +18,7 @@ FILES = {
     "auto_paths_viewer.html": ROOT / "auto_paths_viewer.html",
     "auto_paths_calibrate.html": ROOT / "auto_paths_calibrate.html",
     "team_paths.py": ROOT / "team_paths.py",
+    "render_team_boxes.py": ROOT / "render_team_boxes.py",
     "path_stitching.py": ROOT / "path_stitching.py",
     "local_memory.py": ROOT / "local_memory.py",
     "read_team_numbers.swift": ROOT / "read_team_numbers.swift",

@@ -81,6 +81,11 @@ Use the viewer's **Smoothing** menu (Off, Light, Strong) to reduce path jitter.
 This changes only the interactive display; raw coordinates and exported videos
 stay unchanged. Smoothing stops at tracking gaps and leaves estimated points alone.
 
+Team runs now overlay a box and predicted team number directly on the playing
+video. Choose **View → Boxes only** to enlarge the video without the field pane.
+Unresolved detections say **Unknown**. The **Annotated video** link opens the
+video alone; original anonymous tracking stays in the debug output.
+
 The repaired San Francisco Quals 7 demo uses the original 1080p broadcast pixels,
 a tight field crop, and a detector adapted to that camera. Its camera profile selects
 the locally trained checkpoint automatically:
