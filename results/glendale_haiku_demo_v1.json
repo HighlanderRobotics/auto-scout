@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-15",
+  "model": "claude-haiku-5-5",
+  "public_source": "https://www.youtube.com/watch?v=VZCS8a4rRn0",
+  "video_interval_s": [
+    6,
+    26
+  ],
+  "fps": 5,
+  "frames": 100,
+  "billing": {
+    "run_spend_usd": 0.04715710000000005,
+    "shared_spend_usd": 0.09933550000000005,
+    "reserved_usd": 0.05,
+    "cap_usd": 4.0
+  },
+  "held_out_spot_check": {
+    "video_s": 25,
+    "metrics": {
+      "0.3": {
+        "true_positive": 5,
+        "false_positive": 0,
+        "false_negative": 1
+      },
+      "0.5": {
+        "true_positive": 5,
+        "false_positive": 0,
+        "false_negative": 1
+      }
+    },
+    "scope": "One nearby same-camera test image with agent-reviewed labels. Measures boxes, not team identity accuracy."
+  },
+  "summary": {
+    "frames": 100,
+    "shown_track_ids": 6,
+    "short_tracks_omitted": 0,
+    "unresolved_track_ids": 0,
+    "visible_observations": 474,
+    "quarantined_frames": 0
+  },
+  "artifact_validation": {
+    "tracking.mp4": {
+      "frames": 100,
+      "fps": 5.0,
+      "width": 1920,
+      "height": 320
+    },
+    "paths.mp4": {
+      "frames": 100,
+      "fps": 5.0,
+      "width": 960,
+      "height": 540
+    },
+    "demo.mp4": {
+      "frames": 100,
+      "fps": 5.0,
+      "width": 960,
+      "height": 700
+    }
+  },
+  "artifacts": {
+    "demo.mp4": "runs/glendale_haiku_demo_v1/demo.mp4",
+    "animation.html": "runs/glendale_haiku_demo_v1/animation.html",
+    "tracking.mp4": "runs/glendale_haiku_demo_v1/tracking.mp4",
+    "paths.mp4": "runs/glendale_haiku_demo_v1/paths.mp4",
+    "checked_t18.jpg": "runs/glendale_haiku_demo_v1/checked_t18.jpg"
+  },
+  "observations": [
+    "Partly hidden blue 3328 is missed in most frames; a brief inferred sighting may be incorrect.",
+    "At video time 24s, visible 3501 and 5089 bumper digits match their displayed names.",
+    "100 frames were processed without quarantines; backward voting changed 35 predicted names."
+  ],
+  "limits": [
+    "No independent human identity answer key for this match.",
+    "Same approximate projection as the local demo; field position accuracy not measured.",
+    "Single-frame held-out box check gives 5/6 for Haiku vs 6/6 for the camera-specific local detector; not a general model ranking."
+  ]
+}

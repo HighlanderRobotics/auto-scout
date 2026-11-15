@@ -53,4 +53,8 @@ if(data.identity_mode==='team'){
 if(data.video_id_space==='raw_id'){
  document.querySelector('video + small').textContent='Video labels show raw detector IDs. Paths use persistent local-memory IDs and team identities; paths.json records each visible observation’s raw_id. Hollow markers are hidden-position estimates.';
 }
+if(data.video_id_space==='team'){
+ document.querySelector('video + small').textContent='Video labels and field paths share the predicted team identities. Hidden-position estimates are not detector observations.';
+ document.querySelector('a[href="debug/animation.html"]')?.remove();
+}
 </script></html>

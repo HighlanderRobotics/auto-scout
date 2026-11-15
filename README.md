@@ -51,6 +51,11 @@ can bridge losses up to two seconds; predicted positions stay visibly estimated
 and never count as detector observations. It does not guarantee complete paths
 through long occlusions. See DETAILS.md for training and measured limits.
 
+For the paid Haiku comparison of the same public Glendale clip, see
+`haiku_path_demo.py`. It runs the hosted model directly rather than the local
+detector. Cost approval is required before `--execute`; `--render-only` rebuilds
+the video and animation from saved predictions without API calls.
+
 An experimental Haiku appearance coach (`coach_identity.py`) can name track fragments
 from multiple crops and the saved robot descriptions. Paid execution requires
 `--execute` and explicit budget approval. Its shared ledger now has a user-approved

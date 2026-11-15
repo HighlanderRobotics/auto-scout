@@ -331,6 +331,42 @@ bumper numbers agree with the adjacent named boxes. This is a spot check only.
 See `results/local_visual_memory_v1.json` for scores, review text, spending and
 artifact paths. All 56 unit tests pass.
 
+### Direct Haiku path comparison (2026-11-15)
+
+`haiku_path_demo.py` tracks the public Glendale Qualification 5 clip directly with
+Haiku 5.5, at 5 fps for the same video interval 6–26 seconds as the local demo.
+It supplies the current/previous images, prior predicted state and actual alliance
+rosters; it does not supply the local model's predictions or Glendale reference
+labels. The existing backward pass then votes over later bumper reads. Both runs
+share the same approximate field calibration, so differences in paths do not
+establish field-position accuracy.
+
+```bash
+# Paid, after approval: estimated $0.10–$0.25; shared existing $4 cap.
+.venv/bin/python -u haiku_path_demo.py --execute 2>&1 | tee logs/glendale-haiku-demo-v1.log
+# Offline rebuild, including synchronized video + field animation:
+.venv/bin/python haiku_path_demo.py --render-only
+```
+
+Outputs are in `runs/glendale_haiku_demo_v1/`: `demo.mp4` combines labeled video
+and the field pane; `animation.html` provides synchronized interactive playback;
+`forward/`, `backward/`, and `teacher/` retain prediction provenance. Hidden
+positions are estimated, not observations. Invalid responses are quarantined;
+API failures stop without automatic retries and retain uncertain reservations.
+The shared ledger and per-run billing summary record actual charges. The optional
+held-out spot check uses only the video-time-25-second test image with existing
+agent-reviewed boxes; it is neither a human identity benchmark nor an independent
+venue evaluation. `track/final/` is for Einstein, so it cannot score this match.
+
+The completed 100-frame run cost $0.04716, bringing the shared recorded ledger to
+$0.09934 plus its retained $0.05 reservation. No frames were quarantined. On the
+single held-out video-time-25-second frame, Haiku matched 5/6 reference boxes with
+no extra detections at IoU 0.5; the Glendale-specific local model matched 6/6 on
+that same frame. Haiku missed the partly hidden blue 3328 in most of the clip.
+The backward pass changed 35 names, so six roster entries must not be treated as
+six verified identities. A full-resolution spot check at video time 24 s confirms
+the displayed 3501/5089 bumper numbers. See `results/glendale_haiku_demo_v1.json`.
+
 ### Haiku appearance coaching experiment (2026-11-05)
 
 The user approved a new **$2 total cap** for identity coaching. `coach_identity.py`
@@ -845,6 +881,7 @@ Everything in a Lovat report is built from three inputs:
 | distant SF camera adaptation | YOLO26n fine-tuned from v1 | Native 1080p field crop, 5 reviewed SF train frames, dedicated camera thresholds | Not measured | 4/4 far observations on 2 reserved times; no far extras; very small same-camera check | Shared round total $0.04206 plus $0.05 uncertain reserve | Not measured; SF profile only |
 | combined paths | Existing detector + local identity evidence | Mutual motion/color fragment matching; bounded estimated gap positions | Einstein 229/229 matched; 39.4% coverage, unchanged | Detector unchanged | $0 new API | Not measured; Glendale 3501 gains 44 observed path points and 20 estimated points |
 | local visual memory | Local appearance/motion + backward identity evidence | Expanded metric; 20-epoch Glendale detector adaptation; two final Haiku reviews | Einstein 229/229; 39.4% coverage | Glendale held-out 12/12 boxes, 0 extras vs 9/12, 4 extras; two frames only | Shared ledger $0.05218 recorded + $0.05 reserve / $4 cap | Six Glendale names resolved; reviews mixed, no confirmed swaps; incomplete occlusion coverage |
+| direct Glendale Haiku demo | Haiku 5.5 forward + backward tracking | 100 frames, 5 fps, same calibration as local demo | No independent checked identity key | Single held-out frame: 5/6 boxes, 0 extras; local detector 6/6 | $0.04716 for this run | Misses partly hidden 3328; view labeled video and paths together |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
 
