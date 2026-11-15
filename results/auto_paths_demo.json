@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-02",
+  "source": "https://www.youtube.com/watch?v=EjF9we707DA",
+  "auto_start_s": 5.5,
+  "duration_s": 20,
+  "fps": 10,
+  "summary": {
+    "frames": 200,
+    "raw_track_ids": 23,
+    "shown_track_ids": 16,
+    "out_of_field_observations": 41,
+    "short_tracks_omitted": 3,
+    "projected_track_ids": 19
+  },
+  "reference_score": {
+    "frames_compared": 100,
+    "scope": "Anonymous tracked-box agreement only; no field-position ground truth or verified team identity.",
+    "0.3": {
+      "true_positive": 549,
+      "false_positive": 12,
+      "false_negative": 32,
+      "precision": 0.9786096256684492,
+      "recall": 0.9449225473321858
+    },
+    "0.5": {
+      "true_positive": 515,
+      "false_positive": 46,
+      "false_negative": 66,
+      "precision": 0.9180035650623886,
+      "recall": 0.8864027538726333
+    }
+  },
+  "calibration": "configs/einstein_final1_camera.json",
+  "calibration_approximate": true,
+  "model_sha256": "acc1219b23933d876b91332cd0d77eb9dfb1c0b98c3b7330e786c68069e500fa",
+  "source_sha256": "f3fafde2dd17eae64f287be52332605eb7729616bd316e3576e0b3817be6b3d5",
+  "new_claude_calls": 0,
+  "api_cost_usd": 0,
+  "artifacts": "runs/auto_paths_youtube_demo",
+  "browser_controls_qa": "not yet manually verified"
+}

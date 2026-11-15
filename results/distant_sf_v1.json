@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-05",
+  "run": "local_robot_distant_sf_v1",
+  "checkpoint_sha256": "546533d98da2843ef770d7d4f71b4e70bf30c0d0f4f1c0863569aef70e22466e",
+  "video_sha256": "7be2230a4aef3b8b840317621776c2b1b81a2f9a05ece3a20d2428ca8e821959",
+  "source": "Official public Day 1 webcast teZtwE8bQqU, section 12515..12545 seconds. This is not a TBA-provided video link.",
+  "changes": ["Restore 1920x1080 source instead of the earlier 480p demo", "Crop to the main field y=300..720 before inference", "Correct the demo window to approximately video second 8 in the downloaded clip", "Fine-tune v1 on reviewed full-field SF examples with background retained", "Camera-specific tracker thresholds 0.25 high/new vs original 0.3/0.4"],
+  "training": {"original_train_images":81,"new_independent_sf_train_images":5,"sf_repeats_for_weighting":6,"sf_validation_images":1,"sf_test_images":1,"epochs_completed":18,"best_epoch":6},
+  "sf_test_detection_iou_0_5": {"before":{"tp":5,"fp":4,"fn":0},"after":{"tp":5,"fp":1,"fn":0},"note":"Both runs here use the restored native source and tight crop. These counts isolate the weight change, not the combined change from the old 480p demo."},
+  "sf_tracking_review": {"reviewed_frames":7,"far_observations_matched":14,"far_observations_missed":0,"far_false_positives":0,"held_out_frames":2,"held_out_far_matched":4,"held_out_far_missed":0,"held_out_far_false_positives":0,"held_out_all_matched":10,"held_out_all_missed":0,"held_out_all_false_positives":1},
+  "combined_15_image_test": {"baseline":{"tp":79,"fp":23,"fn":10},"adapted":{"tp":75,"fp":6,"fn":14}},
+  "deployment": "Camera-specific profile only; original global v1 weights retained because adapted weights reduce recall on the old camera.",
+  "rejected_experiments": ["1920 inference reduced validation recall and precision", "Overlapping tiles at 0.65 and 0.8 width did not improve old-camera validation counts", "Low-resolution unreviewed Haiku labels omitted robots and included empty floor; excluded from training"],
+  "api_ledger": "datasets/identity_coach_v1/ledger.json",
+  "total_shared_round_api_spend_usd":0.0420565,
+  "retained_uncertain_request_reserve_usd":0.05,
+  "approved_shared_cap_usd":2,
+  "artifacts":{"demo":"runs/san_francisco_qm7_distant_fixed/animation.html","tracking_video":"runs/san_francisco_qm7_distant_fixed/tracking.mp4","tracking_scores":"runs/san_francisco_qm7_distant_fixed/reviewed_score.json","test_preview":"runs/distant_sf_improved_test/frames/r_0014.jpg"},
+  "limitations":"Very small same-camera adaptation. SF boxes were visually reviewed by the coding agent, not independently human-verified. One validation and one test frame are temporally separated from five training frames but still from the same match. Does not prove accuracy across venues, every frame, or fully occluded robots. Haiku review is qualitative and fallible. Field projection remains approximate."
+}

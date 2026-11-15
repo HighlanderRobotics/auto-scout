@@ -1,0 +1,5 @@
+# Offline dataset preparation; no Anthropic SDK or API key needed.
+pillow>=12
+# Optional video download/extraction without a system FFmpeg installation.
+yt-dlp
+imageio-ffmpeg

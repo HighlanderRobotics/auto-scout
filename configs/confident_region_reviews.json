@@ -1,0 +1,186 @@
+{
+  "date": "2026-11-02",
+  "method": "Assistant visually inspected six evenly spaced candidate crops per match. Qualitative completeness/box plausibility check, not measured ground truth.",
+  "frames": {
+    "2026casnv_qm71/f_0066": {
+      "decision": "retain",
+      "crop": [
+        0,
+        0,
+        960,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casnv_qm71/f_0117": {
+      "decision": "reject",
+      "crop": [
+        0,
+        0,
+        1280,
+        610
+      ],
+      "reason": "Visible unannotated robot fragment near foreground crop boundary"
+    },
+    "2026casnv_qm71/f_0255": {
+      "decision": "retain",
+      "crop": [
+        0,
+        0,
+        960,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casnv_qm71/f_0492": {
+      "decision": "retain",
+      "crop": [
+        960,
+        0,
+        1920,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casnv_qm71/f_0585": {
+      "decision": "retain",
+      "crop": [
+        960,
+        0,
+        1920,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casnv_qm71/f_0675": {
+      "decision": "retain",
+      "crop": [
+        480,
+        0,
+        1440,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casac_f1m1/f_0042": {
+      "decision": "retain",
+      "crop": [
+        0,
+        0,
+        640,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casac_f1m1/f_0195": {
+      "decision": "reject",
+      "crop": [
+        0,
+        0,
+        960,
+        610
+      ],
+      "reason": "Visible unannotated robot fragment near foreground crop boundary"
+    },
+    "2026casac_f1m1/f_0390": {
+      "decision": "retain",
+      "crop": [
+        0,
+        0,
+        640,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casac_f1m1/f_0543": {
+      "decision": "retain",
+      "crop": [
+        640,
+        0,
+        1280,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casac_f1m1/f_0663": {
+      "decision": "retain",
+      "crop": [
+        960,
+        0,
+        1920,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casac_f1m1/f_0729": {
+      "decision": "retain",
+      "crop": [
+        480,
+        0,
+        1440,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casnv_qm65/f_0057": {
+      "decision": "retain",
+      "crop": [
+        0,
+        0,
+        640,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casnv_qm65/f_0258": {
+      "decision": "retain",
+      "crop": [
+        0,
+        0,
+        640,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casnv_qm65/f_0330": {
+      "decision": "retain",
+      "crop": [
+        1280,
+        0,
+        1920,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casnv_qm65/f_0447": {
+      "decision": "retain",
+      "crop": [
+        320,
+        0,
+        1600,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casnv_qm65/f_0645": {
+      "decision": "retain",
+      "crop": [
+        480,
+        0,
+        1440,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    },
+    "2026casnv_qm65/f_0711": {
+      "decision": "retain",
+      "crop": [
+        960,
+        0,
+        1920,
+        610
+      ],
+      "reason": "Visible annotated boxes appear plausible; no obvious omitted robot in this crop at preview scale"
+    }
+  }
+}

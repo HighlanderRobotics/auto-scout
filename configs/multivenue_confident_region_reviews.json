@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-03",
+  "method": "Assistant visually inspected three evenly spaced confident-region candidates from each of four source matches. This is a qualitative check for obvious unannotated robots or non-field footage, not ground truth.",
+  "frames": {
+    "2026casac_f1m1/f_0009": {"decision": "retain", "crop": [640, 0, 1920, 610], "reason": "Single labeled robot is plausible within the selected right-side crop."},
+    "2026casac_f1m1/f_0315": {"decision": "retain", "crop": [640, 0, 1920, 610], "reason": "Two labeled robots appear plausible; uncertain regions are excluded."},
+    "2026casac_f1m1/f_0447": {"decision": "retain", "crop": [320, 0, 1600, 610], "reason": "Four labeled boxes align with visible robots."},
+    "2026casnd_f1m1/f_0009": {"decision": "retain", "crop": [320, 0, 1600, 610], "reason": "Single selected box is a plausible robot in the cropped field view."},
+    "2026casnd_f1m1/f_0201": {"decision": "retain", "crop": [0, 0, 1280, 610], "reason": "Four labeled boxes align with visible robots."},
+    "2026casnd_f1m1/f_0393": {"decision": "retain", "crop": [960, 0, 1920, 610], "reason": "Two labeled boxes align with the right-side field crop."},
+    "2026wicmp_f1m1/f_0033": {"decision": "reject", "crop": [640, 0, 1280, 610], "reason": "Title-card transition is not representative field footage."},
+    "2026wicmp_f1m1/f_0111": {"decision": "retain", "crop": [0, 0, 640, 610], "reason": "Selected lower-field robot box is plausible."},
+    "2026wicmp_f1m1/f_0441": {"decision": "retain", "crop": [0, 0, 960, 610], "reason": "Two selected boxes are plausible in the left-side crop."},
+    "2026pncmp_f1m1/f_0021": {"decision": "retain", "crop": [320, 0, 1600, 610], "reason": "Three labeled boxes align with visible robots."},
+    "2026pncmp_f1m1/f_0228": {"decision": "retain", "crop": [960, 0, 1920, 610], "reason": "Two selected boxes align with visible robots."},
+    "2026pncmp_f1m1/f_0441": {"decision": "retain", "crop": [320, 0, 1600, 610], "reason": "Two selected boxes align with visible robots."}
+  }
+}

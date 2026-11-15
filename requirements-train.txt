@@ -1,0 +1,2 @@
+-r requirements-data.txt
+ultralytics==8.4.197

@@ -1,0 +1,40 @@
+{
+  "model": "claude-haiku-5-5",
+  "budget_usd": 4.0,
+  "estimated_cost_usd": 2.0,
+  "label_fps": 5,
+  "export_stride": 3,
+  "crop": [0, 110, 1920, 720],
+  "sources": [
+    {
+      "match": "2026casnv_qm71",
+      "tba_url": "https://www.thebluealliance.com/match/2026casnv_qm71",
+      "youtube_id": "y_vBDwf4Cbc",
+      "split": "train",
+      "start_s": 0,
+      "end_s": 150,
+      "teams": {"581": "red", "1700": "red", "4990": "red", "1868": "blue", "8048": "blue", "2643": "blue"}
+    },
+    {
+      "match": "2026casac_f1m1",
+      "tba_url": "https://www.thebluealliance.com/match/2026casac_f1m1",
+      "youtube_id": "Ygzo0f0k0mk",
+      "split": "train",
+      "start_s": 0,
+      "end_s": 150,
+      "teams": {"2204": "red", "1678": "red", "5940": "red", "6884": "blue", "4698": "blue", "3257": "blue"}
+    },
+    {
+      "match": "2026casnv_qm65",
+      "tba_url": "https://www.thebluealliance.com/match/2026casnv_qm65",
+      "youtube_id": "oSjsixPUjlY",
+      "split": "val",
+      "start_s": 0,
+      "end_s": 150,
+      "teams": {"2367": "red", "6814": "red", "254": "red", "972": "blue", "1967": "blue", "1671": "blue"}
+    }
+  ],
+  "training": {"epochs": 60, "imgsz": 960, "batch": 4},
+  "minimum_images": {"train": 100, "val": 30},
+  "note": "Haiku only. Sonnet comparison is postponed. No old-match frames enter student training. The original 14 checked test images are kept for comparison."
+}

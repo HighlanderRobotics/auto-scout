@@ -1,0 +1,6 @@
+# Release runtime only: no Claude/Anthropic client.
+ultralytics==8.4.197
+lap==0.5.13
+pillow==13.0.0
+yt-dlp==2026.10.26
+imageio-ffmpeg==0.7.0

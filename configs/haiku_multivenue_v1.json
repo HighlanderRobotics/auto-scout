@@ -1,0 +1,49 @@
+{
+  "model": "claude-haiku-5-5",
+  "budget_usd": 2.3,
+  "estimated_cost_usd": 1.29,
+  "label_fps": 3,
+  "export_stride": 2,
+  "crop": [0, 110, 1920, 720],
+  "sources": [
+    {
+      "match": "2026casac_f1m1",
+      "tba_url": "https://www.thebluealliance.com/match/2026casac_f1m1",
+      "youtube_id": "Ygzo0f0k0mk",
+      "split": "train",
+      "start_s": 0,
+      "end_s": 150,
+      "teams": {"2204": "red", "1678": "red", "5940": "red", "6884": "blue", "4698": "blue", "3257": "blue"}
+    },
+    {
+      "match": "2026casnd_f1m1",
+      "tba_url": "https://www.thebluealliance.com/match/2026casnd_f1m1",
+      "youtube_id": "lHqCgze1vjg",
+      "split": "train",
+      "start_s": 0,
+      "end_s": 150,
+      "teams": {"2658": "red", "3128": "red", "2102": "red", "6695": "blue", "9452": "blue", "6995": "blue"}
+    },
+    {
+      "match": "2026wicmp_f1m1",
+      "tba_url": "https://www.thebluealliance.com/match/2026wicmp_f1m1",
+      "youtube_id": "Fu-Nez8BaBw",
+      "split": "train",
+      "start_s": 0,
+      "end_s": 150,
+      "teams": {"6421": "red", "2194": "red", "1306": "red", "10553": "blue", "3197": "blue", "1732": "blue"}
+    },
+    {
+      "match": "2026pncmp_f1m1",
+      "tba_url": "https://www.thebluealliance.com/match/2026pncmp_f1m1",
+      "youtube_id": "GGBKdWrWWhQ",
+      "split": "val",
+      "start_s": 0,
+      "end_s": 150,
+      "teams": {"2811": "red", "2910": "red", "2046": "red", "2412": "blue", "948": "blue", "1540": "blue"}
+    }
+  ],
+  "training": {"epochs": 60, "imgsz": 960, "batch": 4},
+  "minimum_images": {"train": 100, "val": 30},
+  "note": "User-approved 2026-11-02 Haiku 5.5 multivenue labeling run. Historical mean is $0.000714/frame: 1,800 requests estimate $1.29; run-local hard cap $2.30. Teacher outputs are pseudo-labels. The original 14 checked frames remain test only."
+}

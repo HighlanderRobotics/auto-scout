@@ -1,0 +1,13 @@
+{
+  "scope": "Same-match local bumper OCR demo; no independent venue validation",
+  "ocr_crops": 238,
+  "resolved_teams": [2046, 4065, 4414],
+  "unresolved_teams": [868, 2910, 1323],
+  "compared_timestamps": 100,
+  "named_predictions": 226,
+  "matched_iou_0_3": 224,
+  "correct_identity": 224,
+  "visible_reference_boxes": 581,
+  "correct_named_reference_coverage": 0.3855421686746988,
+  "new_api_spend_usd": 0
+}

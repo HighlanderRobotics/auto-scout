@@ -1,0 +1,10 @@
+{
+  "name": "CA District San Francisco 2026 Quals 7 approximate demo camera",
+  "image_size": [854, 480],
+  "crop": [0, 75, 854, 320],
+  "image_points": [[92, 154], [765, 154], [830, 310], [31, 310]],
+  "field_points": [[0, 0], [100, 0], [100, 100], [0, 100]],
+  "auto_start_s": 10.0,
+  "approximate": true,
+  "note": "Human-estimated full-field corners from the public Quals 7 broadcast. This is a demo-only mapping; replace it with the multi-landmark labeler output before interpreting field positions."
+}

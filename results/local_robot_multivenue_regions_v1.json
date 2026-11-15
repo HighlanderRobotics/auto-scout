@@ -1,0 +1,16 @@
+{
+  "run": "local_robot_multivenue_regions_v1",
+  "date": "2026-11-03",
+  "model": "YOLO26n",
+  "teacher": "claude-haiku-5-5",
+  "teacher_billed_requests": 1795,
+  "teacher_spend_usd": 1.4247,
+  "teacher_cap_usd": 2.3,
+  "dataset": {"name": "multivenue_confident_regions_v1", "train_images": 127, "train_boxes": 225, "val_images": 72, "val_boxes": 122, "test_images": 14, "test_boxes": 84},
+  "training": {"epochs_requested": 60, "epochs_completed": 16, "best_epoch": 4, "early_stopping_patience": 12},
+  "metrics": {"iou_0.3": {"true_positive": 66, "false_positive": 1, "false_negative": 18, "precision": 0.9850746269, "recall": 0.7857142857}, "iou_0.5": {"true_positive": 64, "false_positive": 3, "false_negative": 20, "precision": 0.9552238806, "recall": 0.7619047619}},
+  "baseline_at_iou_0.5": {"true_positive": 75, "false_positive": 18, "false_negative": 9, "precision": 0.8064516129, "recall": 0.8928571429},
+  "verdict": "Experimental only. It sharply reduces extra detections but misses more checked robots than local_robot_v1, so v1 remains the preferred detector for path tracking.",
+  "artifacts": {"checkpoint": "runs/local_robot_multivenue_regions_v1/weights/best.pt", "metrics": "runs/local_robot_multivenue_regions_v1_test/metrics.json", "preview": "runs/local_robot_multivenue_regions_v1_test/preview.jpg", "video": "runs/local_robot_multivenue_regions_v1_test/predictions.mp4"},
+  "limitations": "The test has 14 images from the original Einstein match. Teacher labels are pseudo-labels and confident-region crop scale differs from a full field. No identity or field accuracy is measured."
+}

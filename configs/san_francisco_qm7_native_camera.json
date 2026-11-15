@@ -1,0 +1,13 @@
+{
+  "name": "San Francisco Quals 7 native-resolution field view",
+  "image_size": [1920, 1080],
+  "crop": [0, 300, 1920, 720],
+  "image_points": [[190,430],[1735,430],[1880,700],[35,700]],
+  "field_points": [[0,0],[100,0],[100,100],[0,100]],
+  "auto_start_s": 8.0,
+  "detector_weights": "runs/local_robot_distant_sf_v1/weights/best.pt",
+  "track_high_thresh": 0.25,
+  "new_track_thresh": 0.25,
+  "approximate": true,
+  "note": "Short native public webcast section 12515..12545 seconds. Auto start checked against clock, approximate within a second. Tight main-field crop preserves distant robot detail and excludes most audience and both insets. Projection remains approximate."
+}

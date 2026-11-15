@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-05",
+  "model": "claude-haiku-5-5",
+  "approved_cap_usd": 2.0,
+  "recorded_spend_usd": 0.0311586,
+  "uncertain_request_reserve_usd": 0.05,
+  "baseline": {"correct_identity": 224, "matched_boxes": 224, "reference_boxes": 581, "coverage": 0.3855421687},
+  "round2": {"correct_identity": 229, "matched_boxes": 229, "reference_boxes": 581, "coverage": 0.3941480207, "resolved_teams": [2046, 2910, 4065, 4414]},
+  "local_gallery": {"training_crops": 49, "held_out_crops": 47, "correct_pseudo_labels": 46, "pseudo_label_agreement": 0.9787234043, "features": "Spatial HSV histograms, nearest training crop", "deployed": false},
+  "teacher_detector_review": {"sampled_frames": [0, 66, 133, 199], "reported_extra_detections": [3, 2, 1, 1], "reported_misses": [2, 1, 1, 0], "reported_poor_boxes": [1, 0, 0, 1], "scope": "Subjective Haiku opinions only, not ground-truth detection metrics. First grader with mismatched coordinates excluded."},
+  "artifacts": {"demo": "runs/haiku_identity_round2/animation.html", "comparison": "runs/haiku_identity_round2_score/comparison.txt", "gallery": "runs/local_identity_gallery_v1/gallery.npz", "ledger": "datasets/identity_coach_v1/ledger.json"},
+  "limitations": "Same-match pilot. Round 2 changed crop selection and reduced the teacher confidence gate from 0.9 to the resolver's 0.8 standard; gains cannot be attributed to crop sharpness alone. Local gallery tests use same-track pseudo-labels, not independent identity ground truth. Two teams remain unresolved; no YOLO weight retraining or broad generalization claim."
+}

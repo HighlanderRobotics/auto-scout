@@ -1,0 +1,42 @@
+{
+  "purpose": "Unlabeled multi-venue pool for future robot and field-landmark evaluation. Downloading these videos makes no Claude requests.",
+  "sources": [
+    {
+      "match": "2026casac_f1m1",
+      "event": "CA District Sacramento Event",
+      "region": "California",
+      "tba_url": "https://www.thebluealliance.com/match/2026casac_f1m1",
+      "youtube_url": "https://www.youtube.com/watch?v=Ygzo0f0k0mk",
+      "video": "datasets/teacher_v2/sources/2026casac_f1m1.mp4",
+      "status": "already_saved"
+    },
+    {
+      "match": "2026casnd_f1m1",
+      "event": "CA District San Diego Event presented by Qualcomm",
+      "region": "California",
+      "tba_url": "https://www.thebluealliance.com/match/2026casnd_f1m1",
+      "youtube_url": "https://www.youtube.com/watch?v=lHqCgze1vjg",
+      "video": "datasets/landmark_match_pool_v1/sources/2026casnd_f1m1.mp4",
+      "status": "downloaded"
+    },
+    {
+      "match": "2026wicmp_f1m1",
+      "event": "FIRST Wisconsin State Championship presented by GE HealthCare",
+      "region": "Wisconsin",
+      "tba_url": "https://www.thebluealliance.com/match/2026wicmp_f1m1",
+      "youtube_url": "https://www.youtube.com/watch?v=Fu-Nez8BaBw",
+      "video": "datasets/landmark_match_pool_v1/sources/2026wicmp_f1m1.mp4",
+      "status": "downloaded"
+    },
+    {
+      "match": "2026pncmp_f1m1",
+      "event": "Pacific Northwest FIRST District Championship",
+      "region": "Pacific Northwest",
+      "tba_url": "https://www.thebluealliance.com/match/2026pncmp_f1m1",
+      "youtube_url": "https://www.youtube.com/watch?v=GGBKdWrWWhQ",
+      "video": "datasets/landmark_match_pool_v1/sources/2026pncmp_f1m1.mp4",
+      "status": "downloaded"
+    }
+  ],
+  "selection_note": "Each linked video is a 2026 finals match. The pool deliberately varies venue and broadcast feed. It is not a labeled dataset and must not be used for training until annotations are reviewed."
+}
