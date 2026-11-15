@@ -77,6 +77,10 @@ an autonomous start time and calibration; see [autonomous path animation](DETAIL
 This is a prototype with anonymous, sometimes fragmented track IDs and an approximate
 demo field mapping. No Claude calls are made.
 
+Use the viewer's **Smoothing** menu (Off, Light, Strong) to reduce path jitter.
+This changes only the interactive display; raw coordinates and exported videos
+stay unchanged. Smoothing stops at tracking gaps and leaves estimated points alone.
+
 The repaired San Francisco Quals 7 demo uses the original 1080p broadcast pixels,
 a tight field crop, and a detector adapted to that camera. Its camera profile selects
 the locally trained checkpoint automatically:

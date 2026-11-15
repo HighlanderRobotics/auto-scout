@@ -807,6 +807,17 @@ records were retained. Quality requirements for training were not loosened.
 
 ## Frames and coordinates
 
+The interactive viewer provides **Smoothing: Off (original), Light, Strong**.
+Light/Strong apply triangular, time-weighted averages within ±0.25/0.5 seconds
+of each observed point, using only its continuous observed segment. Raw time-gap
+and jump checks still determine connectivity; smoothing never joins disconnected
+observations or averages hidden estimates. The marker uses the same displayed
+coordinates as its trail. This is a display option, not an accuracy improvement;
+`paths.json` and MP4/GIF exports retain original coordinates. The default is Off.
+Existing HTML embeds its viewer code, so it needs regeneration to gain the control.
+The current Glendale local and Haiku demo HTML files have been refreshed without
+inference or API calls.
+
 - `track/frames/f_0000.jpg` … `f_0837.jpg`: 5 fps from video time 5.5 s (pre-match, clock 0:20) to 173 s (clock 0:00). Frame `i` is at video time `5.5 + i/5`.
 - `track/clip_frames/`: symlinks to the first 123 frames (5.5–30 s). This is the test clip.
 - Frames are 1920x1080. The broadcast is split: the wide field camera is the top part (`y` 110–720); the bottom is a second camera. `track_llm.py` crops to `(0, 110, 1920, 720)` and scales by 0.8 before sending; all boxes in JSON results are full-frame pixels.
