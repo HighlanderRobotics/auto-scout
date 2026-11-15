@@ -1,0 +1,190 @@
+{
+  "date": "2026-11-15",
+  "branch": "combind-paths",
+  "approved_cap_usd": 4,
+  "shared_recorded_spend_usd": 0.0521784,
+  "uncertain_reserved_usd": 0.05,
+  "appearance_training": {
+    "train_crops": 159,
+    "test_crops": 67,
+    "correct_pseudo_labels": 65,
+    "agreement": 0.9701492537313433,
+    "scope": "Additional crops from accepted teacher/OCR tracks; chronological per-team holdout with >=0.3 second gap, same camera/match, not independent identity truth."
+  },
+  "einstein_checked_score": {
+    "resolved_predictions": 231,
+    "visible_reference_boxes": 581,
+    "matched_iou_0_3": 229,
+    "correct_identity": 229,
+    "identity_accuracy_on_matched": 1.0,
+    "correct_named_reference_coverage": 0.39414802065404475,
+    "scope": "Same-match demo; measures resolved identities only. Unresolved coverage included. Not independent venue validation."
+  },
+  "glendale_detector": {
+    "baseline": {
+      "all_96_boxes": {
+        "true_positive": 83,
+        "false_positive": 23,
+        "false_negative": 13,
+        "precision": 0.7830188679245284,
+        "recall": 0.8645833333333334
+      },
+      "glendale_frames": [
+        {
+          "frame": "g_25_0.jpg",
+          "counts": {
+            "true_positive": 5,
+            "false_positive": 3,
+            "false_negative": 1
+          }
+        },
+        {
+          "frame": "g_27_0.jpg",
+          "counts": {
+            "true_positive": 4,
+            "false_positive": 1,
+            "false_negative": 2
+          }
+        }
+      ]
+    },
+    "trained": {
+      "all_96_boxes": {
+        "true_positive": 82,
+        "false_positive": 12,
+        "false_negative": 14,
+        "precision": 0.8723404255319149,
+        "recall": 0.8541666666666666
+      },
+      "glendale_frames": [
+        {
+          "frame": "g_25_0.jpg",
+          "counts": {
+            "true_positive": 6,
+            "false_positive": 0,
+            "false_negative": 0
+          }
+        },
+        {
+          "frame": "g_27_0.jpg",
+          "counts": {
+            "true_positive": 6,
+            "false_positive": 0,
+            "false_negative": 0
+          }
+        }
+      ]
+    }
+  },
+  "glendale_paths": {
+    "summary": {
+      "frames": 200,
+      "raw_track_ids": 12,
+      "projected_track_ids": 11,
+      "shown_track_ids": 6,
+      "out_of_field_observations": 2,
+      "short_tracks_omitted": 1,
+      "memory_state_ids": 11,
+      "estimated_path_points": 14,
+      "unresolved_track_ids": 3
+    },
+    "teams": [
+      {
+        "team": "11024",
+        "source_ids": [
+          1
+        ],
+        "observed_points": 200,
+        "estimated_points": 0
+      },
+      {
+        "team": "3328",
+        "source_ids": [
+          3
+        ],
+        "observed_points": 200,
+        "estimated_points": 0
+      },
+      {
+        "team": "3501",
+        "source_ids": [
+          5,
+          10
+        ],
+        "observed_points": 177,
+        "estimated_points": 14
+      },
+      {
+        "team": "5089",
+        "source_ids": [
+          11
+        ],
+        "observed_points": 48,
+        "estimated_points": 0
+      },
+      {
+        "team": "9696",
+        "source_ids": [
+          7
+        ],
+        "observed_points": 184,
+        "estimated_points": 0
+      },
+      {
+        "team": "9772",
+        "source_ids": [
+          2
+        ],
+        "observed_points": 200,
+        "estimated_points": 0
+      }
+    ]
+  },
+  "final_haiku_reviews": [
+    {
+      "round": 1,
+      "sampled_times": [
+        0.5,
+        0.7,
+        8.0,
+        8.2,
+        17.0,
+        17.2
+      ],
+      "review": "{\"quality\":\"mixed\",\"suspected_identity_swaps\":[],\"misses_or_false_detections\":[\"Team 9696 at t=8.0s and t=8.2s is a detection at top-center (322,10) with a bumper-like region but in later frames (t=17.0s, 17.2s) it persists at the same location; cannot verify it is a robot versus background, so treat as uncertain.\",\"Team 3501 (id 5) at t=8.0s/8.2s covers a robot on the right side (664,30); it is absent from the t=17.0s/17.2s list, where id 10 appears at (490,27) with team 3501 - a different location, so the team label may be correct but position jumps by roughly 170px across 9 seconds, which is not a swap by itself.\",\"Unknown row at t=8.0s and t=8.2s (id 9, box near 686,109) is a person or low-confidence detection near the red field edge; it does not appear in the t=17 pairs, so it is likely a false or transient detection.\",\"Team 11024 (id 1) is consistently detected near the right-side field structure at all times; 3328 (id 3) consistently at left edge. These look stable.\",\"At t=17.0s and t=17.2s the 5089 detection (id 11) at (549,64) overlaps a robot-like object near the red-bumper area; confidence is high but identity cannot be confirmed from the crop alone.\"],\"continuity_notes\":\"Across the three pairs, the named team paths 11024, 9772, 3328 remain stable with consistent boxes at similar locations. Team 9696 and 3501 appear in the 8s and 17s pairs; 3501 changes location between pairs, which is consistent with motion over 9 seconds and does not by itself indicate a swap. Pair 1 (t=0.5s, 0.7s) shows the same three robots without extra detections. Pair 2 (t=8.0s, 8.2s) shows added team 9696 and 3501 plus an unknown. Pair 3 (t=17.0s, 17.2s) shows team 5089 added and the unknown is gone. No visible number confirmations are required for every frame. No confirmed incorrect team assignments were observed in these crops; the uncertainties noted are about detector false positives and location plausibility.\",\"recommendations\":[\"Verify team 9696 detection at top-center in the 8s pair against the raw frame to rule out a background or spectator false positive.\",\"Review the unknown detection near the right-side robot at t=8.0s and 8.2s to determine if it is a person (suppress in named paths) or a robot missing a team label.\",\"Cross-check 3501 and 5089 at t=17s against the bumper numbers to confirm the team assignment, since their boxes sit near other robots.\",\"Do not reset paths for 3501 between the 8s and 17s pairs based only on displacement; keep canonical path continuity unless a visual switch is confirmed.\",\"Continue to label unknown detections in the anonymous debug view and exclude them from named team paths.\"]}",
+      "cost_usd": 0.0008264000000000001,
+      "scope": "Supplemental fallible teacher opinion, not ground truth"
+    },
+    {
+      "round": 2,
+      "sampled_times": [
+        2.5,
+        2.7,
+        10.0,
+        10.2,
+        18.0,
+        18.2
+      ],
+      "review": "{\"quality\":\"mixed\",\"suspected_identity_swaps\":[\"Team 3501 (id 10 at t=18.0s, box near [491,28,544,68]) and team 5089 (id 11, box near [486,66,537,112]) appear adjacent in the same area; the 5089 box at t=18.0s sits below the 3501 box, and at t=18.2s the boxes are similar in position, so the assignment between these two is uncertain rather than confirmed as swapped.\",\"Team 11024 (id 1) and 9696 (id 7) are stable across the pairs but no swap is evident; no confirmed swap in this request.\"],\"misses_or_false_detections\":[\"Team 3501 is labeled at t=2.5s and t=2.7s as id 5 and at t=10.0s/10.2s as id 5 at a different location, while at t=18.0s it appears as id 10; this is a change in internal state ID, not a displayed path reset, but the canonical team label should be checked against the backward-joined path.\",\"Team 5089 appears only at t=18.0s and t=18.2s, with a box that may partially overlap the 3501 robot; treat as uncertain.\",\"Unknown detection at t=10.0s and t=10.2s (box near [681,106,748,141]) is a debug-view detector entry; it appears to be a robot near the bottom-right red base and may be a missed or duplicate detection of a named team, not confirmed.\",\"Team 3328 (id 3) box is stable at the left edge across all pairs; no false detection evident.\",\"Several yellow game pieces and human figures are in view; none are robot detections, and no false robot detection is confirmed from them.\",\"Multiple robots are not visible in some frames, including team 9772 (id 2) at the left in all frames; this is consistent with partial visibility rather than a missed detection.\"],\"continuity_notes\":\"Pairs 1 and 2 are separate requests at different moments, so cross-request continuity is not assessed. Within the t=2.5s/2.7s pair, IDs 1,2,3,5,7 are stable with near-identical boxes, showing good continuity. Within the t=10.0s/10.2s pair, IDs 1,2,3,7,5 and unknown 9 are stable; the unknown entry is a debug-only detection. Within the t=18.0s/18.2s pair, IDs 1,2,3,7 are stable, while 3501 moved from id 5 to id 10 and new id 11 (5089) appears, which reflects internal state churn; team path continuity for 3501 cannot be confirmed from these two frames alone. No path reset is evident in the displayed team identities.\",\"recommendations\":[\"Verify the 3501 versus 5089 assignment at t=18.0s with a wider temporal window (several frames before and after) before accepting it as a canonical path.\",\"Confirm whether the unknown detection near the bottom-right base at t=10.0s/10.2s corresponds to a named team robot and, if so, merge it into that team path or report it as a detector duplicate.\",\"Check that internal state ID changes (5 to 10 for team 3501) do not produce a displayed path reset after backward joining.\",\"Assess unknown debug rows separately from named path errors and reduce duplicate detections near the red alliance base.\"]}",
+      "cost_usd": 0.0008845,
+      "scope": "Supplemental fallible teacher opinion, not ground truth"
+    }
+  ],
+  "visual_review": "Full-resolution video time 24 s checked by coding agent: 3501 and 5089 bumper numbers agree with adjacent named boxes; partly hidden left robot is a real robot, not the person suggested by Haiku. This is a spot check, not independent human ground truth.",
+  "rejected_iterations": [
+    "Appearance long-gap threshold too weak caused five wrong Einstein names; rejected and tightened.",
+    "Birth filtering dropped eight checked observations; corrected with repeated later identity anchors."
+  ],
+  "artifacts": {
+    "animation": "runs/glendale_local_memory_final/memory/teams_alliance/animation.html",
+    "video": "runs/glendale_local_memory_final/memory/teams_alliance/paths.mp4",
+    "checked_frame": "runs/glendale_local_memory_final/final_checked_frame.jpg"
+  },
+  "limitations": [
+    "Haiku reviews both mixed; no confirmed swaps, unresolved visibility doubts.",
+    "Only two Glendale held-out frames, temporally near training frames and agent-reviewed.",
+    "Einstein coverage remains 39.4%; no claim of complete six-robot match tracking.",
+    "Glendale-specific detector regresses on original camera; original default preserved.",
+    "Hidden estimates up to two seconds are not observations."
+  ]
+}

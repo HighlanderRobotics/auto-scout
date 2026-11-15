@@ -269,6 +269,68 @@ API spending is $0.0420565 plus the retained $0.05 uncertain reservation, within
 The new native demo, score files and measured limitations are linked in
 `results/distant_sf_v1.json`. Generated videos and checkpoints remain local and ignored.
 
+### Local visual memory (2026-11-15)
+
+`auto_paths.py --teams ROSTER --visual-memory` now runs an offline forward memory
+pass before backward team naming. Each state keeps a spatial HSV appearance
+signature, motion, size and repeated bumper-color votes. One-to-one assignment
+rejects ambiguous matches; losses of at least 0.5 seconds require stronger
+appearance agreement. States expire after two seconds. Hidden position estimates
+are dashed, excluded from `frames[].robots`, and never scored as detections.
+Later repeated OCR/accepted identity evidence names the compatible earlier path.
+Unknown robots remain in debug rather than receiving forced names.
+
+The output is `memory/teams/animation.html`; root and `teams/` retain the original
+anonymous and OCR-only results. The tracking video retains raw detector IDs and
+the viewer says so. The trained appearance metric is used when
+`runs/memory_appearance_v2/appearance.npz` exists; otherwise spatial histograms
+work without learned weights. `--memory-appearance FILE` selects it explicitly.
+
+```bash
+# Offline appearance training from accepted teacher/OCR tracks, not the answer key.
+.venv/bin/python train_memory_appearance.py --paths runs/haiku_identity_round2/paths.json --video einstein_final_1.mp4 --out runs/my_memory_metric
+# Glendale profile selects the camera-specific locally trained detector.
+.venv/bin/python auto_paths.py datasets/scout_VZCS8a4rRn0/source.mp4 --calibration configs/glendale_qual5_camera.json --teams 9772,9696,3328,5089,11024,3501 --blue-teams 9772,9696,3328 --red-teams 5089,11024,3501 --visual-memory --out runs/my_glendale_memory
+```
+
+The expanded appearance set has 159 training crops and 67 later same-track test
+crops: 65/67 agree with their pseudo-labels. This is not independent identity
+accuracy. The final Einstein memory replay retains 229/229 correct matched names
+and 39.4% reference coverage. A trial with weaker long-gap matching introduced
+five wrong names and was rejected; stricter appearance matching removed them.
+A birth filter that reduced coverage was also rejected and corrected using
+repeated later identity anchors. Full occlusions and similar-looking teammates
+remain limitations; this is not complete six-robot match tracking.
+
+Additional Glendale training used 12 public-video frames proposed by Haiku and
+visually reviewed by the coding agent (`configs/glendale_teacher_review.json`).
+Eight independent training frames are sampled four times each alongside the
+original dataset; two frames select the checkpoint and two are held out. After
+20 epochs, the held-out Glendale counts at IoU 0.5 improve from 9 true positives,
+4 false positives, 3 misses to 12 true positives, 0 extras, 0 misses. These are
+only two nearby same-camera frames with agent-reviewed labels, not an independent
+human benchmark. Across all 96 original-plus-Glendale test boxes, the new model
+has 82 matches, 12 extras, 14 misses versus 83/23/13 before. Therefore the original
+Einstein checkpoint stays the default; Glendale uses its own profile/checkpoint.
+Videos, datasets and weights remain local and ignored by git.
+
+The user raised the shared coaching cap from $2 to **$4 total**. All additional
+labels and the two final temporal reviews use that same locked ledger in
+`datasets/identity_coach_v1/ledger.json`, including the retained $0.05 uncertain
+reservation. `review_local_memory.py --round 1|2 --execute` samples different
+temporal pairs in two separate Haiku requests. Reviews are fallible supplemental
+opinions; they do not replace scoring against `track/final/`. Paid labeling via
+`prepare_glendale_teacher.py --execute` requires cost/cap approval first.
+
+Final Glendale output: `runs/glendale_local_memory_final/memory/teams_alliance/`.
+Providing the two alliance rosters resolves all six names, including the partly
+hidden 3328, through existing color/leftover deduction. Both final Haiku reviews
+rate the result mixed, with no confirmed swaps and some visibility uncertainty.
+The coding agent checked full-resolution video time 24 s: visible 3501 and 5089
+bumper numbers agree with the adjacent named boxes. This is a spot check only.
+See `results/local_visual_memory_v1.json` for scores, review text, spending and
+artifact paths. All 56 unit tests pass.
+
 ### Haiku appearance coaching experiment (2026-11-05)
 
 The user approved a new **$2 total cap** for identity coaching. `coach_identity.py`
@@ -782,6 +844,7 @@ Everything in a Lovat report is built from three inputs:
 | identity coaching pilot | Haiku 5.5 + existing local tracks | Two crop-selection rounds; four teams accepted | 229/229 matched names; 39.4% reference coverage | Detector unchanged | $0.03116 total recorded pilot, plus $0.05 uncertain reserve | Not measured on full match |
 | distant SF camera adaptation | YOLO26n fine-tuned from v1 | Native 1080p field crop, 5 reviewed SF train frames, dedicated camera thresholds | Not measured | 4/4 far observations on 2 reserved times; no far extras; very small same-camera check | Shared round total $0.04206 plus $0.05 uncertain reserve | Not measured; SF profile only |
 | combined paths | Existing detector + local identity evidence | Mutual motion/color fragment matching; bounded estimated gap positions | Einstein 229/229 matched; 39.4% coverage, unchanged | Detector unchanged | $0 new API | Not measured; Glendale 3501 gains 44 observed path points and 20 estimated points |
+| local visual memory | Local appearance/motion + backward identity evidence | Expanded metric; 20-epoch Glendale detector adaptation; two final Haiku reviews | Einstein 229/229; 39.4% coverage | Glendale held-out 12/12 boxes, 0 extras vs 9/12, 4 extras; two frames only | Shared ledger $0.05218 recorded + $0.05 reserve / $4 cap | Six Glendale names resolved; reviews mixed, no confirmed swaps; incomplete occlusion coverage |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
 

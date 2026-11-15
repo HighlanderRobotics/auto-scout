@@ -49,6 +49,9 @@ def main():
     parser.add_argument("--prepare", action="store_true", help="Create a calibration page for a new camera")
     parser.add_argument("--device", help="cpu, mps or CUDA device number; default is automatic")
     parser.add_argument("--teams", help="Comma-separated match roster for local bumper OCR (macOS)")
+    parser.add_argument('--visual-memory',action='store_true',help='Keep local visual identity state through short occlusions')
+    parser.add_argument('--blue-teams',help='Three blue teams for alliance deduction')
+    parser.add_argument('--red-teams',help='Three red teams for alliance deduction')
     parser.add_argument("--no-open", action="store_true")
     args = parser.parse_args()
     if args.source and args.demo:
@@ -126,11 +129,16 @@ def main():
         command += ["--prepare"]
     if args.teams:
         command += ["--teams", args.teams]
+    if args.visual_memory:
+        command += ['--visual-memory']
+    if args.blue_teams:command += ['--blue-teams',args.blue_teams]
+    if args.red_teams:command += ['--red-teams',args.red_teams]
     print("Running locally. No Claude requests or API key required.", flush=True)
     result = logged(command, ROOT / "run.log")
     if result:
         raise SystemExit("Processing failed. See run.log for the cause; rerun with a new output folder.")
     page = out / ("calibrate.html" if args.prepare else ("teams/animation.html" if args.teams else "animation.html"))
+    if args.visual_memory and not args.prepare:page=out/'memory/teams/animation.html'
     print("Open: " + str(page), flush=True)
     if args.prepare:
         print("Export camera.json from the page, then run again and provide that file.")

@@ -49,4 +49,8 @@ if(data.identity_mode==='team'){
  draw=function(){joinedDraw();for(const track of data.tracks){if(hidden.has(track.id))continue;const before=track.points.filter(p=>p.t<=current).at(-1);if(!before?.estimated||current-before.t>Math.min(data.max_gap_s,.35))continue;const [x,y]=point(before);ctx.fillStyle='#152139';ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fill();ctx.strokeStyle=`rgb(${track.color})`;ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,7,0,Math.PI*2);ctx.stroke()}};
  draw();
 }
+</script><script>
+if(data.video_id_space==='raw_id'){
+ document.querySelector('video + small').textContent='Video labels show raw detector IDs. Paths use persistent local-memory IDs and team identities; paths.json records each visible observation’s raw_id. Hollow markers are hidden-position estimates.';
+}
 </script></html>

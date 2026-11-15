@@ -1,0 +1,19 @@
+{
+  "scope": "Agent visual corrections to Haiku proposals in public Glendale Q5 field crops, source y=300..620. Not independently human-verified ground truth.",
+  "common_visible_robot_box": [315,245,435,296],
+  "common_box_reason": "Partly occluded blue robot at the near-left wall, omitted by Haiku in most frames. Box excludes the screen above the mechanism.",
+  "additional_boxes": {
+    "8": [[1000,240,1085,320]],
+    "10": [[942,62,1028,145]],
+    "12": [[1300,52,1375,138]],
+    "14": [[1360,218,1495,285]],
+    "16": [[1355,212,1495,281]],
+    "20": [[1240,255,1380,320]],
+    "24": [[965,145,1075,225]]
+  },
+  "remove_boxes": {"8": [4], "16": [4]},
+  "replace_boxes": {"14": {"3": [1318,141,1415,225]}, "16": {"3": [1318,140,1415,225]}, "22": {"4": [645,20,725,82]}},
+  "train_times": [8,10,12,14,16,18,20,22],
+  "validation_times": [24,26],
+  "test_times": [25,27]
+}

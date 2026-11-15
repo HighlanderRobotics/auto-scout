@@ -1,0 +1,56 @@
+{
+  "name": "Glendale Qualification 5 public video approximate field alignment",
+  "image_size": [
+    1920,
+    1080
+  ],
+  "crop": [
+    0,
+    300,
+    1920,
+    620
+  ],
+  "image_points": [
+    [
+      210,
+      335
+    ],
+    [
+      1595,
+      335
+    ],
+    [
+      1910,
+      620
+    ],
+    [
+      10,
+      620
+    ]
+  ],
+  "field_points": [
+    [
+      0,
+      0
+    ],
+    [
+      100,
+      0
+    ],
+    [
+      100,
+      100
+    ],
+    [
+      0,
+      100
+    ]
+  ],
+  "auto_start_s": 6.0,
+  "track_high_thresh": 0.25,
+  "new_track_thresh": 0.25,
+  "approximate": true,
+  "youtube_id": "VZCS8a4rRn0",
+  "note": "Visually estimated floor boundary correspondences for this fixed camera only. No surveyed calibration or positional ground truth. Clock shows 0:20 at 6 s and 0:19 at 7 s; auto start approximate within one second.",
+  "detector_weights": "runs/local_robot_glendale_v1/weights/best.pt"
+}

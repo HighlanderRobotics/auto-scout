@@ -143,7 +143,11 @@ def resolve_tracks(data, evidence, teams, alliance_by_team=None):
         for track in tracks:
             for point in track['points']:
                 if point['t'] in points:
-                    overlap = True
+                    previous=points[point['t']]
+                    if point.get('estimated'):
+                        continue
+                    if not previous.get('estimated'):
+                        overlap = True
                 points[point['t']] = dict(point, source_id=track['id'])
         if overlap:
             audit.append({'team':team, 'reason':'overlapping tracks claim the same team', 'ids':[t['id'] for t in tracks]})

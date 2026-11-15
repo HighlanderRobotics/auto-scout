@@ -43,8 +43,8 @@ def grade_detector(args, ledger, client):
                 raise ValueError('Cannot encode grading frame')
             predictions=[dict(row,box=[round(value/2,2) for value in row['box']]) for row in frame['robots']]
             prompt = 'Grade these LOCAL detector predictions against the attached frame. Image and prediction coordinates are BOTH 960x540. Main field view only, y=55..360; ignore inset cameras. Identify false detections, missed visible robots, and poorly placed boxes. Do not assume six robots visible. Return JSON {"false_positive_ids": [integer], "missed_visible_robots": integer, "poor_box_ids": [integer], "notes": string}. This is a subjective teacher review, not ground truth. Predictions: '+json.dumps(predictions)
-            if ledger['spent_usd']+ledger['reserved_usd']+.05 > 2:
-                raise RuntimeError('Shared $2 cap reached')
+            if ledger['spent_usd']+ledger['reserved_usd']+.05 > ledger['cap_usd']:
+                raise RuntimeError('Shared approved cap reached')
             attempt = {'grade_frame':index,'status':'pending'}
             ledger['attempts'].append(attempt);ledger['reserved_usd']+=.05
             atomic_json(args.out/'ledger.json',ledger)
@@ -68,7 +68,7 @@ def grade_detector(args, ledger, client):
             atomic_json(args.out/'ledger.json',ledger)
             raw=''.join(block.text for block in response.content if block.type=='text')
             atomic_json(output,{'frame_index':index,'teacher_review':raw,'cost_usd':cost,'scope':'Supplemental teacher opinion, not independent ground truth'})
-            print(f'Graded frame {index}; total ${ledger["spent_usd"]:.4f}/$2',flush=True)
+            print(f'Graded frame {index}; total ${ledger["spent_usd"]:.4f}/${ledger["cap_usd"]:.2f}',flush=True)
             if cost>.05 or not response.model.startswith(MODEL):
                 raise RuntimeError('Unexpected grading cost/model')
     finally:
@@ -85,16 +85,23 @@ def main():
     parser.add_argument('--base-evidence', type=Path, help='Existing local OCR/color evidence to retain')
     parser.add_argument('--grade', action='store_true', help='Ask Haiku to grade four local detector frames using the shared ledger')
     parser.add_argument('--video', type=Path, default=Path('einstein_final_1.mp4'))
+    parser.add_argument('--set-cap',type=float,help='Set an explicitly user-approved shared cap (maximum $4), then exit without requests')
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     ledger_path = args.out/'ledger.json'
-    ledger = json.loads(ledger_path.read_text()) if ledger_path.exists() else {'cap_usd':2.0,'spent_usd':0.0,'reserved_usd':0.0,'attempts':[],'model':MODEL}
-    if ledger['cap_usd'] != 2.0 or ledger['model'] != MODEL:
-        raise ValueError('Ledger cap/model mismatch')
     # Serialize runs so two processes cannot spend the same remaining budget.
     import fcntl
     lock = (args.out/'job.lock').open('a')
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    ledger = json.loads(ledger_path.read_text()) if ledger_path.exists() else {'cap_usd':2.0,'spent_usd':0.0,'reserved_usd':0.0,'attempts':[],'model':MODEL}
+    if not 0<ledger['cap_usd']<=4 or ledger['model']!=MODEL:
+        raise ValueError('Ledger cap/model mismatch')
+    if args.set_cap is not None:
+        if args.execute or not 0<args.set_cap<=4 or args.set_cap<ledger['spent_usd']+ledger['reserved_usd']:
+            raise ValueError('Invalid cap update; do not combine with --execute')
+        ledger['cap_usd']=args.set_cap;atomic_json(ledger_path,ledger)
+        print(f"Shared cap ${args.set_cap:.2f}; spend ${ledger['spent_usd']:.6f}; reserve ${ledger['reserved_usd']:.2f}. No requests sent.")
+        return
     descriptions = json.loads(Path('start/robot_looks.json').read_text())
     data = json.loads(args.paths.read_text())
     evidence = json.loads(args.base_evidence.read_text()) if args.base_evidence else []
@@ -129,8 +136,8 @@ def main():
                     result = json.loads(response_path.read_text())
                 elif client:
                     reserve = .05
-                    if ledger['spent_usd'] + ledger['reserved_usd'] + reserve > 2:
-                        raise RuntimeError('Approved $2 cap reached')
+                    if ledger['spent_usd'] + ledger['reserved_usd'] + reserve > ledger['cap_usd']:
+                        raise RuntimeError('Approved shared cap reached')
                     attempt = {'id':track['id'],'panel':panel,'status':'pending','crops':[p.name for p in chosen]}
                     ledger['attempts'].append(attempt)
                     ledger['reserved_usd'] += reserve
@@ -162,7 +169,7 @@ def main():
                         print(f"Track {track['id']} panel {panel}: invalid response excluded",flush=True)
                         continue
                     atomic_json(response_path,result)
-                    print(f"Track {track['id']} panel {panel}: {result.get('team')} ; spent ${ledger['spent_usd']:.4f}/$2",flush=True)
+                    print(f"Track {track['id']} panel {panel}: {result.get('team')} ; spent ${ledger['spent_usd']:.4f}/${ledger['cap_usd']:.2f}",flush=True)
                 else:
                     continue
                 team = result.get('team')

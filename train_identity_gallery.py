@@ -11,7 +11,7 @@ import numpy as np
 
 
 def features(path):
-    image=cv2.imread(str(path))
+    image=path if isinstance(path,np.ndarray) else cv2.imread(str(path))
     hsv=cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
     rows=[]
     for region in (hsv,hsv[:hsv.shape[0]//2],hsv[hsv.shape[0]//2:]):

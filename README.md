@@ -44,9 +44,17 @@ Add `--blue-teams 868,2910,2046 --red-teams 4065,4414,1323` to enable extra free
 conservative evidence: bumper-color filtering, unique two-digit partial reads, close
 same-color fragment joins, and a leftover-team rule.
 
+Add `--visual-memory` alongside `--teams` to use local appearance and motion
+memory before the backward naming pass. Open `memory/teams/animation.html`.
+The original anonymous and OCR-only runs remain available for debugging. Memory
+can bridge losses up to two seconds; predicted positions stay visibly estimated
+and never count as detector observations. It does not guarantee complete paths
+through long occlusions. See DETAILS.md for training and measured limits.
+
 An experimental Haiku appearance coach (`coach_identity.py`) can name track fragments
 from multiple crops and the saved robot descriptions. Paid execution requires
-`--execute` and explicit budget approval. It uses a shared $2 ledger, and exports
+`--execute` and explicit budget approval. Its shared ledger now has a user-approved
+$4 total cap (raised from $2), and it exports
 evidence for `team_paths.py`. `train_identity_gallery.py` trains a small offline
 appearance gallery from accepted names. This experiment has four known teams and
 does not yet replace the app's naming system. See DETAILS.md for measured coverage.

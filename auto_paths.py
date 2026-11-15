@@ -231,6 +231,10 @@ def main():
     parser.add_argument("source",nargs="?",help="YouTube link or local video")
     parser.add_argument("--render-paths",type=Path,help="Re-render a saved paths.json without detection; requires a new --out")
     parser.add_argument("--teams",help="Comma-separated match roster: resolve local bumper OCR into team paths (macOS)")
+    parser.add_argument('--blue-teams',help='Three blue teams; provide with --red-teams and --teams for alliance deduction')
+    parser.add_argument('--red-teams',help='Three red teams; provide with --blue-teams and --teams for alliance deduction')
+    parser.add_argument('--visual-memory',action='store_true',help='Maintain local appearance/motion state through short occlusions, then correct identities with OCR; requires --teams')
+    parser.add_argument('--memory-appearance',type=Path,help='Optional locally trained appearance.npz for --visual-memory')
     parser.add_argument("--out",type=Path,default=Path("runs/auto_paths"))
     parser.add_argument("--weights",type=Path,help="Detector checkpoint; defaults to the camera profile's weights or local_robot_v1")
     parser.add_argument("--calibration",type=Path)
@@ -256,6 +260,14 @@ def main():
         print(f"Re-rendered saved paths: {args.out/'animation.html'}; no inference or API calls",flush=True)
         return
     if not args.source:parser.error("Provide a YouTube link/local video, or --render-paths")
+    if args.visual_memory and not args.teams:parser.error('--visual-memory requires the match roster in --teams')
+    if bool(args.blue_teams)!=bool(args.red_teams):parser.error('Provide both alliance rosters')
+    alliance_args=[]
+    if args.blue_teams:
+        blue=set(args.blue_teams.split(','));red=set(args.red_teams.split(','))
+        if not args.teams or len(blue)!=3 or len(red)!=3 or blue&red or blue|red!=set(args.teams.split(',')):
+            parser.error('Alliance rosters must be disjoint groups of three matching --teams')
+        alliance_args=['--blue-teams',args.blue_teams,'--red-teams',args.red_teams]
     if not 1<=args.fps<=30 or not 0<args.duration<=180 or args.min_track_frames<1 or not 0<args.confidence<1 or args.max_gap<=0:
         parser.error("Invalid frame rate, duration, confidence or track settings")
     if args.calibration is None and youtube_id(args.source)==KNOWN_VIDEO and not args.prepare:
@@ -358,9 +370,20 @@ def main():
             import subprocess
             import sys
             subprocess.run([sys.executable,'-u',str(ROOT/'team_paths.py'),str(args.out/'paths.json'),
-                            '--video',str(video),'--teams',args.teams,'--out',str(args.out/'teams')],check=True)
+                            '--video',str(video),'--teams',args.teams,'--out',str(args.out/'teams')]+alliance_args,check=True)
+            if args.visual_memory:
+                memory_out=args.out/'memory'
+                command=[sys.executable,'-u',str(ROOT/'local_memory.py'),str(args.out/'paths.json'),'--video',str(video),
+                         '--evidence',str(args.out/'teams/evidence.json'),'--teams',args.teams,'--out',str(memory_out)]
+                appearance=args.memory_appearance or ROOT/'runs/memory_appearance_v2/appearance.npz'
+                if args.memory_appearance and not appearance.is_file():raise ValueError('Missing specified memory appearance model')
+                if appearance.is_file():command+=['--appearance-model',str(appearance)]
+                subprocess.run(command,check=True)
+                subprocess.run([sys.executable,'-u',str(ROOT/'team_paths.py'),str(memory_out/'paths.json'),'--video',str(video),
+                                '--teams',args.teams,'--evidence',str(memory_out/'evidence.json'),'--out',str(memory_out/'teams')]+alliance_args,check=True)
         print(json.dumps(data["summary"],indent=2),flush=True)
         print(f"Open {args.out/'animation.html'}; path video: {args.out/'paths.mp4'}",flush=True)
+        if args.visual_memory:print(f"Persistent team paths: {args.out/'memory/teams/animation.html'}",flush=True)
     finally:
         if capture is not None:capture.release()
         for writer in writers:writer.close()
