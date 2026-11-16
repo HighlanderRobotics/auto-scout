@@ -23,6 +23,10 @@ We tested on [Einstein Final 1 of the 2026 Championship](https://www.youtube.com
 
 ## Research projects
 
+The `Team-334-Aproch` branch starts from the latest `combind-paths` implementation.
+See [the ai-scouting review](research/team-334-approach.md) for source-backed lessons
+and a proposed manual-review/scoring pilot. These are recommendations, not implemented features.
+
 Saved Haiku teacher labels are available in
 [annotations/haiku_training_v1](annotations/haiku_training_v1/README.md): 4,156
 annotation records with source-video metadata, frame coordinates, and provenance.

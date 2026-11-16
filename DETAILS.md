@@ -877,6 +877,16 @@ Source: the Lovat repo, `apps/collection/lib/collection/ScoutReport.ts` and `pac
 
 ## Research projects: technical details
 
+### Team 334 approach review (2026-11-15)
+
+`Team-334-Aproch` is based on `combind-paths` at `af79f22`, which retains newer
+visual-memory and viewer work absent from the earlier merge on
+`origin/local-tracking+2d-animation`. The [source review](research/team-334-approach.md)
+compares `derek-pohl/ai-scouting` at `97184951f9646f047cb5587f4d0aebac8413a729`
+with our system. Recommended order: manual identity/shooting corrections, fuel-counter
+attribution, then camera fusion and local vision/fuel experiments. No runtime changes,
+new experiment, benchmark result, or API charges were introduced by this review.
+
 The README explains each research project. This section gives the technical details. The projects are not in a fixed order. Whatever you try, score it against the answer key (`track/final/`) with `compare_runs.py` where that applies, and record the result in the results table below.
 
 Everything in a Lovat report is built from three inputs:
