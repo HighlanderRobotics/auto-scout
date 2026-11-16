@@ -29,11 +29,29 @@ and a proposed manual-review/scoring pilot. These are recommendations, not imple
 
 Temporal multi-camera teaching is available in `temporal_multicamera.py`: Haiku
 sees adjacent frames and saved identities, with budgeted Opus help on hard frames.
-The current pilot shares a new **$4.90 maximum** ($1.50 reserved for Opus). Reviewed
-Wisconsin main/side crops train the student; PNW main-view crops validate it.
+The completed run spent **$1.24 of its $4.90 maximum**. Reviewed Wisconsin main/side
+crops trained the student; PNW main-view crops selected its checkpoint.
 See [the run instructions and limits](DETAILS.md#temporal-multi-camera-teaching).
-This trains experimental detection/appearance models; automatic camera fusion is
-not yet part of the path app.
+The new detector matched **16/17** later side-camera robot observations with 3 extras,
+versus 6/17 with 24 extras before, on a small agent-annotated check. A fresh Einstein
+replay raised correct named coverage from **39.1% to 64.9%** with no wrong names on
+377 matched named observations. It still leaves two teams unresolved and has five
+unmatched named detections. The original 14-image detector test also has more extras,
+so the global default remains v1. See [the measured summary](results/temporal_multicamera_v1.json).
+
+`multicamera_tracks.py` renders synchronized main/side-camera tracking with separate
+IDs per camera and repeated exact bumper OCR. It makes no paid calls and does not
+invent field coordinates or hidden positions. Use the experimental checkpoint explicitly:
+
+```bash
+.venv/bin/python multicamera_tracks.py --weights runs/temporal_multicamera_v1/weights/best.pt --out runs/my_wisconsin_cameras
+.venv/bin/python serve_runs.py
+```
+
+Open `http://127.0.0.1:8766/my_wisconsin_cameras/viewer.html`. The server supports
+video seeking. The completed local report is `runs/overnight_2026_11_16/index.html`.
+Other broadcasts need reviewed camera crops; this does not automatically recognize
+layouts or geometrically fuse the cameras. Appearance classifiers remain experiments.
 
 Saved Haiku teacher labels are available in
 [annotations/haiku_training_v1](annotations/haiku_training_v1/README.md): 4,156

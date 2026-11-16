@@ -1,0 +1,236 @@
+{
+  "match": "2026wicmp_f1m1",
+  "video": "datasets/landmark_match_pool_v1/sources/2026wicmp_f1m1.mp4",
+  "youtube_url": "https://www.youtube.com/watch?v=Fu-Nez8BaBw",
+  "reference_type": "Coding-agent visual annotations; v2 includes a documented correction found during prediction review. Original v1 labels and both v1 score files are preserved. Not independent human ground truth.",
+  "scope": "Same-camera temporal holdout, video seconds 45..120, outside training seconds 15..34.8. Difficult ambiguous far-side fragments are ignored explicitly. No identity score, no new-venue claim. Never use for fitting or checkpoint selection.",
+  "cameras": {
+    "side_left": [
+      0,
+      85,
+      650,
+      360
+    ],
+    "side_right": [
+      1270,
+      85,
+      1920,
+      360
+    ]
+  },
+  "frames": [
+    {
+      "camera": "side_left",
+      "video_s": 45,
+      "boxes": [
+        [
+          151,
+          98,
+          225,
+          164
+        ]
+      ],
+      "ignore": [
+        [
+          420,
+          100,
+          535,
+          165
+        ]
+      ]
+    },
+    {
+      "camera": "side_right",
+      "video_s": 45,
+      "boxes": [
+        [
+          45,
+          62,
+          127,
+          114
+        ]
+      ],
+      "ignore": []
+    },
+    {
+      "camera": "side_left",
+      "video_s": 60,
+      "boxes": [
+        [
+          133,
+          104,
+          192,
+          150
+        ],
+        [
+          448,
+          115,
+          525,
+          184
+        ]
+      ],
+      "ignore": []
+    },
+    {
+      "camera": "side_right",
+      "video_s": 60,
+      "boxes": [
+        [
+          337,
+          91,
+          429,
+          148
+        ],
+        [
+          432,
+          95,
+          505,
+          150
+        ]
+      ],
+      "ignore": []
+    },
+    {
+      "camera": "side_left",
+      "video_s": 75,
+      "boxes": [
+        [
+          0,
+          119,
+          207,
+          270
+        ]
+      ],
+      "ignore": [
+        [
+          410,
+          95,
+          510,
+          155
+        ]
+      ]
+    },
+    {
+      "camera": "side_right",
+      "video_s": 75,
+      "boxes": [],
+      "ignore": []
+    },
+    {
+      "camera": "side_left",
+      "video_s": 90,
+      "boxes": [
+        [
+          35,
+          99,
+          160,
+          167
+        ]
+      ],
+      "ignore": [
+        [
+          410,
+          95,
+          510,
+          155
+        ]
+      ]
+    },
+    {
+      "camera": "side_right",
+      "video_s": 90,
+      "boxes": [
+        [
+          230,
+          89,
+          389,
+          179
+        ],
+        [
+          25,
+          54,
+          115,
+          110
+        ]
+      ],
+      "ignore": []
+    },
+    {
+      "camera": "side_left",
+      "video_s": 105,
+      "boxes": [],
+      "ignore": [
+        [
+          405,
+          90,
+          510,
+          145
+        ]
+      ]
+    },
+    {
+      "camera": "side_right",
+      "video_s": 105,
+      "boxes": [
+        [
+          35,
+          57,
+          119,
+          111
+        ],
+        [
+          102,
+          90,
+          235,
+          173
+        ],
+        [
+          365,
+          94,
+          443,
+          137
+        ]
+      ],
+      "ignore": []
+    },
+    {
+      "camera": "side_left",
+      "video_s": 120,
+      "boxes": [
+        [
+          15,
+          104,
+          114,
+          167
+        ],
+        [
+          448,
+          133,
+          650,
+          275
+        ]
+      ],
+      "ignore": []
+    },
+    {
+      "camera": "side_right",
+      "video_s": 120,
+      "boxes": [
+        [
+          373,
+          104,
+          481,
+          187
+        ],
+        [
+          521,
+          109,
+          633,
+          180
+        ]
+      ],
+      "ignore": []
+    }
+  ],
+  "annotation_revision": "v2: add a missed visible red robot behind the blue hub in side_right at video 90s. Correction was found during visual prediction review; both original v1 scores are preserved. No fitting, model choice or thresholds change."
+}

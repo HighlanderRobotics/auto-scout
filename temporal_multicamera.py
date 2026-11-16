@@ -21,7 +21,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import cv2
-from PIL import Image, ImageDraw, ImageOps
+from PIL import Image, ImageDraw
 
 from evaluate_detector import iou
 from teacher_labels import atomic_json, load_key, normalize_labels, InvalidTeacherLabel
@@ -385,7 +385,7 @@ def training_region(data):
     from prepare_confident_regions import area, clip, overlap
     record=data['record'];width=record['crop'][2]-record['crop'][0];height=record['crop'][3]-record['crop'][1]
     positives=[r['box'] for r in data['robots'] if r['visible'] and r['box_confidence']>=.7]
-    uncertain=[r['box'] for r in data['robots'] if r['box'] not in positives]
+    uncertain=[r['box'] for r in data['robots'] if not (r['visible'] and r['box_confidence']>=.7)]
     if not positives:
         return None
     candidates=[]

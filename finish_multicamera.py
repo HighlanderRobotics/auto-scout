@@ -1,74 +1,11 @@
-"""Offline labeled teaching videos and an appearance metric from repeated anchors."""
+"""Offline labeled teaching videos. Appearance fitting uses train_temporal_appearance.py."""
 import argparse
 import json
 import subprocess
-from collections import Counter
 from pathlib import Path
 
 import cv2
-import numpy as np
 from PIL import Image, ImageDraw, ImageFont
-
-from teacher_labels import atomic_json
-from train_identity_gallery import features
-from train_memory_appearance import learn_weights
-
-
-def appearance(root, out):
-    out.mkdir(parents=True, exist_ok=False)
-    labels = [json.loads(p.read_text()) for p in sorted((root/'labels').glob('*/*/*.json'))]
-    anchors = {}
-    for d in labels:
-        record = d['record']
-        if record['split'] != 'train':
-            continue
-        for r in d['robots']:
-            if (r['visible'] and r['named_by']=='bumper_number' and r['bumper_text'].strip()==r['team']
-                    and r['confidence']>=.8 and r['box_confidence']>=.7):
-                anchors.setdefault((record['match'],record['camera'],r['team']),set()).add(record['index'])
-    anchors = {key:times for key,times in anchors.items() if len(times)>=2 and max(times)-min(times)>=2}
-    train, test = [], []
-    records = []
-    for d in labels:
-        record=d['record']
-        if record['split']!='train' or record['index']%5 or not d['usable']:
-            continue
-        image=cv2.imread(str(root/record['image']))
-        if image is None:
-            raise ValueError('Missing appearance crop source')
-        for r in d['robots']:
-            key=(record['match'],record['camera'],r['team'])
-            if key not in anchors or not r['visible'] or r['confidence']<.8 or r['box_confidence']<.8:
-                continue
-            # Chronological holdout; no test observations train feature weights.
-            split='train' if record['index']<60 else 'test' if record['index']>=70 else None
-            if split is None:
-                continue
-            x1,y1,x2,y2=map(round,r['box']);crop=image[y1:y2,x1:x2]
-            if min(crop.shape[:2])<8:
-                continue
-            vector=features(crop)
-            (train if split=='train' else test).append((vector,r['team']))
-            records.append(dict(match=record['match'],camera=record['camera'],index=record['index'],team=r['team'],split=split))
-    report={'training_crops':len(train),'test_crops':len(test),'repeated_anchor_groups':len(anchors),
-            'scope':'Same-match chronological holdout with a two-second gap. Teacher/bumper pseudo-label agreement, not independent identity accuracy. PNW is excluded from metric training. Not installed as the default model.',
-            'records':records}
-    if len(train)<10 or len({t for _,t in train})<2:
-        report['state']='insufficient_trusted_identity_crops'
-    else:
-        vectors=np.stack([v for v,_ in train]);teams=np.asarray([t for _,t in train]);weights=learn_weights(vectors,teams)
-        vectors*=weights;vectors/=np.maximum(np.linalg.norm(vectors,axis=1,keepdims=True),1e-8)
-        np.savez_compressed(out/'appearance.npz',weights=weights,features=vectors,teams=teams)
-        evaluated=correct=0
-        for vector,target in test:
-            if target not in teams:
-                continue
-            vector=vector*weights;vector/=max(float(np.linalg.norm(vector)),1e-8)
-            correct+=str(teams[np.argmax(vectors@vector)])==target;evaluated+=1
-        report.update(state='trained_experiment',evaluated_pseudo_labels=evaluated,correct_pseudo_labels=correct,
-                      agreement=correct/evaluated if evaluated else None,teams=sorted(set(teams.tolist())))
-    atomic_json(out/'metrics.json',report)
-    print(json.dumps({k:v for k,v in report.items() if k!='records'},indent=2),flush=True)
 
 
 def videos(root, out):
@@ -111,9 +48,9 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--root',type=Path,default=Path('datasets/temporal_multicamera_v1_run'))
     p.add_argument('--out',type=Path,required=True)
-    p.add_argument('--stage',choices=('appearance','videos'),required=True)
+    p.add_argument('--stage',choices=('videos',),required=True)
     args=p.parse_args()
-    (appearance if args.stage=='appearance' else videos)(args.root,args.out)
+    videos(args.root,args.out)
 
 
 if __name__=='__main__':

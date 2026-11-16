@@ -19,7 +19,7 @@ def main():
     stages=[
         ('teaching',['temporal_multicamera.py','--stage','teach','--execute']),
         ('labeled_videos',['finish_multicamera.py','--stage','videos','--out','runs/temporal_multicamera_v1_teaching_videos']),
-        ('appearance_training',['finish_multicamera.py','--stage','appearance','--out','runs/temporal_multicamera_v1_appearance']),
+        ('appearance_training',['train_temporal_appearance.py','--out','runs/temporal_multicamera_v1_ocr_appearance']),
         ('detector_training_and_evaluation',['temporal_multicamera.py','--stage','train']),
         ('baseline_validation',['evaluate_detector.py','runs/local_robot_v1/weights/best.pt',str(root/'dataset'),
                                 'runs/temporal_multicamera_v1_baseline_val','--split','val'])]
@@ -35,7 +35,7 @@ def main():
                 'einstein_test':json.loads(Path('runs/temporal_multicamera_v1_test/metrics.json').read_text())['metrics'],
                 'pnw_teacher_validation':json.loads(Path('runs/temporal_multicamera_v1_val/metrics.json').read_text())['metrics'],
                 'baseline_pnw_teacher_validation':json.loads(Path('runs/temporal_multicamera_v1_baseline_val/metrics.json').read_text())['metrics'],
-                'appearance':json.loads(Path('runs/temporal_multicamera_v1_appearance/metrics.json').read_text()),
+                'appearance':json.loads(Path('runs/temporal_multicamera_v1_ocr_appearance/metrics.json').read_text()),
                 'limitations':'No independent side-camera answer key or end-to-end team identity score. PNW validation is agreement with teacher labels. No trained model is promoted automatically; no automatic camera fusion is enabled.'}
         atomic_json(root/'result.json',report)
         atomic_json(root/'job_status.json',{'state':'complete','updated_unix':time.time(),'result':str(root/'result.json')})

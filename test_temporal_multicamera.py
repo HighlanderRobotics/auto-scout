@@ -94,6 +94,12 @@ class MultiCameraTests(unittest.TestCase):
         self.assertLessEqual(selected['crop'][2],500)
         self.assertEqual(selected['boxes'],[[250,90,360,160]])
 
+    def test_hidden_estimate_coincident_with_positive_remains_uncertain(self):
+        data={'usable':True,'complete':True,'record':{'crop':[0,0,650,275]},'robots':[
+            dict(visible=True,box=[250,90,360,160],box_confidence=.9),
+            dict(visible=False,box=[250,90,360,160],box_confidence=.9)]}
+        self.assertIsNone(training_region(data))
+
 
 if __name__=='__main__':
     unittest.main()
