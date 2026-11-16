@@ -1,0 +1,19 @@
+{
+  "reviewer": "coding agent, visual spot review; not independent human ground truth",
+  "review_date": "2026-11-15",
+  "policy": "Geometry confidence >=0.7; retain one crop that excludes every uncertain or hidden estimate; reject full images marked incomplete. Identity confidence is separate. Review does not verify every future frame.",
+  "sample_indices": [0, 5, 10],
+  "passed_streams": ["2026wicmp_f1m1/main", "2026wicmp_f1m1/side_left", "2026wicmp_f1m1/side_right", "2026pncmp_f1m1/main"],
+  "excluded_streams": ["2026casac_f1m1/main", "2026casnd_f1m1/main", "2026pncmp_f1m1/side_left", "2026pncmp_f1m1/side_right"],
+  "observations": {
+    "2026casac_f1m1/main": "Proposed region at index 10 appears to retain a partial near-side robot without its label. Exclude stream instead of training on omissions.",
+    "2026casnd_f1m1/main": "Proposed index-10 region retains a visible robot fragment behind the blue hub without a label. Exclude stream.",
+    "2026pncmp_f1m1/side_left": "Predominantly hub/people/monitors; no confident robot region in pilot.",
+    "2026pncmp_f1m1/side_right": "Low-confidence partial chassis at the lower image edge, and false proposals on people/tagged structure. Exclude stream.",
+    "2026wicmp_f1m1/main": "Reviewed three region crops containing 2194 and later 1306. Their boxes cover physical robots; uncertain right-side overlapping identities are outside the selected crop.",
+    "2026wicmp_f1m1/side_left": "Reviewed two region crops around clearly readable 2194. Ambiguous edge objects/robot proposals are excluded spatially.",
+    "2026wicmp_f1m1/side_right": "Reviewed two crops around 10553 and 3197. A false uncertain proposal near the left ramp is excluded spatially.",
+    "2026pncmp_f1m1/main": "Reviewed three region crops with visible chassis enclosed. Partial robots at crop edges retain labels. Used for validation only, not appearance-metric fitting."
+  },
+  "limitations": "Ten retained region samples with 18 proposed robot boxes were visually spot-checked. No numerical precision/recall claim is made from this review. Main and side views of Wisconsin share one match; this pilot cannot establish generalization to new side cameras."
+}

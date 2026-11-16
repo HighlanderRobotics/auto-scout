@@ -1,0 +1,45 @@
+{
+  "cap_usd": 4.90,
+  "opus_cap_usd": 1.50,
+  "estimated_cost_usd": [0.80, 3.00],
+  "authorization": "User approved a new $4.90 budget on 2026-11-15, then requested Jesse-style temporal teaching and Opus help on hard frames. This new ledger is separate from historical runs.",
+  "fps": 5,
+  "start_s": 15,
+  "duration_s": 20,
+  "sources": [
+    {
+      "match": "2026casac_f1m1",
+      "video": "datasets/teacher_multivenue_v1/sources/2026casac_f1m1.mp4",
+      "youtube_url": "https://www.youtube.com/watch?v=Ygzo0f0k0mk",
+      "split": "train",
+      "teams": {"2204":"red","1678":"red","5940":"red","6884":"blue","4698":"blue","3257":"blue"},
+      "views": {"main":[0,110,1920,720]},
+      "excluded_views": "Side feeds point upward at hubs; robots are mostly outside the image or behind broadcast graphics. Keep main view only for this pilot."
+    },
+    {
+      "match": "2026casnd_f1m1",
+      "video": "datasets/landmark_match_pool_v1/sources/2026casnd_f1m1.mp4",
+      "youtube_url": "https://www.youtube.com/watch?v=lHqCgze1vjg",
+      "split": "train",
+      "teams": {"2658":"red","3128":"red","2102":"red","6695":"blue","9452":"blue","6995":"blue"},
+      "views": {"main":[0,110,1920,720]},
+      "excluded_views": "Side feeds point upward at hubs; no reliable robot-body coverage in inspected pilot times."
+    },
+    {
+      "match": "2026wicmp_f1m1",
+      "video": "datasets/landmark_match_pool_v1/sources/2026wicmp_f1m1.mp4",
+      "youtube_url": "https://www.youtube.com/watch?v=Fu-Nez8BaBw",
+      "split": "train",
+      "teams": {"6421":"red","2194":"red","1306":"red","10553":"blue","3197":"blue","1732":"blue"},
+      "views": {"main":[0,380,1920,800],"side_left":[0,85,650,360],"side_right":[1270,85,1920,360]}
+    },
+    {
+      "match": "2026pncmp_f1m1",
+      "video": "datasets/landmark_match_pool_v1/sources/2026pncmp_f1m1.mp4",
+      "youtube_url": "https://www.youtube.com/watch?v=GGBKdWrWWhQ",
+      "split": "val",
+      "teams": {"2811":"red","2910":"red","2046":"red","2412":"blue","948":"blue","1540":"blue"},
+      "views": {"main":[0,110,1920,720],"side_left":[0,740,650,1010],"side_right":[1270,740,1920,1010]}
+    }
+  ]
+}

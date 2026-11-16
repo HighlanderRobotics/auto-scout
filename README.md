@@ -27,6 +27,14 @@ The `Team-334-Aproch` branch starts from the latest `combind-paths` implementati
 See [the ai-scouting review](research/team-334-approach.md) for source-backed lessons
 and a proposed manual-review/scoring pilot. These are recommendations, not implemented features.
 
+Temporal multi-camera teaching is available in `temporal_multicamera.py`: Haiku
+sees adjacent frames and saved identities, with budgeted Opus help on hard frames.
+The current pilot shares a new **$4.90 maximum** ($1.50 reserved for Opus). Reviewed
+Wisconsin main/side crops train the student; PNW main-view crops validate it.
+See [the run instructions and limits](DETAILS.md#temporal-multi-camera-teaching).
+This trains experimental detection/appearance models; automatic camera fusion is
+not yet part of the path app.
+
 Saved Haiku teacher labels are available in
 [annotations/haiku_training_v1](annotations/haiku_training_v1/README.md): 4,156
 annotation records with source-video metadata, frame coordinates, and provenance.

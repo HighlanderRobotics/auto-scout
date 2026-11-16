@@ -672,6 +672,82 @@ remains about $1.64, within the unchanged $4 cap.
 
 ## Haiku teacher pipeline
 
+### Temporal multi-camera teaching
+
+The user authorized a new **$4.90 total** for this run, then requested the original
+adjacent-frame tracking approach and Opus help on difficult frames. The new locked
+ledger is `datasets/temporal_multicamera_v1_run/ledger.json`; historical ledgers are
+not reset or charged to this allowance. Haiku has at most $3.40 and Opus at most
+$1.50, including pending/uncertain reservations. Every request reserves money first;
+timeouts retain the reserve and are not retried. Claude keys are read only from
+`.env`; requests go to Anthropic directly. No other models are permitted here.
+
+Prices were checked against [Anthropic pricing](https://platform.claude.com/docs/en/about-claude/pricing):
+Haiku 5.5 $0.10/$0.50 and Opus 5.5 $4/$20 per million input/output tokens for these
+short prompts. Initial estimate including selective Opus review: **$0.80–$3.00**,
+with the full $4.90 a ceiling, not a spending target.
+
+`configs/temporal_multicamera_v1.json` describes four local 1080p public broadcasts,
+camera rectangles, rosters and a 20-second window starting at video second 15.
+Frames are sampled at 5 fps. Wisconsin's layout differs from the other events.
+Each stream supplies current/previous images and saved team state; difficult frames
+may receive an Opus review with a following image. From index 10 onward, side requests
+also include synchronized main-view context. Boxes still use only the target camera's
+coordinate system. This is teacher-assisted annotation, not geometric camera fusion.
+
+The initial full-layout extraction is preserved in `datasets/temporal_multicamera_v1/`
+as a diagnostic. Inspection rejected Sacramento/San Diego's upward-facing side views.
+The paid pilot in `datasets/temporal_multicamera_v1_run/` labeled 11 adjacent timestamps
+per remaining stream. The pilot and its refinement cost **$0.512370** (see the ledger
+for exact usage); sample proposals have omissions, uncertain identities, and occasional
+boxes on field structures or people. Opus corrected several proposals but is fallible.
+No pilot label is automatically ground truth.
+
+The agent's [spot review](configs/temporal_multicamera_review_v1.json) excludes
+Sacramento/San Diego main streams for omissions, and PNW side streams for poor robot
+visibility/false proposals. Bulk teaching retains Wisconsin main/left/right (train)
+and PNW main (validation). Ten retained region samples with 18 proposed boxes were
+visually reviewed; this is not an independently measured precision/recall result.
+The selected crop keeps geometry confidence >=0.7, rejects any intersection with an
+uncertain/hidden estimate, and requires >=50% positive-box retention and >=8-pixel
+dimensions. Full images marked incomplete are rejected; smaller regions can still be
+used after the pilot review. Teacher omissions outside estimated boxes remain a risk.
+Geometry confidence and identity confidence are separate fields.
+
+Offline preparation and paid pilot are explicit separate stages:
+
+```bash
+.venv/bin/python temporal_multicamera.py --stage prepare
+# After cost approval only:
+.venv/bin/python -u temporal_multicamera.py --stage pilot --execute
+# After reviewing pilot crops and writing the matching review_gate.json:
+set -o pipefail
+caffeinate -i .venv/bin/python -u run_multicamera_job.py --execute 2>&1 | tee logs/temporal-multicamera-v1-job.log
+```
+
+The background launcher saves `launch_job.json` and process-group information.
+`job_status.json` reports teaching, video rendering, appearance training, detector
+training/evaluation, completion or failure. Heartbeats print every 25 seconds during
+the teacher/training stages; frame progress includes cumulative spend. Do not run a
+second copy or reset the ledger to resume a failed job.
+
+The job produces labeled teacher videos (uncertain names marked `?`), an experimental
+appearance metric only if repeated readable identities provide enough trustworthy
+crops, and a detector fine-tuned from v1 for up to 30 epochs. Appearance fitting uses
+only training matches, with a chronological two-second gap for pseudo-label holdout.
+Insufficient trusted crops produce an explicit report instead of a fabricated model.
+Detector export uses one frame/second, keeps the original 81 checked training images,
+and preserves the original 14 test images/labels. PNW stays out of model fitting;
+validation selects the detector checkpoint. Existing output folders are never replaced.
+
+Artifacts are planned under `runs/temporal_multicamera_v1*`; the final aggregate report
+is `datasets/temporal_multicamera_v1_run/result.json`. The detector is scored with
+`evaluate_detector.py` against the original checked test, plus new/baseline PNW
+validation agreement. `compare_runs.py` cannot score a one-class detector or a
+different match without inventing team identities. No new end-to-end team score is
+claimed, and the default detector/appearance model remain unchanged. A new side-camera
+answer key is still needed to establish cross-camera identity and detection accuracy.
+
 ### Active multivenue teacher run
 
 `configs/haiku_multivenue_v1.json` labels 1,800 frames at 3 fps from four saved
@@ -916,6 +992,7 @@ Everything in a Lovat report is built from three inputs:
 | combined paths | Existing detector + local identity evidence | Mutual motion/color fragment matching; bounded estimated gap positions | Einstein 229/229 matched; 39.4% coverage, unchanged | Detector unchanged | $0 new API | Not measured; Glendale 3501 gains 44 observed path points and 20 estimated points |
 | local visual memory | Local appearance/motion + backward identity evidence | Expanded metric; 20-epoch Glendale detector adaptation; two final Haiku reviews | Einstein 229/229; 39.4% coverage | Glendale held-out 12/12 boxes, 0 extras vs 9/12, 4 extras; two frames only | Shared ledger $0.05218 recorded + $0.05 reserve / $4 cap | Six Glendale names resolved; reviews mixed, no confirmed swaps; incomplete occlusion coverage |
 | direct Glendale Haiku demo | Haiku 5.5 forward + backward tracking | 100 frames, 5 fps, same calibration as local demo | No independent checked identity key | Single held-out frame: 5/6 boxes, 0 extras; local detector 6/6 | $0.04716 for this run | Misses partly hidden 3328; view labeled video and paths together |
+| temporal multi-camera v1 | Haiku 5.5 temporal labels + selective Opus 5.5 review; local YOLO/appearance students | Pilot reviewed; Wisconsin main and two side views for training, PNW main for validation | Pending; teacher names are proposals | Training/evaluation pending; original 14-image test preserved | Pilot about $0.5124; new shared maximum $4.90 | No independent side-camera key; no default model replacement or automatic fusion |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
 
