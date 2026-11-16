@@ -672,6 +672,181 @@ remains about $1.64, within the unchanged $4 cap.
 
 ## Haiku teacher pipeline
 
+### Temporal multi-camera teaching
+
+The user authorized a new **$4.90 total** for this run, then requested the original
+adjacent-frame tracking approach and Opus help on difficult frames. The new locked
+ledger is `datasets/temporal_multicamera_v1_run/ledger.json`; historical ledgers are
+not reset or charged to this allowance. Haiku has at most $3.40 and Opus at most
+$1.50, including pending/uncertain reservations. Every request reserves money first;
+timeouts retain the reserve and are not retried. Claude keys are read only from
+`.env`; requests go to Anthropic directly. No other models are permitted here.
+
+Prices were checked against [Anthropic pricing](https://platform.claude.com/docs/en/about-claude/pricing):
+Haiku 5.5 $0.10/$0.50 and Opus 5.5 $4/$20 per million input/output tokens for these
+short prompts. Initial estimate including selective Opus review: **$0.80–$3.00**,
+with the full $4.90 a ceiling, not a spending target.
+
+`configs/temporal_multicamera_v1.json` describes four local 1080p public broadcasts,
+camera rectangles, rosters and a 20-second window starting at video second 15.
+Frames are sampled at 5 fps. Wisconsin's layout differs from the other events.
+Each stream supplies current/previous images and saved team state; difficult frames
+may receive an Opus review with a following image. From index 10 onward, side requests
+also include synchronized main-view context. Boxes still use only the target camera's
+coordinate system. This is teacher-assisted annotation, not geometric camera fusion.
+
+The initial full-layout extraction is preserved in `datasets/temporal_multicamera_v1/`
+as a diagnostic. Inspection rejected Sacramento/San Diego's upward-facing side views.
+The paid pilot in `datasets/temporal_multicamera_v1_run/` labeled 11 adjacent timestamps
+per remaining stream. The pilot and its refinement cost **$0.512370** (see the ledger
+for exact usage); sample proposals have omissions, uncertain identities, and occasional
+boxes on field structures or people. Opus corrected several proposals but is fallible.
+No pilot label is automatically ground truth.
+
+The agent's [spot review](configs/temporal_multicamera_review_v1.json) excludes
+Sacramento/San Diego main streams for omissions, and PNW side streams for poor robot
+visibility/false proposals. Bulk teaching retains Wisconsin main/left/right (train)
+and PNW main (validation). Ten retained region samples with 18 proposed boxes were
+visually reviewed; this is not an independently measured precision/recall result.
+The selected crop keeps geometry confidence >=0.7, rejects any intersection with an
+uncertain/hidden estimate, and requires >=50% positive-box retention and >=8-pixel
+dimensions. Full images marked incomplete are rejected; smaller regions can still be
+used after the pilot review. Teacher omissions outside estimated boxes remain a risk.
+Geometry confidence and identity confidence are separate fields.
+
+Offline preparation and paid pilot are explicit separate stages:
+
+```bash
+.venv/bin/python temporal_multicamera.py --stage prepare
+# After cost approval only:
+.venv/bin/python -u temporal_multicamera.py --stage pilot --execute
+# After reviewing pilot crops and writing the matching review_gate.json:
+set -o pipefail
+caffeinate -i .venv/bin/python -u run_multicamera_job.py --execute 2>&1 | tee logs/temporal-multicamera-v1-job.log
+```
+
+The background launcher saves `launch_job.json` and process-group information.
+`job_status.json` reports teaching, video rendering, appearance training, detector
+training/evaluation, completion or failure. Heartbeats print every 25 seconds during
+the teacher/training stages; frame progress includes cumulative spend. Do not run a
+second copy or reset the ledger to resume a failed job.
+
+The job produces labeled teacher videos (uncertain names marked `?`), an experimental
+appearance metric only if repeated readable identities provide enough trustworthy
+crops, and a detector fine-tuned from v1 for up to 30 epochs. Appearance fitting uses
+only training matches, with a chronological two-second gap for pseudo-label holdout.
+Insufficient trusted crops produce an explicit report instead of a fabricated model.
+Detector export uses one frame/second, keeps the original 81 checked training images,
+and preserves the original 14 test images/labels. PNW stays out of model fitting;
+validation selects the detector checkpoint. Existing output folders are never replaced.
+
+Artifacts are under `runs/temporal_multicamera_v1*`; the original training-job report
+is `datasets/temporal_multicamera_v1_run/result.json`. The detector is scored with
+`evaluate_detector.py` against the original checked test, plus new/baseline PNW
+validation agreement. `compare_runs.py` cannot score a one-class detector or a
+different match without inventing team identities. The later named Einstein replay
+does use `evaluate_team_paths.py` and its `compare_runs.py` export, as described below.
+The default detector/appearance model remain unchanged. A human-checked side-camera
+answer key is still needed to establish cross-camera identity accuracy.
+
+#### Completed result and overnight checks (2026-11-16)
+
+Final teaching spend: **$1.240489**, with no pending reservations, inside the new
+$4.90 limit. The remaining allowance is $3.659511; no extra funding was needed.
+All later detector replays, OCR, appearance experiments, videos and evaluation were
+local. The dataset has **130 train images / 550 boxes**, **15 PNW validation images /
+41 boxes**, and the unchanged **14 Einstein test images / 84 boxes**. Training
+includes the original 81 training images and 49 new confident regions from Wisconsin.
+The selected student checkpoint SHA-256 is in `results/temporal_multicamera_v1.json`.
+
+At fixed confidence 0.25 and IoU >=0.5:
+
+| Check | Original detector TP / FP / FN | New student TP / FP / FN | Meaning |
+|---|---|---|---|
+| Original 14-image Einstein test | 75 / 18 / 9 | 76 / 24 / 8 | One extra match but six more extras; retain the global default |
+| PNW validation, teacher labels | 37 / 15 / 4 | 40 / 5 / 1 | Better agreement with the pseudo-labels used for checkpoint selection; not independent test truth |
+| Later Wisconsin side views, 12 images / 17 reviewed robots | 6 / 24 / 11 | 16 / 3 / 1 | Useful same-camera improvement; small agent-annotated check |
+
+`configs/multicamera_holdout_v1.json` was frozen before either detector's side-frame
+inference. Visual prediction review found one missed red robot at video second 90;
+`configs/multicamera_holdout_v2.json` adds it and explicitly documents that timing.
+Both v1 evaluations remain preserved (6/24/10 vs 15/4/1 at IoU 0.5). V2 uses identical
+weights and thresholds, with 6/24/11 vs 16/3/1. Ambiguous far-side fragments have
+explicit ignored regions. No weights or thresholds were adjusted using either
+side-frame check. Agent annotations are not an independent human answer key.
+The source frames are video seconds 45, 60, 75, 90, 105 and 120, outside training's
+15..34.8 s window. Use `evaluate_multicamera.py --prepare --annotations CONFIG
+--dataset NEW_FOLDER`, then `--weights CHECKPOINT --dataset NEW_FOLDER --out NEW_RUN`.
+
+The more relevant identity replay ran **both detectors through the same existing
+local tracking, OCR, alliance and visual-memory pipeline**, with a fresh output for
+each. Against 100 timestamps / 581 visible Einstein reference observations:
+
+| Same-pipeline result | Original detector | New student |
+|---|---|---|
+| Named detections | 229 | 382 |
+| Matched named detections at IoU >=0.3 | 227 | 377 |
+| Correct team on those matched detections | 227/227 | 377/377 |
+| Correct named reference coverage | 39.1% | 64.9% |
+| Unmatched named detections | 2 | 5 |
+
+The student resolves **1323, 2046, 4065 and 4414**; 868 and 2910 remain unknown.
+1323 can be supported by the existing conservative alliance-leftover deduction;
+these names are not all direct bumper reads. Hidden/interpolated points do not
+count toward observed coverage. This is a same-match clip, not full-match or
+cross-venue identity accuracy. Anonymous tracked-box IoU 0.5 counts also improve
+from 516/40/65 to 524/40/57. Better detections help the existing naming system;
+the one-class detector itself does not learn team numbers.
+
+Reproduction, all local and with **new output directories**:
+
+```bash
+.venv/bin/python auto_paths.py einstein_final_1.mp4 --calibration configs/einstein_final1_camera.json --weights runs/temporal_multicamera_v1/weights/best.pt --teams 868,2910,2046,4065,4414,1323 --blue-teams 868,2910,2046 --red-teams 4065,4414,1323 --visual-memory --reference track/final --out runs/my_student_check
+.venv/bin/python evaluate_team_paths.py runs/my_student_check/memory/teams/paths.json --out runs/my_student_score
+```
+
+The initial teacher-name appearance trial had only 11 training crops and 4/6
+pseudo-label agreement; it was not promoted. Inspection also found that its old
+sample selection could include pilot-excluded streams and use later anchors when
+choosing earlier training crops. The current pipeline instead calls
+`train_temporal_appearance.py`: only pilot-approved training streams, exact independent
+local OCR identities, and a frozen chronological split with a two-second gap. That
+produced 57 training and 23 held-out OCR-labeled crops across six teams. The learned
+HSV weights and unweighted features both agree on **19/23 (82.6%)**. One predeclared
+comparison using frozen [torchvision ResNet18 features](https://docs.pytorch.org/vision/stable/models/generated/torchvision.models.resnet18.html)
+agrees on **17/23 (73.9%)**. Neither replaces the default identity model. These are
+OCR pseudo-label checks on a small same-match sample, not human identity accuracy.
+
+`multicamera_tracks.py` is an offline runtime prototype: it processes reviewed camera
+crops with separate trackers, collects local OCR, requires two exact roster reads
+at least 0.4 seconds apart, rejects competing supported names and simultaneous
+same-team tracks in one camera, then renders all views synchronously. The same team
+may legitimately appear in multiple cameras. It does not fuse pixel coordinates
+between cameras. Names are backward-applied to supported camera-local tracks, while
+unknown boxes remain visible. `--visual-memory` can reconnect short compatible
+losses before naming. On the 45..65 s Wisconsin demo, both modes support four teams
+and name 151/467 observed boxes across cameras; memory adds no named observations
+here and stays optional. Those counts are not independently scored identity accuracy.
+
+Open `runs/wisconsin_multicamera_local_v1/viewer.html` for the basic demo, or
+`runs/wisconsin_multicamera_local_memory_v1/viewer.html` for the memory experiment.
+For reliable video scrubbing, `.venv/bin/python serve_runs.py` serves only the chosen
+artifact directory (default `runs/`) on loopback with HTTP byte-range support. Browser
+QA confirmed a 20-second video loads, plays, and seeks to 10 seconds. Tests cover
+range responses, camera-ID isolation, repeated OCR, conflicting names and duplicate
+team assignments. A coincident hidden estimate also remains excluded from future
+training exports even if its coordinates equal a confident visible box.
+All 77 offline tests pass; Python compilation and `git diff --check` also pass.
+
+The aggregate [measured record](results/temporal_multicamera_v1.json) links the
+artifacts. `summarize_multicamera.py --out NEW_REPORT_FOLDER` builds a local review
+page from the saved metrics; the completed page is
+`runs/overnight_2026_11_16/index.html`. All videos, weights and source frames remain
+local and ignored by Git; `track/final/` is untouched. Verdict: useful detection and
+coverage gains, but incomplete identity tracking. Keep the new checkpoint opt-in,
+retain v1 globally, and prioritize a human-checked multi-camera identity set before
+scaling further paid labeling.
+
 ### Active multivenue teacher run
 
 `configs/haiku_multivenue_v1.json` labels 1,800 frames at 3 fps from four saved
@@ -877,6 +1052,16 @@ Source: the Lovat repo, `apps/collection/lib/collection/ScoutReport.ts` and `pac
 
 ## Research projects: technical details
 
+### Team 334 approach review (2026-11-15)
+
+`Team-334-Aproch` is based on `combind-paths` at `af79f22`, which retains newer
+visual-memory and viewer work absent from the earlier merge on
+`origin/local-tracking+2d-animation`. The [source review](research/team-334-approach.md)
+compares `derek-pohl/ai-scouting` at `97184951f9646f047cb5587f4d0aebac8413a729`
+with our system. Recommended order: manual identity/shooting corrections, fuel-counter
+attribution, then camera fusion and local vision/fuel experiments. No runtime changes,
+new experiment, benchmark result, or API charges were introduced by this review.
+
 The README explains each research project. This section gives the technical details. The projects are not in a fixed order. Whatever you try, score it against the answer key (`track/final/`) with `compare_runs.py` where that applies, and record the result in the results table below.
 
 Everything in a Lovat report is built from three inputs:
@@ -906,6 +1091,7 @@ Everything in a Lovat report is built from three inputs:
 | combined paths | Existing detector + local identity evidence | Mutual motion/color fragment matching; bounded estimated gap positions | Einstein 229/229 matched; 39.4% coverage, unchanged | Detector unchanged | $0 new API | Not measured; Glendale 3501 gains 44 observed path points and 20 estimated points |
 | local visual memory | Local appearance/motion + backward identity evidence | Expanded metric; 20-epoch Glendale detector adaptation; two final Haiku reviews | Einstein 229/229; 39.4% coverage | Glendale held-out 12/12 boxes, 0 extras vs 9/12, 4 extras; two frames only | Shared ledger $0.05218 recorded + $0.05 reserve / $4 cap | Six Glendale names resolved; reviews mixed, no confirmed swaps; incomplete occlusion coverage |
 | direct Glendale Haiku demo | Haiku 5.5 forward + backward tracking | 100 frames, 5 fps, same calibration as local demo | No independent checked identity key | Single held-out frame: 5/6 boxes, 0 extras; local detector 6/6 | $0.04716 for this run | Misses partly hidden 3328; view labeled video and paths together |
+| temporal multi-camera v1 | Haiku 5.5 + selective Opus 5.5; local YOLO student | 130 train images; PNW validation; later Wisconsin side check; same-pipeline Einstein replay | Einstein 377/377 matched names; 64.9% reference coverage vs 39.1% fresh baseline | Side IoU 0.5: 16 TP / 3 FP / 1 FN vs 6/24/11; small agent-labeled check | $1.240489 total / $4.90 cap; later work $0 API | Four Einstein teams; two unknown. Old 14-image test has six more extras; checkpoint stays opt-in |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
 
