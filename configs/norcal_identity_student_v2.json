@@ -1,0 +1,20 @@
+{
+  "purpose": "One more-data-only identity-head pilot; same features/thresholds/augmentation as v1",
+  "training_examples": "annotations/norcal_identity_v2/reviewed_v2.jsonl",
+  "gallery_manifest": "configs/mqz4_gallery_v2.json",
+  "excluded_development_times": {
+    "2026cancmp_qm3": [
+      47.6,
+      61.4
+    ]
+  },
+  "encoder": "torchvision ResNet18 IMAGENET1K_V1, frozen, full crop letterboxed to 224 pixels",
+  "features": "Equal-weight L2-normalized ResNet18 embedding and spatial HSV histogram",
+  "head": "One-vs-rest ridge regression to one-hot targets; intercept included and regularized",
+  "ridge_alpha": 1.0,
+  "minimum_score": 0.5,
+  "minimum_margin": 0.15,
+  "augmentation": "Original plus horizontal flip, each with brightness 0.8/1.0/1.2; deterministic",
+  "unknown_policy": "Reject absent-roster classes, unknown class, weak score/margin and duplicate team claims",
+  "selection_policy": "Same head/features/thresholds as v1; no sweep. QM3 90\u2013110s and QM13 90\u2013110s are now regression checks because v1 outcomes are known. Evaluate freshly frozen QM3 120\u2013140s nine-checkpoint set once after training; no tuning on its outcomes."
+}

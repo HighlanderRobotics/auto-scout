@@ -26,7 +26,7 @@ def main():
             if not ok:raise ValueError('Missing source frame')
             x,y,x2,y2=source['views']['main'];original=Image.fromarray(cv2.cvtColor(bgr[y:y2,x:x2],cv2.COLOR_BGR2RGB))
             sheet=Image.new('RGB',(1920,560),'#161b22');draw=ImageDraw.Draw(sheet)
-            for side,(title,rows) in enumerate([('Frozen local baseline',baseline.get(t,[])),('Crop teacher | observed boxes only',frames[t])]):
+            for side,(title,rows) in enumerate([('Frozen local baseline',baseline.get(t,[])),('Candidate | observed boxes only',frames[t])]):
                 image=original.copy();d=ImageDraw.Draw(image)
                 for r in rows:
                     team=r.get('team');color='lime' if team else '#aaaaaa';d.rectangle(r['box'],outline=color,width=4)
@@ -34,7 +34,7 @@ def main():
                     d.text((bx,max(0,by-28)),label,font=font,fill=color,stroke_fill='black',stroke_width=2)
                 sheet.paste(image.resize((960,250)),(side*960,60));draw.text((side*960+10,20),title,font=font,fill='white')
             draw.text((10,350),f"{source['match']} | video {t/1000:.1f}s | green = accepted proposal, gray = unresolved",font=font,fill='white')
-            draw.text((10,395),'Teacher proposals require review. No hidden positions or full-match accuracy claim.',font=font,fill='white')
+            draw.text((10,395),'Experimental identities require review. No hidden positions or full-match accuracy claim.',font=font,fill='white')
             writer.send(np.asarray(sheet))
             if index==len(frames)//2:sheet.save(a.out.with_suffix('.jpg'))
             if index%25==0:print(f'Rendered {index+1}/{len(frames)}',flush=True)

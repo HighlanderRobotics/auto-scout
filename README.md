@@ -29,8 +29,15 @@ the current detector frozen. `configs/focus_MQZ4Yrw86uQ.json` fixes a developmen
 window (45–65 video seconds) and a later check (90–110 seconds). The initial local
 baseline finds boxes but names none reliably; a crop audit confirms physical track
 switches and field-display false detections. Reference-card enrollment and temporal
-Claude inference are being compared; no improvement is claimed yet. Supplemental
-NorCal Q11/Q13 sources and roles are in `configs/norcal_identity_pool_v1.json`.
+Claude inference were compared. Close-crop teaching trained an experimental local
+identity head: **3/7** later QM3 identity observations correct, **0 wrong, 4 unknown**,
+versus seven unknowns before. The separate QM13 check stayed entirely unresolved,
+so this is not ready to replace the existing pipeline. These are small agent-reviewed
+checks, not full-match accuracy. [V1 results](results/norcal_identity_student_v1.json)
+and [source-linked teaching data](annotations/norcal_identity_v1/README.md) preserve
+the evidence. A larger same-robot teaching batch is in progress, with a fresh later
+QM3 check reserved before training. Supplemental NorCal sources and roles are in
+`configs/norcal_identity_pool_v1.json`.
 
 The `Team-334-Aproch` branch starts from the latest `combind-paths` implementation.
 See [the ai-scouting review](research/team-334-approach.md) for source-backed lessons
