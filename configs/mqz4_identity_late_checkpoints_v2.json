@@ -1,0 +1,118 @@
+{
+  "source": "configs/focus_MQZ4Yrw86uQ.json",
+  "reference_type": "Agent-reviewed native source identities/bumper reads; not independent human truth or exhaustive labels",
+  "scope": "Nine visible identity observations at six source times in a fresh 120\u2013140-second QM3 window. Frozen before student v2 training and any local identity-head inference on this window. Only listed robots score; 120s includes a partially occluded visible 7137. No full-match accuracy claim.",
+  "heldout": [
+    {
+      "video_s": 120,
+      "robots": [
+        {
+          "team": "7137",
+          "box": [
+            510,
+            260,
+            646,
+            379
+          ]
+        }
+      ]
+    },
+    {
+      "video_s": 124,
+      "robots": [
+        {
+          "team": "3970",
+          "box": [
+            869,
+            199,
+            984,
+            273
+          ]
+        },
+        {
+          "team": "7137",
+          "box": [
+            1026,
+            260,
+            1159,
+            361
+          ]
+        },
+        {
+          "team": "2204",
+          "box": [
+            1373,
+            257,
+            1473,
+            335
+          ]
+        }
+      ]
+    },
+    {
+      "video_s": 128,
+      "robots": [
+        {
+          "team": "9470",
+          "box": [
+            1118,
+            299,
+            1233,
+            403
+          ]
+        }
+      ]
+    },
+    {
+      "video_s": 132,
+      "robots": [
+        {
+          "team": "3970",
+          "box": [
+            1000,
+            183,
+            1085,
+            254
+          ]
+        }
+      ]
+    },
+    {
+      "video_s": 136,
+      "robots": [
+        {
+          "team": "3970",
+          "box": [
+            1071,
+            187,
+            1178,
+            257
+          ]
+        },
+        {
+          "team": "9470",
+          "box": [
+            1635,
+            283,
+            1749,
+            367
+          ]
+        }
+      ]
+    },
+    {
+      "video_s": 139.8,
+      "robots": [
+        {
+          "team": "5104",
+          "box": [
+            1420,
+            221,
+            1566,
+            301
+          ]
+        }
+      ]
+    }
+  ]
+}

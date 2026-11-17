@@ -1,0 +1,63 @@
+{
+  "source": "configs/norcal_identity_pool_v1.json",
+  "reference_type": "Agent-reviewed native readable bumper crops, selected by exact local OCR before local classifier transfer inference; not independent human truth",
+  "scope": "Four readable-bumper transfer observations in QM13. 7137 is learned; 6418 is absent from the identity model and should remain unresolved there. This is a small favorable OCR-selected subset, not full-match accuracy.",
+  "heldout": [
+    {
+      "video_s": 92.0,
+      "robots": [
+        {
+          "team": "7137",
+          "box": [
+            715.8,
+            252.51,
+            834.24,
+            346.69
+          ]
+        }
+      ]
+    },
+    {
+      "video_s": 98.4,
+      "robots": [
+        {
+          "team": "7137",
+          "box": [
+            652.52,
+            287.38,
+            769.45,
+            384.66
+          ]
+        }
+      ]
+    },
+    {
+      "video_s": 93.0,
+      "robots": [
+        {
+          "team": "6418",
+          "box": [
+            226.86,
+            232.74,
+            342.65,
+            327.18
+          ]
+        }
+      ]
+    },
+    {
+      "video_s": 95.8,
+      "robots": [
+        {
+          "team": "6418",
+          "box": [
+            879.34,
+            299.23,
+            948.85,
+            353.88
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "status": "Agent-reviewed enrollment references; not an evaluation answer key. Blind Opus check of v1 agreed on all labels but flagged 7137/5104/9470 image quality. Two cards replaced with clearer development-only images.",
+  "teams": {
+    "3970": {
+      "video_s": 45.0,
+      "box": [
+        344.8,
+        179.29,
+        440.12,
+        240.56
+      ],
+      "camera": "main",
+      "source": "Opus crop audit; provisional identity anchor",
+      "full_box": [
+        337,
+        394,
+        448,
+        465
+      ]
+    },
+    "7137": {
+      "key": "main:1",
+      "video_s": 60.8,
+      "camera": "main",
+      "box": [
+        121.14,
+        285.85,
+        244.53,
+        376.66
+      ],
+      "source": "Exact local OCR 7137 at confidence 1.0, agent-reviewed visible bumper",
+      "full_box": [
+        111,
+        499,
+        254,
+        604
+      ]
+    },
+    "2204": {
+      "video_s": 52.6,
+      "box": [
+        254.32,
+        298.96,
+        422.96,
+        405.52
+      ],
+      "camera": "main",
+      "source": "Opus crop audit; provisional identity anchor",
+      "full_box": [
+        241,
+        510,
+        436,
+        634
+      ]
+    },
+    "5104": {
+      "sample": 6,
+      "video_s": 64.2,
+      "box": [
+        1375.18,
+        285.32,
+        1513.29,
+        376.15
+      ],
+      "raw_id": 81,
+      "camera": "main",
+      "source": "Alternative Opus-audited 5104 crop, sample 6",
+      "full_box": [
+        1364,
+        498,
+        1524,
+        603
+      ]
+    },
+    "9470": {
+      "key": "main:18",
+      "video_s": 55.8,
+      "camera": "main",
+      "box": [
+        710.42,
+        310.81,
+        842.69,
+        410.09
+      ],
+      "source": "Exact local OCR read; provisional identity anchor",
+      "full_box": [
+        700,
+        523,
+        853,
+        638
+      ]
+    },
+    "10339": {
+      "video_s": 45,
+      "box": [
+        250,
+        925,
+        425,
+        1040
+      ],
+      "camera": "source",
+      "source": "Agent-read side-camera bumper; provisional identity anchor",
+      "full_box": [
+        236,
+        916,
+        439,
+        1049
+      ]
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "primary_match": "2026cancmp_qm3",
+  "status": "Experimental, not promoted; v2 data collection in progress",
+  "training_source_crops": 41,
+  "augmented_embeddings": 246,
+  "training_matches": [
+    "2026cancmp_qm3",
+    "2026cancmp_qm11"
+  ],
+  "detector_unchanged": true,
+  "api_inference_cost_usd": 0,
+  "claude_total_at_v1_usd": 1.9722652,
+  "claude_phase_at_v1_usd": 0.7317762,
+  "checks": {
+    "baseline": {
+      "checkpoints": 7,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 7,
+      "missing": 0,
+      "reference_type": "Agent-reviewed identity checkpoints, based on native source images and readable bumpers. Not independent human ground truth or exhaustive frame annotations.",
+      "scope": "Primary identity 3970 through a same-match occlusion; 7137 is a same-alliance confusion check. Only listed visible references are scored. No full-match accuracy claim. The ambiguous 98-second frame and unclear 7137 observations after 94 seconds are deliberately unscored."
+    },
+    "crop_teacher": {
+      "checkpoints": 7,
+      "correct": 3,
+      "wrong": 0,
+      "unknown": 4,
+      "missing": 0,
+      "reference_type": "Agent-reviewed identity checkpoints, based on native source images and readable bumpers. Not independent human ground truth or exhaustive frame annotations.",
+      "scope": "Primary identity 3970 through a same-match occlusion; 7137 is a same-alliance confusion check. Only listed visible references are scored. No full-match accuracy claim. The ambiguous 98-second frame and unclear 7137 observations after 94 seconds are deliberately unscored."
+    },
+    "local_student": {
+      "checkpoints": 7,
+      "correct": 3,
+      "wrong": 0,
+      "unknown": 4,
+      "missing": 0,
+      "reference_type": "Agent-reviewed identity checkpoints, based on native source images and readable bumpers. Not independent human ground truth or exhaustive frame annotations.",
+      "scope": "Primary identity 3970 through a same-match occlusion; 7137 is a same-alliance confusion check. Only listed visible references are scored. No full-match accuracy claim. The ambiguous 98-second frame and unclear 7137 observations after 94 seconds are deliberately unscored."
+    },
+    "transfer_baseline": {
+      "checkpoints": 4,
+      "correct": 2,
+      "wrong": 0,
+      "unknown": 2,
+      "missing": 0,
+      "reference_type": "Agent-reviewed native readable bumper crops, selected by exact local OCR before local classifier transfer inference; not independent human truth",
+      "scope": "Four readable-bumper transfer observations in QM13. 7137 is learned; 6418 is absent from the identity model and should remain unresolved there. This is a small favorable OCR-selected subset, not full-match accuracy."
+    },
+    "transfer_student": {
+      "checkpoints": 4,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 4,
+      "missing": 0,
+      "reference_type": "Agent-reviewed native readable bumper crops, selected by exact local OCR before local classifier transfer inference; not independent human truth",
+      "scope": "Four readable-bumper transfer observations in QM13. 7137 is learned; 6418 is absent from the identity model and should remain unresolved there. This is a small favorable OCR-selected subset, not full-match accuracy."
+    }
+  },
+  "limitations": "Sparse agent-reviewed observations. No exhaustive ID-switch/accuracy claim. V1 gains on QM3 do not transfer to reviewed QM13 observations; existing OCR baseline is stronger on that separate subset. No default changed."
+}

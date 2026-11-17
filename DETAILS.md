@@ -1052,6 +1052,182 @@ Source: the Lovat repo, `apps/collection/lib/collection/ScoutReport.ts` and `pac
 
 ## Research projects: technical details
 
+### Focused NorCal QM3 identity experiment
+
+The user selected `MQZ4Yrw86uQ`, official Qualification 3 at the 2026 California
+Northern State Championship, then authorized autonomous work overnight and use of
+other same-event matches if useful. Red: 9470/5104/10339. Blue: 3970/2204/7137.
+The 3-second URL timestamp is still a title card; video time must not be treated as
+match time. Downloaded native 1920x1080 / 59.94 fps footage is local and ignored.
+
+`configs/focus_MQZ4Yrw86uQ.json` holds the reviewed main-camera crop, frozen student
+checkpoint, 45–65-second development and 90–110-second later check. No detector
+retraining or camera expansion is part of this experiment. The baseline is the
+existing local tracker, visual memory and repeated exact OCR (`multicamera_tracks.py`).
+It observes 509 boxes in development and 537 in the later clip, but supports no team
+names. These are detections, not truth counts. `audit_identity_tracks.py` inspected
+11 long crop sequences with Opus: it identifies people/displays/structures among
+the detections and physical robot switches in the long blue tracks. The audit cost
+$0.253016, charged to the existing shared ledger, not a new budget.
+
+`focus_temporal_teacher.py` compares a Jesse-style current/previous-image controller
+with and without robot reference cards. `--gallery` supplies reviewed crops of the
+six actual robots; `--haiku-only` fixes the model for a controlled comparison.
+This is paid inference/identity-teaching evidence, not a newly trained local identity
+model. Every run uses a new output folder, preserves source hashes, caches responses
+and spends from the original `datasets/temporal_multicamera_v1_run/ledger.json`.
+The $4.90 total includes prior $1.240489 spending. No further funds were authorized;
+the user reported $3.70 credits, so the remaining project allowance is the stricter
+$3.659511 at the start of this phase. Existing Opus/Haiku sublimits remain enforced.
+Estimates given before these calls: crop audit $0.25–$0.50; temporal pass $0.10–$0.25
+per 20-second clip. Local work continues if the shared budget is exhausted.
+
+`verify_robot_gallery.py` performs a blind card check (card numbers replace captions)
+under that same ledger. Reference cards use development frames only, including a
+clear side-camera 10339 bumper. V1's check agreed on all six candidate names but
+flagged some images as blurry/occluded; V2 replaces two cards with clearer views.
+Cards are enrollment/training inputs, never an evaluation answer key.
+
+`configs/mqz4_identity_checkpoints_v1.json` freezes seven agent-reviewed later identity
+checkpoints (3970 plus a 7137 confusion check) before gallery-conditioned held-out
+inference. Ambiguous 98-second identities and unclear later 7137 observations remain
+unscored. This is a deliberately small partial check, not full-match accuracy or
+independent human truth. The initial local baseline geometrically matches all seven
+but leaves all seven unknown. `evaluate_identity_checkpoints.py` separately counts
+correct, wrong, unknown and missing observations, using geometry-only one-to-one
+matching. `compare_runs.py --roster FILE` now supports a different match roster;
+its matched named subset is supplemental to the full checkpoint counts.
+
+Supplemental sources were discovered from official event/match rosters and TBA
+video embeds, and verified with each official YouTube upload's title/description:
+Q11 (`nx7rAYZ6Fwk`, common teams 9470/5104/2204) for reference examples, and Q13
+(`spwjMTZKJCE`, includes 7137) for a separate transfer check. Q11's 5104 changes from
+red in QM3 to blue, so a useful identity method must recognize chassis rather than
+memorize a team's bumper color. These downloads make no Claude calls. No default
+model or naming policy has changed.
+
+`--seed configs/mqz4_enrollment_seed_v1.json` supplies a one-time reviewed starting
+assignment. This is an enrollment aid, not automatic recognition. With
+`--review-after 20`, the controller stops after development and will not make later
+paid requests until its output folder contains `development_gate.json` with
+`passed: true`. Review post-enrollment checkpoints first; neither the 45-second
+seed nor the 60.8-second reference-card source counts as tracking improvement.
+`--exclude-enrollment` removes both, leaving two development checks. Keep the command and code
+unchanged when resuming, so cached development responses are reused:
+
+```bash
+.venv/bin/python -u focus_temporal_teacher.py --start 45 --duration 65 --fps 5 --gallery datasets/focus_MQZ4Yrw86uQ/gallery_v2/references.jpg --seed configs/mqz4_enrollment_seed_v1.json --haiku-only --review-after 20 --out runs/mqz4_identity_seeded_v1 --execute 2>&1 | tee logs/mqz4-identity-seeded-v1.log
+.venv/bin/python evaluate_identity_checkpoints.py runs/mqz4_identity_seeded_v1/development_predictions.json --split development --exclude-enrollment --out runs/mqz4_identity_seeded_development_score_v1
+```
+
+The local development baseline has four unknown checkpoints and two witnessed
+physical identity changes. The seven-checkpoint later baseline has seven unknowns.
+An identity controller must improve correct coverage without adding wrong names;
+unknowns are retained rather than forced into the roster. Current tooling passes
+85 unit tests; these validate bookkeeping/matching, not visual tracking quality.
+
+The full-field gallery-only controller leaves two of three post-seed development
+observations unknown and misses one; one of those three is itself a gallery source.
+The seeded controller is also losing certainty and is not approved for continuation.
+`classify_robot_crops.py` tests the alternative explanation that small full-field
+subjects are the problem: supply close crops of the **same frozen detector boxes**
+and references, classify each crop independently, retain unknown/nonrobot responses,
+and reject duplicate team claims. It never assumes a local track ID stays on one
+robot. A nine-frame QM3 development diagnostic and nine supplemental QM11 frames
+completed under the same ledger ($0.010103 combined).
+`render_identity_predictions.py` makes a labeled before/after video;
+`export_identity_examples.py` exports source-linked proposals, explicitly unreviewed,
+without images or credentials. These tools do not train local weights.
+`configs/mqz4_gallery_v2.json` records the source times/full-frame boxes of every
+enrollment card, so the actual images can be checked against the original video.
+
+The same local pipeline on supplemental QM11 observes 596 boxes and supports 107
+names for three teams; the untouched QM13 later window observes 516 boxes and
+supports 138 names for two teams. These are repeated OCR outputs, **not accuracy
+scores**. No ground-truth transfer result is claimed.
+
+The completed crop teacher names one of two non-enrollment development references
+correctly and leaves one unknown. On the frozen seven-observation 90–110-second
+later set it names three correctly, leaves four unknown, and names none wrongly.
+Two additional Opus QM11 panel checks cost $0.0563 and confirm blue-bumper 5104.
+The exported V1 data contain 100 Haiku + 12 Opus crop proposals, with 40 unique
+crops visually agent-reviewed. `identity_student.py` fits a local ridge identity
+head over frozen ResNet18 + spatial HSV features using those crops and enrollment
+cards. Its fixed config excludes the two non-enrollment development checks from
+training: 41 source crops / 246 deterministic augmentations, ten classes including
+unknown. Scores are regression support, not calibrated probabilities. The detector
+is unchanged, and inference makes no API calls.
+
+The local head also gets **3 correct / 0 wrong / 4 unknown** on those seven QM3
+references, with 63 named observations among 537 detected boxes over the full
+20-second clip. Those 63 are predictions, not independently checked correct names.
+The separate QM13 readable-bumper subset exposes weak transfer: local head 0/4
+named, all unknown; existing repeated OCR 2 correct / 2 unknown. Two of those four
+are 6418, which the head has never learned and should leave unresolved. Even the
+two learned-7137 examples stay unknown. Thus V1 is experimental and not promoted.
+The four QM13 references were frozen before transfer inference and deliberately
+favor clear OCR views, not occlusion performance. See `results/norcal_identity_student_v1.json`.
+Total Claude ledger at V1: $1.9722652, including $1.240489 from earlier work;
+new V1 phase spending is $0.7317762. Local training costs $0 API.
+
+V2 is a **more-data-only** follow-up with identical head/features/thresholds, not a
+parameter search. Dense 45–65-second crop teaching on QM3, QM11 and QM13 completed
+(estimated $0.15–$0.40 new API; recorded $0.1672439 plus $0.01 uncertain reserve).
+Exact existing cached responses were reused without
+new calls. QM13 early footage now supplies extra 7137 views; its 90–110-second set
+and QM3's old seven checkpoints become regression checks because their V1 outcomes
+are known. A fresh nine-reference QM3 120–140-second set is frozen in
+`configs/mqz4_identity_late_checkpoints_v2.json` before V2 training or any identity-head
+inference on that window. Ambiguous identities remain unscored; this is still sparse
+agent review, not independent human truth.
+
+V2 exports **1,695 proposals from 299 frames**, with **179 unique reviewed crops**.
+One confident teacher identity (5104 on the flat 10339 robot at 58.2s) was corrected
+before training, with original proposal preserved. One QM13 request at 48.4s timed
+out; it was not retried, its $0.01 reserve remains, and independent later frames were
+processed in a continuation folder. Training uses 180 source crops / 1,080 augmented
+embeddings after development exclusions and enrollment cards. It enforces allowed
+training windows, source hashes, source-roster labels and crop bounds in code.
+
+Fresh QM3 120–140-second results (nine references, same frozen detector boxes):
+
+| Version | Correct | Wrong | Unknown | Missing |
+|---|---:|---:|---:|---:|
+| Existing OCR/memory baseline | 1 | 0 | 7 | 1 |
+| Local identity head V1 | 2 | 0 | 6 | 1 |
+| Local identity head V2 | 3 | 0 | 5 | 1 |
+
+This is a modest gain, not reliable complete tracking. V2 gives 102 named predictions
+among 597 detected boxes across the full clip; those 102 are not independently
+verified correct names. On the old seven-observation QM3 regression it gets 4 correct,
+0 wrong, 3 unknown. On the old four-observation QM13 regression it gets 2 correct,
+**1 wrong**, 1 unknown: at 93s it calls 6418 "7137". In V2 both teams are trained;
+the V1 reference description of unseen 6418 is historical, not a V2 assumption.
+
+`veto_identity_conflicts.py` adds a **post-hoc** safety guard: if a high-confidence,
+exact source-roster bumper read in the same current crop contradicts a learned name,
+suppress it to unknown. It never creates names or propagates reads across track IDs.
+It removes that one QM13 error (2 correct / 0 wrong / 2 unknown), leaves both QM3
+checks unchanged, and needs fresh validation; this is not a new independent test.
+The raw head and guarded outputs remain separate. **No default promotion.**
+
+Final recorded shared spend: **$2.1395091**, including earlier $1.240489; this phase
+used **$0.8990201 across 620 billed calls**, with one uncertain request reserving
+$0.01. Approved headroom after reservation: $2.7504909. Local training/inference and
+the OCR veto make no API calls. Results and model hashes are in
+`results/norcal_identity_student_v2.json`; source-linked data and review decisions are
+in `annotations/norcal_identity_v2/`. Checkable videos/report:
+`runs/norcal_identity_2026_11_17/index.html` (serve with `serve_runs.py`, port 8766).
+
+```bash
+.venv/bin/python -u identity_student.py train --config configs/norcal_identity_student_v2.json --out runs/norcal_identity_student_v2
+.venv/bin/python -u identity_student.py infer --model runs/norcal_identity_student_v2 --tracks runs/mqz4_identity_late_baseline_v2/tracks.json --out runs/mqz4_identity_student_v2_late_check_v2
+.venv/bin/python veto_identity_conflicts.py runs/mqz4_identity_student_v2_late_check_v2/predictions.json --ocr-run runs/mqz4_identity_late_baseline_v2 --out runs/mqz4_identity_student_v2_late_veto_v1
+.venv/bin/python report_identity_experiment.py results/norcal_identity_student_v2.json --out runs/norcal_identity_2026_11_17
+```
+
+These example paths already exist locally; choose new output folders for a new run.
+
 ### Team 334 approach review (2026-11-15)
 
 `Team-334-Aproch` is based on `combind-paths` at `af79f22`, which retains newer
@@ -1075,6 +1251,8 @@ Everything in a Lovat report is built from three inputs:
 | Run | Model | Changes | Correct names | Boxes in the right place | Cost per frame | Cost per match (840 frames) |
 |---|---|---|---|---|---|---|
 | answer key | Opus 5.5, effort medium | two images | 100% | 100% | $0.021 | about $18 |
+| NorCal identity student v1 | Frozen ResNet18 + HSV, trained ridge identity head | 41 reviewed/enrollment source crops; detector fixed; experimental | QM3 later: 3/7 correct, 0 wrong, 4 unknown; QM13 transfer: 0/4 named | Same frozen detector boxes; not an independent detection score | $0 API inference; $0.7318 new V1 teaching/audit spend | Not measured; sparse identity check only |
+| NorCal identity student v2 | Same features/head/settings; 180 source crops | More QM3/QM11/QM13 early data; no default promotion | Fresh QM3: 3/9 correct, 0 wrong, 5 unknown, 1 missing (baseline 1/9); raw QM13 regression has 1 wrong, suppressed by post-hoc OCR veto | Same frozen detector boxes; no complete-path claim | $0 API inference; $0.8990 whole new phase plus $0.01 reserve | Not measured; sparse checks only |
 | baseline | Sonnet 5.5, effort medium | two images | 95% | 97% | $0.011 | about $9 |
 | best so far | Haiku 5.5 | two images, robot descriptions (`--robots start/robot_looks.json`) | 98% | 100% | $0.0009 | about $0.75 |
 | | Haiku 5.5 | one image (`--one-image`), robot descriptions | 83% (94% before the backward pass) | 96% | $0.0008 | about $0.70 |
@@ -1092,6 +1270,7 @@ Everything in a Lovat report is built from three inputs:
 | local visual memory | Local appearance/motion + backward identity evidence | Expanded metric; 20-epoch Glendale detector adaptation; two final Haiku reviews | Einstein 229/229; 39.4% coverage | Glendale held-out 12/12 boxes, 0 extras vs 9/12, 4 extras; two frames only | Shared ledger $0.05218 recorded + $0.05 reserve / $4 cap | Six Glendale names resolved; reviews mixed, no confirmed swaps; incomplete occlusion coverage |
 | direct Glendale Haiku demo | Haiku 5.5 forward + backward tracking | 100 frames, 5 fps, same calibration as local demo | No independent checked identity key | Single held-out frame: 5/6 boxes, 0 extras; local detector 6/6 | $0.04716 for this run | Misses partly hidden 3328; view labeled video and paths together |
 | temporal multi-camera v1 | Haiku 5.5 + selective Opus 5.5; local YOLO student | 130 train images; PNW validation; later Wisconsin side check; same-pipeline Einstein replay | Einstein 377/377 matched names; 64.9% reference coverage vs 39.1% fresh baseline | Side IoU 0.5: 16 TP / 3 FP / 1 FN vs 6/24/11; small agent-labeled check | $1.240489 total / $4.90 cap; later work $0 API | Four Einstein teams; two unknown. Old 14-image test has six more extras; checkpoint stays opt-in |
+| NorCal QM3 identity focus | Frozen student detector/local memory vs temporal Claude with robot enrollment cards | Development 45–65 s; later check 90–110 s; supplemental Q11/Q13 | Local baseline: 0 correct, 7 unknown, 0 missing on seven reviewed checkpoints; candidate pending | Detection training unchanged | Opus audit $0.253016 plus subsequent inference, all within original $4.90 shared cap | Partial agent-reviewed identity check; no full-match claim or default change |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
 

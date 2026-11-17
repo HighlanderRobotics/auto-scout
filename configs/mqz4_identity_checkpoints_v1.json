@@ -1,0 +1,190 @@
+{
+  "source": "configs/focus_MQZ4Yrw86uQ.json",
+  "coordinate_system": "Pixels in the main crop [0,220,1920,720]",
+  "reference_type": "Agent-reviewed identity checkpoints, based on native source images and readable bumpers. Not independent human ground truth or exhaustive frame annotations.",
+  "frozen_before": "Gallery-conditioned held-out inference and candidate tuning",
+  "scope": "Primary identity 3970 through a same-match occlusion; 7137 is a same-alliance confusion check. Only listed visible references are scored. No full-match accuracy claim. The ambiguous 98-second frame and unclear 7137 observations after 94 seconds are deliberately unscored.",
+  "development_witnesses": [
+    {
+      "video_s": 45,
+      "team": "3970",
+      "baseline_track": "main:1",
+      "evidence": "Visible 3970 bumper; verified reference crop"
+    },
+    {
+      "video_s": 47.6,
+      "team": "7137",
+      "baseline_track": "main:3",
+      "evidence": "Visible 7137 bumper/shape; Opus proposal visually reviewed"
+    },
+    {
+      "video_s": 60.8,
+      "team": "7137",
+      "baseline_track": "main:1",
+      "evidence": "Exact local OCR and source crop: same baseline ID has switched physical robot"
+    },
+    {
+      "video_s": 61.4,
+      "team": "3970",
+      "baseline_track": "main:3",
+      "evidence": "Exact local OCR and source crop: same baseline ID has switched physical robot"
+    }
+  ],
+  "heldout": [
+    {
+      "video_s": 90,
+      "robots": [
+        {
+          "team": "3970",
+          "box": [
+            707,
+            175,
+            813,
+            249
+          ]
+        },
+        {
+          "team": "7137",
+          "box": [
+            708,
+            237,
+            806,
+            327
+          ]
+        }
+      ]
+    },
+    {
+      "video_s": 94,
+      "robots": [
+        {
+          "team": "3970",
+          "box": [
+            731,
+            196,
+            840,
+            263
+          ]
+        },
+        {
+          "team": "7137",
+          "box": [
+            276,
+            270,
+            425,
+            379
+          ]
+        }
+      ]
+    },
+    {
+      "video_s": 102,
+      "robots": [
+        {
+          "team": "3970",
+          "box": [
+            347,
+            179,
+            467,
+            244
+          ]
+        }
+      ]
+    },
+    {
+      "video_s": 106,
+      "robots": [
+        {
+          "team": "3970",
+          "box": [
+            327,
+            178,
+            446,
+            247
+          ]
+        }
+      ]
+    },
+    {
+      "video_s": 109.8,
+      "robots": [
+        {
+          "team": "3970",
+          "box": [
+            331,
+            195,
+            445,
+            258
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": "Seven identity checkpoints cannot establish overall tracking accuracy. Unlisted robots are not false positives here. Identity switches are confirmed only when the same local ID overlaps differently named reference robots at different checkpoints. No interpolated/hidden positions count as observations.",
+  "development": [
+    {
+      "video_s": 45,
+      "robots": [
+        {
+          "team": "3970",
+          "box": [
+            344.8,
+            179.29,
+            440.12,
+            240.56
+          ]
+        }
+      ],
+      "used_for_enrollment": true,
+      "used_for_gallery": true
+    },
+    {
+      "video_s": 47.6,
+      "robots": [
+        {
+          "team": "7137",
+          "box": [
+            201.23,
+            237.17,
+            328.08,
+            332.27
+          ]
+        }
+      ],
+      "used_for_enrollment": false,
+      "used_for_gallery": false
+    },
+    {
+      "video_s": 60.8,
+      "robots": [
+        {
+          "team": "7137",
+          "box": [
+            121.14,
+            285.85,
+            244.53,
+            376.66
+          ]
+        }
+      ],
+      "used_for_enrollment": false,
+      "used_for_gallery": true
+    },
+    {
+      "video_s": 61.4,
+      "robots": [
+        {
+          "team": "3970",
+          "box": [
+            967.95,
+            204.25,
+            1048.54,
+            276.48
+          ]
+        }
+      ],
+      "used_for_enrollment": false,
+      "used_for_gallery": false
+    }
+  ]
+}

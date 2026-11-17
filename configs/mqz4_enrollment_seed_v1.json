@@ -1,0 +1,91 @@
+{
+  "video_s": 45,
+  "coordinate_system": "main crop [0,220,1920,720] pixels",
+  "scope": "One-time agent-reviewed enrollment from development footage and reference cards; not held-out truth",
+  "robots": [
+    {
+      "team": "3970",
+      "visible": true,
+      "box": [
+        331,
+        167,
+        440,
+        247
+      ],
+      "confidence": 0.85,
+      "box_confidence": 0.85,
+      "named_by": "previous_frames",
+      "bumper_text": ""
+    },
+    {
+      "team": "7137",
+      "visible": true,
+      "box": [
+        265,
+        278,
+        384,
+        395
+      ],
+      "confidence": 0.85,
+      "box_confidence": 0.85,
+      "named_by": "previous_frames",
+      "bumper_text": ""
+    },
+    {
+      "team": "2204",
+      "visible": true,
+      "box": [
+        852,
+        311,
+        992,
+        412
+      ],
+      "confidence": 0.85,
+      "box_confidence": 0.85,
+      "named_by": "previous_frames",
+      "bumper_text": ""
+    },
+    {
+      "team": "10339",
+      "visible": true,
+      "box": [
+        414,
+        237,
+        503,
+        294
+      ],
+      "confidence": 0.85,
+      "box_confidence": 0.85,
+      "named_by": "previous_frames",
+      "bumper_text": ""
+    },
+    {
+      "team": "9470",
+      "visible": true,
+      "box": [
+        703,
+        243,
+        835,
+        338
+      ],
+      "confidence": 0.85,
+      "box_confidence": 0.85,
+      "named_by": "previous_frames",
+      "bumper_text": ""
+    },
+    {
+      "team": "5104",
+      "visible": true,
+      "box": [
+        777,
+        210,
+        863,
+        294
+      ],
+      "confidence": 0.85,
+      "box_confidence": 0.85,
+      "named_by": "previous_frames",
+      "bumper_text": ""
+    }
+  ]
+}
