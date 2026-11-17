@@ -23,6 +23,15 @@ We tested on [Einstein Final 1 of the 2026 Championship](https://www.youtube.com
 
 ## Research projects
 
+Current focused experiment: [NorCal Qualification 3](https://www.youtube.com/watch?v=MQZ4Yrw86uQ).
+The goal is preserving team identity through crossings and brief occlusions, with
+the current detector frozen. `configs/focus_MQZ4Yrw86uQ.json` fixes a development
+window (45–65 video seconds) and a later check (90–110 seconds). The initial local
+baseline finds boxes but names none reliably; a crop audit confirms physical track
+switches and field-display false detections. Reference-card enrollment and temporal
+Claude inference are being compared; no improvement is claimed yet. Supplemental
+NorCal Q11/Q13 sources and roles are in `configs/norcal_identity_pool_v1.json`.
+
 The `Team-334-Aproch` branch starts from the latest `combind-paths` implementation.
 See [the ai-scouting review](research/team-334-approach.md) for source-backed lessons
 and a proposed manual-review/scoring pilot. These are recommendations, not implemented features.

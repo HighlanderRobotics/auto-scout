@@ -82,7 +82,8 @@ def render(source, frames, identities, out, fps, weights):
                 x1,y1,x2,y2=source['views'][camera]
                 tile=draw_camera(raw[y1:y2,x1:x2],frame['cameras'][camera],identities,camera,source['teams'],font)
                 if i==0:
-                    tile=ImageOps.contain(tile,(1280,345));sheet.paste(tile,((1280-tile.width)//2,30))
+                    bounds=(1280,675) if len(cameras)==1 else (1280,345)
+                    tile=ImageOps.contain(tile,bounds);sheet.paste(tile,((1280-tile.width)//2,30))
                 else:
                     tile=ImageOps.contain(tile,(640,310));sheet.paste(tile,((i-1)*640,385))
             writer.send(np.asarray(sheet))

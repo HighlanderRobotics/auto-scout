@@ -34,6 +34,10 @@ class MultiCameraTests(unittest.TestCase):
         self.assertAlmostEqual(self.budget.data['spent_usd'],.00015)
         self.assertAlmostEqual(self.budget.data['reserved_usd'],0)
 
+    def test_audit_system_prompt_is_explicit_without_changing_default_tracker(self):
+        self.budget.request(HAIKU,[],{},self.root/'audit.json','audit',system='Inspect track purity; do not assume identity.')
+        self.assertEqual(self.client.messages.create.call_args.kwargs['system'],'Inspect track purity; do not assume identity.')
+
     def test_total_cap_reserves_before_call(self):
         self.budget.data['spent_usd']=4.895
         self.assertIsNone(self.call())

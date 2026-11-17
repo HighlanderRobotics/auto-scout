@@ -1052,6 +1052,79 @@ Source: the Lovat repo, `apps/collection/lib/collection/ScoutReport.ts` and `pac
 
 ## Research projects: technical details
 
+### Focused NorCal QM3 identity experiment
+
+The user selected `MQZ4Yrw86uQ`, official Qualification 3 at the 2026 California
+Northern State Championship, then authorized autonomous work overnight and use of
+other same-event matches if useful. Red: 9470/5104/10339. Blue: 3970/2204/7137.
+The 3-second URL timestamp is still a title card; video time must not be treated as
+match time. Downloaded native 1920x1080 / 59.94 fps footage is local and ignored.
+
+`configs/focus_MQZ4Yrw86uQ.json` holds the reviewed main-camera crop, frozen student
+checkpoint, 45–65-second development and 90–110-second later check. No detector
+retraining or camera expansion is part of this experiment. The baseline is the
+existing local tracker, visual memory and repeated exact OCR (`multicamera_tracks.py`).
+It observes 509 boxes in development and 537 in the later clip, but supports no team
+names. These are detections, not truth counts. `audit_identity_tracks.py` inspected
+11 long crop sequences with Opus: it identifies people/displays/structures among
+the detections and physical robot switches in the long blue tracks. The audit cost
+$0.253016, charged to the existing shared ledger, not a new budget.
+
+`focus_temporal_teacher.py` compares a Jesse-style current/previous-image controller
+with and without robot reference cards. `--gallery` supplies reviewed crops of the
+six actual robots; `--haiku-only` fixes the model for a controlled comparison.
+This is paid inference/identity-teaching evidence, not a newly trained local identity
+model. Every run uses a new output folder, preserves source hashes, caches responses
+and spends from the original `datasets/temporal_multicamera_v1_run/ledger.json`.
+The $4.90 total includes prior $1.240489 spending. No further funds were authorized;
+the user reported $3.70 credits, so the remaining project allowance is the stricter
+$3.659511 at the start of this phase. Existing Opus/Haiku sublimits remain enforced.
+Estimates given before these calls: crop audit $0.25–$0.50; temporal pass $0.10–$0.25
+per 20-second clip. Local work continues if the shared budget is exhausted.
+
+`verify_robot_gallery.py` performs a blind card check (card numbers replace captions)
+under that same ledger. Reference cards use development frames only, including a
+clear side-camera 10339 bumper. V1's check agreed on all six candidate names but
+flagged some images as blurry/occluded; V2 replaces two cards with clearer views.
+Cards are enrollment/training inputs, never an evaluation answer key.
+
+`configs/mqz4_identity_checkpoints_v1.json` freezes seven agent-reviewed later identity
+checkpoints (3970 plus a 7137 confusion check) before gallery-conditioned held-out
+inference. Ambiguous 98-second identities and unclear later 7137 observations remain
+unscored. This is a deliberately small partial check, not full-match accuracy or
+independent human truth. The initial local baseline geometrically matches all seven
+but leaves all seven unknown. `evaluate_identity_checkpoints.py` separately counts
+correct, wrong, unknown and missing observations, using geometry-only one-to-one
+matching. `compare_runs.py --roster FILE` now supports a different match roster;
+its matched named subset is supplemental to the full checkpoint counts.
+
+Supplemental sources were discovered from official event/match rosters and TBA
+video embeds, and verified with each official YouTube upload's title/description:
+Q11 (`nx7rAYZ6Fwk`, common teams 9470/5104/2204) for reference examples, and Q13
+(`spwjMTZKJCE`, includes 7137) for a separate transfer check. Q11's 5104 changes from
+red in QM3 to blue, so a useful identity method must recognize chassis rather than
+memorize a team's bumper color. These downloads make no Claude calls. The current
+candidate result is pending; no default model or naming policy has changed.
+
+`--seed configs/mqz4_enrollment_seed_v1.json` supplies a one-time reviewed starting
+assignment. This is an enrollment aid, not automatic recognition. With
+`--review-after 20`, the controller stops after development and will not make later
+paid requests until its output folder contains `development_gate.json` with
+`passed: true`. Review post-enrollment checkpoints first; the 45-second seed itself
+must not count as evidence of tracking improvement. Keep the command and code
+unchanged when resuming, so cached development responses are reused:
+
+```bash
+.venv/bin/python -u focus_temporal_teacher.py --start 45 --duration 65 --fps 5 --gallery datasets/focus_MQZ4Yrw86uQ/gallery_v2/references.jpg --seed configs/mqz4_enrollment_seed_v1.json --haiku-only --review-after 20 --out runs/mqz4_identity_seeded_v1 --execute 2>&1 | tee logs/mqz4-identity-seeded-v1.log
+.venv/bin/python evaluate_identity_checkpoints.py runs/mqz4_identity_seeded_v1/development_predictions.json --split development --exclude-enrollment --out runs/mqz4_identity_seeded_development_score_v1
+```
+
+The local development baseline has four unknown checkpoints and two witnessed
+physical identity changes. The seven-checkpoint later baseline has seven unknowns.
+An identity controller must improve correct coverage without adding wrong names;
+unknowns are retained rather than forced into the roster. Current tooling passes
+80 unit tests; these validate bookkeeping/matching, not visual tracking quality.
+
 ### Team 334 approach review (2026-11-15)
 
 `Team-334-Aproch` is based on `combind-paths` at `af79f22`, which retains newer
@@ -1092,6 +1165,7 @@ Everything in a Lovat report is built from three inputs:
 | local visual memory | Local appearance/motion + backward identity evidence | Expanded metric; 20-epoch Glendale detector adaptation; two final Haiku reviews | Einstein 229/229; 39.4% coverage | Glendale held-out 12/12 boxes, 0 extras vs 9/12, 4 extras; two frames only | Shared ledger $0.05218 recorded + $0.05 reserve / $4 cap | Six Glendale names resolved; reviews mixed, no confirmed swaps; incomplete occlusion coverage |
 | direct Glendale Haiku demo | Haiku 5.5 forward + backward tracking | 100 frames, 5 fps, same calibration as local demo | No independent checked identity key | Single held-out frame: 5/6 boxes, 0 extras; local detector 6/6 | $0.04716 for this run | Misses partly hidden 3328; view labeled video and paths together |
 | temporal multi-camera v1 | Haiku 5.5 + selective Opus 5.5; local YOLO student | 130 train images; PNW validation; later Wisconsin side check; same-pipeline Einstein replay | Einstein 377/377 matched names; 64.9% reference coverage vs 39.1% fresh baseline | Side IoU 0.5: 16 TP / 3 FP / 1 FN vs 6/24/11; small agent-labeled check | $1.240489 total / $4.90 cap; later work $0 API | Four Einstein teams; two unknown. Old 14-image test has six more extras; checkpoint stays opt-in |
+| NorCal QM3 identity focus | Frozen student detector/local memory vs temporal Claude with robot enrollment cards | Development 45–65 s; later check 90–110 s; supplemental Q11/Q13 | Local baseline: 0 correct, 7 unknown, 0 missing on seven reviewed checkpoints; candidate pending | Detection training unchanged | Opus audit $0.253016 plus subsequent inference, all within original $4.90 shared cap | Partial agent-reviewed identity check; no full-match claim or default change |
 
 Target for scouting hundreds of matches: at least 98% correct names and 95% boxes in the right place, below $1 per match.
 

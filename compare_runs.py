@@ -4,7 +4,7 @@ Usage: .venv/bin/python compare_runs.py track/final opus track/sonnet_final sonn
 The first folder is the reference. For each frame, each robot box is matched to the reference box of the
 same alliance with the most overlap; the names then agree or not. Also prints bumper reads, tokens and cost.
 """
-import glob, itertools, json, sys
+import argparse, glob, itertools, json, sys
 from pathlib import Path
 
 TEAMS = {"868": "blue", "2910": "blue", "2046": "blue", "4065": "red", "4414": "red", "1323": "red"}
@@ -31,7 +31,18 @@ def usage(folder):
 
 
 def main():
-    args = sys.argv[1:]
+    global TEAMS
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--roster',type=Path,help='JSON mapping team numbers to red/blue for another match')
+    parser.add_argument('runs',nargs='+',help='Alternating run folders and price/model labels')
+    options=parser.parse_args()
+    if len(options.runs)%2:parser.error('Provide folder/model pairs')
+    if options.roster:
+        roster=json.loads(options.roster.read_text())
+        if not isinstance(roster,dict) or not roster or any(not str(k).isdigit() or v not in ('red','blue') for k,v in roster.items()):
+            parser.error('Roster must map numeric team strings to red/blue')
+        TEAMS=roster
+    args = options.runs
     runs = [(args[i], args[i + 1]) for i in range(0, len(args), 2)]
     ref_dir, ref_name = runs[0]
     ref = load(ref_dir)

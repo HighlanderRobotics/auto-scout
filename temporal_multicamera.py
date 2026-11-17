@@ -101,7 +101,7 @@ class Budget:
         self.client = client
         atomic_json(self.path, self.data)
 
-    def request(self, model, content, schema, target, fingerprint):
+    def request(self, model, content, schema, target, fingerprint, system=SYSTEM):
         if model not in RATES:
             raise ValueError("Unauthorized model")
         if target.exists():
@@ -132,7 +132,7 @@ class Budget:
             self.data["reserved_usd"] += reserve
             atomic_json(self.path, self.data)
         try:
-            response = self.client.messages.create(model=model, max_tokens=4096, system=SYSTEM,
+            response = self.client.messages.create(model=model, max_tokens=4096, system=system,
                 output_config={"format": {"type": "json_schema", "schema": schema}},
                 messages=[{"role": "user", "content": content}])
         except Exception as error:
@@ -219,13 +219,16 @@ def prepare(plan, root):
     return saved
 
 
-def query(budget, root, record, previous, prior, model, proposal=None, following=None):
+def query(budget, root, record, previous, prior, model, proposal=None, following=None, gallery=None):
     current = root / record["image"]
     block, sent_size = image_block(current)
     with Image.open(current) as image:
         width, height = image.size
     sx, sy = sent_size[0] / width, sent_size[1] / height
     content = [{"type": "text", "text": f"Camera={record['camera']}, roster/colors={json.dumps(record['teams'])}. Images are {sent_size[0]}x{sent_size[1]}."}]
+    if gallery is not None:
+        content += [{'type':'text','text':'CANONICAL ROBOT IDENTITY REFERENCES. Each labeled card shows a known physical robot. Match chassis/mechanisms, not loose fuel, people or field monitors. Bumper colors can change between matches: use the CURRENT roster colors. Ignore reference teams absent from the current roster. These are reference crops, NOT the current frame; never return their coordinates. Preserve these physical identities through motion and occlusion; correct any earlier guess when a clear reference or bumper read contradicts it.'},
+                    {'type':'image','source':{'type':'base64','media_type':'image/jpeg','data':base64.b64encode(Path(gallery).read_bytes()).decode()}}]
     if previous:
         prev_block, prev_size = image_block(root / previous["image"])
         if prev_size != sent_size:
@@ -235,7 +238,8 @@ def query(budget, root, record, previous, prior, model, proposal=None, following
         return [dict(r, box=[round(r["box"][0]*sx), round(r["box"][1]*sy),
                             round(r["box"][2]*sx), round(r["box"][3]*sy)]) for r in rows]
     if prior:
-        content.append({"type": "text", "text": "Previous state in sent-image pixels: " + json.dumps(scaled(prior))})
+        state_title='Previous state in sent-image pixels: ' if previous else 'Reviewed enrollment assignments for this FIRST CURRENT frame, in sent-image pixels: '
+        content.append({"type": "text", "text": state_title + json.dumps(scaled(prior))})
     content += [{"type": "text", "text": f"CURRENT frame t={record['video_s']}s"}, block]
     if proposal:
         content.append({"type": "text", "text": "Expert review: correct this uncertain CURRENT proposal: " + json.dumps(scaled(proposal))})

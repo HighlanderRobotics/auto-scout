@@ -1,0 +1,16 @@
+{
+  "purpose": "One-match identity-continuity experiment. Detector stays fixed; no training expansion.",
+  "baseline_weights": "runs/temporal_multicamera_v1/weights/best.pt",
+  "development_window_s": [45,65],
+  "heldout_window_s": [90,110],
+  "source_metadata": "Official FIRST YouTube title/description and visible score-overlay roster, reviewed locally at native 1080p.",
+  "sources": [
+    {
+      "match": "2026cancmp_qm3",
+      "video": "datasets/focus_MQZ4Yrw86uQ/source.mp4",
+      "youtube_url": "https://www.youtube.com/watch?v=MQZ4Yrw86uQ",
+      "teams": {"9470":"red", "5104":"red", "10339":"red", "3970":"blue", "2204":"blue", "7137":"blue"},
+      "views": {"main": [0,220,1920,720]}
+    }
+  ]
+}
