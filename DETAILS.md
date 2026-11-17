@@ -1110,8 +1110,9 @@ candidate result is pending; no default model or naming policy has changed.
 assignment. This is an enrollment aid, not automatic recognition. With
 `--review-after 20`, the controller stops after development and will not make later
 paid requests until its output folder contains `development_gate.json` with
-`passed: true`. Review post-enrollment checkpoints first; the 45-second seed itself
-must not count as evidence of tracking improvement. Keep the command and code
+`passed: true`. Review post-enrollment checkpoints first; neither the 45-second
+seed nor the 60.8-second reference-card source counts as tracking improvement.
+`--exclude-enrollment` removes both, leaving two development checks. Keep the command and code
 unchanged when resuming, so cached development responses are reused:
 
 ```bash
@@ -1123,7 +1124,27 @@ The local development baseline has four unknown checkpoints and two witnessed
 physical identity changes. The seven-checkpoint later baseline has seven unknowns.
 An identity controller must improve correct coverage without adding wrong names;
 unknowns are retained rather than forced into the roster. Current tooling passes
-80 unit tests; these validate bookkeeping/matching, not visual tracking quality.
+81 unit tests; these validate bookkeeping/matching, not visual tracking quality.
+
+The full-field gallery-only controller leaves two of three post-seed development
+observations unknown and misses one; one of those three is itself a gallery source.
+The seeded controller is also losing certainty and is not approved for continuation.
+`classify_robot_crops.py` tests the alternative explanation that small full-field
+subjects are the problem: supply close crops of the **same frozen detector boxes**
+and references, classify each crop independently, retain unknown/nonrobot responses,
+and reject duplicate team claims. It never assumes a local track ID stays on one
+robot. A nine-frame QM3 development diagnostic and nine supplemental QM11 frames
+are queued under the same ledger (estimated $0.03–$0.10 combined).
+`render_identity_predictions.py` makes a labeled before/after video;
+`export_identity_examples.py` exports source-linked proposals, explicitly unreviewed,
+without images or credentials. These tools do not train local weights.
+`configs/mqz4_gallery_v2.json` records the source times/full-frame boxes of every
+enrollment card, so the actual images can be checked against the original video.
+
+The same local pipeline on supplemental QM11 observes 596 boxes and supports 107
+names for three teams; the untouched QM13 later window observes 516 boxes and
+supports 138 names for two teams. These are repeated OCR outputs, **not accuracy
+scores**. No ground-truth transfer result is claimed.
 
 ### Team 334 approach review (2026-11-15)
 

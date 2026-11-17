@@ -6,9 +6,15 @@ import unittest
 from pathlib import Path
 
 from evaluate_identity_checkpoints import matching
+from classify_robot_crops import classify
 
 
 class IdentityCheckpointTests(unittest.TestCase):
+    def test_crop_teacher_rejects_duplicate_and_nonrobot_claims(self):
+        rows=[dict(team='3970',kind='robot',confidence=.95),dict(team='3970',kind='robot',confidence=.9),
+              dict(team='7137',kind='field_equipment',confidence=.99),dict(team='2204',kind='robot',confidence=.85)]
+        self.assertEqual(classify(rows,{'3970':'blue','7137':'blue','2204':'blue'}),{3:'2204'})
+
     def test_matching_uses_geometry_not_proposed_names(self):
         refs=[dict(team='3970',box=[0,0,10,10]),dict(team='7137',box=[20,0,30,10])]
         preds=[dict(team='7137',box=[0,0,10,10]),dict(team='3970',box=[20,0,30,10])]

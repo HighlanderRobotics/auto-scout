@@ -1,5 +1,6 @@
 """Score listed identity checkpoints without treating unlisted robots as negatives."""
 import argparse
+import hashlib
 import json
 import subprocess
 import sys
@@ -43,7 +44,7 @@ def evaluate(reference, predictions, out, split='heldout', exclude_enrollment=Fa
     if out.exists():raise ValueError('Choose a new score folder')
     source,frames=load_predictions(predictions);out.mkdir(parents=True)
     reference_data=json.loads(reference.read_text());refs=reference_data[split]
-    if exclude_enrollment:refs=[f for f in refs if not f.get('used_for_enrollment')]
+    if exclude_enrollment:refs=[f for f in refs if not f.get('used_for_enrollment') and not f.get('used_for_gallery')]
     total=correct=wrong=unknown=missing=0;records=[];history=defaultdict(list)
     comparison_ref=out/'comparison_reference';comparison_run=out/'comparison_predictions';comparison_ref.mkdir();comparison_run.mkdir()
     for index,frame in enumerate(refs):
@@ -62,6 +63,7 @@ def evaluate(reference, predictions, out, split='heldout', exclude_enrollment=Fa
         atomic_json(comparison_run/name,dict(time_s=frame['video_s'],robots=export))
     switches=sum(a[1]!=b[1] for sequence in history.values() for a,b in zip(sorted(sequence),sorted(sequence)[1:]))
     result=dict(split=split,exclude_enrollment=exclude_enrollment,checkpoints=total,correct=correct,wrong=wrong,unknown=unknown,missing=missing,
+        reference_sha256=hashlib.sha256(reference.read_bytes()).hexdigest(),predictions_sha256=hashlib.sha256(predictions.read_bytes()).hexdigest(),
         correct_named_coverage=correct/total if total else None,accuracy_on_named=correct/(correct+wrong) if correct+wrong else None,
         confirmed_track_identity_changes=switches,records=records,
         scope=reference_data['scope'],reference_type=reference_data['reference_type'],

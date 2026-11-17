@@ -135,7 +135,8 @@
           ]
         }
       ],
-      "used_for_enrollment": true
+      "used_for_enrollment": true,
+      "used_for_gallery": true
     },
     {
       "video_s": 47.6,
@@ -150,7 +151,8 @@
           ]
         }
       ],
-      "used_for_enrollment": false
+      "used_for_enrollment": false,
+      "used_for_gallery": false
     },
     {
       "video_s": 60.8,
@@ -165,7 +167,8 @@
           ]
         }
       ],
-      "used_for_enrollment": false
+      "used_for_enrollment": false,
+      "used_for_gallery": true
     },
     {
       "video_s": 61.4,
@@ -180,7 +183,8 @@
           ]
         }
       ],
-      "used_for_enrollment": false
+      "used_for_enrollment": false,
+      "used_for_gallery": false
     }
   ]
 }
