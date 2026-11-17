@@ -1,0 +1,15 @@
+{
+  "purpose": "One predeclared local identity-head pilot, not detector retraining",
+  "training_examples": "annotations/norcal_identity_v1/reviewed_v1.jsonl",
+  "gallery_manifest": "configs/mqz4_gallery_v2.json",
+  "excluded_development_times": {"2026cancmp_qm3": [47.6,61.4]},
+  "encoder": "torchvision ResNet18 IMAGENET1K_V1, frozen, full crop letterboxed to 224 pixels",
+  "features": "Equal-weight L2-normalized ResNet18 embedding and spatial HSV histogram",
+  "head": "One-vs-rest ridge regression to one-hot targets; intercept included and regularized",
+  "ridge_alpha": 1.0,
+  "minimum_score": 0.5,
+  "minimum_margin": 0.15,
+  "augmentation": "Original plus horizontal flip, each with brightness 0.8/1.0/1.2; deterministic",
+  "unknown_policy": "Reject absent-roster classes, unknown class, weak score/margin and duplicate team claims",
+  "selection_policy": "No sweep or tuning using later results. Later evaluation once; keep experimental if wrong names appear or coverage fails to improve. Partial agent references do not establish production accuracy."
+}
