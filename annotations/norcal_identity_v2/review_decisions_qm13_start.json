@@ -1,0 +1,21 @@
+{
+  "candidate_sha256": "cce0eda6e455f60600497ad42fc3f5d5ebb1da9f154d6129df69c574e1f6805d",
+  "accepted": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "corrected": {},
+  "rejected": [],
+  "scope": "Agent visual source-crop review; not independent human truth",
+  "source_review_folder": "datasets/norcal_identity_review_v2_qm13_start"
+}

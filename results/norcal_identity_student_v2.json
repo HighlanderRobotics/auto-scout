@@ -1,0 +1,166 @@
+{
+  "primary_match": "2026cancmp_qm3",
+  "status": "Small measured QM3 improvement; still experimental. Default unchanged. The raw second head makes a QM13 identity error; a post-training current-bumper veto suppresses it, but that guard is not independent validation.",
+  "training_source_crops": 180,
+  "reviewed_unique_crops": 179,
+  "augmented_embeddings": 1080,
+  "training_frames": 299,
+  "teacher_crop_proposals": 1695,
+  "training_matches": [
+    "2026cancmp_qm3",
+    "2026cancmp_qm11",
+    "2026cancmp_qm13"
+  ],
+  "detector_unchanged": true,
+  "model_path": "runs/norcal_identity_student_v2/model.npz",
+  "model_sha256": "725c269616f22bc40eb248c293be602c12e3e6aa3ebf4707035fe08c522d98dc",
+  "config": "configs/norcal_identity_student_v2.json",
+  "provenance": {
+    "config_sha256": "59cd3faf8fe3055db582cd6845183c0a5bf26b097bb1c1b731078751ecf7ab08",
+    "script_sha256": "92f5ca41e1bfc5e3461c716b7b3e03fb001699608c1cd7faaac00d36dc4ef8ad",
+    "training_examples_sha256": "7743703dde486c5b495c398971549a77a57e369bea643b8111b1c51248d0ce03",
+    "gallery_manifest_sha256": "428b95af6adffffa56d313f815b38787bf945b60d37aacde5df7978fb3244278",
+    "source_video_sha256": {
+      "2026cancmp_qm3": "1184897fb6dfbd3bdab2ec889de0dafdcee427d19735d23db74bbffdfcec67d6",
+      "2026cancmp_qm11": "7768de03bc31b47d85e446e27ba2b736f00043a714382ae7b961e3cf6ec1ba95",
+      "2026cancmp_qm13": "9644a0abd561165c328d7e3010ac6a584541017e91c8e397659cf8ea01a7dc34"
+    },
+    "training_rows": 180,
+    "augmented_rows": 1080,
+    "classes": [
+      "10339",
+      "115",
+      "1671",
+      "1868",
+      "2204",
+      "254",
+      "3045",
+      "3970",
+      "4135",
+      "5104",
+      "6418",
+      "7137",
+      "7419",
+      "9470",
+      "unknown"
+    ],
+    "scope": "Agent-reviewed development crops and enrollment cards; no held-out frames"
+  },
+  "api_inference_cost_usd": 0,
+  "claude_total_usd": 2.1395090999999997,
+  "claude_phase_usd": 0.8990201,
+  "claude_reserved_usd": 0.01,
+  "approved_cap_usd": 4.9,
+  "remaining_approved_usd": 2.750490900000001,
+  "claude_phase_attempts": {
+    "billed": 620,
+    "failed_or_uncertain": 1
+  },
+  "checks": {
+    "Fresh QM3 baseline (120\u2013140s)": {
+      "checkpoints": 9,
+      "correct": 1,
+      "wrong": 0,
+      "unknown": 7,
+      "missing": 1,
+      "reference_sha256": "570077f18c9df3253723d3f7b7aef0ea815c2b691470379c3e4336a7d492f29e",
+      "predictions_sha256": "de0e838fc7ec7b8ea50bc2275c5bd514b80c0b89bcff74e031ba53ca4c27dcee",
+      "reference_type": "Agent-reviewed native source identities/bumper reads; not independent human truth or exhaustive labels",
+      "scope": "Nine visible identity observations at six source times in a fresh 120\u2013140-second QM3 window. Frozen before student v2 training and any local identity-head inference on this window. Only listed robots score; 120s includes a partially occluded visible 7137. No full-match accuracy claim.",
+      "metrics_file": "runs/mqz4_identity_late_baseline_score_v2/metrics.json"
+    },
+    "Fresh QM3 identity v1 (120\u2013140s)": {
+      "checkpoints": 9,
+      "correct": 2,
+      "wrong": 0,
+      "unknown": 6,
+      "missing": 1,
+      "reference_sha256": "570077f18c9df3253723d3f7b7aef0ea815c2b691470379c3e4336a7d492f29e",
+      "predictions_sha256": "c16f21cf9f78a746093b0c025c19cbb11178d60f39175add204e523a5152d8d0",
+      "reference_type": "Agent-reviewed native source identities/bumper reads; not independent human truth or exhaustive labels",
+      "scope": "Nine visible identity observations at six source times in a fresh 120\u2013140-second QM3 window. Frozen before student v2 training and any local identity-head inference on this window. Only listed robots score; 120s includes a partially occluded visible 7137. No full-match accuracy claim.",
+      "metrics_file": "runs/mqz4_identity_student_v1_late_score_v2/metrics.json"
+    },
+    "Fresh QM3 identity v2 (120\u2013140s)": {
+      "checkpoints": 9,
+      "correct": 3,
+      "wrong": 0,
+      "unknown": 5,
+      "missing": 1,
+      "reference_sha256": "570077f18c9df3253723d3f7b7aef0ea815c2b691470379c3e4336a7d492f29e",
+      "predictions_sha256": "a80fd9b4cd3a7f3f3ca7764215347e5bf917ccd3be302397c276faf100512d8e",
+      "reference_type": "Agent-reviewed native source identities/bumper reads; not independent human truth or exhaustive labels",
+      "scope": "Nine visible identity observations at six source times in a fresh 120\u2013140-second QM3 window. Frozen before student v2 training and any local identity-head inference on this window. Only listed robots score; 120s includes a partially occluded visible 7137. No full-match accuracy claim.",
+      "metrics_file": "runs/mqz4_identity_student_v2_late_score_v2/metrics.json"
+    },
+    "QM3 v2 regression (90\u2013110s)": {
+      "checkpoints": 7,
+      "correct": 4,
+      "wrong": 0,
+      "unknown": 3,
+      "missing": 0,
+      "reference_sha256": "5c0e2d834bc965d7d1f5f879bb78dd3686560614ef7b5da49d6b7558e2f48802",
+      "predictions_sha256": "0f4130c0a82dc6eefe266abbb2f95c503a9cd2679ed38885de79979a93fb176d",
+      "reference_type": "Agent-reviewed identity checkpoints, based on native source images and readable bumpers. Not independent human ground truth or exhaustive frame annotations.",
+      "scope": "Primary identity 3970 through a same-match occlusion; 7137 is a same-alliance confusion check. Only listed visible references are scored. No full-match accuracy claim. The ambiguous 98-second frame and unclear 7137 observations after 94 seconds are deliberately unscored.",
+      "metrics_file": "runs/mqz4_identity_student_v2_regression_score_v1/metrics.json"
+    },
+    "QM13 v1 transfer (90\u2013110s)": {
+      "checkpoints": 4,
+      "correct": 0,
+      "wrong": 0,
+      "unknown": 4,
+      "missing": 0,
+      "reference_sha256": "4a7526cfeb38458c063ecd6eb3e4efadde653e6e8c85b8e0b4d16a60bc3862db",
+      "predictions_sha256": "ba08837a5ccc2729ff1a37a8b2d5427f8b4e906af7a1fdff812acbe25d620083",
+      "reference_type": "Agent-reviewed native readable bumper crops, selected by exact local OCR before local classifier transfer inference; not independent human truth",
+      "scope": "Four readable-bumper transfer observations in QM13. 7137 is learned; 6418 is absent from the identity model and should remain unresolved there. This is a small favorable OCR-selected subset, not full-match accuracy.",
+      "metrics_file": "runs/norcal_qm13_identity_student_transfer_score_v1/metrics.json"
+    },
+    "QM13 v2 raw regression (90\u2013110s)": {
+      "checkpoints": 4,
+      "correct": 2,
+      "wrong": 1,
+      "unknown": 1,
+      "missing": 0,
+      "reference_sha256": "4a7526cfeb38458c063ecd6eb3e4efadde653e6e8c85b8e0b4d16a60bc3862db",
+      "predictions_sha256": "0a5ad0d5b4803cb89b1e44232fc9852e7ba8fff6253a2fddd12a441f7a5c7b3d",
+      "reference_type": "Agent-reviewed native readable bumper crops, selected by exact local OCR before local classifier transfer inference; not independent human truth",
+      "scope": "Regression against old QM13 references: 7137 and 6418 are both trained classes in V2. The original reference description of an unseen 6418 applies only to V1.",
+      "metrics_file": "runs/norcal_qm13_identity_student_v2_regression_score_v1/metrics.json"
+    },
+    "QM13 v2 post-hoc OCR veto (90\u2013110s)": {
+      "checkpoints": 4,
+      "correct": 2,
+      "wrong": 0,
+      "unknown": 2,
+      "missing": 0,
+      "reference_sha256": "4a7526cfeb38458c063ecd6eb3e4efadde653e6e8c85b8e0b4d16a60bc3862db",
+      "predictions_sha256": "3a6ea494695ea2ebf79b92138ec8719b9cd1e7556cadfcadeeeb02fbc7ab82ba",
+      "reference_type": "Agent-reviewed native readable bumper crops, selected by exact local OCR before local classifier transfer inference; not independent human truth",
+      "scope": "Regression against old QM13 references: 7137 and 6418 are both trained classes in V2. The original reference description of an unseen 6418 applies only to V1.",
+      "metrics_file": "runs/norcal_qm13_identity_student_v2_regression_veto_v1_score/metrics.json"
+    }
+  },
+  "tests_passed": 85,
+  "post_hoc_guard": {
+    "script": "veto_identity_conflicts.py",
+    "policy": "Exact current-time, same-box, high-confidence source-roster bumper read contradicts learned name: suppress to unknown. Never creates a name or propagates across IDs.",
+    "derived_after": "QM13 raw V2 regression exposed 6418\u21927137 at 93s",
+    "independent_validation": false,
+    "fresh_qm3_vetoed_names": 0,
+    "old_qm3_vetoed_names": 0,
+    "qm13_vetoed_names": 1
+  },
+  "fresh_clip_observations": {
+    "detected_boxes": 597,
+    "baseline_named": 35,
+    "v2_named": 102,
+    "warning": "Prediction counts, not independently verified correct names"
+  },
+  "comparison_videos": {
+    "Fresh QM3: baseline and second identity head": "runs/mqz4_identity_student_v2_late_check_v2/comparison.mp4",
+    "Original QM3 check: baseline and first identity head": "runs/mqz4_identity_student_heldout_v1/comparison.mp4"
+  },
+  "limitations": "Nine fresh QM3 references and older regression subsets are sparse agent review, not independent human truth, full-match accuracy or an exhaustive ID-switch count. More data raises fresh correct names from 1 to 3 of 9, with five unknown and one missing. Raw V2 has a separate QM13 wrong name. The post-hoc OCR veto removes that known error but needs fresh validation. No default or detector checkpoint changes; no claim of complete paths through occlusion."
+}

@@ -29,15 +29,18 @@ the current detector frozen. `configs/focus_MQZ4Yrw86uQ.json` fixes a developmen
 window (45–65 video seconds) and a later check (90–110 seconds). The initial local
 baseline finds boxes but names none reliably; a crop audit confirms physical track
 switches and field-display false detections. Reference-card enrollment and temporal
-Claude inference were compared. Close-crop teaching trained an experimental local
-identity head: **3/7** later QM3 identity observations correct, **0 wrong, 4 unknown**,
-versus seven unknowns before. The separate QM13 check stayed entirely unresolved,
-so this is not ready to replace the existing pipeline. These are small agent-reviewed
-checks, not full-match accuracy. [V1 results](results/norcal_identity_student_v1.json)
-and [source-linked teaching data](annotations/norcal_identity_v1/README.md) preserve
-the evidence. A larger same-robot teaching batch is in progress, with a fresh later
-QM3 check reserved before training. Supplemental NorCal sources and roles are in
-`configs/norcal_identity_pool_v1.json`.
+Claude inference were compared. Close-crop teaching from QM3/QM11/QM13 trained a
+local identity head on 180 reviewed/enrollment crops. On a fresh nine-observation
+QM3 120–140-second check: **3 correct, 0 wrong, 5 unknown, 1 missing**, versus one
+correct before and two with the smaller first head. These are sparse agent-reviewed
+observations, not full-match accuracy or complete paths. Raw V2 still misnames one
+QM13 regression observation; a post-training current-bumper veto suppresses that
+known error, but needs fresh validation. Defaults remain unchanged.
+[Results](results/norcal_identity_student_v2.json) and
+[source-linked teaching data](annotations/norcal_identity_v2/README.md) preserve the
+evidence. Open `runs/norcal_identity_2026_11_17/index.html` for videos and scores.
+This phase recorded $0.8990 new Claude spending, plus $0.01 held for a timed-out
+request, within the original shared $4.90 cap. Local head inference costs $0 API.
 
 The `Team-334-Aproch` branch starts from the latest `combind-paths` implementation.
 See [the ai-scouting review](research/team-334-approach.md) for source-backed lessons

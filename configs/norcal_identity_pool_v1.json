@@ -2,15 +2,52 @@
   "purpose": "Small same-event reference/transfer pool supporting the QM3 identity-continuity goal; no broad detector training.",
   "primary_match": "2026cancmp_qm3",
   "sources": [
-    {"match":"2026cancmp_qm11","role":"supplemental identity examples, especially 9470/5104/2204; 5104 changes alliance color from QM3",
-     "video":"datasets/norcal_identity_pool_v1/qm11/source.mp4","youtube_url":"https://www.youtube.com/watch?v=nx7rAYZ6Fwk",
-     "tba_url":"https://www.thebluealliance.com/match/2026cancmp_qm11",
-     "teams":{"9470":"red","1671":"red","3045":"red","2204":"blue","5104":"blue","4135":"blue"},
-     "views":{"main":[0,220,1920,720]}},
-    {"match":"2026cancmp_qm13","role":"separate transfer check; includes 7137 with a different roster",
-     "video":"datasets/norcal_identity_pool_v1/qm13/source.mp4","youtube_url":"https://www.youtube.com/watch?v=spwjMTZKJCE",
-     "tba_url":"https://www.thebluealliance.com/match/2026cancmp_qm13",
-     "teams":{"115":"red","7419":"red","254":"red","1868":"blue","7137":"blue","6418":"blue"},
-     "views":{"main":[0,220,1920,720]}}
+    {
+      "match": "2026cancmp_qm11",
+      "role": "supplemental identity examples, especially 9470/5104/2204; 5104 changes alliance color from QM3",
+      "video": "datasets/norcal_identity_pool_v1/qm11/source.mp4",
+      "youtube_url": "https://www.youtube.com/watch?v=nx7rAYZ6Fwk",
+      "tba_url": "https://www.thebluealliance.com/match/2026cancmp_qm11",
+      "teams": {
+        "9470": "red",
+        "1671": "red",
+        "3045": "red",
+        "2204": "blue",
+        "5104": "blue",
+        "4135": "blue"
+      },
+      "views": {
+        "main": [
+          0,
+          220,
+          1920,
+          720
+        ]
+      }
+    },
+    {
+      "match": "2026cancmp_qm13",
+      "role": "separate transfer check; includes 7137 with a different roster",
+      "video": "datasets/norcal_identity_pool_v1/qm13/source.mp4",
+      "youtube_url": "https://www.youtube.com/watch?v=spwjMTZKJCE",
+      "tba_url": "https://www.thebluealliance.com/match/2026cancmp_qm13",
+      "teams": {
+        "115": "red",
+        "7419": "red",
+        "254": "red",
+        "1868": "blue",
+        "7137": "blue",
+        "6418": "blue"
+      },
+      "views": {
+        "main": [
+          0,
+          220,
+          1920,
+          720
+        ]
+      },
+      "role_v2": "45\u201365s now supplies reviewed teaching examples; original 90\u2013110s transfer set becomes a regression check, not fresh v2 validation"
+    }
   ]
 }

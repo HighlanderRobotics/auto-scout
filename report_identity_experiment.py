@@ -27,7 +27,7 @@ def main():
 <h2>What changed</h2><p>Full-field temporal proposals were too uncertain. Independent close-up teaching separates physical robots from people, monitors and field structures. A local identity head learns from reviewed robot crops and enrollment cards, using frozen ResNet18 and HSV features. It names each observed box conservatively, without assuming a tracker ID always stays on the same robot.</p>
 <p>These identity scores do not measure complete paths or every ID switch. A separate match exposed poor transfer in the first head. More training data can also contain confident teacher mistakes, so source review remains necessary.</p>
 <h2>Data, spending and reproduction</h2><p>Training source crops: {data['training_source_crops']}. Augmented embeddings: {data['augmented_embeddings']}. Local identity inference: $0 API.</p>
-<p>Total shared Claude ledger: ${data['claude_total_usd']:.4f} / $4.90. This phase: ${data['claude_phase_usd']:.4f}. Existing model sublimits are enforced; earlier work is included.</p>
+<p>Recorded shared Claude spending: ${data['claude_total_usd']:.4f} / $4.90. This phase: ${data['claude_phase_usd']:.4f}. Reserved for an uncertain request: ${data.get('claude_reserved_usd',0):.4f}. Existing model sublimits are enforced; earlier work is included.</p>
 <p><a href="result.json">Saved result JSON</a> · <a href="{link(data['model_path'])}">Experimental identity model</a> · <a href="https://github.com/HighlanderRobotics/auto-scout/pull/11">Draft pull request</a></p>
 <p>Use <code>.venv/bin/python identity_student.py infer --model MODEL_FOLDER --tracks TRACKS_JSON --out NEW_FOLDER</code>. No paid calls. The default pipeline is unchanged.</p></main></html>'''
     (a.out/'index.html').write_text(content);print(a.out/'index.html')

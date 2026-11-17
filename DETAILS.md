@@ -1124,7 +1124,7 @@ The local development baseline has four unknown checkpoints and two witnessed
 physical identity changes. The seven-checkpoint later baseline has seven unknowns.
 An identity controller must improve correct coverage without adding wrong names;
 unknowns are retained rather than forced into the roster. Current tooling passes
-83 unit tests; these validate bookkeeping/matching, not visual tracking quality.
+85 unit tests; these validate bookkeeping/matching, not visual tracking quality.
 
 The full-field gallery-only controller leaves two of three post-seed development
 observations unknown and misses one; one of those three is itself a gallery source.
@@ -1171,14 +1171,62 @@ Total Claude ledger at V1: $1.9722652, including $1.240489 from earlier work;
 new V1 phase spending is $0.7317762. Local training costs $0 API.
 
 V2 is a **more-data-only** follow-up with identical head/features/thresholds, not a
-parameter search. Dense 45–65-second crop teaching on QM3, QM11 and QM13 is underway
-(estimated $0.15–$0.40 new API). Exact existing cached responses are reused without
+parameter search. Dense 45–65-second crop teaching on QM3, QM11 and QM13 completed
+(estimated $0.15–$0.40 new API; recorded $0.1672439 plus $0.01 uncertain reserve).
+Exact existing cached responses were reused without
 new calls. QM13 early footage now supplies extra 7137 views; its 90–110-second set
 and QM3's old seven checkpoints become regression checks because their V1 outcomes
 are known. A fresh nine-reference QM3 120–140-second set is frozen in
 `configs/mqz4_identity_late_checkpoints_v2.json` before V2 training or any identity-head
 inference on that window. Ambiguous identities remain unscored; this is still sparse
-agent review, not independent human truth. V2 results are pending.
+agent review, not independent human truth.
+
+V2 exports **1,695 proposals from 299 frames**, with **179 unique reviewed crops**.
+One confident teacher identity (5104 on the flat 10339 robot at 58.2s) was corrected
+before training, with original proposal preserved. One QM13 request at 48.4s timed
+out; it was not retried, its $0.01 reserve remains, and independent later frames were
+processed in a continuation folder. Training uses 180 source crops / 1,080 augmented
+embeddings after development exclusions and enrollment cards. It enforces allowed
+training windows, source hashes, source-roster labels and crop bounds in code.
+
+Fresh QM3 120–140-second results (nine references, same frozen detector boxes):
+
+| Version | Correct | Wrong | Unknown | Missing |
+|---|---:|---:|---:|---:|
+| Existing OCR/memory baseline | 1 | 0 | 7 | 1 |
+| Local identity head V1 | 2 | 0 | 6 | 1 |
+| Local identity head V2 | 3 | 0 | 5 | 1 |
+
+This is a modest gain, not reliable complete tracking. V2 gives 102 named predictions
+among 597 detected boxes across the full clip; those 102 are not independently
+verified correct names. On the old seven-observation QM3 regression it gets 4 correct,
+0 wrong, 3 unknown. On the old four-observation QM13 regression it gets 2 correct,
+**1 wrong**, 1 unknown: at 93s it calls 6418 "7137". In V2 both teams are trained;
+the V1 reference description of unseen 6418 is historical, not a V2 assumption.
+
+`veto_identity_conflicts.py` adds a **post-hoc** safety guard: if a high-confidence,
+exact source-roster bumper read in the same current crop contradicts a learned name,
+suppress it to unknown. It never creates names or propagates reads across track IDs.
+It removes that one QM13 error (2 correct / 0 wrong / 2 unknown), leaves both QM3
+checks unchanged, and needs fresh validation; this is not a new independent test.
+The raw head and guarded outputs remain separate. **No default promotion.**
+
+Final recorded shared spend: **$2.1395091**, including earlier $1.240489; this phase
+used **$0.8990201 across 620 billed calls**, with one uncertain request reserving
+$0.01. Approved headroom after reservation: $2.7504909. Local training/inference and
+the OCR veto make no API calls. Results and model hashes are in
+`results/norcal_identity_student_v2.json`; source-linked data and review decisions are
+in `annotations/norcal_identity_v2/`. Checkable videos/report:
+`runs/norcal_identity_2026_11_17/index.html` (serve with `serve_runs.py`, port 8766).
+
+```bash
+.venv/bin/python -u identity_student.py train --config configs/norcal_identity_student_v2.json --out runs/norcal_identity_student_v2
+.venv/bin/python -u identity_student.py infer --model runs/norcal_identity_student_v2 --tracks runs/mqz4_identity_late_baseline_v2/tracks.json --out runs/mqz4_identity_student_v2_late_check_v2
+.venv/bin/python veto_identity_conflicts.py runs/mqz4_identity_student_v2_late_check_v2/predictions.json --ocr-run runs/mqz4_identity_late_baseline_v2 --out runs/mqz4_identity_student_v2_late_veto_v1
+.venv/bin/python report_identity_experiment.py results/norcal_identity_student_v2.json --out runs/norcal_identity_2026_11_17
+```
+
+These example paths already exist locally; choose new output folders for a new run.
 
 ### Team 334 approach review (2026-11-15)
 
@@ -1204,6 +1252,7 @@ Everything in a Lovat report is built from three inputs:
 |---|---|---|---|---|---|---|
 | answer key | Opus 5.5, effort medium | two images | 100% | 100% | $0.021 | about $18 |
 | NorCal identity student v1 | Frozen ResNet18 + HSV, trained ridge identity head | 41 reviewed/enrollment source crops; detector fixed; experimental | QM3 later: 3/7 correct, 0 wrong, 4 unknown; QM13 transfer: 0/4 named | Same frozen detector boxes; not an independent detection score | $0 API inference; $0.7318 new V1 teaching/audit spend | Not measured; sparse identity check only |
+| NorCal identity student v2 | Same features/head/settings; 180 source crops | More QM3/QM11/QM13 early data; no default promotion | Fresh QM3: 3/9 correct, 0 wrong, 5 unknown, 1 missing (baseline 1/9); raw QM13 regression has 1 wrong, suppressed by post-hoc OCR veto | Same frozen detector boxes; no complete-path claim | $0 API inference; $0.8990 whole new phase plus $0.01 reserve | Not measured; sparse checks only |
 | baseline | Sonnet 5.5, effort medium | two images | 95% | 97% | $0.011 | about $9 |
 | best so far | Haiku 5.5 | two images, robot descriptions (`--robots start/robot_looks.json`) | 98% | 100% | $0.0009 | about $0.75 |
 | | Haiku 5.5 | one image (`--one-image`), robot descriptions | 83% (94% before the backward pass) | 96% | $0.0008 | about $0.70 |
