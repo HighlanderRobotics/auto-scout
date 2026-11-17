@@ -53,6 +53,15 @@ def decide(scores,classes,teams,minimum_score,minimum_margin):
     return {i:team for i,team in accepted.items() if counts[team]==1}
 
 
+def check_training_row(row,allowed):
+    window=allowed.get(row['match'])
+    if not window or not window[0]<=row['video_s']<window[1]:raise ValueError('Training row outside allowed development window')
+    if row['review_status']!='agent_reviewed_source_crop':raise ValueError('Unreviewed training input')
+    if row['label']!='unknown' and row['label'] not in row['current_roster']:raise ValueError('Training label outside source roster')
+    box=row['full_frame_box']
+    if len(box)!=4 or not all(np.isfinite(v) for v in box) or not (0<=box[0]<box[2]<=1920 and 0<=box[1]<box[3]<=1080):raise ValueError('Invalid source crop')
+
+
 def source_crop(row,plans,captures):
     source=plans[row['match']];video=source['video'];cap=captures.setdefault(video,cv2.VideoCapture(video));cap.set(cv2.CAP_PROP_POS_MSEC,row['video_s']*1000);ok,bgr=cap.read()
     if not ok:raise ValueError('Missing training frame')
@@ -62,15 +71,20 @@ def source_crop(row,plans,captures):
 def train(a):
     if a.out.exists():raise ValueError('Choose a new model folder')
     config=json.loads(a.config.read_text());plans={s['match']:s for p in ['configs/focus_MQZ4Yrw86uQ.json','configs/norcal_identity_pool_v1.json'] for s in json.loads(Path(p).read_text())['sources']}
-    rows=[json.loads(s) for s in Path(config['training_examples']).read_text().splitlines()];images=[];labels=[];manifest=[];captures={}
+    rows=[json.loads(s) for s in Path(config['training_examples']).read_text().splitlines()];images=[];labels=[];manifest=[];captures={};video_hashes={}
+    allowed=config.get('allowed_training_windows',{key:[45,65] for key in plans})
     try:
         for row in rows:
+            check_training_row(row,allowed)
             if row['video_s'] in config['excluded_development_times'].get(row['match'],[]):continue
-            if row['review_status']!='agent_reviewed_source_crop':raise ValueError('Unreviewed training input')
+            if row['match'] not in video_hashes:
+                with Path(plans[row['match']]['video']).open('rb') as video:video_hashes[row['match']]=hashlib.file_digest(video,'sha256').hexdigest()
+            if video_hashes[row['match']]!=row['video_sha256']:raise ValueError('Source video changed since review')
             image=source_crop(row,plans,captures);images.append(image);labels.append(row['label']);manifest.append(row)
         gallery=json.loads(Path(config['gallery_manifest']).read_text())
         for team,row in gallery['teams'].items():
-            r=dict(row,match='2026cancmp_qm3',full_frame_box=row['full_box']);images.append(source_crop(r,plans,captures));labels.append(team);manifest.append(dict(r,label=team,review_status='agent_reviewed_enrollment_card'))
+            r=dict(row,match='2026cancmp_qm3',full_frame_box=row['full_box'],label=team,current_roster=plans['2026cancmp_qm3']['teams'],review_status='agent_reviewed_source_crop')
+            check_training_row(r,allowed);images.append(source_crop(r,plans,captures));labels.append(team);manifest.append(dict(r,review_status='agent_reviewed_enrollment_card'))
     finally:
         for cap in captures.values():cap.release()
     expanded=[];targets=[]
@@ -81,7 +95,7 @@ def train(a):
     a.out.mkdir(parents=True);atomic_json(a.out/'config.json',config);atomic_json(a.out/'training_manifest.json',manifest)
     vectors=Encoder().encode(expanded);weights,classes=fit_head(vectors,targets,config['ridge_alpha'])
     np.savez_compressed(a.out/'model.npz',weights=weights,classes=classes)
-    atomic_json(a.out/'provenance.json',dict(config_sha256=hashlib.sha256(a.config.read_bytes()).hexdigest(),script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),training_rows=len(images),augmented_rows=len(expanded),classes=classes.tolist(),scope='Agent-reviewed development crops and enrollment cards; no held-out frames'))
+    atomic_json(a.out/'provenance.json',dict(config_sha256=hashlib.sha256(a.config.read_bytes()).hexdigest(),script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),training_examples_sha256=hashlib.sha256(Path(config['training_examples']).read_bytes()).hexdigest(),gallery_manifest_sha256=hashlib.sha256(Path(config['gallery_manifest']).read_bytes()).hexdigest(),source_video_sha256=video_hashes,training_rows=len(images),augmented_rows=len(expanded),classes=classes.tolist(),scope='Agent-reviewed development crops and enrollment cards; no held-out frames'))
     print(f'Trained local identity head on {len(images)} source crops / {len(expanded)} augmented embeddings; detector unchanged',flush=True)
 
 

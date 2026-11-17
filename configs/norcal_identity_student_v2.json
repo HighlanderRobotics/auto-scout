@@ -16,5 +16,19 @@
   "minimum_margin": 0.15,
   "augmentation": "Original plus horizontal flip, each with brightness 0.8/1.0/1.2; deterministic",
   "unknown_policy": "Reject absent-roster classes, unknown class, weak score/margin and duplicate team claims",
-  "selection_policy": "Same head/features/thresholds as v1; no sweep. QM3 90\u2013110s and QM13 90\u2013110s are now regression checks because v1 outcomes are known. Evaluate freshly frozen QM3 120\u2013140s nine-checkpoint set once after training; no tuning on its outcomes."
+  "selection_policy": "Same head/features/thresholds as v1; no sweep. QM3 90\u2013110s and QM13 90\u2013110s are now regression checks because v1 outcomes are known. Evaluate freshly frozen QM3 120\u2013140s nine-checkpoint set once after training; no tuning on its outcomes.",
+  "allowed_training_windows": {
+    "2026cancmp_qm3": [
+      45,
+      65
+    ],
+    "2026cancmp_qm11": [
+      45,
+      65
+    ],
+    "2026cancmp_qm13": [
+      45,
+      65
+    ]
+  }
 }

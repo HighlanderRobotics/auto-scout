@@ -18,14 +18,14 @@ def main():
         steps=[b-a for a,b in zip(sorted(frames),sorted(frames)[1:])]
         if max(steps)!=min(steps):print('Irregularly sampled diagnostic: displayed frames are evenly spaced in the video, timestamps show actual source times',flush=True)
     a.out.parent.mkdir(parents=True,exist_ok=True)
-    writer=imageio_ffmpeg.write_frames(str(a.out),(1920,560),fps=a.fps,codec='libx264',pix_fmt_in='rgb24',pix_fmt_out='yuv420p',macro_block_size=2,ffmpeg_log_level='error');next(writer)
+    writer=imageio_ffmpeg.write_frames(str(a.out),(1920,440),fps=a.fps,codec='libx264',pix_fmt_in='rgb24',pix_fmt_out='yuv420p',macro_block_size=2,ffmpeg_log_level='error');next(writer)
     cap=cv2.VideoCapture(source['video']);font=ImageFont.truetype('/System/Library/Fonts/Supplemental/Arial Bold.ttf',24)
     try:
         for index,t in enumerate(sorted(frames)):
             cap.set(cv2.CAP_PROP_POS_MSEC,t);ok,bgr=cap.read()
             if not ok:raise ValueError('Missing source frame')
             x,y,x2,y2=source['views']['main'];original=Image.fromarray(cv2.cvtColor(bgr[y:y2,x:x2],cv2.COLOR_BGR2RGB))
-            sheet=Image.new('RGB',(1920,560),'#161b22');draw=ImageDraw.Draw(sheet)
+            sheet=Image.new('RGB',(1920,440),'#161b22');draw=ImageDraw.Draw(sheet)
             for side,(title,rows) in enumerate([('Frozen local baseline',baseline.get(t,[])),('Candidate | observed boxes only',frames[t])]):
                 image=original.copy();d=ImageDraw.Draw(image)
                 for r in rows:
