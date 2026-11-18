@@ -1,0 +1,212 @@
+{
+  "match": "2026cancmp_qm3",
+  "video": "datasets/focus_MQZ4Yrw86uQ/source.mp4",
+  "youtube_url": "https://www.youtube.com/watch?v=MQZ4Yrw86uQ",
+  "teams": {
+    "9470": "red",
+    "5104": "red",
+    "10339": "red",
+    "3970": "blue",
+    "2204": "blue",
+    "7137": "blue"
+  },
+  "main_crop": [
+    0,
+    220,
+    1920,
+    720
+  ],
+  "fuel_crops": {
+    "blue": [
+      85,
+      65,
+      235,
+      118
+    ],
+    "red": [
+      1745,
+      65,
+      1895,
+      118
+    ]
+  },
+  "windows": [
+    {
+      "split": "train",
+      "subjects": [
+        {
+          "time": 12,
+          "box": [
+            335,
+            245,
+            451,
+            333
+          ]
+        },
+        {
+          "time": 12,
+          "box": [
+            1420,
+            330,
+            1570,
+            412
+          ]
+        },
+        {
+          "time": 16,
+          "box": [
+            555,
+            275,
+            665,
+            371
+          ]
+        },
+        {
+          "time": 16,
+          "box": [
+            1400,
+            355,
+            1580,
+            450
+          ]
+        },
+        {
+          "time": 20,
+          "box": [
+            580,
+            315,
+            710,
+            400
+          ]
+        },
+        {
+          "time": 20,
+          "box": [
+            1410,
+            335,
+            1560,
+            425
+          ]
+        },
+        {
+          "time": 46,
+          "box": [
+            331,
+            167,
+            440,
+            247
+          ]
+        },
+        {
+          "time": 46,
+          "box": [
+            265,
+            278,
+            430,
+            400
+          ]
+        },
+        {
+          "time": 58,
+          "box": [
+            840,
+            270,
+            960,
+            370
+          ]
+        },
+        {
+          "time": 58,
+          "box": [
+            121,
+            285,
+            245,
+            377
+          ]
+        },
+        {
+          "time": 92,
+          "box": [
+            700,
+            237,
+            850,
+            365
+          ]
+        },
+        {
+          "time": 92,
+          "box": [
+            1010,
+            260,
+            1170,
+            400
+          ]
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "subjects": [
+        {
+          "time": 150,
+          "box": [
+            1040,
+            245,
+            1160,
+            325
+          ]
+        },
+        {
+          "time": 150,
+          "box": [
+            1320,
+            380,
+            1480,
+            498
+          ]
+        },
+        {
+          "time": 150,
+          "box": [
+            1090,
+            295,
+            1195,
+            373
+          ]
+        },
+        {
+          "time": 124,
+          "box": [
+            1440,
+            245,
+            1580,
+            320
+          ]
+        },
+        {
+          "time": 124,
+          "box": [
+            1026,
+            260,
+            1159,
+            361
+          ]
+        },
+        {
+          "time": 124,
+          "box": [
+            869,
+            199,
+            984,
+            273
+          ]
+        }
+      ]
+    }
+  ],
+  "teacher_model": "claude-haiku-5-5",
+  "new_run_cap_usd": 0.5,
+  "purpose": "Human-assisted shooting review; teacher proposals are not verified robot counts. Main-view sequences only; additional broadcast angles remain visible in source video.",
+  "sample_count": 12,
+  "air_context_px": 350
+}

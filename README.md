@@ -21,9 +21,29 @@ We tested on [Einstein Final 1 of the 2026 Championship](https://www.youtube.com
 - **The first local detector is trained.** YOLO26n trained on 81 images and matched 75 of 84 robot boxes on 14 held-out images at IoU 0.5, with 18 extra detections. This is a small same-match pilot; team identity and testing at other venues still need work. No new Claude calls were needed. Results are in [DETAILS.md](DETAILS.md#first-trained-baseline-local_robot_v1-2026-11-01).
 - **A second local experiment reused the Haiku labels.** Training on 141 confident image regions matched 70 of 84 test boxes, with 12 extras at IoU 0.5. It reduced extra detections but missed more robots, so the first model remains the preferred baseline. This round added no API charges; see [the measured result](DETAILS.md#trained-result-local_robot_v2_regions-2026-11-02).
 
+## Hybrid shooting pilot
+
+The current direction is **human-assisted shooting and fuel review** on NorCal QM3.
+Claude labels short sequences; an initial local learner proposes shooting activity.
+You check the highlighted robot, correct the action/team, and enter a shot count only
+when you can actually see it. Your corrections become the next training examples.
+
+Open `http://127.0.0.1:8766/hybrid_shooting_qm3_dense_v2/review.html` while
+`serve_runs.py` is running. Use **Add a training clip** to draw a missing subject in
+the main field view. **Save reviewed labels** exports your work; tell the coding
+assistant to retrain from that file. Replays include the other broadcast angles.
+Counter OCR can also be corrected. Shared/uncertain fuel stays unassigned; alliance
+fuel and attempted balls are separate quantities. No full-match robot totals or
+shooting accuracy are claimed. The exact attempt-count head awaits reviewed counts.
+An additional numerical prototype trains on QM3/QM11 fuel-counter changes and visible
+hub motion, with a separate QM13 check; its targets are unreviewed OCR and it never
+assigns its alliance forecasts to a robot automatically.
+See [teaching data](annotations/shooting_teacher_v1/README.md) and
+[pilot results](results/hybrid_shooting_qm3_v1.json).
+
 ## Research projects
 
-Current focused experiment: [NorCal Qualification 3](https://www.youtube.com/watch?v=MQZ4Yrw86uQ).
+Previous identity experiment: [NorCal Qualification 3](https://www.youtube.com/watch?v=MQZ4Yrw86uQ).
 The goal is preserving team identity through crossings and brief occlusions, with
 the current detector frozen. `configs/focus_MQZ4Yrw86uQ.json` fixes a development
 window (45–65 video seconds) and a later check (90–110 seconds). The initial local
@@ -216,7 +236,7 @@ The tracker knows where a robot is in the image, not on the field. A map from im
 
 ### 5. Points per robot
 
-The official data gives fuel per alliance, not per robot. The idea: when the alliance score goes up, give the points to the robot that was shooting just before. The three robots must add up to the official total.
+The official data gives fuel per alliance, not per robot. The idea: when the alliance score goes up, give the points to the robot that was shooting just before. Keep unresolved fuel unassigned until reviewed; do not force robot totals to match the alliance.
 
 ### 6. Everything Lovat records
 

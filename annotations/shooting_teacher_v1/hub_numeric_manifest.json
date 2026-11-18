@@ -1,0 +1,56 @@
+{
+  "result": {
+    "status": "experimental_not_deployed",
+    "training_examples": 375,
+    "validation_examples": 194,
+    "validation_mae_against_ocr": 1.826746543065734,
+    "persistence_mae": 3.077319587628866,
+    "zero_baseline_mae": 2.2938144329896906,
+    "beats_persistence": true,
+    "nominal_counter_delay_s": 2,
+    "hub_crops": {
+      "blue": [
+        465,
+        220,
+        685,
+        465
+      ],
+      "red": [
+        1175,
+        220,
+        1420,
+        470
+      ]
+    },
+    "arrow_crops": {
+      "blue": [
+        300,
+        65,
+        350,
+        120
+      ],
+      "red": [
+        1560,
+        65,
+        1620,
+        120
+      ]
+    },
+    "script_sha256": "d89c68fe7760854b3cf3b359e788f33d09a0affeb7b9a350ca95e78c5181b68c",
+    "source_video_sha256": {
+      "runs/hybrid_shooting_qm3_dense_v2": "1184897fb6dfbd3bdab2ec889de0dafdcee427d19735d23db74bbffdfcec67d6",
+      "runs/hybrid_hub_fuel_qm11_data_v2": "7768de03bc31b47d85e446e27ba2b736f00043a714382ae7b961e3cf6ec1ba95",
+      "runs/hybrid_hub_fuel_qm13_data_v2": "9644a0abd561165c328d7e3010ac6a584541017e91c8e397659cf8ea01a7dc34"
+    },
+    "scoreboard_sha256": {
+      "runs/hybrid_shooting_qm3_dense_v2": "aaaa90d3cba1bdc15fbcbdfd6f66bf092550ed0cf12c95db549e0726c13523fc",
+      "runs/hybrid_hub_fuel_qm11_data_v2": "a3e56acf9c5d204b7a9e43ec94b4dc53d489e7125bcc7498d8c9b2b3a2f18d59",
+      "runs/hybrid_hub_fuel_qm13_data_v2": "afce21040cc4398ecec2f2d14f9d614fa72423964edab8de70b850ce0fe5e9f3"
+    },
+    "separate_match_validation": true,
+    "scope": "Alliance credited fuel increments only, weak OCR targets. Not human-verified accuracy, robot attribution, attempted balls, or measured shooting accuracy. No validation tuning or deployment."
+  },
+  "records": 569,
+  "sha256": "f6dc378f7de14679eb777ccd400c817c0cffc51b48c9f10370654a9749a1417b",
+  "status": "Weak numerical OCR labels; not human verified"
+}

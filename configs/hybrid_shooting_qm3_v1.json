@@ -1,0 +1,16 @@
+{
+  "match":"2026cancmp_qm3",
+  "video":"datasets/focus_MQZ4Yrw86uQ/source.mp4",
+  "youtube_url":"https://www.youtube.com/watch?v=MQZ4Yrw86uQ",
+  "teams":{"9470":"red","5104":"red","10339":"red","3970":"blue","2204":"blue","7137":"blue"},
+  "main_crop":[0,220,1920,720],
+  "fuel_crops":{"blue":[85,65,235,118],"red":[1745,65,1895,118]},
+  "windows":[
+    {"tracks":"runs/mqz4_identity_baseline_v1/tracks.json","times":[46,50,54,58,62],"split":"train"},
+    {"tracks":"runs/mqz4_identity_heldout_baseline_v1/tracks.json","times":[92,96,100,104,108],"split":"train"},
+    {"tracks":"runs/mqz4_identity_late_baseline_v2/tracks.json","times":[122,126,130,134,138],"split":"validation"}
+  ],
+  "teacher_model":"claude-haiku-5-5",
+  "new_run_cap_usd":0.50,
+  "purpose":"Human-assisted shooting review; teacher proposals are not verified robot counts. Main-view sequences only; additional broadcast angles remain visible in source video."
+}

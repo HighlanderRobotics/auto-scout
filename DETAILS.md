@@ -1052,6 +1052,94 @@ Source: the Lovat repo, `apps/collection/lib/collection/ScoutReport.ts` and `pac
 
 ## Research projects: technical details
 
+### Hybrid shooting teaching pilot (2026-11-17)
+
+The user changed direction to a human-assisted workflow and explicitly authorized
+Claude teaching within **$2.80 remaining**, with more training when useful. This
+pilot uses the existing shared ledger rather than resetting an allowance. Recorded
+new spending: **$0.1722577 across 64 billed calls** (63 Haiku sequence labels and one
+Opus batch reviewing eight cases). The older $0.01 uncertain reservation remains.
+Shared recorded spending is $2.3117668 / $4.90. No extra funds were requested.
+
+`hybrid_shooting.py` prepares short focal-subject sequences, dedicated outer fuel
+counter crops, and local yellow-motion features. The initial 45 detector-selected,
+six-frame cases were mostly ambiguous. A second batch of 18 cases highlights the
+subject explicitly and shows 12 frames over one second with more air above the
+robot. Opus recognizes a continuous outgoing stream in a clear example but declines
+to count individually indistinguishable balls. Unknown counts remain null.
+The 71 unreviewed records (including eight additional expert reviews) are preserved
+in `annotations/shooting_teacher_v1/`; none is independent human truth.
+
+The first local **shooting-support** head fits eight weakly labeled examples, three
+shooting, using teacher confidence as a soft target and sample weight. It has zero
+human-confirmed examples. Its two usable validation labels are both nonshooting:
+their agreement is **not evidence of shooting recall or accuracy**. It is a proposal
+tool only. Exact robot attempt counts are not trained yet: the optional rate head
+requires at least six reviewed numerical counts with variation. Human corrections
+override teacher labels, and drawn custom clips become new source-checked examples.
+
+`train_hub_fuel.py` separately starts **numerical alliance-fuel training** from visible
+hub-area yellow motion, hub-active arrow pixels and the previous fuel-counter delta.
+Targets are dedicated fuel-counter OCR increases at a fixed nominal two-second delay.
+The more-data run trains on QM3/QM11 (375 valid alliance-second examples), validating
+on separate-match QM13 (194 examples). Absolute error against these **unreviewed OCR
+targets** is 1.8267 fuel per one-second counter interval, versus 3.0773 carrying the
+last delta forward and 2.2938 always predicting zero. Additional post-fit diagnostics are a causal
+three-second mean (3.2448) and the same ridge model without visual motion features
+(2.3749); these diagnostics did not refit or deploy the full model. No parameter sweep used validation. This is
+not human-verified ball-count accuracy, attempt counting, or robot attribution; the
+model is not deployed into reviewed totals. The earlier same-match numerical pilot
+is preserved in `runs/hybrid_hub_fuel_v1/` (181 train / 36 validation examples).
+
+The browser teaching desk is
+`http://127.0.0.1:8766/hybrid_shooting_qm3_dense_v2/review.html`.
+It plays the original full broadcast (all views), highlights a main-view subject,
+supports slow replay/frame stepping, editable action/team/times/counts, editable fuel
+OCR, custom drawn main-view clips, browser-local saves, and JSON export/import.
+**Save reviewed labels**, then retrain from that file in a new model folder. Browser
+saves alone do not retrain. The video is a local symlink, never uploaded or committed.
+Main-view examples train this pilot; side views are available for human review.
+
+Fuel reconciliation requires separate human confirmation of the counter readings
+and exclusive contribution throughout the padded counter context, including delayed
+fuel and human-player contributions. Competing claims, unreadable/gapped/decreasing
+OCR and counts inconsistent with reviewed attempts stay unassigned. There is no equal
+splitting or normalization to force three robot totals to match an alliance. Exported
+subtotals are explicitly counter-interval attributions, **not complete burst or match
+totals**; full-match per-robot made totals remain null. Counter-only context is 8–154s
+in the main pilot; new clips outside that interval can train visual actions/counts but
+have no pre-extracted counter support. A clear counted attempt is different from a
+credited make: inactive-hub fuel earns no points, and total match scores can include
+tower points and fouls ([official scoring rules](https://firstfrc.blob.core.windows.net/frc2026/Manual/HTML/2026GameManual.htm)).
+
+```bash
+# Prepare a NEW run and review its input examples before paid teaching.
+.venv/bin/python -u hybrid_shooting.py prepare --plan configs/hybrid_shooting_qm3_dense_v2.json --out runs/my_shooting_pilot
+.venv/bin/python -u hybrid_shooting.py scoreboard --out runs/my_shooting_pilot
+# Paid: only after cost authorization; shares the existing total/model caps.
+.venv/bin/python -u hybrid_shooting.py teach --out runs/my_shooting_pilot --execute
+.venv/bin/python hybrid_shooting.py train --out runs/my_shooting_pilot
+.venv/bin/python shooting_review.py --run runs/my_shooting_pilot
+# Human feedback: no paid calls; use a NEW model/output path.
+.venv/bin/python hybrid_shooting.py train --out runs/hybrid_shooting_qm3_dense_v2 --reviews ~/Downloads/shooting_reviews.json --model-out runs/shooting_from_my_reviews
+.venv/bin/python shooting_review.py --run runs/hybrid_shooting_qm3_dense_v2 --model runs/shooting_from_my_reviews
+.venv/bin/python shooting_review.py --run runs/hybrid_shooting_qm3_dense_v2 --reviews ~/Downloads/shooting_reviews.json --out runs/my_reviewed_fuel_subtotals.json
+# Numerical training: dedicated counters, no paid teaching.
+.venv/bin/python prepare_hub_fuel_pool.py --out runs/my_hub_counter_pool
+.venv/bin/python train_hub_fuel.py --run runs/hybrid_shooting_qm3_dense_v2 --train-run runs/hybrid_shooting_qm3_dense_v2 runs/my_hub_counter_pool/qm11 --validation-run runs/my_hub_counter_pool/qm13 --out runs/my_alliance_fuel_model
+```
+
+The existing real pilot model is `runs/hybrid_shooting_qm3_dense_v2/model_ready/`.
+The historical `shift_summary.py` reads central score columns and is not used as
+a fuel-training target in this pilot. Local training/inference needs no Claude call.
+Browser tests verified native video
+playback, frame stepping, count edits, navigation, custom-box drawing/discard, and JSON
+export. No test edit was marked human reviewed. Unit tests exercise counter parsing,
+gaps, ambiguous allocation, inconsistent counts and feedback-driven action/count-head
+training with an explicitly synthetic temporary fixture. That fixture is not used in
+real training. `track/final/` is an identity answer key, so `compare_runs.py` cannot
+score this new action/count task; no shooting answer-key score is claimed.
+
 ### Focused NorCal QM3 identity experiment
 
 The user selected `MQZ4Yrw86uQ`, official Qualification 3 at the 2026 California
@@ -1251,6 +1339,7 @@ Everything in a Lovat report is built from three inputs:
 | Run | Model | Changes | Correct names | Boxes in the right place | Cost per frame | Cost per match (840 frames) |
 |---|---|---|---|---|---|---|
 | answer key | Opus 5.5, effort medium | two images | 100% | 100% | $0.021 | about $18 |
+| Hybrid shooting pilot | Claude soft-label initialization + local motion head; separate alliance fuel regressor | Human review/export/retraining; 8 weak action examples; numerical head 375 train / 194 separate-match OCR-target checks | Not an identity score; no verified shooting/attempt-count accuracy yet | Human-highlighted subjects; main-view pilot | $0 local inference; $0.1723 new Claude teaching total | No per-robot match-total claim; alliance numerical MAE 1.8267 against weak OCR targets only |
 | NorCal identity student v1 | Frozen ResNet18 + HSV, trained ridge identity head | 41 reviewed/enrollment source crops; detector fixed; experimental | QM3 later: 3/7 correct, 0 wrong, 4 unknown; QM13 transfer: 0/4 named | Same frozen detector boxes; not an independent detection score | $0 API inference; $0.7318 new V1 teaching/audit spend | Not measured; sparse identity check only |
 | NorCal identity student v2 | Same features/head/settings; 180 source crops | More QM3/QM11/QM13 early data; no default promotion | Fresh QM3: 3/9 correct, 0 wrong, 5 unknown, 1 missing (baseline 1/9); raw QM13 regression has 1 wrong, suppressed by post-hoc OCR veto | Same frozen detector boxes; no complete-path claim | $0 API inference; $0.8990 whole new phase plus $0.01 reserve | Not measured; sparse checks only |
 | baseline | Sonnet 5.5, effort medium | two images | 95% | 97% | $0.011 | about $9 |
@@ -1356,11 +1445,11 @@ First tests: run the same 50–100 frames of the clip through `gpt-6.1-terra` (r
 
 ### Project: Points per robot
 
-1. Make shooting windows for each robot: runs of frames with action `shooting`, joining gaps of 1–2 frames.
-2. From `overlay_timeline.csv`, find each second where the alliance fuel count goes up. Move each increase back 1–3 s, because the hub counts fuel late.
-3. Give each increase to the robot(s) of that alliance that were shooting just before it. Several shooters share it by shooting time. No shooter means "unassigned".
-4. Scale each period so the robots' totals match the official TBA count for that period.
-5. Add tower points from TBA (`autoTowerRobot1-3`, `endGameTowerRobot1-3`, in the order of the alliance's team list).
+1. Propose shooting windows, then review the subject, identity and action in video.
+2. Read dedicated alliance fuel counters separately from total match points; preserve missing/invalid OCR as unknown and account for counter delay.
+3. Keep increases unassigned unless a reviewer confirms the readings and exclusive contribution over the relevant counter context. Do not split overlapping shooters by time alone.
+4. Keep unassigned amounts explicit. Do not scale robot totals to force agreement with official alliance totals. Cross-check coverage against official data.
+5. Keep tower/foul points separate from fuel; official tower data can support a later full report.
 - Signs it works: the three robots add up to the official alliance fuel in every period, "unassigned" is under 10%, and a hand count of one robot for one shift agrees.
 
 ### Project: Everything Lovat records
