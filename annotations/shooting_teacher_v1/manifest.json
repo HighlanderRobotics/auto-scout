@@ -1,0 +1,11 @@
+{
+  "records": 71,
+  "source": "https://www.youtube.com/watch?v=MQZ4Yrw86uQ",
+  "by_model": {
+    "claude-haiku-5-5": 63,
+    "claude-opus-5-5": 8
+  },
+  "sha256": "31f0b8e9b2d5ca8832b14bee9ecece1cc06e2a73947c6006c7428b6ef6229007",
+  "review_status": "unreviewed_teacher_proposals",
+  "purpose": "Shooting/action and count-evidence teaching for a human-assisted workflow. No verified per-robot made totals."
+}
